@@ -1,0 +1,32 @@
+Extiende la plantilla base 'inicio.html' para reutilizar la estructura general de la página.
+{% extends 'inicio.html' %}
+
+Carga la biblioteca de archivos estáticos para poder acceder a archivos CSS, JS o imágenes desde la carpeta 'static'.
+{% load static %}
+
+Define el título de la pestaña del navegador como "Reagendar Cita | Laboratorio Dental".
+{% block title %}Reagendar Cita | Laboratorio Dental{% endblock %}
+
+Este bloque define el título principal de la página y agrega un enlace a la lista de citas agendadas, seguido de un texto que indica que la cita será editada.
+{% block titulo %}
+<a href="{% url 'listcitas' %}" data-tooltip="Ver todas las citas agendadas">Citas Agendadas</a>&gt;
+<span data-tooltip="Modificar los detalles de una cita existente">Editar Cita Agendada</span>
+{% endblock %}
+
+Aquí se incluye una hoja de estilo adicional específica para la página de edición de citas. Se agrega un número de versión en la URL para evitar problemas de caché.
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/crear_citas.css' %}?v3.5">
+{% endblock %}
+
+Este bloque contiene el contenido principal de la página. Se muestra un encabezado con el título "Editar Cita" y luego se incluye el formulario desde el archivo 'formscitas.html'.
+{% block content %}
+<div class="cintro">
+  <h4 style="color: black;" data-tooltip="Formulario para modificar los detalles de la cita">Editar Cita</h4>
+  {% include 'formscitas.html' %}<br>
+</div>
+{% endblock %}
+
+Se cargan scripts adicionales necesarios para la funcionalidad de las citas, en este caso el archivo 'citas.js' con un número de versión para asegurarse de que la última versión sea cargada.
+{% block extra_js %}
+<script src="{% static 'js/citas.js' %}?v2.9"></script>
+{% endblock %}

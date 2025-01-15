@@ -1,0 +1,132 @@
+/* Estilos por defecto (light mode) */
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 78vh;
+  padding: 1rem;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 5 columnas para 10 botones en 2 filas */
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Cuando hay más de 4 botones (superusuario) */
+.button-grid:has(> a:nth-child(5)) {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.dashboard-button {
+  background-color: #f8f8f8;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  aspect-ratio: 1 / 1;
+}
+
+.dashboard-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+}
+
+.button-icon {
+  background-color: #CAB97D;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  margin-bottom: 0.5rem;
+}
+
+.button-icon i {
+  font-size: 1rem;
+}
+
+.button-text h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.button-text p {
+  font-size: 0.7rem;
+  margin: 0;
+  color: #666;
+}
+
+/* Dark mode styles */
+.dark-mode .dashboard-container {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .dashboard-button {
+  background-color: #333;
+  color: #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.dark-mode .dashboard-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .button-icon {
+  background-color: #48455f;  /* Color más oscuro para el modo oscuro */
+  color: white;
+}
+
+.dark-mode .button-text h3 {
+  color: #f0f0f0;
+}
+.dark-mode .footer a {
+  color: #ffffff; /* Color de los enlaces en modo oscuro */
+}
+.dark-mode .button-text p {
+  color: #ccc;
+}
+
+/* Media queries */
+@media (max-width: 1024px) {
+  .button-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .button-grid:has(> a:nth-child(5)) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .button-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .button-grid:has(> a:nth-child(5)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .button-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .button-grid:has(> a:nth-child(5)) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

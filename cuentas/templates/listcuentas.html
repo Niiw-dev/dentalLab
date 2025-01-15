@@ -1,0 +1,156 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Pacientes | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+Pacientes Registrados
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex">
+                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al dashboard">
+                    <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                </a>
+                <a class="btn btn-success btn-custom" href="{% url 'crearcuentas' %}" role="button" data-tooltip="Registrar un nuevo paciente">
+                    <i class="fas fa-plus text-white"></i> <span> Agregar Nuevo Paciente </span>
+                </a>
+            </div>
+            <div class="d-flex">
+                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_pacientes' %}" data-tooltip="Descargar tabla en excel" role="button">
+                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                </a>
+                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_pacientes' %}" role="button" data-tooltip="Descargar tabla en pdf">
+                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-container">
+            <div id="filtroForm" class="mb-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Tipo de Documento</label>
+                        <select id="filtroTipoDoc" class="form-select" data-tooltip="Filtrar por tipo de documento">
+                            <option value="">Todos los Tipos</option>
+                            <option value="1">T.I</option>
+                            <option value="2">C.C</option>
+                            <option value="3">C.E</option>
+                            <option value="4">C.I</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Estado</label>
+                        <select id="filtroEstado" class="form-select" data-tooltip="Filtrar por estado del paciente">
+                            <option value="">Todos los Estados</option>
+                            <option value="activo">Activo</option>
+                            <option value="inactivo">Inactivo</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table id="elementosTable" class="table table-primary table-centered">
+                    <thead>
+                        <tr>
+                            <th data-sort="tipodoc" scope="col" data-tooltip="Ordenar por tipo de documento">
+                                Tipo Documento
+                            </th>
+                            <th data-sort="documento" scope="col" data-tooltip="Ordenar por número de documento">
+                                Numero Documento
+                            </th>
+                            <th data-sort="nombre" scope="col" data-tooltip="Ordenar por nombre">
+                                Nombre Completo
+                            </th>
+                            <th scope="col" data-tooltip="Imagen del paciente">Imagen</th>
+                            <th data-sort="correo" scope="col" data-tooltip="Ordenar por correo">
+                                Correo
+                            </th>
+                            <th data-sort="direccion" scope="col" data-tooltip="Ordenar por dirección">
+                                Dirección
+                            </th>
+                            <th data-sort="edad" scope="col" data-tooltip="Ordenar por edad">
+                                Edad
+                            </th>
+                            <th data-sort="ocupacion" scope="col" data-tooltip="Ordenar por ocupación">
+                                Ocupación
+                            </th>
+                            <th data-sort="celular" scope="col" data-tooltip="Ordenar por número de celular">
+                                Celular
+                            </th>
+                            <th data-sort="estado" scope="col" data-tooltip="Ordenar por estado">
+                                Estado
+                            </th>
+                            <th scope="col" class="no-print" data-tooltip="Acciones disponibles">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cuenta in cuentas %}
+                        {% if not cuenta.is_superuser %}
+                        <tr class="paciente-row" data-tipodoc="{{ cuenta.tipo }}" data-estado="{% if cuenta.is_active %}activo{% else %}inactivo{% endif %}">
+                            <td data-sort="tipodoc">{{ cuenta.get_tipo_display }}</td>
+                            <td data-sort="documento">{{ cuenta.documento }}</td>
+                            <td data-sort="nombre">{{ cuenta.nombre }}</td>
+                            <td>
+                                {% if cuenta.imagen %}
+                                <img src="{{ cuenta.imagen.url }}" alt="Imagen de cuenta" width="100px" height="100px" style="object-fit: cover; object-position: center;" data-tooltip="Ver imagen completa">
+                                {% else %}
+                                <p>No hay imagen disponible</p>
+                                {% endif %}
+                            </td>
+                            <td data-sort="correo">{{ cuenta.correo }}</td>
+                            <td data-sort="direccion">{{ cuenta.direccion }}</td>
+                            <td data-sort="edad">{{ cuenta.edad }}</td>
+                            <td data-sort="ocupacion">{{ cuenta.ocupacion }}</td>
+                            <td data-sort="celular">{{ cuenta.celular }}</td>
+                            <td data-sort="estado">{% if cuenta.is_active %}Activo{% else %}Inactivo{% endif %}</td>
+                            <td class="no-print">
+                                <a class="btn btn-info" href="{% url 'editarcuentas' cuenta.id %}" role="button" data-tooltip="Editar información del paciente"><i class="fas fa-pen sort-icon a"></i></a>
+                                {% if cuenta.is_active %}
+                                <button type="button" id="desactivarCuenta" data-user-id="{{ cuenta.id }}" class="btn btn-custom btn-success" data-tooltip="Desactivar cuenta"><i class="fas fa-toggle-on sort-icon a"></i></button>
+                                {% else %}
+                                <button type="button" id="activarCuenta" data-user-id="{{ cuenta.id }}" class="btn btn-custom btn-danger" data-tooltip="Activar cuenta"><i class="fas fa-toggle-off sort-icon a"></i></button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div id="confirmModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¿Estás seguro de que quieres desactivar tu cuenta?</p>
+        <button id="confirmDesactivar" class="btn btn-custom btn-danger" data-tooltip="Confirmar desactivación">Desactivar</button>
+        <button id="cancelDesactivar" class="btn btn-custom btn-secondary" data-tooltip="Cancelar desactivación">Cancelar</button>
+    </div>
+</div>
+
+<div id="confirmModal2" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>¿Estás seguro de que quieres activar tu cuenta?</p>
+        <button id="confirmActivar" class="btn btn-custom btn-danger" data-tooltip="Confirmar activación">Activar</button>
+        <button id="cancelActivar" class="btn btn-custom btn-secondary" data-tooltip="Cancelar activación">Cancelar</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/desactivar_cuenta.js' %}?v4.9"></script>
+<script src="{% static 'js/filtros.js' %}?v5.9"></script>
+<script src="{% static 'js/filtrar_dos.js' %}?v1.1"></script>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Editar Cuenta | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+<a href="{% url 'listcuentas' %}" data-tooltip="Volver a la lista de pacientes"> Pacientes Registrados </a>&gt;
+<span data-tooltip="Modifica los datos del paciente">Editar Cuenta de Paciente</span>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cuentas.css' %}?v2.2">
+<link rel="stylesheet" href="{% static 'css/crear_cuentas.css' %}?v2.2">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <form enctype="multipart/form-data" method="POST" class="form">
+        <h4 class="card-title" data-tooltip="Ingrese los datos del paciente aquí">Datos Paciente</h4>
+        {% include 'formscuentas.html' %}
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/historias.js' %}?v1.2"></script> 
+{% endblock %}

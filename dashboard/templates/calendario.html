@@ -1,0 +1,42 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Calendario | Laboratorio Dental{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block titulo %}
+<span data-tooltip="Visualiza todas las citas programadas">Calendario de Citas Programadas</span>
+{% endblock %}
+
+{% block content %}
+    <div id="calendar" data-tooltip="Haz clic en un día para ver más detalles o agregar una nueva cita"></div>
+    <script id="citas-data" type="application/json">
+        [
+            {% for cita in citas %}
+                {
+                    "paciente": "{{ cita.paciente.nombre }}",
+                    "motivo": "{{ cita.motivo }}",
+                    "start": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}",
+                    "end": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}"
+                }{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        ]
+    </script>
+    <script id="is-superuser" type="application/json">
+        {{ user.is_superuser|yesno:"True,False" }}
+    </script>
+{% endblock %}
+
+{% block extra_js %}
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/es.js"></script>
+    <script src="{% static 'js/dark_mode.js' %}?v3.1"></script>
+    <script src="{% static 'js/calendario.js' %}?v1.5"></script>
+
+
+{% endblock %}

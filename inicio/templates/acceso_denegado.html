@@ -1,0 +1,156 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <link rel="stylesheet" href="{% static '/css/styles_login.css' %}?v1.5"/>
+        <title>Acceso Denegado | Laboratorio Dental</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{% static 'css/inicio_dashboard.css' %}?v2.1">
+        <!-- Bloque CSS para estilos adicionales -->
+        {% block css %}
+        <style>
+            body {
+                background-color: #e8f5fe;
+                font-family: 'Arial', sans-serif;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+            .masthead {
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                padding: 80px 0; /* Ajusta este valor según sea necesario */
+            }
+            main {
+                width: 100%;
+    max-width: 1200px; /* Aumentamos el ancho máximo */
+    margin: 0 auto; /* Centramos el contenido */
+            }
+            .error-template {
+                padding: 40px 15px;
+                text-align: center;
+                border-radius: 15px;
+                background-color: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+            h1 {
+                color: #ffd700;
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            }
+            h2 {
+                color: #00bcd4;
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+            }
+            .error-details {
+                color: #ffffff;
+                font-size: 1.2rem;
+                margin-bottom: 30px;
+            }
+            .error-actions .btn {
+                margin: 10px;
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            .alert-info {
+                background-color: rgba(227, 242, 253, 0.7);
+                border-color: rgba(190, 229, 235, 0.7);
+                color: #0c5460;
+            }
+            .tooth-icon {
+                font-size: 4rem;
+                color: #17a2b8;
+                margin-bottom: 20px;
+            }
+            .animated {
+                animation: bounce 2s infinite;
+            }
+            @keyframes bounce {
+                0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+                40% {transform: translateY(-20px);}
+                60% {transform: translateY(-10px);}
+            }
+        </style>
+        {% endblock %}
+    </head>
+    {% block content %}
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="../"><img src="{% static 'img/logo.png' %}" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#acerca" data-tooltip="Acerca de Nosotros">Acerca de nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#services" data-tooltip="Servicios">Servicios </a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#portafolio" data-tooltip="Cuidados">Cuidados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'loginregister' %}" data-tooltip="Iniciar Sesión">Inicio de sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-12">
+                            <div class="error-template">
+                                <i class="fas fa-tooth tooth-icon animated" data-tooltip="Cuidamos tu sonrisa"></i>
+                                <h1>
+                                    <i class="fas fa-exclamation-triangle text-warning" data-tooltip="¡Cuidado!"></i> ¡Oops!
+                                </h1>
+                                <h2>403 - Acceso Denegado</h2>
+                                <div class="error-details mb-4">
+                                    Lo sentimos, no tienes permiso para acceder a esta página.
+                                </div>
+                                <div class="error-actions">
+                                    <a {% if user.is_authenticated %}href="{% url 'dashboard' %}"{% else %}href="{% url 'inicio_index' %}"{% endif %} class="btn btn-primary btn-lg" data-tooltip="Regresa al dashboard o a la página de inicio de sesión">
+                                        <i class="fas fa-home"></i> Volver al Inicio
+                                    </a>
+                                    <a href="https://api.whatsapp.com/send?phone=573222829221" class="btn btn-outline-info btn-lg" data-tooltip="Contáctanos para obtener ayuda">
+                                        <i class="fas fa-envelope"></i> Contactar Soporte
+                                    </a>
+                                </div>
+                                <hr>
+                                <div class="mt-4 alert alert-info" role="alert">
+                                    <h4 class="alert-heading"><i class="fas fa-info-circle"></i> ¿Necesitas ayuda?</h4>
+                                    <p>Si crees que deberías tener acceso a esta página, por favor contacta al administrador del sistema. Estamos aquí para asegurar que tu experiencia sea tan perfecta como una sonrisa saludable.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </header>
+        <script type="module" src="{% static 'js/script_login.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static '/js/script_dashboard.js' %}?v1.5"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        {% endblock %}
+        <script src="{% static 'js/tooltips.js' %}"></script>
+
+    {% block js %}
+    {% endblock %}
+    </body>
+</html>

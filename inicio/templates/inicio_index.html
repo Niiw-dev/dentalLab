@@ -1,0 +1,456 @@
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>LABORATORIO DENTAL</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link rel="stylesheet" href="{% static 'css/inicio_dashboard.css' %}?v1.9">
+        <link rel="stylesheet" href="{% static 'css/dark_mode.css' %}?v2.2">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}?v1.1">
+        <!-- Bloque CSS para estilos adicionales -->
+        {% block css %}
+        {% endblock %}
+    </head>
+    {% block content %}
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="#page-top" data-tooltip="Ir al inicio"><img src="{% static 'img/logo.png' %}" alt="..." /></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" data-tooltip="Menú de navegación">
+                    Menu
+                    <i class="fas fa-bars ms-1"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#acerca" data-tooltip="Conoce más sobre nosotros">Acerca de nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#services" data-tooltip="Explora nuestros servicios">Servicios</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#portfolio" data-tooltip="Ver cuidados a tener en cuenta">Cuidados</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'loginregister' %}" data-tooltip="Accede a tu cuenta">Inicio de sesión</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead">
+            <div class="container">
+                <div class="masthead-subheading"></div>
+                <div class="masthead-heading text-uppercase">LABORATORIO DENTAL SANDRA GAVIRIA</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'crearcitas2' %}" data-tooltip="Agenda tu Cita">Agendar Cita</a>
+            </div>
+        </header>
+        <section class="page-section" id="acerca">
+            <div class="container-fluid about-us">
+              <h2 class="text-center mb-5">ACERCA DE NOSOTROS</h2>
+              <div class="row">
+                <div class="col-md-4 nosotros-section animate-on-scroll">
+                  <div class="image-container">
+                    <img class="img-fluid" src="{% static 'img/retenedor.jpg' %}" alt="Nosotros" />
+                  </div>
+                  <h4 class="my-3">Nosotros</h4>
+                  <p class="text-muted">Nos especializamos en ofrecer soluciones dentales de alta calidad con un enfoque en precisión y cuidado.</p>
+                </div>
+                <div class="col-md-4 mission-section animate-on-scroll">
+                  <div class="image-container">
+                    <img class="img-fluid" src="{% static 'img/retencion.jpg' %}" alt="Misión" />
+                  </div>
+                  <h4 class="my-3">Misión</h4>
+                  <p class="text-muted">"Proporcionar servicios dentales de alta calidad, utilizando tecnología avanzada y materiales de primera categoría. Nos comprometemos a mejorar la salud oral y la calidad de vida de nuestros pacientes mediante tratamientos personalizados y cuidadosamente diseñados."</p>
+                </div>
+                <div class="col-md-4 vision-section animate-on-scroll">
+                  <div class="image-container">
+                    <img class="img-fluid" src="{% static 'img/recomendacion.jpg' %}" alt="Visión" />
+                  </div>
+                  <h4 class="my-3">Visión</h4>
+                  <p class="text-muted">"Laboratorio de elección para pacientes y profesionales de la odontología en nuestra comunidad. Nos esforzamos por innovar continuamente en técnicas y servicios, proporcionando soluciones dentales avanzadas que mejoran la estética y la funcionalidad bucal."</p>
+                </div>
+              </div>
+            </div>
+        </section>
+        <!-- Services-->
+        <section class="page-section animate-on-scroll" id="services">
+            <div class="container">
+                <div class="text-center animate-on-scroll">
+                    <h2 class="section-heading text-uppercase">Servicios</h2>
+                    <h3 class="section-subheading text-muted"></h3>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4 animate-on-scroll">
+                        <span class="fa-stack fa-4x" data-tooltip="Prótesis dentales de alta calidad">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-tooth fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Elaboración y reparación de protesis dentales en acrilicos y flexibles</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                    <div class="col-md-4 animate-on-scroll">
+                        <span class="fa-stack fa-4x" data-tooltip="Coronas y provisionales de calidad">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-smile-beam fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Elaboración de coronas metal porcelana y zirconio, elaboración de protovisionales en auto y termo</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                    <div class="col-md-4 animate-on-scroll">
+                        <span class="fa-stack fa-4x" data-tooltip="Retenedores personalizados">
+                            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fas fa-smile fa-stack-1x fa-inverse"></i>
+                        </span>
+                        <h4 class="my-3">Elaboración de retenedores post ortodoncia en acetato y alambre</h4>
+                        <p class="text-muted"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Portfolio Grid-->
+        <section class="page-section animate-on-scroll" id="portfolio">
+            <div class="container1">
+                <div class="text-center animate-on-scroll">
+                    <h2 class="section-heading text-uppercase">Cuidados</h2>
+                    <br>
+                </div>
+                <div class="row">
+                    
+                    <div class="col-lg-4 col-sm-6 mb-4 animate-on-scroll">
+                        <!-- Portfolio item 1-->
+                        <div class="portfolio-item">
+                            
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1" data-tooltip="Aprende sobre el cepillado correcto">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado1.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Cepillado correcto</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    
+                </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 animate-on-scroll">
+                        <!-- Portfolio item 2-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2" data-tooltip="Importancia del cepillado diario">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado2.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Cepillado diario</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 animate-on-scroll">
+                        <!-- Portfolio item 3-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3" data-tooltip="Cómo cuidar tus brackets">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado3.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Cuidado con los brackets</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0 animate-on-scroll">
+                        <!-- Portfolio item 4-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4" data-tooltip="Beneficios del uso de hilo dental">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado4.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Utilizar hilo dental</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0 animate-on-scroll">
+                        <!-- Portfolio item 5-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5" data-tooltip="Cómo cuidar tus retenedores">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado5.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Retenedores</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 animate-on-scroll">
+                        <!-- Portfolio item 6-->
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6" data-tooltip="Importancia de los controles mensuales">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="{% static 'img/cuidado6.jpg' %}" alt="..." />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading">Controles mensuales</div>
+                                <div class="portfolio-caption-subheading text-muted"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Team-->
+        <!-- Clients-->
+        
+        
+        <div class="dark-mode-toggle" id="darkModeToggle">
+            <i class="fas fa-moon" onclick="dark_mode()"></i> <!-- Icono de luna para el modo oscuro -->
+        </div>
+
+
+        <!-- Footer-->
+        <footer class="footer py-4">
+            <div class="container">
+                <div class="row align-items-center 1">
+                    <div class="col-lg-4 text-lg-start"><strong>Copyright © 2024</strong> <br>
+                        Imagenes de <a href="https://www.freepik.es/fotos-vectores-gratis/odontologia" target="_blank" data-tooltip="Visita Freepik">Freepik</a> y <a href="https://www.pexels.com/" target="_blank" data-tooltip="Visita Pexels">Pexels</a>. <br>
+                         Todos los derechos reservados.</div>
+                    <div class="col-lg-4 my-3 my-lg-0">
+                        <a class="btn btn-dark btn-social mx-2" 
+                        href="https://api.whatsapp.com/send?phone=573222829221" 
+                        aria-label="Whatsapp" 
+                        data-social="Whatsapp" 
+                        onclick="return openInteractiveWindow(this.href);"
+                        data-tooltip="Contáctanos por WhatsApp">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+                                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+                            </svg>
+                        </a>
+                        <a class="btn btn-dark btn-social mx-2 2" 
+                                    href="https://www.facebook.com/profile.php?id=100042873386422&mibextid=ZbWKwL" 
+                                    aria-label="Facebook" 
+                                    data-social="Facebook" 
+                                    onclick="return openInteractiveWindow(this.href);"
+                                    data-tooltip="Síguenos en Facebook">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                            <path d="M8.94 8.688h-1.885v6.274H4.783V8.687H3.278V6.352h1.506V5.005c0-1.16.553-2.94 2.94-2.94l2.154.009v2.398h-1.564c-.26 0-.63.13-.63.688v1.09h2.201l-.287 2.335z"/>
+                                        </svg>
+                                    </a>
+                        <a class="btn btn-dark btn-social mx-2 3"
+                            href="https://maps.app.goo.gl/ANEuUgRV9diJPPBv7"
+                            aria-label="Mapa"
+                            data-social="Mapa"
+                                    onclick="return openInteractiveWindow(this.href);"
+                                    data-tooltip="Encuéntranos en el mapa">
+                                     <div class="filled"></div>
+                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bus-front" viewBox="0 0 16 16">
+                                         <path d="M5 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0m8 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-6-1a1 1 0 1 0 0 2h2a1 1 0 1 0 0-2zm1-6c-1.876 0-3.426.109-4.552.226A.5.5 0 0 0 3 4.723v3.554a.5.5 0 0 0 .448.497C4.574 8.891 6.124 9 8 9s3.426-.109 4.552-.226A.5.5 0 0 0 13 8.277V4.723a.5.5 0 0 0-.448-.497A44 44 0 0 0 8 4m0-1c-1.837 0-3.353.107-4.448.22a.5.5 0 1 1-.104-.994A44 44 0 0 1 8 2c1.876 0 3.426.109 4.552.226a.5.5 0 1 1-.104.994A43 43 0 0 0 8 3"/>
+                                         <path d="M15 8a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1V2.64c0-1.188-.845-2.232-2.064-2.372A44 44 0 0 0 8 0C5.9 0 4.208.136 3.064.268 1.845.408 1 1.452 1 2.64V4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1v3.5c0 .818.393 1.544 1 2v2a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5V14h6v1.5a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-2c.607-.456 1-1.182 1-2zM8 1c2.056 0 3.71.134 4.822.261.676.078 1.178.66 1.178 1.379v8.86a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5V2.64c0-.72.502-1.301 1.178-1.379A43 43 0 0 1 8 1"/>
+                                     </svg>
+                                 </a>
+
+                    </div>
+                        
+                </div>
+            </div>
+        </footer>
+        <!-- Portfolio Modals-->
+        <!-- Portfolio item 1 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Cepillado correcto</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado1.jpg' %}" alt="..." />
+                                    <p>Usa un cepillo de cerdas suaves y realiza movimientos circulares para limpiar todas las superficies de los dientes, incluyendo la línea de las encías y la lengua. Dedica al menos dos minutos en cada cepillado.</p>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 2 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Cepillado diario</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado2.jpg' %}" alt="..." />
+                                    <p>Cepíllate al menos dos veces al día, por la mañana y antes de acostarte. Después de las comidas principales, especialmente si has consumido alimentos con azúcar o almidón, es ideal hacer un cepillado o enjuague para evitar la acumulación de placa.</p>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 3 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Cuidado con los brackets</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado3.jpg' %}" alt="..." />
+                                    <p>Usa un cepillo especial para ortodoncia y cepillos interdentales para limpiar alrededor de los brackets y los alambres. Evita alimentos duros o pegajosos que puedan dañar los brackets o despegarlos.</p>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 4 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Utilizar Hilo Dental</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado4.jpg' %}" alt="..." />
+                                    <p> Usa hilo dental o cepillos interproximales para limpiar entre los dientes y bajo los alambres de los brackets. Este paso es crucial para evitar la acumulación de placa y caries en las áreas difíciles de alcanzar con el cepillo.</p>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 5 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Retenedores</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado5.jpg' %}" alt="..." />
+                                    <p> Usa los retenedores según las indicaciones del ortodoncista. Límpialos regularmente con agua y un cepillo suave, evitando el uso de pasta de dientes, ya que puede ser abrasiva.</p>
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Portfolio item 6 modal popup-->
+        <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-bs-dismiss="modal">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                        <span class="sr-only">Close modal</span>
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project details-->
+                                    <h2 class="text-uppercase">Controles mensuales</h2>
+                                    <p class="item-intro text-muted"></p>
+                                    <img class="img-fluid d-block mx-auto" src="{% static 'img/cuidado6.jpg' %}" alt="..." />
+                                    <p>Asiste a todas las citas de control para ajustar los brackets y alambres. Estas visitas son esenciales para monitorear el progreso y realizar los ajustes necesarios para un tratamiento exitoso.</p>
+                                    
+                                    <button class="btn btn-primary btn-xl text-uppercase" data-bs-dismiss="modal" type="button">
+                                        <i class="fas fa-xmark me-1"></i>
+                                        Salir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="{% static '/js/script_dashboard.js' %}?v1.5"></script>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script src="{% static 'js/tooltips.js' %}?v1.2"></script>
+        
+        <script src="{% static 'js/sienna.js' %}?v1.2"></script>
+        <script src="{% static 'js/custom.js' %}?v1.2"></script>
+        {% endblock %}
+    {% block js %}
+    {% endblock %}
+    </body>
+</html>

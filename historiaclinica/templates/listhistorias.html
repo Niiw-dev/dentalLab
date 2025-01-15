@@ -1,0 +1,104 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Historias Clínicas | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+Historias Clínicas
+{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex">
+                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al dashboard">
+                    <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                </a>
+                {% if request.user.is_superuser %}
+                <a class="btn btn-success btn-custom me-2" href="{% url 'crearhistorias' %}" role="button" data-tooltip="Agregar nueva historia clínica">
+                    <i class="fas fa-plus text-white"></i> <span> Agregar Nueva Historia Clínica </span>
+                </a>
+                {% endif %}
+            </div>
+            <div class="d-flex">
+                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_historia' %}" role="button" data-tooltip="Descargar tabla en excel">
+                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                </a>
+                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_historia' %}" role="button" data-tooltip="Descargar tabla en pdf">
+                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-container">
+            <form id="filtroForm" method="get" action="{% url 'listhistorias' %}">
+                <div class="row" style="width: 100%;">
+                    <div>
+                    <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Fecha</label>
+                    <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ request.GET.fecha }}" data-tooltip="Filtrar por fecha">
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive">
+                <table id="elementosTable" class="table table-primary table-centered">
+                    <thead>
+                        <tr>
+                            <th id="headerDocumento" data-sort="documento" scope="col" data-tooltip="Documento del paciente">Documento</th>
+                            <th id="headerPaciente" data-sort="nombre" scope="col" data-tooltip="Nombre del paciente">Paciente</th>
+                            <th id="headerFecha" data-sort="fecha_historia" scope="col" data-tooltip="Fecha de la historia clínica">Fecha Historia</th>
+                            <th scope="col" data-tooltip="Acciones disponibles">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for historia in historias %}
+                        <tr>
+                            <td data-sort="documento">{{ historia.documento }}</td>
+                            <td data-sort="nombre">{{ historia.nombre }}</td>
+                            <td data-sort="fecha_historia">{{ historia.fecha_historia }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{% url 'verhistorias' historia.id %}" role="button" data-tooltip="Ver detalles de la historia"><i class="fas fa-eye sort-icon a"></i></a>
+                                {% if user.is_superuser %}
+                                <button class="btn btn-danger" onclick="confirmarEliminacion2('{{ historia.id }}', '{{ historia.nombre }}', '{{ historia.documento }}')" data-tooltip="Eliminar historia clínica"><i class="fas fa-trash sort-icon a"></i></button>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div id="confirmarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="cerrarModal()" data-tooltip="Cerrar modal">&times;</span>
+        <p>¿Estás seguro de que deseas eliminar la historia de <strong id="historiaNombre"></strong> (Número: <strong id="historiaDocumento"></strong>)?</p>
+        <form id="formEliminar" method="POST" action="">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" data-tooltip="Confirmar eliminación">Eliminar</button>
+            <button type="button" class="btn btn-secondary" onclick="cerrarModal()" data-tooltip="Cancelar eliminación">Cancelar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dark_mode.js' %}?v3.0"></script>
+<script src="{% static 'js/filtros.js' %}?v5.5"></script>
+<script src="{% static 'js/filtrar.js' %}?v2.8"></script>
+<script>
+    // Filtrar automáticamente al cambiar la fecha
+    document.getElementById('fechaFiltro').addEventListener('change', function() {
+        document.getElementById('filtroForm').submit();
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,56 @@
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    
+    {% for field in form %}
+    <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label" data-tooltip="{% if field.help_text %}{{ field.help_text }}{% else %}Ingrese {{ field.label|lower }}{% endif %}">
+            {% if field.name == 'direccion' %}
+                Dirección
+            {% elif field.name == 'ocupacion' %}
+                Ocupación
+            {% else %}
+                {{ field.label }}
+            {% endif %}
+        </label>
+
+        <!-- Mostrar imagen si ya existe -->
+        {% if field.name == 'imagen' and field.value %}
+            <br/>
+            <img src="{{ field.value.url }}" width="100" height="100" alt="Imagen de cuenta" style="object-fit: cover; object-position: center;" data-tooltip="Imagen actual del paciente">
+        {% endif %}
+        
+        <!-- Select para el tipo de cuenta -->
+        {% if field.name == 'tipo' %}
+        <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" data-tooltip="Seleccione el tipo de cuenta">
+            {% for value, display_name in field.field.choices %}
+            <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
+            {% endfor %}
+        </select>
+        {% elif field.field.choices %}
+        <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" data-tooltip="Seleccione una opción">
+            {% for value, display_name in field.field.choices %}
+            <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Campos de entrada de texto -->
+        {% else %}
+        <input type="{{ field.field.widget.input_type }}"
+               class="form-control"
+               name="{{ field.name }}"
+               id="{{ field.id_for_label }}"
+               aria-describedby="helpId"
+               placeholder="{% if field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% elif field.name == 'protesis_dental' %}Prótesis dental{% elif field.name == 'acrilico' %}Acrílico{% elif field.name == 'panoramica' %}Panorámica{% elif field.name == 'tratamiento_medicacion' %}Tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}Reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}Transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}"
+               value="{% if field.value %}{{ field.value }}{% endif %}"
+               {% if field.name != 'imagen' %}required{% endif %}
+               {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
+               data-tooltip="Ingrese {{ field.label|lower }}">
+        {% endif %}
+        
+        <div class="col-12 help-text">{{ field.errors }}</div>
+    </div>
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-primary" data-tooltip="Guardar cambios">Guardar</button>
+    <a class="btn btn-warning" href="{% url 'listcuentas' %}" role="button" data-tooltip="Volver a la lista de pacientes">Volver</a>
+</form>

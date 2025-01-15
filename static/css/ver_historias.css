@@ -1,0 +1,181 @@
+:root {
+    --primary-color: #bb9708;
+    --secondary-color: #8b7004a6;
+    --text-color: #020202;
+    --background-color: #fdfcf911;
+    --grid-background-color: #f3f1e9;
+    --highlight-color: #691511;
+    --border-color: #333;
+
+    /* Colores para el modo oscuro */
+    --dark-background-color: #121212;
+    --dark-text-color: #e0e0e0;
+    --dark-grid-background-color: #1f1f1f;
+    --dark-primary-color: #bb9708; /* Mismo, pero se puede cambiar si se desea */
+    --dark-secondary-color: #8b7004a6; /* Mismo, pero se puede cambiar si se desea */
+}
+
+body {
+    font-family: 'Times New Roman', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    width: 90%;
+    margin: 30px auto;
+}
+
+main::-webkit-scrollbar {
+    display: none;
+}
+
+h4 {
+    font-size: 30px;
+    color: #0c0c0b;
+    margin-bottom: 10px;
+    border-bottom: 4px solid var(--primary-color);
+    padding-bottom: 5px;
+    font-weight: bold;
+}
+
+.seccion {
+    margin-bottom: 20px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background-color: var(--grid-background-color);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.grid-item label {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.grid-item span {
+    color: #333;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1em;
+    font-weight: bold;
+    border: 2px solid transparent;
+}
+
+.btn-success {
+    background-color: var(--secondary-color);
+    border: 2px solid var(--text-color);
+    color: #fff;
+}
+
+.btn-success:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.btn-primary {
+    background-color: var(--border-color);
+    border: 2px solid var(--text-color);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--highlight-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+@media print {
+    .no-print {
+        display: none;
+    }
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+    background-color: var(--dark-background-color); /* Fondo oscuro para el body */
+    color: var(--dark-text-color); /* Color de texto claro para el body */
+}
+
+.dark-mode .grid-container {
+    background-color: var(--dark-grid-background-color); /* Fondo de la cuadrícula en modo oscuro */
+}
+
+.dark-mode h4 {
+    color: var(--dark-text-color); /* Color del texto en encabezados en modo oscuro */
+}
+
+.dark-mode .grid-item label {
+    color: var(--dark-primary-color); /* Color del texto en etiquetas en modo oscuro */
+}
+
+.dark-mode .btn-success {
+    background-color: var(--dark-secondary-color); /* Botón de éxito en modo oscuro */
+}
+
+.dark-mode .btn-primary {
+    background-color: var(--border-color); /* Botón primario en modo oscuro */
+}
+
+
+.dark-mode .btn-primary:hover {
+    background-color: var(--highlight-color); /* Efecto hover en modo oscuro */
+}
+
+.dark-mode input[type="submit"],
+.dark-mode .btn-success,
+.dark-mode .btn-primary {
+    background-color: #3a3a3a; /* Fondo oscuro para botones */
+    color: #e0e0e0; /* Texto claro en botones */
+}
+
+.dark-mode .btn-primary {
+    background-color: #2e2e2e; /* Fondo de botón primario en modo oscuro */
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #272728; /* Efecto hover más oscuro para botón primario */
+}
+.dark-mode #btn{
+    background-color: var(--dark-background-color)!important; /* Fondo oscuro para el body */
+    color:#fff!important; /* Color de texto claro para el body */
+}
+.dark-mode .btn-primary{
+    background-color: var(--dark-background-color)!important; /* Fondo oscuro para el body */
+    color: #fff!important; /* Color de texto claro para el body */
+}
+.dark-mode button:hover{
+    background-color: var(--dark-background-color)!important; /* Fondo oscuro para el body */
+    color: #fff!important; /* Color de texto claro para el body */
+}
+.dark-mode .btn-success:hover{
+    background-color: var(--dark-background-color)!important; /* Fondo oscuro para el body */
+    color: #fff!important; /* Color de texto claro para el body */
+}

@@ -1,0 +1,27 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Crear Disponibilidad | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+<a href="{% url 'listfechas' %}" data-tooltip="Volver a la lista de fechas disponibles"> Fechas </a>&gt;
+<span data-tooltip="Añadir una nueva fecha y hora disponible para citas"> Crear Nueva Fecha </span>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/crear_citas.css' %}?v2.1">
+{% endblock %}
+
+{% block content %}
+<div class="cintro">
+  <h4 style="color: black;" data-tooltip="Formulario para crear una nueva cita">Crear Fecha</h4>
+  {% include 'formsfechas.html' %}<br>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/editar_fechas.js' %}?v3.5"></script> 
+
+{% endblock %}
+<script src="{% static 'js/dark_mode.js' %}?v3.0"></script>

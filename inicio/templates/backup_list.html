@@ -1,0 +1,151 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Respaldos de Seguridad | Laboratorio Dental{% endblock %}
+
+{% block extra_css %}
+{% endblock %}
+
+{% block titulo %}
+Copias de Seguridad
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="d-flex">
+                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Regresar al tablero principal">
+                    <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                </a>
+                <form method="post" action="{% url 'backup_create' %}" style="margin-bottom: 0;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success btn-custom" data-tooltip="Crear un nuevo respaldo">
+                        <i class="fas fa-plus text-white"></i> <span> Crear Respaldo </span>
+                    </button>
+                </form>
+            </div>
+            <div class="d-flex">
+                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel' %}" role="button" data-tooltip="Descargar listado en Excel">
+                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                </a>
+                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button" data-tooltip="Descargar listado en PDF">
+                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div class="table-container">
+            <form id="filtroForm" method="get" action="{% url 'backup_list' %}">
+                <div class="row mb-3" style="width: 100%;">
+                    <div>
+                        <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar respaldos por fecha">Fecha</label>
+                        <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ fecha_filtro }}" data-tooltip="Filtrar por fecha">
+                    </div>
+                </div>
+            </form>
+
+            <table id="elementosTable" class="table table-primary table-centered">
+                <thead>
+                    <tr>
+                        <th>Archivo</th>
+                        <th class="text-start">Fecha de Creación</th>
+                        <th>Tamaño</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for backup in backups %}
+                        <tr>
+                            <td>{{ backup.filename }}</td>
+                            <td class="text-start">{{ backup.created_at }}</td>
+                            <td>{{ backup.size }}</td>
+                            <td>
+                                <a href="{% url 'download_backup' backup.filename %}" class="btn btn-primary btn-sm" aria-label="Descargar {{ backup.filename }}" data-tooltip="Descargar {{ backup.filename }}">Descargar</a>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#confirmRestoreModal" data-backup="{{ backup.filename }}" data-tooltip="Restaurar {{ backup.filename }}">Restaurar</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeletionModal" data-backup="{{ backup.filename }}" data-tooltip="Eliminar {{ backup.filename }}">Eliminar</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modales para Confirmaciones -->
+<!-- Modal para eliminar -->
+<div class="modal" id="confirmDeletionModal" tabindex="-1" aria-labelledby="confirmDeletionModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeletionModalLabel">Confirmar Eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas eliminar este respaldo? Esta acción no se puede deshacer.
+      </div>
+      <div class="modal-footer">
+        <form id="deleteForm" method="post" action="{% url 'delete_backup' %}">
+            {% csrf_token %}
+            <input type="hidden" name="filename" id="deleteFile">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para restaurar -->
+<div class="modal" id="confirmRestoreModal" tabindex="-1" aria-labelledby="confirmRestoreModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmRestoreModalLabel">Confirmar Restauración</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro de que deseas restaurar la base de datos desde este archivo? Esta acción reemplazará la base de datos actual.
+      </div>
+      <div class="modal-footer">
+        <form id="restoreForm" method="post" action="{% url 'restore_database' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="hidden" name="backup_file" id="restoreFile">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-warning">Restaurar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'js/dark_mode.js' %}?v3.0"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      var deleteModal = document.getElementById('confirmDeletionModal');
+      var restoreModal = document.getElementById('confirmRestoreModal');
+  
+      deleteModal.addEventListener('show.bs.modal', function (event) {
+          var button = event.relatedTarget; 
+          var backupFilename = button.getAttribute('data-backup');
+          var deleteForm = deleteModal.querySelector('#deleteForm');
+          deleteForm.querySelector('#deleteFile').value = backupFilename;
+      });
+  
+      restoreModal.addEventListener('show.bs.modal', function (event) {
+          var button = event.relatedTarget; 
+          var backupFilename = button.getAttribute('data-backup');
+          var restoreForm = restoreModal.querySelector('#restoreForm');
+          restoreForm.querySelector('#restoreFile').value = backupFilename;
+      });
+  
+      // Agregar evento para enviar el formulario automáticamente cuando se cambia la fecha
+      document.getElementById('fechaFiltro').addEventListener('change', function() {
+          document.getElementById('filtroForm').submit();
+      });
+  });
+</script>
+{% endblock %}

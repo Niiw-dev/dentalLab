@@ -1,0 +1,100 @@
+<!-- Carga la biblioteca de archivos estáticos para acceder a archivos CSS, JS, o imágenes -->
+{% load static %}
+
+<!-- Bloque de contenido principal donde se encuentra el formulario para agendar la cita -->
+{% block content %}
+    <!-- Inicio del formulario, se utiliza el método POST para enviar los datos -->
+    <form method="POST">
+        <!-- Protección contra ataques CSRF -->
+        {% csrf_token %}
+
+        <!-- Sección del formulario para seleccionar la fecha de la cita -->
+        <div class="citaForm">
+            <div class="form-group">
+                <!-- Etiqueta del campo de fecha con un tooltip explicativo -->
+                <label for="fecha" data-tooltip="Seleccione la fecha para la cita">Fecha:</label>
+                <!-- Campo de entrada de tipo fecha -->
+                <input type="date" id="fecha" name="fecha" required data-tooltip="Elija una fecha disponible">
+            </div>
+        </div>
+
+        <!-- Sección del formulario para seleccionar la hora de la cita -->
+        <div class="citaForm">
+            <div class="form-group">
+                <!-- Etiqueta del campo de hora con un tooltip explicativo -->
+                <label for="hora" data-tooltip="Seleccione la hora para la cita">Hora:</label>
+                <!-- Contenedor para las opciones de hora, que serán rellenadas dinámicamente con JavaScript -->
+                <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
+                    <!-- Las opciones se llenarán con JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección del formulario para seleccionar el motivo de la cita -->
+        <div class="citaForm">
+            <div class="form-group">
+                <!-- Etiqueta del campo de motivo con un tooltip explicativo -->
+                <label for="motivo" data-tooltip="Seleccione el motivo de la cita">Motivo:</label>
+                <!-- Campo de selección con las opciones de motivo generadas dinámicamente desde el formulario Django -->
+                <select name="motivo" id="motivo" required data-tooltip="Elija el motivo principal de su visita">
+                    <!-- Iteración sobre las opciones del campo motivo -->
+                    {% for value, display_name in form.fields.motivo.choices %}
+                    <option value="{{ value }}">{{ display_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Si el usuario es superusuario, se muestra la opción para seleccionar el paciente -->
+            {% if is_superuser %}
+                <div class="form-group">
+                    <!-- Etiqueta dinámica que cambia si se está editando una cita -->
+                    <label for="paciente" data-tooltip="{% if is_editing %}Paciente actual{% else %}Seleccione el paciente para la cita{% endif %}">
+                        <!-- Texto dinámico si se está editando la cita -->
+                        {% if is_editing %}
+                            Paciente:
+                        {% else %}
+                            Seleccionar Paciente:
+                        {% endif %}
+                    </label>
+                    <!-- Si está editando, se muestra el nombre del paciente y se oculta el campo de selección -->
+                    {% if is_editing %}
+                        <span data-tooltip="Paciente asignado a esta cita">{{ cita.paciente.nombre }}</span>
+                        <input type="hidden" name="paciente" value="{{ cita.paciente.id }}">
+                    <!-- Si no está editando, se muestra un campo de selección para elegir al paciente -->
+                    {% else %}
+                        <select name="paciente" id="paciente" required data-tooltip="Elija el paciente para esta cita">
+                            <!-- Iteración sobre las opciones de pacientes disponibles -->
+                            {% for value, display_nombre in form.fields.paciente.choices %}
+                                {% if value != is_superuser %}
+                                    <option value="{{ value }}">{{ display_nombre }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    {% endif %}
+                </div>
+            <!-- Si no es superusuario, se muestra el nombre del paciente actual -->
+            {% else %}
+                <div class="form-group">
+                    <label for="paciente" data-tooltip="Paciente para esta cita">Paciente:</label>
+                    <!-- Se muestra el nombre del paciente actual y se oculta el campo de selección -->
+                    <span data-tooltip="Su nombre como paciente">{{ user.nombre }}</span>
+                    <input type="hidden" name="paciente" value="{{ user.id }}">
+                </div>
+            {% endif %}
+
+            <!-- Contenedor para los botones de enviar el formulario y regresar -->
+            <div class="button-container">
+                <!-- Botón para guardar la cita -->
+                <button type="submit" class="btn btn-warning" data-tooltip="Guardar los detalles de la cita">Guardar</button>
+                <!-- Botón para volver a la lista de citas sin guardar los cambios -->
+                <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button" data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+<!-- Bloque para cargar JavaScript adicional -->
+{% block extra_js %}
+<!-- Se incluye un archivo JavaScript específico para gestionar los tooltips -->
+<script src="{% static 'js/tooltips.js' %}"></script>
+{% endblock %}

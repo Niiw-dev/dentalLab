@@ -1,0 +1,26 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Editar Insumo | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+<a href="{% url 'listelementos' %}" data-tooltip="Volver a la lista de inventario">Insumos</a>&gt; Editar Elemento
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/crear_elemento.css' %}?v1.9">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title" data-tooltip="Modifique los detalles del insumo">Datos Producto</h4>
+        {% include 'formselementos.html' %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/historias.js' %}?v1.2"></script>
+{% endblock %}

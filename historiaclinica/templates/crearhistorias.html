@@ -1,0 +1,28 @@
+{% extends 'inicio.html' %}
+
+{% load static %}
+
+{% block title %}Historia Clínica | Laboratorio Dental{% endblock %}
+
+{% block titulo %}
+<a href="{% url 'listhistorias' %}" data-tooltip="Ir a Historias Clínicas"> Historias Clínicas </a>&gt;
+Crear Nueva Historia Clínica
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/form_historias.css' %}?v1.6">
+{% endblock %}
+
+{% block content %}
+<div class="card">
+  <div class="card-body">
+    {% include 'formhistorias.html' %}
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/historias.js' %}?v1.4"></script>
+
+{% endblock %}
+

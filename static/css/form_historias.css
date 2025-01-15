@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+    --Red: hsl(0, 0%, 1%);
+    --Green: #8b7004a6;
+    --Green-Shadow: hsla(54, 77%, 27%, 0.856);
+    --Blue: #333;
+    --Blue-Shadow: hsla(0, 0%, 0%, 0.856);
+    --Dark-Blue: hsl(0, 0%, 0%);
+    --Grayish-Blue: hsl(241, 90%, 24%);
+    --White: hsla(54, 77%, 27%, 0.11);
+    --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+/* Reseteo y ajuste del box model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para el cuerpo */
+body {
+    font-family: var(--font-family);
+    color: var(--Dark-Blue);
+}
+
+/* Estilos del formulario */
+.form {
+    background-color: var(--White);
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 6px 0 var(--Blue-Shadow);
+    max-width: 1600px;
+    width: 95%;
+    margin: 20px auto;
+}
+
+/* Grid del formulario */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+/* Estilos para cada columna del formulario */
+.form-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Sección del formulario */
+.seccion {
+    margin-bottom: 30px;
+}
+
+/* Estilo de los títulos */
+h4 {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    color: var(--Dark-Blue);
+}
+
+/* Margen inferior */
+.mb-3 {
+    margin-bottom: 18px;
+}
+
+/* Estilo de las etiquetas */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--Dark-Blue);
+}
+
+/* Estilo de inputs y selects */
+input, select {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 18px;
+    border-radius: 4px;
+    border: 1px solid var(--Grayish-Blue);
+    padding-left: 10px;
+    font-weight: 400;
+    font-family: var(--font-family);
+    outline: none;
+}
+
+/* Estilo de botones de tipo submit y otros botones */
+input[type="submit"], .btn-success, .btn-primary {
+    background-color: var(--Green);
+    color: white;
+    font-size: 1em;
+    font-weight: 400;
+    border: none;
+    box-shadow: 0 3px 0 var(--Green-Shadow);
+    padding: 10px 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* Efectos al pasar el mouse sobre los botones */
+input[type="submit"]:hover, .btn-success:hover, .btn-primary:hover {
+    cursor: pointer;
+}
+
+/* Estilos para mensajes de error */
+.error {
+    color: var(--Red);
+    font-style: italic;
+    margin-top: -12px;
+    margin-bottom: 18px;
+    font-size: 12px;
+}
+
+/* Estilos para textos de ayuda */
+.help-text {
+    color: var(--Red);
+    font-size: 12px;
+    margin-top: -12px;
+    margin-bottom: 18px;
+}
+
+/* Estilo de botón primario */
+.btn-primary {
+    background-color: var(--Blue);
+    box-shadow: 0 3px 0 var(--Blue-Shadow);
+}
+
+/* Efecto de hover para el botón primario */
+.btn-primary:hover {
+    background-color: #691511;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+/* Efecto de hover para el botón de éxito */
+.btn-success:hover {
+    background-color: #bb9708;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgb(255, 255, 255);
+}
+
+/* Estilo del select */
+select.form-control {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px; /* Espacio para el ícono de flecha */
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .form {
+        padding: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    input, select {
+        height: 36px;
+    }
+
+    input[type="submit"], .btn-success, .btn-primary {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    select.form-control {
+        font-size: 16px; /* Aumenta el tamaño de fuente en móviles */
+        padding: 10px 5px; /* Aumenta el padding vertical */
+        height: auto; /* Permite que la altura se ajuste al contenido */
+    }
+
+    select.form-control option {
+        padding: 10px 5px; /* Aumenta el padding de las opciones */
+    }
+
+    /* Estilo específico para la opción "NO SABE" */
+    select.form-control option[value="3"] {
+        font-weight: bold; /* Hace el texto más grueso */
+        color: #333; /* Color más oscuro para mejor contraste */
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        padding: 16px;
+    }
+
+    h4 {
+        font-size: 1.1em;
+    }
+
+    .seccion {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 0.9em;
+    }
+
+    input, select {
+        height: 34px;
+        font-size: 0.9em;
+    }
+
+    .error, .help-text {
+        font-size: 11px;
+    }
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+    background-color: #121212; /* Fondo oscuro para el body */
+    color: #e0e0e0; /* Color de texto claro */
+}
+
+.dark-mode .form {
+    background-color: #1e1e1e; /* Fondo de formulario oscuro */
+    box-shadow: 0 6px 0 rgba(255, 255, 255, 0.1); /* Sombra más clara para el modo oscuro */
+}
+
+.dark-mode h4 {
+    color: #ffffff; /* Color de título claro */
+}
+
+.dark-mode label {
+    color: #e0e0e0; /* Color de etiquetas claro */
+}
+
+.dark-mode input,
+.dark-mode select {
+    background-color: #333333; /* Fondo oscuro para inputs y selects */
+    border: 1px solid #444444; /* Bordes más oscuros */
+    color: #e0e0e0; /* Texto claro en inputs y selects */
+}
+
+.dark-mode input[type="submit"],
+.dark-mode .btn-success,
+.dark-mode .btn-primary {
+    background-color: #3a3a3a; /* Fondo oscuro para botones */
+    color: #e0e0e0; /* Texto claro en botones */
+}
+
+.dark-mode .btn-primary {
+    background-color: #2e2e2e; /* Fondo de botón primario en modo oscuro */
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: #272728; /* Efecto hover más oscuro para botón primario */
+}

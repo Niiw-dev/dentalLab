@@ -1,0 +1,65 @@
+.email-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    
+}
+
+.inbox {
+    background-color: #f8f9fa; /* Color de fondo en modo claro */
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+}
+
+.compose-email {
+    background-color: #ffffff; /* Color de fondo en modo claro */
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+}
+
+.email-list-item {
+    border-bottom: 1px solid #dee2e6;
+    padding: 10px 0;
+    transition: background-color 0.3s;
+}
+
+.email-list-item:hover {
+    background-color: #f1f1f1; /* Color de fondo en hover en modo claro */
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode .inbox {
+    background-color: #2c2c2c; /* Color de fondo en modo oscuro */
+    border: 1px solid #444; /* Color de borde en modo oscuro */
+    color: #dee2e6;
+}
+
+.dark-mode .compose-email {
+    background-color: #3a3a3a; /* Color de fondo en modo oscuro */
+    border: 1px solid #444; /* Color de borde en modo oscuro */
+    color: #dee2e6;
+}
+
+.dark-mode .email-list-item {
+    border-bottom: 1px solid #444; /* Color de borde en modo oscuro */
+    color: #dee2e6;
+}
+
+.dark-mode .email-list-item:hover {
+    background-color: #4a4a4a; /* Color de fondo en hover en modo oscuro */
+    color: #dee2e6;
+}
+.dark-mode .card-title{
+    /* Color de fondo en hover en modo oscuro */
+    color: #dee2e6;
+}
+.dark-mode .form-control{
+    /* Color de fondo en hover en modo oscuro */
+    background-color: #3a3a3a;
+}
+
+.dark-mode {
+    color: #e0e0e0; /* Color de texto en modo oscuro */
+}

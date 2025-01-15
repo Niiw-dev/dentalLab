@@ -1,0 +1,181 @@
+
+<form enctype="multipart/form-data" method="POST" class="form">
+    {% csrf_token %}
+
+    {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+      <br>
+      <li {% if message.tags %} class="{{ message.tags }}" {% endif %} data-tooltip="Mensaje: {{ message }}" style="list-style: none; font-size:large;">{{ message }} <br> Si desea crear un nuevo usuario ingrese aquí: <a href="{% url 'crearcuentas' %}" data-tooltip="Ir a Crear Usuario"> Crear Usuario</a></li>
+      
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="form-grid">
+        <div class="form-column">
+            <div class="seccion">
+                <h4>Datos Básicos</h4>
+                {% for campo in formularioI %}
+                    {% if campo.name in 'tipo,documento,nombre,correo,direccion,edad,ocupacion,celular,acudiente' %}
+                        <div class="mb-3">
+                            <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">
+                                {% if campo.name == 'direccion' %}
+                                    Dirección
+                                {% elif campo.name == 'ocupacion' %}
+                                    Ocupación
+                                {% else %}
+                                    {{ campo.label }}
+                                {% endif %}
+                            </label>
+                            {% if campo.name == 'tipo' %}
+                                <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required data-tooltip="Seleccione el tipo de documento">
+                                    <option value="1">T.I</option>
+                                    <option value="2" selected>C.C</option>
+                                    <option value="3">C.E</option>
+                                    <option value="4">C.I</option>
+                                </select>
+                            {% else %}
+                                <input
+                                    type="{{ campo.field.widget.input_type }}"
+                                    class="form-control"
+                                    name="{{ campo.name }}"
+                                    id="id_{{ campo.name }}"
+                                    aria-describedby="helpId"
+                                    placeholder="{% if campo.name == 'direccion' %}Dirección{% elif campo.name == 'ocupacion' %}Ocupación{% else %}{{ campo.label }}{% endif %}"
+                                    value="{{ campo.value|default:'' }}"
+                                    required
+                                    data-tooltip="Ingrese su {{ campo.label|lower }}"
+                                />
+                                <div id="{{ campo.name }}Error" class="help-text"></div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% for campo in formularioII %}
+                    {% if campo.name == 'fecha_historia' %}
+                        <div class="mb-3">
+                            <label for="id_{{ campo.name }}" class="form-label" data-tooltip="Seleccione la fecha de la historia clínica">{{ campo.label }}</label>
+                            <input
+                                type="date"
+                                class="form-control"
+                                name="{{ campo.name }}"
+                                id="id_{{ campo.name }}"
+                                value="{{ campo.value|date:'Y-m-d'|default:'' }}"
+                                required
+                                data-tooltip="Fecha de la historia clínica"
+                            />
+                            <div id="{{ campo.name }}Error" class="help-text"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="seccion">
+                <h4>Rehabilitación Oral</h4>
+                {% for campo in formularioII %}
+                    {% if campo.name in 'protesis_dental,total,acrilico,flexible,parcial,retenedores,panoramica,periapical' %}
+                        <div class="mb-3">
+                            <label for="id_{{ campo.name }}" class="form-label" data-tooltip="Ingrese detalles sobre {{ campo.label|lower }}">
+                                {% if campo.name == 'protesis_dental' %}
+                                    Prótesis dental
+                                {% elif campo.name == 'acrilico' %}
+                                    Acrílico
+                                {% elif campo.name == 'panoramica' %}
+                                    Panorámica
+                                {% else %}
+                                    {{ campo.label }}
+                                {% endif %}
+                            </label>
+                            <input
+                                type="{{ campo.field.widget.input_type }}"
+                                class="form-control"
+                                name="{{ campo.name }}"
+                                id="id_{{ campo.name }}"
+                                aria-describedby="helpId"
+                                placeholder="Especifique"
+                                value="{{ campo.value|default:'' }}"
+                                data-tooltip="Especifique el tipo de {{ campo.label|lower }}"
+                            />
+                            <div id="{{ campo.name }}Error" class="help-text"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div class="form-column">
+            <div class="seccion">
+                <h4>Anamnesis</h4>
+                {% for campo in formularioII %}
+                    {% if campo.name in 'tratamiento_medicacion,reacciones_alergicas,transtorno_tension_arterial,diabetes,transtornos_emocionales,enfermedad_respiratoria,otros' %}
+                        <div class="mb-3">
+                            <label for="id_{{ campo.name }}" class="form-label" data-tooltip="Seleccione o ingrese detalles sobre {{ campo.label|lower }}">
+                                {% if campo.name == 'tratamiento_medicacion' %}
+                                    Tratamiento o medicación
+                                {% elif campo.name == 'reacciones_alergicas' %}
+                                    Reacciones alérgicas
+                                {% elif campo.name == 'transtorno_tension_arterial' %}
+                                    Transtorno de tensión arterial
+                                {% else %}
+                                    {{ campo.label }}
+                                {% endif %}
+                            </label>
+                            {% if campo.name != 'otros' %}
+                                <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required data-tooltip="Seleccione SI, NO o NO SABE">
+                                    <option value="1">SI</option>
+                                    <option value="2">NO</option>
+                                    <option value="3" selected>NO SABE</option>
+                                </select>
+                            {% else %}
+                                <input
+                                    type="{{ campo.field.widget.input_type }}"
+                                    class="form-control"
+                                    name="{{ campo.name }}"
+                                    id="id_{{ campo.name }}"
+                                    aria-describedby="helpId"
+                                    placeholder="Especifique"
+                                    value="{{ campo.value|default:'' }}"
+                                    data-tooltip="Ingrese otros detalles"
+                                />
+                            {% endif %}
+                            <div id="{{ campo.name }}Error" class="help-text"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="seccion">
+                <h4>Higiene Oral</h4>
+                {% for campo in formularioII %}
+                    {% if campo.name in 'cepillado_dental,seda_dental,enjuague_bucal' %}
+                        <div class="mb-3">
+                            <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">{{ campo.label }}</label>
+                            <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required data-tooltip="Seleccione SI o NO">
+                                <option value="1">SI</option>
+                                <option value="2">NO</option>
+                            </select>
+                            <div id="{{ campo.name }}Error" class="help-text"></div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <button id="button" type="submit" class="btn btn-success" data-tooltip="Guardar la información">Guardar</button>
+    <a class="btn btn-primary" href="{% url 'listhistorias' %}" role="button" data-tooltip="Volver a la lista de historias clínicas">Volver</a>
+    
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Establecer la fecha actual como valor predeterminado para fecha_historia
+        var fechaHistoria = document.getElementById('id_fecha_historia');
+        if (!fechaHistoria.value) {
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+            today = yyyy + '-' + mm + '-' + dd;
+            fechaHistoria.value = today;
+        }
+    });
+</script>

@@ -1,0 +1,418 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+:root {
+  --primary-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--primary-font);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 88vh;
+}
+
+.header2 {
+  position: relative;
+  height: fit-content;
+}
+
+.headersup {
+  display: flex;
+  background-color: #383A3F;
+  color: white;
+  justify-content: space-between;
+  padding: 15px;
+  position: relative;
+  width: 100%;
+  height: clamp(50px, 9vw, 80px);
+  flex-direction: row;
+  align-items: center;
+}
+
+.returnhome {
+  width: fit-content;
+}
+
+.headerinf {
+  display: flex;
+  background-color: #272727;
+  color: white;
+  position: relative;
+  width: 100%;
+  height: clamp(40px, 7vw, 60px);
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.content > *:not(.header2) {
+  overflow-y: auto;
+  flex: 1;
+}
+
+header img {
+  width: clamp(30px, 8vw, 60px);
+}
+
+header h1 {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: white;
+  margin: 30px 0;
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  letter-spacing: 7px;
+  font-weight: bold;
+}
+
+h1 {
+  margin: 0;
+  color: white;
+  font-family: var(--primary-font);
+  letter-spacing: 1.5px;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.headersup a {
+  color: white;
+  font-size: clamp(0.8rem, 2vw, 1.1rem);
+  text-decoration: none;
+  margin: 15px 3px;
+}
+
+#home {
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  float: left;
+  width: 38%;
+  margin: 0;
+}
+
+#home2 {
+  font-family: var(--primary-font);
+  font-size: clamp(0.85rem, 2.5vw, 1.5rem);
+  width: fit-content;
+  margin-left: 20px;
+}
+
+input {
+  width: 100%;
+  color: #232323;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.titulomain {
+  text-align: center;
+}
+
+.botonesdos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.boton1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: clamp(150px, 30vw, 200px);
+}
+
+.boton {
+  background-color: #CAB97D;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.icon {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-top: 10px;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item .nav-link {
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);  
+}
+
+.mastheadd {
+  padding-bottom: 3rem; 
+  text-align: center; 
+  color: #fff; 
+  background-repeat: no-repeat; 
+  background-attachment: scroll; 
+  background-position: center center; 
+  background-size: cover;
+  height: 120px;
+}
+
+#mainNav {
+  z-index: 1000;
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #383A3F;
+  border: 1px solid #383A3F;
+  border-radius: 0.25rem;
+  padding: 0.5rem 0;
+}
+
+.navbar-nav .dropdown-item {
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+.navbar-nav .dropdown-item:hover {
+  background-color: #575757;
+  color: #ffffff;
+}
+
+.navbar-nav .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-item.dropdown.show .dropdown-menu {
+  display: block;
+}
+
+.second-navbar {
+  top: 80px;
+  z-index: 999;
+  background-color: #212529fa;
+}
+
+.second-navbar .navbar {
+  padding: 0.5rem 1rem;
+}
+
+.navbar-list {
+  padding-top: 0px;
+  display: flex;
+  position: relative;
+  padding-right: 0.6rem;
+  overflow: hidden;
+  width: 0;
+}
+
+.profile-dropdown {
+  position: relative;
+  width: fit-content;
+}
+
+.profile-dropdown-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  font-weight: 500;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid;
+  color: #ffffff;
+}
+
+.profile-dropdown-btn:hover,
+.profile-dropdown-btn.show-caption {
+  height: clamp(40px, 7vw, 45px);
+  color: white;
+}
+
+.profile-dropdown-btn:hover span,
+.profile-dropdown-btn.show-caption span {
+  margin-top: 3px;
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.profile-img {
+  width: clamp(40px, 7vw, 45px);
+  height: clamp(40px, 7vw, 45px);
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-dropdown-btn span {
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+  height: 42px;
+  font-family: var(--primary-font);
+  font-size: clamp(0.4rem, 2vw, 0.8rem);
+  letter-spacing: 2px;
+  margin: 0 0.5rem;
+  display: none;
+  color: #ffffff;
+}
+
+.navbar-list.active {
+  width: fit-content;
+  max-height: 45px;
+}
+
+.profile-dropdown-list-item {
+  width: fit-content;
+  transition: background-color 0.2s ease-in, padding-left 0.2s;
+}
+
+.profile-dropdown-list-item span {
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  display: none;
+}
+
+.profile-dropdown-list-item.hover {
+  height: clamp(40px, 7vw, 45px);
+  transition: background-color 0.2s ease-in, padding-left 0.2s;
+}
+
+.profile-dropdown-list-item.hover span {
+  display: contents;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+.breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+  color: #dcdcdc;
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+  background-color: #121212; /* Fondo oscuro para el body */
+  color: #e0e0e0; /* Color de texto claro para el body */
+}
+
+.dark-mode .headersup {
+  background-color: #272727; /* Fondo de la parte superior en modo oscuro */
+}
+
+.dark-mode .headerinf {
+  background-color: #1a1a1a; /* Fondo de la parte inferior en modo oscuro */
+}
+
+.dark-mode .content {
+  background-color: #1e1e1e; /* Fondo del contenido en modo oscuro */
+}
+
+.dark-mode .navbar-nav .dropdown-menu {
+  background-color: #383A3F; /* Fondo del menú desplegable en modo oscuro */
+}
+
+.dark-mode .navbar-nav .dropdown-item {
+  color: #e0e0e0; /* Color de los elementos del menú en modo oscuro */
+}
+
+.dark-mode .navbar-nav .dropdown-item:hover {
+  background-color: #575757; /* Fondo de los elementos del menú al pasar el cursor en modo oscuro */
+}
+
+.dark-mode .navbar-list {
+  background-color: #383A3F; /* Fondo de la lista de navegación en modo oscuro */
+}
+
+.dark-mode .profile-dropdown-btn {
+  background-color: #383A3F; /* Fondo del botón de perfil en modo oscuro */
+}
+
+.dark-mode .profile-dropdown-btn:hover {
+  background-color: #575757; /* Fondo del botón de perfil al pasar el cursor en modo oscuro */
+}
+
+.dark-mode .breadcrumbs a {
+  color: #ffffff; /* Color de los enlaces en la barra de migas de pan en modo oscuro */
+}
+.dark-mode .dt-paging {
+  color: #ffffff; /* Color de los enlaces en la barra de migas de pan en modo oscuro */
+}
+.dark-mode .p{
+  background-color: rgb(34, 34, 34);
+
+  color: #ffffff; 
+
+}
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 19px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;  
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+}
+
+.dark-mode-toggle i {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+

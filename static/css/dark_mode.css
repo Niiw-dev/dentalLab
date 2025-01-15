@@ -1,0 +1,238 @@
+.dark-mode {
+    background-color: #0000;
+    color: #ffffff;
+  }
+  .dark-mode a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  .dark-mode a:hover {
+    color: #9adfff;
+  }
+  
+  .dark-mode .btn {
+    background-color: #646464;
+    color: #ffffff;
+  }
+  
+  .dark-mode .btn:hover {
+    background-color: #555555;
+    color: #ffffff;
+  }
+  
+  .dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6 {
+    color: #ffffff;
+  }
+  
+  .dark-mode table {
+    border-color: #c4c4c4;
+  }
+  
+  .dark-mode th, .dark-mode td {
+    background-color: #646464;
+    color: #ffffff;
+  }
+  
+  .dark-mode input, .dark-mode textarea, .dark-mode select {
+    background-color: #646464;
+    border-color: #c4c4c4;
+    color: #ffffff;
+  }
+  
+  .dark-mode .navbar {
+    background-color: #646464;
+    border-color: #414141;
+  }
+  
+  .dark-mode .navbar ul li a {
+    color: #ffffff;
+  }
+  
+  .dark-mode .navbar ul li a:hover {
+    color: #9adfff;
+  }
+  
+  .dark-mode .masthead {
+    background-color: #646464;
+  }
+  
+  .dark-mode .page-section {
+    background-color: #414141;
+  }
+  
+  .dark-mode .card {
+    background-color: #646464;
+    border-color: #414141;
+    color: #ffffff;
+  }
+  .dark-mode .container-fluid {
+    background-color: #0000;
+    border-color: #0000;
+    color: #ffffff;
+  }
+  .dark-mode .container1 {
+    background-color: #0000;
+    border-color: #0000;
+    color: #ffffff;
+  }
+    .dark-mode .section-heading text-uppercase {
+      background-color: #0000;
+      border-color: #0000;
+      color: #ffffff;
+    }
+    .dark-mode #portfolio {
+      background-color: #414141;
+      border-color:  #414141;
+      color: #ffffff;
+    }
+    .dark-mode .container1 {
+      background-color: #414141; /* Ajusta si es necesario */
+      color: #ffffff;
+  }
+  .dark-mode .portfolio-link {
+    background-color: #414141; /* Ajusta si es necesario */
+    color: #ffffff;
+}
+.dark-mode .portfolio-item {
+  background-color: #e21616 !important; /* Fondo oscuro */
+  color: #ff0606 !important; /* Texto blanco para contraste */
+}
+
+/* Imagen y elementos de hover */
+.dark-mode .portfolio-item img {
+  filter: brightness(0.8) !important; /* Reduce el brillo de las imágenes para ajustarlas al fondo oscuro */
+}
+
+.dark-mode .portfolio-hover {
+  background-color: rgba(255, 255, 255, 0.2) !important; /* Ajusta el color de hover para que sea visible */
+}
+
+.dark-mode .portfolio-caption {
+  background-color: #333 !important;
+  color: #ffffff !important; /* Cambia el color de los encabezados */
+}
+
+.dark-mode .portfolio-caption-subheading {
+  color: #f30000 !important; /* Cambia el color del texto muted */
+}
+.dark-mode .portfolio-item img {
+  filter: brightness(0.8) !important; /* Baja el brillo de la imagen para que se vea mejor en modo oscuro */
+}
+
+.dark-mode .portfolio-hover {
+  background-color: #414141; /* Ajusta si es necesario */
+  color: #ffffff;
+}
+.dark-mode .img-fluid {
+  background-color: #414141; /* Ajusta si es necesario */
+  color: #ffffff;
+}
+.dark-mode .portfolio-caption-subheading text-muted {
+  background-color: #414141; /* Ajusta si es necesario */
+  color: #ffffff;
+}
+.dark-mode .text-muted {
+  color: #ffffff;
+}
+.dark-mode .row {
+  color: #ffffff;
+}
+  .dark-mode .alert {
+    background-color: #646464;
+    border-color: #414141;
+    color: #ffffff;
+  }
+/* modelos, donde se escribe */
+
+/* Estilos para el modo oscuro */
+.dark-mode body {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .modal-content {
+  background-color: #333;
+  color: #e0e0e0;
+}
+
+.dark-mode .btn-primary {
+  background-color: #444;
+  border-color: #444;
+  color: white;
+}
+
+
+.dark-mode .close-modal i {
+  color: #e0e0e0;
+}
+
+.dark-mode .img-fluid {
+  filter: brightness(0.8);
+}
+
+ .dark-mode .span {
+  background-color: #646464;
+  border-color: #414141;
+  color: #ffffff;
+}
+/* Colores por defecto (modo claro) */
+
+/* Modo oscuro */
+.dark-mode .fa-circle {
+  color: #333  !important; /* Color oscuro para el círculo en modo oscuro */
+}
+
+.dark-mode .fa-inverse {
+  color: #ccc !important; /* Color gris claro para el ícono en modo oscuro */
+}
+
+.dark-mode h4,
+.dark-mode p {
+  color: #fff !important; /* Texto en blanco para modo oscuro */
+}
+
+.dark-mode .text-muted {
+  color: #aaa !important; /* Color gris claro para los párrafos en modo oscuro */
+}
+/* Capa semi-transparente en modo oscuro */
+.dark-mode .masthead {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg');
+} 
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 19px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;  
+  padding: 0;
+  margin: 0;
+  font-size: 24px;
+}
+
+.dark-mode-toggle i {
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  line-height: 1;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+}
+
