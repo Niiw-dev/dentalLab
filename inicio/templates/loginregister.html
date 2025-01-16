@@ -1,325 +1,261 @@
 {% load static %}
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <link rel="stylesheet" href="{% static '/css/styles_login.css' %}?v1.7"/>
-        <title>Iniciar Sesión | Laboratorio Dental</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
-        
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link rel="stylesheet" href="{% static 'css/inicio_dashboard.css' %}?v2.2">
-        <link rel="stylesheet" href="{% static 'css/styles_login.css' %}?v2.8">
-        <link rel="stylesheet" href="{% static 'css/custom.css' %}?v1.2">
-        <!-- Bloque CSS para estilos adicionales -->
-        {% block css %}
-        {% endblock %}
-        <style>
-          .password-container {
-            position: relative;
-            width: 100%;
-          }
-          
-          .password-container .input {
-            width: 100%;
-            padding-right: 40px; /* Espacio para el botón */
-          }
-          
-          .password-container .toggle-password {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-          }
-          
-          .toggle-password:focus {
-            outline: none;
-          }
-        </style>
-    </head>
-    {% block content %}
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand" href="../"><img src="{% static 'img/logo.png' %}" alt="..." /></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                    Menu
-                    <i class="fas fa-bars ms-1"></i>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#acerca" data-tooltip="Acerca de Nosotros">Acerca de nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#services" data-tooltip="Servicios">Servicios </a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#portafolio" data-tooltip="Cuidados">Cuidados</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'loginregister' %}" data-tooltip="Iniciar Sesión">Inicio de sesión</a></li>
-                    </ul>
-                </div>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <title>{% block title %}Iniciar Sesión | Laboratorio Dental{% endblock %}</title>
+
+  <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" />
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" />
+
+  <link rel="stylesheet" href="{% static 'css/inicio_dashboard.css' %}?v2.3">
+  <link rel="stylesheet" href="{% static 'css/styles_login.css' %}?v2.8">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}?v1.9">
+
+  {% block css %}
+  <link rel="stylesheet" href="{% static 'css/htmlLoginRegister.css' %}?v1.1">
+  {% endblock %}
+</head>
+
+<body id="page-top">
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'inicio_index' %}"><img src="{% static 'img/logo.png' %}" alt="..." /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+          <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#acerca"
+              data-tooltip="Acerca de Nosotros">Acerca de nosotros</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#services"
+              data-tooltip="Servicios">Servicios </a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'inicio_index' %}#portafolio"
+              data-tooltip="Cuidados">Cuidados</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'loginregister' %}" data-tooltip="Iniciar Sesión">Inicio
+              de sesión</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}
+  <header class="masthead">
+    <main>
+      <div class="container2" id="main">
+        <div class="sign-up">
+          <form class="form" action="" method="POST">
+            {% csrf_token %}
+            <h1>Crear Cuenta</h1>
+            <br>
+            <div class="document-container">
+              <select name="type" id="tipo" name="tipo" data-tooltip="Seleccione su tipo de documento" required>
+                <option value="" disabled selected>Tipo</option>
+                <option value="1">T.I</option>
+                <option value="2">C.C</option>
+                <option value="3">C.E</option>
+                <option value="4">C.I</option>
+              </select>
+              <input class="input" type="number" id="documento" name="documento" placeholder="No. Documento"
+                data-tooltip="Ingrese su numero de documento" required />
             </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-          <main>
-            <div class="container2" id="main">
-              <div class="sign-up">
-                <form class="form" action="" method="POST">
-                  {% csrf_token %}
-                  <h1>Crear Cuenta</h1>
-                  <br>
-                  <div class="document-container">
-                    <select name="type" id="tipo" name="tipo" data-tooltip="Seleccione su tipo de documento" required>
-                        <option value="" disabled selected>Tipo</option>
-                        <option value="1">T.I</option>
-                        <option value="2">C.C</option>
-                        <option value="3">C.E</option>
-                        <option value="4">C.I</option>
-                    </select>
-                    <input class="input" type="number" id="documento" name="documento" placeholder="No. Documento" data-tooltip="Ingrese su numero de documento" required/>
-                  </div>
-                  <input class="input" type="text" id="nombre" name="nombre" placeholder="Nombre Completo" data-tooltip="Ingrese su nombre completo" required/>
-                  <input class="input" type="email" id="correo" name="correo" placeholder="Correo Electrónico" data-tooltip="Ingrese su correo electrónico" required/>
-                  <div class="password-container">
-                    <input class="input" type="password" id="password1" name="password1" placeholder="Contraseña" data-tooltip="Ingrese su contraseña" required/>
-                    <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                  <div class="password-container">
-                    <input class="input" type="password" id="password2" name="password2" placeholder="Confirmar Contraseña" data-tooltip="Ingrese su contraseña nuevamente" required/>
-                    <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                  <button class="button" data-tooltip="Registrar Cuenta">Registrarme</button>
-                </form>
-              </div>
-        
-              <div class="sign-in">
-                <form class="form" action="" method="POST">
-                  {% csrf_token %}
-                  <h1>Iniciar Sesión</h1>
-                  <br>
-                  <span>Usa tu cuenta</span>
-                  {% if error %}
-                    <p style="color:red;">{{ error }}</p>
-                  {% endif %}
-                  {% if done %}
-                    <p style="color:greenyellow;">{{ done }}</p>
-                  {% endif %}
-                  <input class="input" type="number" id="documento" name="documento" placeholder="No. Documento" data-tooltip="Ingrese su numero de documento" required/>
-                  <div class="password-container" style="left: -15px;">
-                    <input class="input" type="password" id="contra" name="contra" placeholder="Contraseña" data-tooltip="Ingrese su contraseña" required/>
-                    <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
-                      <i class="fas fa-eye"></i>
-                    </button>
-                  </div>
-                  <a class="a" href="{% url 'password_reset' %}" data-tooltip="Recupera tu contraseña"><i>¿Olvidó su contraseña?</i></a>
-                  <button class="button" data-tooltip="Iniciar Sesion">Ingresar</button>
-                </form>
-              </div>
 
-              <div class="overlay-container">
-                <div class="overlay">
-                  <div class="overlay-left">
-                    <h1>¡REGISTRA TU CUENTA!</h1>
-                    <p>Mantente conectado con nosotros, por favor ingresa sesión con tus datos</p>
-                    <a class="a" href="{% static 'docs/Manual de Usuario-proyecto dental.pdf' %}" data-tooltip="¡Ayuda!" target="_blank"><i>¿Necesitas ayuda?</i></a>
-                    <button class="button" id="signIn" data-tooltip="Ingresar a mi cuenta">Ingresar</button>
-                  </div>
-                  <div class="overlay-right">
-                    <h1>¡BIENVENIDO!</h1>
-                    <p>Ingresa tus datos y comienza a agendar tu cita en cualquier momento</p>
-                    <a class="a" href="{% static 'docs/Manual de Usuario-proyecto dental.pdf' %}" data-tooltip="¡Ayuda!" target="_blank"><i>¿Necesitas ayuda?</i></a>
-                    <button class="button" id="signUp" data-tooltip="Crear una cuenta nueva">Registrarme</button>
-                  </div>
-                </div>
+            <input class="input" type="text" id="nombre" name="nombre" placeholder="Nombre Completo"
+              data-tooltip="Ingrese su nombre completo" required />
+
+            <input class="input" type="email" id="correo" name="correo" placeholder="Correo Electrónico"
+              data-tooltip="Ingrese su correo electrónico" required />
+
+            <div class="password-container">
+              <input class="input" type="password" id="password1" name="password1" placeholder="Contraseña"
+                data-tooltip="Ingrese su contraseña" required />
+              <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+
+            <div class="password-container">
+              <input class="input" type="password" id="password2" name="password2" placeholder="Confirmar Contraseña"
+                data-tooltip="Ingrese su contraseña nuevamente" required />
+              <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+            <button class="button" data-tooltip="Registrar Cuenta">Registrarme</button>
+          </form>
+        </div>
+
+        <div class="sign-in">
+          <form class="form" action="" method="POST">
+            {% csrf_token %}
+            <h1>Iniciar Sesión</h1>
+            <br>
+            <span>Usa tu cuenta</span>
+
+            {% if error %}
+            <p style="color:red;">{{ error }}</p>
+            {% endif %}
+            {% if done %}
+            <p style="color:greenyellow;">{{ done }}</p>
+            {% endif %}
+
+            <input class="input" type="number" id="documento" name="documento" placeholder="No. Documento"
+              data-tooltip="Ingrese su numero de documento" required />
+
+            <div class="password-container" style="left: -15px;">
+              <input class="input" type="password" id="contra" name="contra" placeholder="Contraseña"
+                data-tooltip="Ingrese su contraseña" required />
+              <button class="btn btn-outline-secondary toggle-password" type="button" tabindex="-1">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+
+            <a class="a" href="{% url 'password_reset' %}" data-tooltip="Recupera tu contraseña"><i>¿Olvidó su
+                contraseña?</i></a>
+            <button class="button" data-tooltip="Iniciar Sesion">Ingresar</button>
+          </form>
+        </div>
+
+        <div class="overlay-container">
+          <div class="overlay">
+            <div class="overlay-left">
+              <h1>¡REGISTRA TU CUENTA!</h1>
+              <p>Mantente conectado con nosotros, por favor ingresa sesión con tus datos</p>
+              <a class="a" href="{% static 'docs/Manual de Usuario-proyecto dental.pdf' %}" data-tooltip="¡Ayuda!"
+                target="_blank"><i>¿Necesitas ayuda?</i></a>
+              <button class="button" id="signIn" data-tooltip="Ingresar a mi cuenta">Ingresar</button>
+            </div>
+            <div class="overlay-right">
+              <h1>¡BIENVENIDO!</h1>
+              <p>Ingresa tus datos y comienza a agendar tu cita en cualquier momento</p>
+              <a class="a" href="{% static 'docs/Manual de Usuario-proyecto dental.pdf' %}" data-tooltip="¡Ayuda!"
+                target="_blank"><i>¿Necesitas ayuda?</i></a>
+              <button class="button" id="signUp" data-tooltip="Crear una cuenta nueva">Registrarme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </header>
+
+  <div id="termsModal" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Términos y Condiciones</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="privacyCheck">
+            <label class="form-check-label" for="privacyCheck">
+              He leído y acepto la <a href="#" data-bs-toggle="collapse" data-bs-target="#privacyText">Política de
+                Privacidad</a>
+            </label>
+          </div>
+
+          <div class="collapse mt-2" id="privacyText">
+            <div class="card card-body">
+              <div class="politicas-container">
+                <h2>1. Aceptación de Términos</h2>
+                <p>Al registrarte y utilizar nuestros servicios, aceptas cumplir con estos términos y condiciones.</p>
+
+                <h2>2. Uso de Datos Personales</h2>
+                <p>Respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Consulta nuestra
+                  Política de Datos Personales para más información.</p>
+
+                <h2>3. Modificaciones a los Términos</h2>
+                <p>Nos reservamos el derecho a modificar estos términos en cualquier momento. Te notificaremos sobre
+                  cambios significativos.</p>
+
+                <h2>4. Contacto</h2>
+                <p>Si tienes preguntas sobre estos términos, contáctanos a través de nuestro whatsapp.</p>
+
+                <footer>
+                  <p>&copy; 2024 Laboratorio Dental - Sandra Gaviria. Todos los derechos reservados.</p>
+                </footer>
               </div>
             </div>
-          </main>
-        </header>
+          </div>
 
 
-        <div id="termsModal" class="modal fade" tabindex="-1">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Términos y Condiciones</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="privacyCheck">
-                  <label class="form-check-label" for="privacyCheck">
-                    He leído y acepto la <a href="#" data-bs-toggle="collapse" data-bs-target="#privacyText">Política de Privacidad</a>
-                  </label>
-                </div>
-                <div class="collapse mt-2" id="privacyText">
-                  <div class="card card-body">
-                    <div class="politicas-container">                      
-                      <h2>1. Aceptación de Términos</h2>
-                      <p>Al registrarte y utilizar nuestros servicios, aceptas cumplir con estos términos y condiciones.</p>
-                      
-                      <h2>2. Uso de Datos Personales</h2>
-                      <p>Respetamos tu privacidad y nos comprometemos a proteger tus datos personales. Consulta nuestra Política de Datos Personales para más información.</p>
-                      
-                      <h2>3. Modificaciones a los Términos</h2>
-                      <p>Nos reservamos el derecho a modificar estos términos en cualquier momento. Te notificaremos sobre cambios significativos.</p>
-                      
-                      <h2>4. Contacto</h2>
-                      <p>Si tienes preguntas sobre estos términos, contáctanos a través de nuestro whatsapp.</p>
-              
-                      <footer>
-                          <p>&copy; 2024 Laboratorio Dental - Sandra Gaviria. Todos los derechos reservados.</p>
-                      </footer>
-                  </div>
-                  </div>
-                </div>
-                
-                <div class="form-check mt-3">
-                  <input class="form-check-input" type="checkbox" id="termsCheck">
-                  <label class="form-check-label" for="termsCheck">
-                    He leído y acepto los <a href="#" data-bs-toggle="collapse" data-bs-target="#termsText">Términos y Condiciones</a>
-                  </label>
-                </div>
-                <div class="collapse mt-2" id="termsText">
-                  <div class="card card-body">
-                    <div class="terminos-container">
-                      <p>Estos términos y condiciones rigen el uso de la plataforma de Asignación de Citas, Laboratorio Dental - Sandra Gaviria. Al acceder y utilizar esta plataforma, aceptas cumplir con estos términos.</p>
-                      
-                      <h2>1. Aceptación de Términos</h2>
-                      <p>Al utilizar este sistema, aceptas los términos y condiciones establecidos. Si no estás de acuerdo, no podrás usar la plataforma.</p>
-                      
-                      <h2>2. Protección de Datos</h2>
-                      <p>Nos comprometemos a proteger tus datos personales. La información recopilada se utilizará exclusivamente para la gestión interna y no será compartida con terceros sin tu consentimiento.</p>
-                      
-                      <h2>3. Responsabilidad</h2>
-                      <p>No seremos responsables por daños directos o indirectos que puedan surgir del uso de la plataforma, incluyendo la pérdida de datos o interrupciones del servicio.</p>
-                      
-                      <h2>4. Modificaciones de Términos</h2>
-                      <p>Nos reservamos el derecho a modificar estos términos en cualquier momento. Te notificaremos sobre cambios importantes a través de la plataforma.</p>
-                      
-                      <h2>5. Legislación Aplicable</h2>
-                      <p>Estos términos se regirán por las leyes de Colombia.</p>
-                      
-                      <h2>6. Contacto</h2>
-                      <p>Si tienes preguntas sobre estos términos, contáctanos a través del whatsapp o por medio de nuestro correo facturacionldsg@gmail.com.</p>
-              
-                      <footer>
-                          <p>&copy; 2024 Laboratorio Dental - Sandra Gaviria. Todos los derechos reservados.</p>
-                      </footer>
-                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" id="acceptTerms" disabled>Aceptar y Registrar</button>
+          <div class="form-check mt-3">
+            <input class="form-check-input" type="checkbox" id="termsCheck">
+            <label class="form-check-label" for="termsCheck">
+              He leído y acepto los <a href="#" data-bs-toggle="collapse" data-bs-target="#termsText">Términos y
+                Condiciones</a>
+            </label>
+          </div>
+
+          <div class="collapse mt-2" id="termsText">
+            <div class="card card-body">
+              <div class="terminos-container">
+                <p>Estos términos y condiciones rigen el uso de la plataforma de Asignación de Citas, Laboratorio Dental
+                  - Sandra Gaviria. Al acceder y utilizar esta plataforma, aceptas cumplir con estos términos.</p>
+
+                <h2>1. Aceptación de Términos</h2>
+                <p>Al utilizar este sistema, aceptas los términos y condiciones establecidos. Si no estás de acuerdo, no
+                  podrás usar la plataforma.</p>
+
+                <h2>2. Protección de Datos</h2>
+                <p>Nos comprometemos a proteger tus datos personales. La información recopilada se utilizará
+                  exclusivamente para la gestión interna y no será compartida con terceros sin tu consentimiento.</p>
+
+                <h2>3. Responsabilidad</h2>
+                <p>No seremos responsables por daños directos o indirectos que puedan surgir del uso de la plataforma,
+                  incluyendo la pérdida de datos o interrupciones del servicio.</p>
+
+                <h2>4. Modificaciones de Términos</h2>
+                <p>Nos reservamos el derecho a modificar estos términos en cualquier momento. Te notificaremos sobre
+                  cambios importantes a través de la plataforma.</p>
+
+                <h2>5. Legislación Aplicable</h2>
+                <p>Estos términos se regirán por las leyes de Colombia.</p>
+
+                <h2>6. Contacto</h2>
+                <p>Si tienes preguntas sobre estos términos, contáctanos a través del whatsapp o por medio de nuestro
+                  correo facturacionldsg@gmail.com.</p>
+
+                <footer>
+                  <p>&copy; 2024 Laboratorio Dental - Sandra Gaviria. Todos los derechos reservados.</p>
+                </footer>
               </div>
             </div>
           </div>
         </div>
 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="acceptTerms" disabled>Aceptar y Registrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
 
-        <div class="dark-mode-toggle" id="darkModeToggle">
-          <i class="fas fa-moon"></i> <!-- Icono de luna para el modo oscuro -->
-      </div>
-        <script type="module" src="{% static 'js/script_login.js' %}?v1.6"></script>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="{% static '/js/script_dashboard.js' %}?v1.7"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        {% endblock %}
-        <script src="{% static 'js/tooltips.js' %}?v1.6"></script>
-        <script src="{% static 'js/sienna.js' %}?v1.3"></script>
-        <script src="{% static 'js/custom.js' %}?v1.4"></script>
-    {% block js %}
-    {% endblock %}
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          document.querySelectorAll('.toggle-password').forEach(button => {
-              button.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  const input = this.previousElementSibling;
-                  const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
-                  input.setAttribute('type', type);
-                  this.querySelector('i').classList.toggle('fa-eye');
-                  this.querySelector('i').classList.toggle('fa-eye-slash');
-              });
-          });
-      });
-      </script>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          // Get the registration form
-          const registrationForm = document.querySelector('.sign-up .form');
-          
-          // Add hidden input fields for terms acceptance
-          const termsInput = document.createElement('input');
-          termsInput.type = 'hidden';
-          termsInput.name = 'terms_accepted';
-          termsInput.value = 'false';
-          registrationForm.appendChild(termsInput);
-          
-          const privacyInput = document.createElement('input');
-          privacyInput.type = 'hidden';
-          privacyInput.name = 'privacy_accepted';
-          privacyInput.value = 'false';
-          registrationForm.appendChild(privacyInput);
-        
-          // Get the checkboxes and accept button
-          const privacyCheck = document.getElementById('privacyCheck');
-          const termsCheck = document.getElementById('termsCheck');
-          const acceptButton = document.getElementById('acceptTerms');
-        
-          // Function to update accept button state
-          function updateAcceptButton() {
-            acceptButton.disabled = !(privacyCheck.checked && termsCheck.checked);
-          }
-        
-          // Add event listeners to checkboxes
-          privacyCheck.addEventListener('change', updateAcceptButton);
-          termsCheck.addEventListener('change', updateAcceptButton);
-        
-          // Handle form submission
-          registrationForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Show the modal
-            const modal = new bootstrap.Modal(document.getElementById('termsModal'));
-            modal.show();
-          });
-        
-          // Handle accept button click
-          acceptButton.addEventListener('click', function() {
-            termsInput.value = 'true';
-            privacyInput.value = 'true';
-            
-            // Hide the modal
-            const modal = bootstrap.Modal.getInstance(document.getElementById('termsModal'));
-            modal.hide();
-            
-            // Submit the form
-            registrationForm.submit();
-          });
-        });
-      </script>
-    </body>
+  <div class="dark-mode-toggle" id="darkModeToggle"></div>
+
+  <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+  <script src="{% static 'js/script_login.js' %}?v1.6" type="module"></script>
+  <script src="{% static '/js/script_dashboard.js' %}?v1.8"></script>
+  <script src="{% static 'js/tooltips.js' %}?v1.7"></script>
+  <script src="{% static 'js/sienna.js' %}?v1.4"></script>
+  <script src="{% static 'js/custom.js' %}?v1.5"></script>
+  <script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
+
+  {% block js %}
+  <script src="{% static 'js/htmlLoginRegister.js' %}?v1.4"></script>
+  {% endblock %}
+</body>
+
 </html>
-
-  

@@ -4,9 +4,8 @@
   display: none;
 }
 
-/* Ocultar scrollbar para IE, Edge y Firefox */
 body {
-  -ms-overflow-style: none;  /* IE y Edge */
+  -ms-overflow-style: none;  
   scrollbar-width: none;  /* Firefox */
 }
 

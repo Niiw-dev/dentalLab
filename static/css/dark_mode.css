@@ -102,38 +102,31 @@
 
 .dark-mode .container1 {
   background-color: #414141;
-  /* Ajusta si es necesario */
   color: #ffffff;
 }
 
 .dark-mode .portfolio-link {
-  /* Ajusta si es necesario */
   color: #ffffff;
 }
 
 
-/* Imagen y elementos de hover */
 .dark-mode .portfolio-item img {
   filter: brightness(0.8) !important;
-  /* Reduce el brillo de las imágenes para ajustarlas al fondo oscuro */
 }
 
 .dark-mode .portfolio-caption {
   background-color: transparent !important;
   color: #ffffff !important;
-  /* Cambia el color de los encabezados */
 }
 
 
 .dark-mode .portfolio-item img {
   filter: brightness(0.8) !important;
-  /* Baja el brillo de la imagen para que se vea mejor en modo oscuro */
 }
 
 
 .dark-mode .img-fluid {
   background-color: #414141;
-  /* Ajusta si es necesario */
   color: #ffffff;
 }
 
@@ -152,9 +145,6 @@
   color: #ffffff;
 }
 
-/* modelos, donde se escribe */
-
-/* Estilos para el modo oscuro */
 .dark-mode body {
   background-color: #121212;
   color: #e0e0e0;
@@ -186,31 +176,23 @@
   color: #ffffff;
 }
 
-/* Colores por defecto (modo claro) */
-
-/* Modo oscuro */
 .dark-mode .fa-circle {
   color: #333 !important;
-  /* Color oscuro para el círculo en modo oscuro */
 }
 
 .dark-mode .fa-inverse {
   color: #ccc !important;
-  /* Color gris claro para el ícono en modo oscuro */
 }
 
 .dark-mode h4,
 .dark-mode p {
   color: #fff !important;
-  /* Texto en blanco para modo oscuro */
 }
 
 .dark-mode .text-muted {
   color: #aaa !important;
-  /* Color gris claro para los párrafos en modo oscuro */
 }
 
-/* Capa semi-transparente en modo oscuro */
 .dark-mode .masthead {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg');
 }

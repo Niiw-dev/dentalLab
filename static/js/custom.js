@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const buttonLabels = {
         "Readable Font": "Fuente Legible",
         "Highlight Links": "Resaltar Enlaces",

@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const defaultOptions = {
         buttonColor: ' #CAB97D',
         buttonIconColor: '#ffffff',
@@ -12,15 +12,15 @@ document.addEventListener("DOMContentLoaded", function() {
     const options = { ...defaultOptions, ...userOptions };
 
     let t = { states: {} };
-    const e = function() {
-        !function(t, e, s) {
+    const e = function () {
+        !function (t, e, s) {
             const a = new Date;
             a.setTime(a.getTime() + NaN);
             let n = "expires=" + a.toUTCString();
             document.cookie = "asw=" + e + ";" + n + ";path=/"
         }(0, JSON.stringify(t))
     };
-    let s = function(t) {
+    let s = function (t) {
         let e = "asw=", s = decodeURIComponent(document.cookie).split(";");
         for (let t = 0; t < s.length; t++) {
             let a = s[t];
@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", function() {
     }();
     try {
         s = JSON.parse(s)
-    } catch (t) {}
+    } catch (t) { }
     t = { states: {}, ...s };
     let a = ["format_size", "add", "remove", "restart_alt", "close"];
-    const n = function(e, s) {
+    const n = function (e, s) {
         let n = "";
         for (var i = e.length; i--;) {
             let o = e[i], l = t.states[o.key];
@@ -46,9 +46,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return n
     };
     let i = n([
-            { label: "Highlight Links", key: "highlight-links", icon: "link" },
+        { label: "Highlight Links", key: "highlight-links", icon: "link" },
 
-        ]),
+    ]),
         o = n([
             { label: "Monochrome", key: "monochrome", icon: "filter_b_and_w" },
             { label: "Low Saturation", key: "low-saturation", icon: "gradient" },
@@ -78,46 +78,45 @@ document.addEventListener("DOMContentLoaded", function() {
         .asw-menu-header > div { display: flex; }
         .asw-items {
     display: flex;
-    flex-wrap: wrap; /* Permite que los botones se distribuyan en varias filas */
-    justify-content: center; /* Centra los botones horizontalmente */
-    gap: 15px; /* Espacio entre los botones */
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 15px;
 }
 
 .asw-items div {
-    width: 100%; /* Asegura que el primer botón ocupe el 100% */
+    width: 100%;
     text-align: center;
 }
 
 .asw-items i {
-    width: 60px; /* Ancho del botón */
-    height: 60px; /* Alto del botón */
-    font-size: 30px; /* Ajusta el tamaño del ícono */
-    background-color: #4CAF50; /* Color de fondo */
-    color: white; /* Color del ícono */
-    border-radius: 50%; /* Botón circular */
-    padding: 20px; /* Tamaño del botón */
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: background-color 0.3s ease; /* Efecto de transición suave */
+    transition: background-color 0.3s ease;
 }
 
 .asw-items i:hover {
-    background-color: #45a049; /* Color al pasar el mouse */
+    background-color: #45a049;
     cursor: pointer;
 }
 
 .asw-card {
-    text-align: center; /* Alinea los botones al centro */
+    text-align: center;
 }
 
-/* Estilo para las filas siguientes */
 .asw-items .row {
-    width: 33.33%; /* Ajusta para que haya 3 botones por fila en las siguientes filas */
+    width: 33.33%;
 }
 
 .asw-items .row div {
-    width: 100%; /* Asegura que cada botón en las siguientes filas ocupe el 100% de su contenedor */
+    width: 100%; 
 }
         .asw-menu-header div[role=button] { padding: 12px; cursor: pointer; }
         .asw-menu-header div[role=button]:hover, .asw-minus:hover, .asw-plus:hover { opacity: .8; }
@@ -194,14 +193,14 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
         <div class="asw-overlay"></div>
     </div>`;
-    const c = function(t, e) {
+    const c = function (t, e) {
         let s = document.getElementById(e || "") || document.createElement("style");
         s.innerHTML = t, s.id || (s.id = e, document.head.appendChild(s))
-    }, d = function(t, e) {
+    }, d = function (t, e) {
         let s = "", a = ["-o-", "-ms-", "-moz-", "-webkit", ""];
         for (var n = a.length; n--;) s += a[n] + (e || "filter") + ":" + t + ";";
         return s
-    }, p = function(t) {
+    }, p = function (t) {
         let e = "";
         if (t) {
             let a = "";
@@ -211,13 +210,13 @@ document.addEventListener("DOMContentLoaded", function() {
             for (var s = n.length; s--;) e += '[data-asw-filter="' + t + '"] ' + n[s] + "{" + a + "}"
         }
         c(e, "asw-filter-style"), t ? document.documentElement.setAttribute("data-asw-filter", t) : document.documentElement.removeAttribute("data-asw-filter", t)
-    }, u = function() {
-        let e = [ {
+    }, u = function () {
+        let e = [{
             id: "highlight-links",
             childrenSelector: ["a[href]"],
             css: "outline: 2px solid " + options.highlightColor + " !important;outline-offset: 2px !important;"
         }
-    ], s = "";
+        ], s = "";
         for (var a = e.length; a--;) {
             let i = e[a];
             if (document.documentElement.classList.toggle(i.id, !!t.states[i.id]), t.states[i.id]) for (var n = i.childrenSelector.length; n--;) s += "." + i.id + " " + i.childrenSelector[n] + "{" + i.css + "}"
@@ -228,23 +227,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 var o = document.createElement("div");
                 o.setAttribute("class", "asw-rg-container"), o.innerHTML = '<style>    .asw-rg {position: fixed;top: 0;left: 0;right: 0;width: 100%;height: 0;pointer-events: none;background-color: rgba(0,0,0,.5);z-index: 1000000;    }</style><div class="asw-rg asw-rg-top"></div><div class="asw-rg asw-rg-bottom" style="top: auto;bottom: 0;"></div>\n';
                 let t = o.querySelector(".asw-rg-top"), e = o.querySelector(".asw-rg-bottom"), s = 20;
-                window.onScrollReadableGuide = function(a) {
+                window.onScrollReadableGuide = function (a) {
                     t.style.height = a.clientY - s + "px", e.style.height = window.innerHeight - a.clientY - s - s + "px"
                 }, document.addEventListener("mousemove", window.onScrollReadableGuide, !1), document.body.appendChild(o)
             }
         } else i && (i.remove(), document.removeEventListener("mousemove", window.onScrollReadableGuide));
         t.states["stop-animations"] && (s += `\nbody * {${d("none !important", "transition")}${d("forwards !important", "animation-fill-mode")}${d("1 !important", " animation-iteration-count")}${d(".01s !important", "animation-duration")}\n}`), t.states["big-cursor"] && (s += "\nbody * {cursor: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 512 512'%3E%3Cpath  d='M429.742 319.31L82.49 0l-.231 471.744 105.375-100.826 61.89 141.083 96.559-42.358-61.89-141.083 145.549-9.25zM306.563 454.222l-41.62 18.259-67.066-152.879-85.589 81.894.164-333.193 245.264 225.529-118.219 7.512 67.066 152.878z' xmlns='http://www.w3.org/2000/svg'/%3E%3C/svg%3E\") ,default !important;\n}"), t.states["readable-font"] && (s += '\n@font-face {font-family: OpenDyslexic3;src: url("https://website-widgets.pages.dev/fonts/OpenDyslexic3-Regular.woff") format("woff"), url("https://website-widgets.pages.dev/fonts/OpenDyslexic3-Regular.ttf") format("truetype");\n}'), c(s, "asw-content-style")
     };
-    var f = function(s) {
+    var f = function (s) {
         s.preventDefault();
         let a = s.currentTarget, n = a.dataset.key;
-        a.classList.contains("asw-filter") ? (document.querySelectorAll(".asw-filter").forEach((function(t) {
+        a.classList.contains("asw-filter") ? (document.querySelectorAll(".asw-filter").forEach((function (t) {
             t.classList.remove("asw-selected"), t.setAttribute("aria-pressed", "false")
         })), t.states.contrast = t.states.contrast !== n && n, t.states.contrast && (a.classList.add("asw-selected"), a.setAttribute("aria-pressed", "true")), p(t.states.contrast)) : (t.states[n] = !t.states[n], a.classList.toggle("asw-selected", t.states[n]), a.setAttribute("aria-pressed", t.states[n] ? "true" : "false"), u()), e()
     };
-    const h = function(e, s) {
+    const h = function (e, s) {
         let a = !1;
-        !s && e && (a = e.currentTarget, s = parseFloat(t.states.fontSize) || 1, a.classList.contains("asw-minus") ? s -= .1 : s += .1, s = Math.max(s, .8), s = Math.min(s, 1.3), s = parseFloat(s.toFixed(2))), document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,a,dl,dt,li,ol,th,td,span").forEach((function(t) {
+        !s && e && (a = e.currentTarget, s = parseFloat(t.states.fontSize) || 1, a.classList.contains("asw-minus") ? s -= .1 : s += .1, s = Math.max(s, .8), s = Math.min(s, 1.3), s = parseFloat(s.toFixed(2))), document.querySelectorAll("h1,h2,h3,h4,h5,h6,p,a,dl,dt,li,ol,th,td,span").forEach((function (t) {
             if (!t.classList.contains("material-icons")) {
                 let e = t.getAttribute("data-asw-orgFontSize");
                 e || (e = parseInt(window.getComputedStyle(t, null).getPropertyValue("font-size")), t.setAttribute("data-asw-orgFontSize", e));
@@ -256,22 +255,22 @@ document.addEventListener("DOMContentLoaded", function() {
         1 !== s && (s > 1 ? n = "+" : s < 1 && (n = "-"), n += parseInt(100 * s) + "%"), a && (a.parentElement.querySelector(".asw-amount").innerHTML = n), t.states.fontSize = s
     };
     let m = r.querySelector(".asw-menu"), g = r.querySelector(".asw-overlay");
-    r.querySelector(".asw-menu-btn").addEventListener("click", function() {
+    r.querySelector(".asw-menu-btn").addEventListener("click", function () {
         m.style.display = "block" == m.style.display ? "none" : "block", g.style.display = m.style.display
-    }, !1), m.querySelector(".asw-menu-close").addEventListener("click", function() {
+    }, !1), m.querySelector(".asw-menu-close").addEventListener("click", function () {
         m.style.display = "none", g.style.display = m.style.display
-    }, !1), g.addEventListener("click", function() {
+    }, !1), g.addEventListener("click", function () {
         m.style.display = "none", g.style.display = m.style.display
-    }, !1), m.querySelector(".asw-menu-reset").addEventListener("click", function() {
-        t.states = {}, p(), u(), h(void 0, 1), document.querySelectorAll(".asw-btn").forEach(function(t) {
+    }, !1), m.querySelector(".asw-menu-reset").addEventListener("click", function () {
+        t.states = {}, p(), u(), h(void 0, 1), document.querySelectorAll(".asw-btn").forEach(function (t) {
             t.classList.remove("asw-selected"), t.setAttribute("aria-pressed", "false")
-        }), document.querySelectorAll(".asw-amount").forEach(function(t) {
+        }), document.querySelectorAll(".asw-amount").forEach(function (t) {
             t.innerHTML = "Normal"
         }), e()
-    }, !1), m.querySelectorAll(".asw-btn").forEach(function(t) {
+    }, !1), m.querySelectorAll(".asw-btn").forEach(function (t) {
         t.addEventListener("click", f, !1)
-    }), m.querySelectorAll(".asw-adjust-font div[role='button']").forEach(function(t) {
-        t.addEventListener("click", function(t) {
+    }), m.querySelectorAll(".asw-adjust-font div[role='button']").forEach(function (t) {
+        t.addEventListener("click", function (t) {
             h(t), e()
         }, !1)
     }), document.body.appendChild(r), s && (u(), 1 !== t.states.fontSize && h(null, t.states.fontSize), t.states.contrast && p(t.states.contrast))
