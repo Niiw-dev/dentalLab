@@ -46,10 +46,12 @@
     </div>
   </nav>
 
-  {% block content %}
+  
   <header class="masthead">
     <main>
+      
       <div class="container2" id="main">
+        {% block content %}
         <div class="sign-up">
           <form class="form" action="" method="POST">
             {% csrf_token %}
@@ -142,6 +144,7 @@
           </div>
         </div>
       </div>
+      
     </main>
   </header>
 
