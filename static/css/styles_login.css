@@ -6,17 +6,17 @@
 
 body {
   -ms-overflow-style: none;  
-  scrollbar-width: none;  /* Firefox */
+  scrollbar-width: none; 
+  overflow: hidden;
 }
 
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; /* Cambiado de height fijo a min-height */
   width: 100%;
-  padding: 20px; /* Añadido padding para evitar que el contenido toque los bordes */
   box-sizing: border-box;
+  
 }
 
 .container2 {
@@ -36,8 +36,8 @@ main {
   left: 0;
   height: 100%;
   transition: all 0.6s ease-in-out;
-  padding: 20px 0; /* Añadido padding vertical */
-  overflow-y: auto; /* Permite scroll si el contenido es muy largo */
+  padding: 20px 0; 
+  overflow-y: auto; 
 }
 
 .sign-up {
@@ -57,10 +57,11 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 40px;
-  height: 100%;
+  padding: 10px 40px 0;
+  height: 96%;
   text-align: center;
   color: white;
+  overflow: hidden;
 }
 
 h1 {
@@ -225,98 +226,3 @@ span {
 .document-container input {
   flex: 2;
 }
-/* Estilos para el modo oscuro */
-.dark-mode {
-  background-color: #121212; /* Fondo oscuro para el body */
-  color: #e0e0e0; /* Color de texto claro para el body */
-}
-
-.dark-mode .container2 {
-  background: #1e1e1e; /* Fondo más oscuro para el contenedor */
-  border: 1px solid #444; /* Borde oscuro para el contenedor */
-}
-
-.dark-mode .form {
-  background: #1e1e1e; /* Fondo del formulario en modo oscuro */
-}
-
-.dark-mode .input {
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-
-.dark-mode .input:focus {
-  border-color: #2a2b2c; /* Mantener color de borde azul en modo oscuro */
-}
-
-.dark-mode .button {
-  background: #141413; /* Botón en modo oscuro */
-}
-
-.dark-mode h1 {
-  color: #ffffff; /* Color del encabezado en modo oscuro */
-}
-
-.dark-mode .a {
-  color: #fff; /* Enlaces en modo oscuro */
-}
-.dark-mode .overlay{
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-.dark-mode .overlay-right{
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-.dark-mode .overlay-left{
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-.dark-mode .container2.right-panel-active .sign-int{
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-.dark-mode .container2.right-panel-active .overlay-container{
-  background: #333; /* Fondo de los campos de entrada en modo oscuro */
-  color: #fff; /* Texto claro en los campos de entrada */
-}
-.dark-mode .masthead  {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg')  !important;
-}
-.dark-mode-toggle {
-  position: fixed;
-  bottom: 80px;
-  right: 19px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #333;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;  
-  padding: 0;
-  margin: 0;
-  font-size: 24px;
-  z-index: 1000;
-}
-
-.dark-mode-toggle i {
-  font-size: 24px;
-  width: 24px;
-  height: 24px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1;
-}
-
-.dark-mode-toggle:hover {
-  transform: scale(1.1);
-}
-
