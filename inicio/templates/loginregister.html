@@ -49,9 +49,9 @@
   
   <header class="masthead">
     <main>
-      
+      {% block content %}
       <div class="container2" id="main">
-        {% block content %}
+        
         <div class="sign-up">
           <form class="form" action="" method="POST">
             {% csrf_token %}

@@ -56,9 +56,7 @@
 
 .dark-mode .icon {
   background-color: #414141;
-  /* Gris más oscuro */
   border-color: #8a8a8a;
-  /* Gris suave */
   color: #ffffff;
 }
 
@@ -68,19 +66,16 @@ h1 {
   margin-bottom: 1rem;
   letter-spacing: 2px;
   color: #ffffff;
-  /* Gris oscuro para el título */
 }
 
 .login-text {
   text-align: center;
   margin-bottom: 2rem;
   color: #444;
-  /* Gris más suave */
 }
 
 .login-form {
-  background-color: transparent;
-  /* Gris intermedio */
+  background-color: rgba(0, 0, 0, 0.6);
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -99,29 +94,25 @@ h1 {
 .login-form input {
   padding: 0.75rem;
   border: 2px solid #cccccc;
-  /* Gris claro */
   border-radius: 4px;
   font-size: 1rem;
   width: 100%;
   box-sizing: border-box;
   background-color: #f4f4f4;
-  /* Gris claro con leve opacidad */
   transition: border-color 0.3s ease-in-out;
 }
 
 .login-form input:focus {
   border-color: rgb(172, 158, 80);
-  /* Mantener color dorado al focus */
   outline: none;
   background-color: #eaeaea;
-  /* Gris aún más claro */
 }
 
 button,
 input[type="submit"] {
+  background-color: rgba(51, 51, 51, 0.7);
   padding: 0.75rem;
   border: 2px solid #cccccc;
-  /* Gris suave */
   border-radius: 4px;
   background-color: transparent;
   color: #ffffff;
@@ -134,7 +125,6 @@ input[type="submit"] {
 button:hover,
 input[type="submit"]:hover {
   background-color: rgb(172, 158, 80);
-  /* Color dorado en hover */
   color: white;
   border-color: rgb(172, 158, 80);
 }
@@ -149,10 +139,8 @@ input[type="submit"]:hover {
   opacity: 0.85;
 }
 
-/* Modo oscuro */
 .dark-mode {
   background-color: #121212;
-  /* Fondo oscuro */
   color: white;
 }
 
@@ -162,7 +150,6 @@ input[type="submit"]:hover {
 
 .dark-mode .login-form {
   background-color: transparent;
-  /* Gris oscuro más intenso */
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
@@ -170,26 +157,23 @@ input[type="submit"]:hover {
 .dark-mode .login-form label,
 .dark-mode .login-form input {
   color: #ccc;
-  /* Gris claro para texto */
 }
 
 .dark-mode .login-form input {
-  background-color: #333;
-  /* Gris oscuro de fondo para inputs */
+  background-color: rgba(51, 51, 51, 0.7);
   border-color: #555;
-  /* Gris suave en borde */
 }
 
 .dark-mode .login-form input:focus {
   border-color: rgb(172, 158, 80);
   background-color: #444;
-  /* Gris más oscuro al focus */
 }
 
 .dark-mode button,
 .dark-mode input[type="submit"] {
+  background-color: rgba(51, 51, 51, 0.7);
+
   border-color: #555;
-  /* Gris intermedio para los botones */
   color: #ccc;
 }
 
@@ -204,4 +188,20 @@ input[type="submit"]:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.input-group {
+  position: relative;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-group input[type="password"],
+.input-group input[type="text"] {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
