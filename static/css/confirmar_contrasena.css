@@ -9,7 +9,7 @@
 }
 
 .form-inner{
-  width: 80%;
+  width: 100%;
 }
 
 .form-control {
@@ -28,8 +28,9 @@
 }
 
 #password-requirements {
-  font-size: 12px;
-  color: #000000;
+  font-weight: bold;
+  font-size: 14px;
+  color: #ffffff;
   margin-top: 10px;
 }
 
@@ -43,25 +44,30 @@
 }
 
 .text-danger {
+  font-weight: bold;
   color: #e74c3c;
-  font-size: 12px;
+  font-size: 14px;
   margin-top: 5px;
 }
 
 #password-requirements li.text-success {
-  color: green;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(0, 255, 0);
 }
 
 #password-requirements li.text-danger {
-  color: red;
+  font-weight: bold;
+  font-size: 14px;
+  color: rgb(255, 54, 54);
 }
 
 #togglePassword,
 #toggleConfirmPassword {
   right: 10px;
   top: 50%;
-  background: none;
-  border: none;
+  background: #3b3b3b;
+  border: #252525;
   cursor: pointer;
   width: 25%;
 }
