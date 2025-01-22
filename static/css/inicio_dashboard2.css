@@ -3084,6 +3084,7 @@ Show all properties (16 more)
 }
 
 .btn-info {
+  margin-right: 10px;
   --bs-btn-color: #fff;
   --bs-btn-bg: #0dcaf0;
   --bs-btn-border-color: #0dcaf0;

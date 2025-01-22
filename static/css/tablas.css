@@ -273,6 +273,7 @@ i.a {
 
 #elementosTable th,
 #elementosTable td {
+  text-align: center;
   padding: 15px;
   vertical-align: middle;
   border: 1px solid #ddd;
@@ -414,10 +415,7 @@ i.a {
   background-color: rgb(36, 36, 36); /* Color de fondo en modo oscuro */
   color: #ffffff; /* Color del texto */
   border: none; /* Quitar el borde */
-  box-shadow: none; /* Quitar sombras */
-  border-radius: 5px; /* Ajustar el radio de borde si es necesario */
 }
-
 
 .dark-mode .btn-danger {
   background-color: rgb(18, 18, 18);
