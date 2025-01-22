@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}?v2.9" />
   <link rel="stylesheet" href="{% static 'css/tablas.css' %}?v3.3">
   <link rel="stylesheet" href="{% static 'css/custom.css' %}?v1.9">
+  <link rel="stylesheet" href="{% static 'css/dark_mode.css' %}?v2.4">
   <link rel="stylesheet" href="{% static 'css/htmlInicio.css' %}?v1.2">
 
   {% block extra_css %} {% endblock %}
@@ -33,131 +34,132 @@
 
 <body id="page-top">
   <div class="menu">
-  <nav class="navbar2 navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{% url 'dashboard' %}"
-        data-tooltip="Ir al Tablero Principal">
-        <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" style="max-height: 40px; width: auto;">
-        <span class="labo ms-2 d-none d-sm-inline">LABORATORIO DENTAL</span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsiveCombined"
-        aria-controls="navbarResponsiveCombined" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars ms-1"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsiveCombined">
-        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'crearcitas' %}" data-tooltip="Programar una nueva cita">
-              Agendar Cita
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listcitas' %}" data-tooltip="Ver y cancelar citas existentes">
-              Cancelar Cita
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listhistorias' %}" data-tooltip="Acceder a historias clínicas">
-              Historias Clínicas
-            </a>
-          </li>
-
-          {% if user.is_superuser %}
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'calendario' %}" data-tooltip="Ver calendario de citas">Calendario</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'gmail_inbox' %}" data-tooltip="Acceder al correo electrónico">Correo</a>
-          </li>
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'listelementos' %}"
-              data-tooltip="Gestionar inventario de insumos">Insumos</a>
-          </li>
-
-          <li class="nav-item d-lg-none">
-            <a class="nav-link" href="{% url 'backup_list' %}"
-              data-tooltip="Gestionar copias de seguridad">Restauración</a>
-          </li>
-          {% endif %}
-
-          <li class="nav-item">
-            <div class="profile-dropdown">
-              <div onclick="toggle()" class="profile-dropdown-btn">
-                <a href="{% url 'configuracion' id=user.id %}" data-tooltip="Ver perfil y configuración">
-                  <div class="profile-img">
-                    {% if user.imagen %}
-                    <img src="{{ user.imagen.url }}" alt="Profile Image" />
-                    {% else %}
-                    <img src="{% static 'img/user.png' %}" alt="Default Profile Image" />
-                    {% endif %}
-                  </div>
-                </a>
-                <a href="{% url 'configuracion' id=user.id %}" data-tooltip="Ver perfil y configuración">
-                  <span> {{ user.nombre|upper }} </span>
-                </a>
-              </div>
-            </div>
-          </li>
-
-          <li class="nav-item">
-            <form method="post" action="{% url 'signout' %}" id="logout-form" style="display: inline">
-              {% csrf_token %}
-              <a class="nav-link" href="#"
-                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                data-tooltip="Cerrar sesión">
-                Salir
+    <nav class="navbar2 navbar-expand-lg navbar-dark fixed-top navbar-shrink" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="{% url 'dashboard' %}"
+          data-tooltip="Ir al Tablero Principal">
+          <img src="{% static 'img/logo.png' %}" alt="Logo" class="img-fluid" style="max-height: 40px; width: auto;">
+          <span class="labo ms-2 d-none d-sm-inline">LABORATORIO DENTAL</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsiveCombined" aria-controls="navbarResponsiveCombined" aria-expanded="false"
+          aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsiveCombined">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'crearcitas' %}" data-tooltip="Programar una nueva cita">
+                Agendar Cita
               </a>
-            </form>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listcitas' %}" data-tooltip="Ver y cancelar citas existentes">
+                Cancelar Cita
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listhistorias' %}" data-tooltip="Acceder a historias clínicas">
+                Historias Clínicas
+              </a>
+            </li>
 
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top second-navbar d-none d-lg-block">
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <div class="container d-flex justify-content-center">
-        <p id="home2">
-        <div class="breadcrumbs">
-          <a href="{% url 'dashboard' %}" data-tooltip="Volver al inicio">Inicio</a>&gt;&nbsp;
-          {% block titulo %} {% endblock %}
+            {% if user.is_superuser %}
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'calendario' %}" data-tooltip="Ver calendario de citas">Calendario</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'gmail_inbox' %}" data-tooltip="Acceder al correo electrónico">Correo</a>
+            </li>
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'listelementos' %}"
+                data-tooltip="Gestionar inventario de insumos">Insumos</a>
+            </li>
+
+            <li class="nav-item d-lg-none">
+              <a class="nav-link" href="{% url 'backup_list' %}"
+                data-tooltip="Gestionar copias de seguridad">Restauración</a>
+            </li>
+            {% endif %}
+
+            <li class="nav-item">
+              <div class="profile-dropdown">
+                <div onclick="toggle()" class="profile-dropdown-btn">
+                  <a href="{% url 'configuracion' id=user.id %}" data-tooltip="Ver perfil y configuración">
+                    <div class="profile-img">
+                      {% if user.imagen %}
+                      <img src="{{ user.imagen.url }}" alt="Profile Image" />
+                      {% else %}
+                      <img src="{% static 'img/user.png' %}" alt="Default Profile Image" />
+                      {% endif %}
+                    </div>
+                  </a>
+                  <a href="{% url 'configuracion' id=user.id %}" data-tooltip="Ver perfil y configuración">
+                    <span> {{ user.nombre|upper }} </span>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <form method="post" action="{% url 'signout' %}" id="logout-form" style="display: inline">
+                {% csrf_token %}
+                <a class="nav-link" href="#"
+                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                  data-tooltip="Cerrar sesión">
+                  Salir
+                </a>
+              </form>
+            </li>
+          </ul>
         </div>
-        </p>
-        {% if user.is_superuser %}
-        <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 d-flex justify-content-center">
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'calendario' %}" data-tooltip="Ver calendario de citas">Calendario</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gmail_inbox' %}" data-tooltip="Acceder al correo electrónico">Correo</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'listelementos' %}"
-              data-tooltip="Gestionar inventario de insumos">Insumos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'backup_list' %}"
-              data-tooltip="Gestionar copias de seguridad">Restauración</a>
-          </li>
-        </ul>
-        {% endif %}
       </div>
-    </div>
-  </nav>
-</div>
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top second-navbar d-none d-lg-block">
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="container d-flex justify-content-center">
+          <p id="home2">
+          <div class="breadcrumbs">
+            <a href="{% url 'dashboard' %}" data-tooltip="Volver al inicio">Inicio</a>&gt;&nbsp;
+            {% block titulo %} {% endblock %}
+          </div>
+          </p>
+          {% if user.is_superuser %}
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 d-flex justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'calendario' %}" data-tooltip="Ver calendario de citas">Calendario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'gmail_inbox' %}" data-tooltip="Acceder al correo electrónico">Correo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'listelementos' %}"
+                data-tooltip="Gestionar inventario de insumos">Insumos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'backup_list' %}"
+                data-tooltip="Gestionar copias de seguridad">Restauración</a>
+            </li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+  </div>
 
   <header class="mastheadd"> </header>
 
@@ -167,6 +169,7 @@
     {% endfor %} {% endif %}
   </div>
   <br>
+
   {% block content %} {% endblock %}
 
   <div class="dark-mode-toggle" id="darkModeToggle"> </div>
