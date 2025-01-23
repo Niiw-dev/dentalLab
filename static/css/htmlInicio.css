@@ -2,7 +2,6 @@
     .navbar-collapse {
         position: fixed;
         top: 76px;
-        /* Ajusta este valor según la altura de tu navbar */
         left: 0;
         right: 0;
         bottom: 0;
@@ -50,5 +49,6 @@
     .navbar2 {
         padding-bottom: 0;
     }
+    
 
 }

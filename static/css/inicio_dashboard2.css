@@ -391,6 +391,8 @@ button,
 [type=reset],
 [type=submit] {
   -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
 }
 
 button:not(:disabled),
@@ -446,6 +448,8 @@ legend+* {
 [type=search] {
   outline-offset: -2px;
   -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 ::-webkit-search-decoration {
@@ -459,6 +463,8 @@ legend+* {
 ::file-selector-button {
   font: inherit;
   -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
 }
 
 
@@ -7474,6 +7480,19 @@ fieldset:disabled .btn {
   visibility: hidden !important;
 }
 
+.menu {
+  height: 72px;
+  background-color: #121212;
+}
+
+.middContent {
+  height: 92.5vh;
+  background-color: #e8e8e8;
+  display: flex;
+  justify-content: flex-start; 
+  align-items: center; 
+}
+
 @media (min-width: 576px) {
 
   .container-sm,
@@ -9564,9 +9583,6 @@ fieldset:disabled .btn {
   }
 }
 
-html {
-  scroll-padding-top: 4.5rem;
-}
 
 body {
   position: relative;
@@ -10958,6 +10974,14 @@ header.masthead .masthead-heading {
 }
 
 @media (min-width: 992px) {
+  .menu {
+    height: 135px;
+  }
+
+  .middContent {
+    height: 86vh;
+    background-color: #e8e8e8;
+  }
 
   .container-lg,
   .container-md,

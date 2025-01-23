@@ -11,7 +11,6 @@
 {% block content %}
   <div class="dashboard-container">
     <div class="button-grid">
-      <!-- Botones accesibles para todos los usuarios -->
       <a href="{% url 'crearcitas' %}" class="dashboard-button" data-tooltip="Programar una nueva cita para un paciente">
         <div class="button-icon">
           <i class="fa-solid fa-clock"></i>
@@ -115,5 +114,9 @@
         </a>
       {% endif %}
     </div>
+  </div>
+
+  <div class="add">
+    as
   </div>
 {% endblock %}
