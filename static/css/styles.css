@@ -416,3 +416,16 @@ input {
   transform: scale(1.1);
 }
 
+.menu{
+  min-height: 80px;
+  max-height: 135px;
+  background-color: #121212;
+}
+
+.middContent{
+  background-color: #CAB97D;
+}
+
+.bootFooter{
+  background-color: blue;
+}

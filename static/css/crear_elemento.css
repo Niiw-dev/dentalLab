@@ -11,8 +11,10 @@ body {
 
 /* Style the card body */
 .card-body {
-    max-width: 1000px; /* Increased from 600px */
-    width: 90%; /* Added to ensure responsiveness */
+    max-width: 1000px;
+    /* Increased from 600px */
+    width: 90%;
+    /* Added to ensure responsiveness */
     margin: 2rem auto;
     background-color: #ffffff;
     border-radius: 8px;
@@ -21,7 +23,8 @@ body {
 }
 
 /* Style form elements */
-.form-control, .form-select {
+.form-control,
+.form-select {
     width: 100%;
     padding: 0.75rem;
     margin-bottom: 1rem;
@@ -31,7 +34,8 @@ body {
     transition: all 0.3s ease;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
     border-color: #4f46e5;
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
     outline: none;
@@ -66,8 +70,10 @@ body {
         width: 100%;
     }
 
-    .form-control, .form-select {
-        font-size: 16px; /* Prevent zoom on mobile */
+    .form-control,
+    .form-select {
+        font-size: 16px;
+        /* Prevent zoom on mobile */
     }
 }
 
@@ -90,7 +96,8 @@ body {
 }
 
 /* Add a subtle hover effect to form elements */
-.form-control:hover, .form-select:hover {
+.form-control:hover,
+.form-select:hover {
     border-color: #9ca3af;
 }
 
@@ -122,33 +129,44 @@ h2 {
 
 /* Estilos para el modo oscuro */
 .dark-mode {
-    background-color: #1a1a1a; /* Fondo oscuro */
-    color: #f8f8f8; /* Color de texto claro */
+    background-color: #1a1a1a;
+    /* Fondo oscuro */
+    color: #f8f8f8;
+    /* Color de texto claro */
 }
 
 .dark-mode .card-body {
-    background-color: #2a2a2a; /* Fondo del card en modo oscuro */
+    background-color: #2a2a2a;
+    /* Fondo del card en modo oscuro */
 }
 
-.dark-mode .form-control, .dark-mode .form-select {
-    background: #333333; /* Fondo de inputs en modo oscuro */
-    color: #f8f8f8; /* Color de texto en inputs en modo oscuro */
+.dark-mode .form-control,
+.dark-mode .form-select {
+    background: #333333;
+    /* Fondo de inputs en modo oscuro */
+    color: #f8f8f8;
+    /* Color de texto en inputs en modo oscuro */
 }
 
-.dark-mode .form-control:focus, .dark-mode .form-select:focus {
-    border-color: #4f46e5; /* Color del borde al enfocar en modo oscuro */
+.dark-mode .form-control:focus,
+.dark-mode .form-select:focus {
+    border-color: #4f46e5;
+    /* Color del borde al enfocar en modo oscuro */
     box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
 }
 
 .dark-mode .form-label {
     background: #333333;
-    color: #ffffff; /* Color de las etiquetas en modo oscuro */
+    color: #ffffff;
+    /* Color de las etiquetas en modo oscuro */
 }
 
 .dark-mode .help-text {
-    color: #dc2626; /* Color de error en modo oscuro */
+    color: #dc2626;
+    /* Color de error en modo oscuro */
 }
 
 .dark-mode h2 {
-    color: #007bff; /* Color del título en modo oscuro */
+    color: #007bff;
+    /* Color del título en modo oscuro */
 }
