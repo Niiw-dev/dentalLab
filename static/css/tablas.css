@@ -1,7 +1,7 @@
-/* Estilos generales */
 i.a {
   color: #f8f9fa;
 }
+
 .btn-custom {
   white-space: nowrap;
   padding: 0.375rem 0.75rem;
@@ -14,13 +14,11 @@ i.a {
   font-size: 0.9rem;
 }
 
-/* Centrando la tabla */
 .table-centered {
   margin: 0 auto;
   text-align: center;
 }
 
-/* Estilos para los controles de paginación */
 .pagination a {
   text-decoration: none;
   color: #1eff00;
@@ -31,7 +29,7 @@ i.a {
 
 
 .paginate_button:hover {
-  background-color: #81c784; /* Verde más oscuro al pasar el ratón */
+  background-color: #81c784;
   color: #fff;
 }
 
@@ -301,154 +299,158 @@ i.a {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Estilos para el modo oscuro */
 .dark-mode {
-  background-color: #121212; /* Fondo oscuro para el body */
-  color: #e0e0e0; /* Color de texto claro para el body */
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
 .dark-mode .headersup {
-  background-color: #1a1a1a; /* Fondo de la parte superior en modo oscuro */
+  background-color: #1a1a1a;
 }
 
 .dark-mode .headerinf {
-  background-color: #272727; /* Fondo de la parte inferior en modo oscuro */
+  background-color: #272727;
 }
 
 .dark-mode .table thead th {
-  background-color: #383838; /* Fondo de los encabezados en modo oscuro */
-  color: #ffffff; /* Texto blanco para los encabezados */
+  background-color: #383838;
+  color: #ffffff;
 }
 
 .dark-mode .table tbody tr:nth-child(even) {
-  background-color: #2a2a2a; /* Fondo alternativo en modo oscuro */
+  background-color: #2a2a2a;
   color: #ffff;
 }
 
 .dark-mode .table tbody tr:hover {
-  background-color: #3b3b3b; /* Color al pasar el mouse en modo oscuro */
+  background-color: #3b3b3b;
   color: #ffff;
 }
 
 .dark-mode .btn-success {
-  background-color: #3b3b3b; /* Botón de éxito en modo oscuro */
+  background-color: #3b3b3b;
   color: #e0e0e0;
 }
 
 .dark-mode .btn-primary {
-  background-color: #3b3b3b; /* Botón primario en modo oscuro */
+  background-color: #3b3b3b;
   color: #e0e0e0;
 }
 
 
 .dark-mode .btn-warning {
-  background-color: #201f1f; /* Botón de advertencia en modo oscuro */
+  background-color: #201f1f;
   color: #ffff;
 }
+
 .dark-mode btn .btn-warning {
-  background-color: #070707; /* Botón de advertencia en modo oscuro */
+  background-color: #070707;
 }
 
 .dark-mode .btn-danger {
-  background-color: #691511; /* Botón de peligro en modo oscuro */
+  background-color: #691511;
 }
 
 .dark-mode .card {
-  background-color: #1a1a1a; /* Fondo de las tarjetas en modo oscuro */
+  background-color: #1a1a1a;
 }
 
 .dark-mode .card-header,
 .dark-mode .card-body {
-  background-color: #2a2a2a; /* Fondo de las tarjetas en modo oscuro */
+  background-color: #2a2a2a;
 }
 
 .dark-mode .table td {
-  background-color: #2a2a2a; /* Fondo de las celdas en modo oscuro */
-  color: #e0e0e0; /* Color de texto claro para las celdas */
+  background-color: #2a2a2a;
+  color: #e0e0e0;
 }
-.dark-mode .flatpickr-calendar animate  {
-  background-color: #2a2a2a; /* Fondo de las celdas en modo oscuro */
-  color: #e0e0e0; /* Color de texto claro para las celdas */
+
+.dark-mode .flatpickr-calendar animate {
+  background-color: #2a2a2a;
+  color: #e0e0e0;
 }
 
 .dark-mode .pagination a {
-  color: #e0e0e0; /* Color de los enlaces de paginación en modo oscuro */
+  color: #e0e0e0;
 }
+
 .dark-mode .pagination {
-  color: #e0e0e0; /* Color de los enlaces de paginación en modo oscuro */
+  color: #e0e0e0;
 }
+
 .dark-mode .table-container {
-  color: #ffffff; 
-  background-color: #272727;/* Color de los títulos en modo oscuro */
+  color: #ffffff;
+  background-color: #272727;
 }
+
 .dark-mode #filtroForm {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .form-label{
+
+.dark-mode .form-label {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .col-lg-8 .text-lg-start{
+
+.dark-mode .col-lg-8 .text-lg-start {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .form-control{
+
+.dark-mode .form-control {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .form-select{
+
+.dark-mode .form-select {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .nav .button{
+
+.dark-mode .nav .button {
   background-color: rgb(34, 34, 34);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
+
 .dark-mode .btn-info {
-  background-color: rgb(36, 36, 36); /* Color de fondo en modo oscuro */
-  color: #ffffff; /* Color del texto */
-  border: none; /* Quitar el borde */
+  background-color: rgb(36, 36, 36);
+  color: #ffffff;
+  border: none;
 }
 
 .dark-mode .btn-danger {
   background-color: rgb(18, 18, 18);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
+
 .dark-mode .card-title {
-
-  color: #ffffff; 
+  color: #ffffff;
 }
+
 .dark-mode .footer {
   background-color: rgb(18, 18, 18);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .col-lg-8  {
+
+.dark-mode .col-lg-8 {
   background-color: rgb(18, 18, 18);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
+
 .dark-mode .text-lg-start {
   background-color: rgb(18, 18, 18);
-
-  color: #ffffff; 
+  color: #ffffff;
 }
-.dark-mode .row{
 
-  color: #ffffff;   
+.dark-mode .row {
+  color: #ffffff;
 }
-.dark-mode .br{
 
-  color: #ffffff;   
+.dark-mode .br {
+  color: #ffffff;
 }
+
 .dark-mode-toggle {
   position: fixed;
   bottom: 80px;
@@ -463,7 +465,7 @@ i.a {
   align-items: center;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;  
+  transition: background-color 0.3s ease, transform 0.3s ease;
   padding: 0;
   margin: 0;
   font-size: 24px;
@@ -484,8 +486,3 @@ i.a {
 .dark-mode-toggle:hover {
   transform: scale(1.1);
 }
-
-
-
-
-

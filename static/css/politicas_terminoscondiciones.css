@@ -1,5 +1,4 @@
-politicas_terminoscondiciones.css
-.terminos-link {
+politicas_terminoscondiciones.css .terminos-link {
     position: absolute;
     bottom: 20px;
     right: 20px;
@@ -7,7 +6,7 @@ politicas_terminoscondiciones.css
 }
 
 .terminos-link a {
-    color: #ffffff; /* Cambia este color según tu diseño */
+    color: #ffffff;
     text-decoration: none;
 }
 

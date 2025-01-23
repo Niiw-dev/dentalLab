@@ -244,7 +244,7 @@
 }
 
 .dark-mode .form {
-  background: #1e1e1e; 
+  background: #1e1e1e;
 }
 
 .dark-mode .input {
@@ -267,29 +267,36 @@
 .dark-mode .a {
   color: #fff;
 }
-.dark-mode .overlay{
+
+.dark-mode .overlay {
   background: #333;
   color: #fff;
 }
-.dark-mode .overlay-right{
+
+.dark-mode .overlay-right {
   background: #333;
   color: #fff;
 }
-.dark-mode .overlay-left{
-  background: #333;
-  color: #fff; 
-}
-.dark-mode .container2.right-panel-active .sign-int{
+
+.dark-mode .overlay-left {
   background: #333;
   color: #fff;
 }
-.dark-mode .container2.right-panel-active .overlay-container{
-  background: #333; 
+
+.dark-mode .container2.right-panel-active .sign-int {
+  background: #333;
   color: #fff;
 }
-.dark-mode .masthead  {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg')  !important;
+
+.dark-mode .container2.right-panel-active .overlay-container {
+  background: #333;
+  color: #fff;
 }
+
+.dark-mode .masthead {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg') !important;
+}
+
 .dark-mode-toggle {
   position: fixed;
   bottom: 80px;
@@ -304,7 +311,7 @@
   align-items: center;
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;  
+  transition: background-color 0.3s ease, transform 0.3s ease;
   padding: 0;
   margin: 0;
   font-size: 24px;
@@ -326,4 +333,3 @@
 .dark-mode-toggle:hover {
   transform: scale(1.1);
 }
-

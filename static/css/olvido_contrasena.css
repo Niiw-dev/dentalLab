@@ -189,6 +189,7 @@ input[type="submit"]:hover {
   justify-content: center;
   align-items: center;
 }
+
 .input-group {
   position: relative;
 }
@@ -199,6 +200,7 @@ input[type="submit"]:hover {
   top: 50%;
   transform: translateY(-50%);
 }
+
 .input-group input[type="password"],
 .input-group input[type="text"] {
   overflow: hidden;

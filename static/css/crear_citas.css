@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
-/* Variables de modo claro */
 :root {
     --primary-color: #cab97d;
     --secondary-color: #7e734e;
@@ -12,7 +11,6 @@
     --input-focus-border-color: #cab97d;
 }
 
-/* Estilos por defecto (modo claro) */
 .card-body {
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -129,52 +127,53 @@ h4 {
     color: #fff;
 }
 
-/* Estilos para el modo oscuro */
 .dark-mode {
-    --primary-color: #a39b7d; /* Color primario en modo oscuro */
-    --secondary-color: #6a5c4e; /* Color secundario en modo oscuro */
-    --background-color: rgba(40, 40, 40, 0.6); /* Fondo del contenedor en modo oscuro */
-    --text-color: #f8f8f8; /* Color de texto en modo oscuro */
-    --label-color: #ffffff; /* Color de etiquetas en modo oscuro */
-    --input-background: rgba(50, 50, 50, 0.6); /* Fondo de inputs en modo oscuro */
-    --input-border-color: #b3b3b3; /* Color de borde de inputs en modo oscuro */
-    --input-focus-border-color: #cab97d; /* Color de borde al enfocar inputs en modo oscuro */
+    --primary-color: #a39b7d;
+    --secondary-color: #6a5c4e;
+    --background-color: rgba(40, 40, 40, 0.6);
+    --text-color: #f8f8f8;
+    --label-color: #ffffff;
+    --input-background: rgba(50, 50, 50, 0.6);
+    --input-border-color: #b3b3b3;
+    --input-focus-border-color: #cab97d;
 }
 
 .dark-mode .citaForm {
-    background-color: rgba(60, 60, 60, 0.7); /* Fondo del formulario en modo oscuro */
+    background-color: rgba(60, 60, 60, 0.7);
 }
 
 .dark-mode a {
-    color: #ffffff; /* Color de los títulos en modo oscuro */
+    color: #ffffff;
 }
+
 .dark-mode h4 a {
-    color: #ffffff; /* Color de los títulos en modo oscuro */
+    color: #ffffff;
 }
+
 .dark-mode .table-container {
     color: #ffffff;
-    background-color:#000 ; /* Color de los títulos en modo oscuro */
+    background-color: #000;
 }
 
 .dark-mode .form-group label {
-    color: var(--label-color); /* Color de las etiquetas en modo oscuro */
+    color: var(--label-color);
 }
 
 .dark-mode .form-group input,
 .dark-mode .form-group select {
-    background: var(--input-background); /* Fondo de inputs en modo oscuro */
-    border: 1px solid var(--input-border-color); /* Color de borde en modo oscuro */
-    color: var(--text-color); /* Color de texto en inputs en modo oscuro */
+    background: var(--input-background);
+    border: 1px solid var(--input-border-color);
+    color: var(--text-color);
 }
 
 .dark-mode .bbtn .btn-warning {
-    background-color: var(--primary-color); /* Fondo del botón de advertencia en modo oscuro */
-    color: #000; /* Color del texto del botón de advertencia en modo oscuro */
+    background-color: var(--primary-color);
+    color: #000;
 }
 
 .dark-mode .bbtn .btn-danger {
-    background-color: var(--secondary-color); /* Fondo del botón de peligro en modo oscuro */
-    color: #fff; /* Color del texto del botón de peligro en modo oscuro */
+    background-color: var(--secondary-color);
+    color: #fff;
 }
 
 @media (max-width: 768px) {
@@ -197,12 +196,12 @@ h4 {
 }
 
 .cita-hora-boton {
-    width: 80px; /* Ajusta según sea necesario */
-    height: 40px; /* Ajusta según sea necesario */
+    width: 80px;
+    height: 40px;
     padding: 0;
     background-color: var(--input-background);
     border: 2px solid var(--input-border-color);
-    border-radius: 5px; /* Opcional, puedes dejarlo en 0 si quieres rectángulos cuadrados */
+    border-radius: 5px;
     color: var(--text-color);
     font-size: 0.9em;
     cursor: pointer;
@@ -210,7 +209,7 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Asegúrate de que el texto esté centrado */
+    text-align: center;
 }
 
 .cita-hora-boton:hover,
@@ -241,13 +240,15 @@ h4 {
 }
 
 .ampm {
-    font-size: 0.9em; /* Cambia el tamaño según sea necesario */
+    font-size: 0.9em;
     margin-left: 3px;
 }
-.dark-mode h4{
-    
-    color: #fff !important; /* Color del texto del botón de peligro en modo oscuro */
+
+.dark-mode h4 {
+
+    color: #fff !important;
 }
-.dark-mode a{
-    color: #fff !important; /* Color del texto del botón de peligro en modo oscuro */
+
+.dark-mode a {
+    color: #fff !important;
 }

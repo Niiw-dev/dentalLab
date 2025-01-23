@@ -8,7 +8,7 @@
   font-weight: 700;
 }
 
-.form-inner{
+.form-inner {
   width: 100%;
 }
 
@@ -71,6 +71,7 @@
   cursor: pointer;
   width: 25%;
 }
+
 .input-group {
   position: relative;
 }
@@ -81,6 +82,7 @@
   top: 50%;
   transform: translateY(-50%);
 }
+
 .input-group input[type="password"],
 .input-group input[type="text"] {
   overflow: hidden;

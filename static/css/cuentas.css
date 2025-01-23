@@ -1,4 +1,3 @@
-/* Profile Edit Page Styles */
 :root {
     --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
@@ -7,10 +6,9 @@ body {
     font-family: var(--font-family);
 }
 
-/* Modo oscuro */
 .dark-mode {
-    background-color: #1a1a1a; /* Fondo oscuro */
-    color: #f8f8f8; /* Color de texto claro */
+    background-color: #1a1a1a;
+    color: #f8f8f8;
 }
 
 .card {
@@ -23,15 +21,16 @@ body {
     overflow: hidden;
 }
 
-/* Estilos del modo oscuro para la tarjeta */
 .dark-mode .card {
     background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
 .dark-mode .card .card-body .table-container {
     background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
+
 .dark-mode .mb-3 {
     background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -41,7 +40,6 @@ body {
     padding: 2rem;
 }
 
-/* Estilos del modo oscuro para el título de la tarjeta */
 .dark-mode .card-title {
     color: #ffffff;
 }
@@ -72,7 +70,6 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilos del modo oscuro para la imagen de perfil */
 .dark-mode .profile-picture {
     border: 4px solid #444;
 }
@@ -84,7 +81,6 @@ body {
     margin-bottom: 0.75rem;
 }
 
-/* Estilos del modo oscuro para el nombre */
 .dark-mode .name {
     color: #f8f8f8;
 }
@@ -102,7 +98,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-/* Estilos del modo oscuro para el estado */
 .dark-mode .status {
     color: #999;
 }
@@ -120,12 +115,12 @@ body {
     color: #555;
 }
 
-/* Estilos del modo oscuro para las etiquetas */
 .dark-mode .form-label {
     color: #ccc;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
     border-radius: 10px;
     border: 1px solid #ddd;
     padding: 0.75rem;
@@ -133,13 +128,14 @@ body {
     font-family: var(--font-family);
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
-/* Estilos del modo oscuro para inputs y selects */
-.dark-mode .form-control, .dark-mode .form-select {
+.dark-mode .form-control,
+.dark-mode .form-select {
     background: #444;
     border: 1px solid #666;
     color: #fff;
@@ -199,7 +195,6 @@ body {
     border-color: #bd2130;
 }
 
-/* Modal styles */
 .modal {
     display: none;
     position: fixed;
@@ -223,7 +218,6 @@ body {
     font-family: var(--font-family);
 }
 
-/* Estilos del modo oscuro para el modal */
 .dark-mode .modal-content {
     background-color: #333;
     color: #fff;
@@ -238,31 +232,31 @@ body {
     cursor: pointer;
 }
 
-.close:hover, .close:focus {
+.close:hover,
+.close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .card-body {
         padding: 1.5rem;
     }
-    
+
     .card-title {
         font-size: 1.5rem;
     }
-    
+
     .profile-picture {
         width: 100px;
         height: 100px;
     }
-    
+
     .name {
         font-size: 1.1rem;
     }
-    
+
     .profile-btn {
         width: 100%;
         margin-right: 0;
@@ -274,66 +268,72 @@ body {
     .card-body {
         padding: 1rem;
     }
-    
+
     .card-title {
         font-size: 1.25rem;
     }
-    
+
     .profile-picture {
         width: 80px;
         height: 80px;
     }
-    
+
     .name {
         font-size: 1rem;
     }
-    
-    .form-control, .form-select {
+
+    .form-control,
+    .form-select {
         padding: 0.5rem;
     }
-    
+
     .profile-btn {
         padding: 0.5rem 1rem;
     }
 }
+
 .dark-mode input[type="submit"],
 .dark-mode .btn-success,
 .dark-mode .btn-primary {
-    background-color: #3a3a3a; /* Fondo oscuro para botones */
-    color: #e0e0e0; /* Texto claro en botones */
+    background-color: #3a3a3a;
+    color: #e0e0e0;
 }
 
 .dark-mode .btn-primary {
-    background-color: #2e2e2e!important; /* Fondo de botón primario en modo oscuro */
+    background-color: #2e2e2e !important;
 }
 
 .dark-mode .btn-primary:hover {
-    background-color: #272728!important; /* Efecto hover más oscuro para botón primario */
+    background-color: #272728 !important;
 }
+
 .dark-mode .btn-warning {
-    color: #e0e0e0!important; /* Texto claro en botones */
-    background-color: #2e2e2e!important; /* Fondo de botón primario en modo oscuro */
+    color: #e0e0e0 !important;
+    background-color: #2e2e2e !important;
 }
 
 .dark-mode .btn-warning:hover {
-    background-color: #272728!important; /* Efecto hover más oscuro para botón primario */
-}
-.profile-btn-success{
-    background-color: #3a3a3a; /* Fondo oscuro para botones */
-    color: #e0e0e0; /* Texto claro en botones */
-    border:#545b62;
-}
-.profile-btn-success:hover{
-    background-color: #3a3a3a; /* Fondo oscuro para botones */
-    color: #e0e0e0; /* Texto claro en botones */
-}
-.profile-btn-primary{
-    background-color: #3a3a3a!important; /* Fondo oscuro para botones */
-    color: #e0e0e0!important; /* Texto claro en botones */
-    border:#545b62!important;
-}
-.profile-btn-primary:hover{
-    background-color: #3a3a3a!important; /* Fondo oscuro para botones */
-    color: #e0e0e0!important; /* Texto claro en botones */
+    background-color: #272728 !important;
 }
 
+.profile-btn-success {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: #545b62;
+}
+
+.profile-btn-success:hover {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+.profile-btn-primary {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: #545b62 !important;
+}
+
+.profile-btn-primary:hover {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+}

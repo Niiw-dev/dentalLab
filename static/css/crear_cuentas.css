@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
 
-/* Variables de modo claro */
 :root {
     --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --primary-color: #cab97d;
@@ -13,7 +12,6 @@
     --input-focus-border-color: #cab97d;
 }
 
-/* Estilos por defecto (modo claro) */
 .card-body {
     font-family: "Poppins", sans-serif;
     display: flex;
@@ -26,14 +24,14 @@
 .form {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px; 
-    max-width: 1000px; 
+    gap: 20px;
+    max-width: 1000px;
     width: 100%;
     padding: 20px;
-    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.9)); 
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(200, 200, 200, 0.9));
     border-radius: 18px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
-    box-sizing: border-box; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
 }
 
 .card-title {
@@ -42,7 +40,7 @@
     color: #000;
     text-align: center;
     padding: 10px 0;
-    grid-column: span 2; 
+    grid-column: span 2;
     margin-bottom: 20px;
 }
 
@@ -145,20 +143,17 @@ h4 {
 }
 
 .dark-mode {
-    --primary-color: #ffffff; /* Amarillo dorado más brillante */
-    --secondary-color: #b8860b; /* Dorado oscuro */
-    --background-color: rgba(30, 30, 30, 0.9); /* Fondo más oscuro y opaco */
-    --text-color: #f0f0f0; /* Texto casi blanco para mejor contraste */
-    --label-color: #ffffff; /* Etiquetas blancas */
-    --input-background: rgba(45, 45, 45, 0.8); /* Fondo de inputs ligeramente más claro */
-    --input-border-color: #555555; /* Borde de inputs más visible */
-    --input-focus-border-color: #ffffff; /* Borde al enfocar del mismo color primario */
-    --form-background: rgba(40, 40, 40, 0.9); /* Fondo del formulario */
+    --primary-color: #ffffff;
+    --secondary-color: #b8860b;
+    --background-color: rgba(30, 30, 30, 0.9);
+    --text-color: #f0f0f0;
+    --label-color: #ffffff;
+    --input-background: rgba(45, 45, 45, 0.8);
+    --input-border-color: #555555;
+    --input-focus-border-color: #ffffff;
+    --form-background: rgba(40, 40, 40, 0.9);
 }
 
-/* ... (other dark mode styles remain unchanged) ... */
-
-/* Estilos específicos para el formulario en modo oscuro */
 .dark-mode .form {
     background: linear-gradient(to bottom right, rgba(40, 40, 40, 0.9), rgba(60, 60, 60, 0.9));
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -217,7 +212,6 @@ h4 {
     color: #000000;
 }
 
-/* Ajustes adicionales para mejorar la legibilidad en modo oscuro */
 .dark-mode .form-group {
     margin-bottom: 20px;
 }
@@ -261,12 +255,12 @@ h4 {
 }
 
 .cita-hora-boton {
-    width: 80px; /* Ajusta según sea necesario */
-    height: 40px; /* Ajusta según sea necesario */
+    width: 80px;
+    height: 40px;
     padding: 0;
     background-color: var(--input-background);
     border: 2px solid var(--input-border-color);
-    border-radius: 5px; /* Opcional, puedes dejarlo en 0 si quieres rectángulos cuadrados */
+    border-radius: 5px;
     color: var(--text-color);
     font-size: 0.9em;
     cursor: pointer;
@@ -274,7 +268,7 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center; /* Asegúrate de que el texto esté centrado */
+    text-align: center;
 }
 
 .cita-hora-boton:hover,
@@ -305,17 +299,19 @@ h4 {
 }
 
 .ampm {
-    font-size: 0.9em; /* Cambia el tamaño según sea necesario */
+    font-size: 0.9em;
     margin-left: 3px;
 }
-.profile-btn-guardar{
-    background-color: #3a3a3a!important; /* Fondo oscuro para botones */
-    color: #e0e0e0!important; /* Texto claro en botones */
-    border:#545b62!important;
+
+.profile-btn-guardar {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: #545b62 !important;
 }
-.profile-btn-guardar:hover{
-    background-color: #3a3a3a!important; /* Fondo oscuro para botones */
-    color: #e0e0e0!important; /* Texto claro en botones */
+
+.profile-btn-guardar:hover {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
 }
 
 .form-label {
@@ -325,29 +321,32 @@ h4 {
     color: #000000;
 }
 
-.form-control, .form-select {
+.form-control,
+.form-select {
     border: none;
     border-bottom: 2px solid #2466bb;
     padding: 10px;
-    background: transparent; 
-    color: #000000; 
+    background: transparent;
+    color: #000000;
     font-family: 'Georgia', serif;
     transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     border-radius: 4px;
-    width: 100%; 
+    width: 100%;
     font-size: 20px;
 }
 
-.form-control::placeholder, .form-select::placeholder {
-    color: #000000; 
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #000000;
 }
 
-.form-control:focus, .form-select:focus {
+.form-control:focus,
+.form-select:focus {
     border-bottom: 2px solid #094a94;
     outline: none;
-    color: #000000; 
+    color: #000000;
     box-shadow: 0 4px 8px rgba(7, 96, 190, 0.6);
-    background: transparent; 
+    background: transparent;
 }
 
 .form-step {
@@ -358,43 +357,44 @@ h4 {
     display: block;
 }
 
-.btn-guardar, .btn-volver {
+.btn-guardar,
+.btn-volver {
     position: relative;
     overflow: hidden;
-    color: #fff; 
+    color: #fff;
     transition: background-color 0.3s, transform 0.3s, border 0.3s;
-    border: 2px dotted transparent; 
-    border-radius: 12px; 
+    border: 2px dotted transparent;
+    border-radius: 12px;
     font-family: 'Georgia', serif;
     font-size: 24px;
     padding: 10px 20px;
 }
 
 .btn-guardar {
-    background-color: #438bdd; 
+    background-color: #438bdd;
 }
 
 .btn-volver {
-    background-color: #424141; 
+    background-color: #424141;
 }
 
 .btn-guardar:hover {
-    background-color: #5ba8f2; 
-    border-color: #438bdd; 
-    color: #fff; 
+    background-color: #5ba8f2;
+    border-color: #438bdd;
+    color: #fff;
 }
 
 .btn-volver:hover {
-    background-color: #6c6c6c; 
-    border-color: #424141; 
-    color: #fff; 
+    background-color: #6c6c6c;
+    border-color: #424141;
+    color: #fff;
 }
 
 @media (max-width: 1024px) {
     .form-container {
         padding: 20px;
     }
-    
+
     .card-title {
         font-size: 30px;
     }
@@ -414,11 +414,13 @@ h4 {
         gap: 15px;
     }
 
-    .btn-guardar, .btn-volver {
+    .btn-guardar,
+    .btn-volver {
         font-size: 22px;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         font-size: 18px;
     }
 }
@@ -433,11 +435,13 @@ h4 {
         font-size: 24px;
     }
 
-    .btn-guardar, .btn-volver {
+    .btn-guardar,
+    .btn-volver {
         font-size: 18px;
     }
 
-    .form-control, .form-select {
+    .form-control,
+    .form-select {
         font-size: 16px;
     }
 }
