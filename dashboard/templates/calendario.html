@@ -13,30 +13,26 @@
 {% endblock %}
 
 {% block content %}
-    <div id="calendar" data-tooltip="Haz clic en un día para ver más detalles o agregar una nueva cita"></div>
-    <script id="citas-data" type="application/json">
-        [
-            {% for cita in citas %}
-                {
-                    "paciente": "{{ cita.paciente.nombre }}",
-                    "motivo": "{{ cita.motivo }}",
-                    "start": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}",
-                    "end": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}"
-                }{% if not forloop.last %},{% endif %}
-            {% endfor %}
-        ]
-    </script>
-    <script id="is-superuser" type="application/json">
-        {{ user.is_superuser|yesno:"True,False" }}
-    </script>
+<div id="calendar" data-tooltip="Haz clic en un día para ver más detalles o agregar una nueva cita"></div>
 {% endblock %}
 
 {% block extra_js %}
-
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/es.js"></script>
-    <script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
-    <script src="{% static 'js/calendario.js' %}?v1.5"></script>
-
-
+<script id="citas-data" type="application/json">
+    [
+        {% for cita in citas %}
+            {
+                "paciente": "{{ cita.paciente.nombre }}",
+                "motivo": "{{ cita.motivo }}",
+                "start": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}",
+                "end": "{{ cita.fecha_hora.fecha|date:"Y-m-d" }}T{{ cita.fecha_hora.hora|date:"H:i:s" }}"
+            }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ]
+</script>
+<script id="is-superuser" type="application/json">
+    {{ user.is_superuser|yesno:"True,False" }}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/main.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.1/locales/es.js"></script>
+<script src="{% static 'js/calendario.js' %}?v1.5"></script>
 {% endblock %}

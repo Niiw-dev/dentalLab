@@ -7,10 +7,91 @@
   flex-direction: column;
 }
 
+.dashboard-containerII {
+  height: 82vh;
+  width: 32%;
+}
+
 .add {
-  width: 37%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  max-width: 100%;
+  max-height: 100%;
+  overflow-y: auto; 
+  overflow-x: hidden; 
+}
+
+#calendar {
+  width: 100%;
+  height: 380px;
   margin: 0 auto;
-  padding: 1rem;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.citas {
+  margin-top: 15px;
+  width: 100%;
+  padding: 20px;
+  background-color: #fffae5;
+  border: 2px solid #f0e3a1;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 400px;
+}
+
+.citas h3 {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.citas li {
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #333;
+}
+
+.citas li strong {
+  font-weight: bold;
+  color: #1d3557;
+}
+
+.citas li .fecha-hora {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.citas p {
+  text-align: center;
+  font-size: 18px;
+  color: #2d2d2d;
+  font-style: italic;
+}
+
+.citas ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  padding-right: 8px;
+  max-height: 248px;
+  overflow-y: auto;
 }
 
 .button-grid {
@@ -25,19 +106,19 @@
   padding: 1.5rem;
 }
 
-.button-grid::-webkit-scrollbar {
+.button-grid::-webkit-scrollbar, .citas ul::-webkit-scrollbar, .add::-webkit-scrollbar {
   width: 11px;
   background-color: #f0f0f0;
   border-radius: 5px;
 }
 
-.button-grid::-webkit-scrollbar-thumb {
+.button-grid::-webkit-scrollbar-thumb, .citas ul::-webkit-scrollbar-thumb, .add::-webkit-scrollbar-thumb {
   background-color: #3b3b3b;
   border-radius: 10px;
   border: 3px solid #f0f0f0;
 }
 
-.button-grid::-webkit-scrollbar-track {
+.button-grid::-webkit-scrollbar-track, .citas ul::-webkit-scrollbar-track, .add::-webkit-scrollbar-track {
   background-color: #e0e0e0;
   border-radius: 10px;
 }
@@ -56,7 +137,7 @@
   text-align: center;
   text-decoration: none;
   transition: all 0.3s ease;
-}
+} 
 
 @media (max-width: 990px) {
   .dashboard-container {
@@ -64,6 +145,10 @@
     width: 90%;
     margin: 0 auto;
     padding: 1rem;
+  }
+
+  .dashboard-containerII {
+    display: none;
   }
 
   .button-grid {
@@ -141,37 +226,4 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-}
-
-.dark-mode .dashboard-container {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-.dark-mode .dashboard-button {
-  background-color: #333;
-  color: #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .dashboard-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode .button-icon {
-  background-color: #48455f;
-  color: white;
-}
-
-.dark-mode .button-text h3 {
-  color: #f0f0f0;
-}
-
-.dark-mode .footer a {
-  color: #ffffff;
-}
-
-.dark-mode .button-text p {
-  color: #ccc;
 }

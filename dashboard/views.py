@@ -41,7 +41,14 @@ def signout(request):
 @never_cache
 @login_required(login_url='acceso_denegado')
 def dashboard(request):
-    return render(request, 'dashboard.html', {'user': request.user})
+    if request.user.is_superuser:
+        # Si es superusuario, obtener todas las citas programadas
+        citas = Cita.objects.filter(estado='Programada')
+        return render(request, 'dashboard.html', {'user': request.user,'citas': citas})
+    else:
+        # Si es un paciente normal, obtener solo sus citas programadas
+        return render(request, 'dashboard.html', {'user': request.user})
+
 
 @never_cache
 def politicas_de_privacidad(request):
