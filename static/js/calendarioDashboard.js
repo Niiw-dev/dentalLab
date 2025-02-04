@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', function () {
             day: 'Día'
         },
         datesSet: function (dateInfo) {
+            var headerSections = calendarEl.querySelectorAll('.fc-scroller');
+            headerSections.forEach(function (section) {
+                section.style.setProperty('--scrollbar-width', '11px');
+                section.style.setProperty('--scrollbar-background-color', '#f0f0f0');
+                section.style.setProperty('--scrollbar-thumb-background-color', '#3b3b3b');
+                section.style.setProperty('--scrollbar-thumb-border', '3px solid #f0f0f0');
+                section.style.setProperty('--scrollbar-track-background-color', '#e0e0e0');
+                section.style.setProperty('--scrollbar-radius', '10px');
+                section.style.setProperty('overflow', 'auto');
+            });
 
             var dayHeaders = calendarEl.querySelectorAll('.fc-col-header-cell.fc-day');
             dayHeaders.forEach(function (dayHeader, index) {
