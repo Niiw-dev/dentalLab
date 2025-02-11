@@ -611,10 +611,6 @@ progress {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .row {
@@ -2193,10 +2189,6 @@ fieldset:disabled .btn {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
     width: 100%;
-    padding-right: calc(var(--bs-gutter-x)* 0.5);
-    padding-left: calc(var(--bs-gutter-x)* 0.5);
-    margin-right: auto;
-    margin-left: auto;
   }
 
   style attribute {
@@ -11629,6 +11621,10 @@ header.masthead .masthead-heading {
   .my-lg-0 {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+    text-align: right !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    width: 60%;
   }
 
   .my-lg-1 {
@@ -12111,7 +12107,8 @@ header.masthead .masthead-heading {
   .container-md,
   .container-sm,
   .container {
-    max-width: 1140px;
+    max-width: 100%;
+    padding: 0 5rem;
   }
 
   .col-xl {
