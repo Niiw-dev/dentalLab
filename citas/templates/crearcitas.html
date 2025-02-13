@@ -5,28 +5,21 @@
 {% block title %}Agendar Cita | Laboratorio Dental{% endblock %}
 
 {% block extra_css %}
-<!-- En este bloque, se agrega una hoja de estilo específica para esta página con control de versiones para evitar problemas de caché -->
 <link rel="stylesheet" href="{% static 'css/crear_citas.css' %}?v3.6">
 {% endblock %}
 
 {% block titulo %}
-<!-- Aquí se renderiza el título principal de la página, con un enlace que redirige a la lista de citas agendadas y el título "Agendar Nueva Cita". -->
 <a href="{% url 'listcitas' %}" data-tooltip="Ver todas las citas agendadas">Citas Agendadas</a>&gt;
 <span data-tooltip="Formulario para agendar una nueva cita">Agendar Nueva Cita</span>
 {% endblock %}
 
 {% block content %}
-<!-- El contenido principal de la página muestra un encabezado y el formulario para crear una nueva cita, que está incluido desde otro archivo. -->
-<div class="cintro">
+<div class="ContentX">
     <h4 style="color: black;" data-tooltip="Formulario para crear una nueva cita">Crear Cita</h4>
-    <!-- Incluye el formulario 'formscitas.html'. -->
     {% include 'formscitas.html' %}<br>
 </div>
 {% endblock %}
 
 {% block extra_js %}
-<!-- En este bloque, se cargan los scripts adicionales que son específicos para la funcionalidad de las citas, como el archivo 'citas.js' con control de versión. -->
 <script src="{% static 'js/citas.js' %}?v3.0"></script>
-
 {% endblock %}
-<script src="{% static 'js/dark_mode.js' %}?v3.2"></script>

@@ -4,14 +4,28 @@
   --primary-font: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
+
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: var(--primary-font);
 }
-
+.ContentX {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
 main {
   display: flex;
   justify-content: center;
@@ -417,5 +431,6 @@ input {
 }
 
 .bootFooter {
+  width: 100%;
   background-color: blue;
 }

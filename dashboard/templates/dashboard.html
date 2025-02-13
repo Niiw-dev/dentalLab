@@ -10,133 +10,135 @@
 {% endblock %}
 
 {% block content %}
-<div class="dashboard-container">
-  <div class="button-grid">
-    <a href="{% url 'crearcitas' %}" class="dashboard-button" data-tooltip="Programar una nueva cita para un paciente">
-      <div class="button-icon">
-        <i class="fa-solid fa-clock"></i>
-      </div>
-      <div class="button-text">
-        <h3>AGENDAR</h3>
-        <p>NUEVA CITA</p>
-      </div>
-    </a>
+<div class="middContent">
+  <div class="dashboard-container">
+    <div class="button-grid">
+      <a href="{% url 'crearcitas' %}" class="dashboard-button" data-tooltip="Programar una nueva cita para un paciente">
+        <div class="button-icon">
+          <i class="fa-solid fa-clock"></i>
+        </div>
+        <div class="button-text">
+          <h3>AGENDAR</h3>
+          <p>NUEVA CITA</p>
+        </div>
+      </a>
 
-    <a href="{% url 'listcitas' %}" class="dashboard-button" data-tooltip="Ver, modificar o cancelar citas existentes">
-      <div class="button-icon">
-        <i class="fa-solid fa-user-clock"></i>
-      </div>
-      <div class="button-text">
-        <h3>REPROGRAMAR O CANCELAR</h3>
-        <p>CITAS</p>
-      </div>
-    </a>
+      <a href="{% url 'listcitas' %}" class="dashboard-button" data-tooltip="Ver, modificar o cancelar citas existentes">
+        <div class="button-icon">
+          <i class="fa-solid fa-user-clock"></i>
+        </div>
+        <div class="button-text">
+          <h3>REPROGRAMAR O CANCELAR</h3>
+          <p>CITAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'listhistorias' %}" class="dashboard-button"
-      data-tooltip="Acceder a las historias clínicas de los pacientes">
-      <div class="button-icon">
-        <i class="fa-solid fa-book-medical"></i>
-      </div>
-      <div class="button-text">
-        <h3>HISTORIAS</h3>
-        <p>CLÍNICAS</p>
-      </div>
-    </a>
+      <a href="{% url 'listhistorias' %}" class="dashboard-button"
+        data-tooltip="Acceder a las historias clínicas de los pacientes">
+        <div class="button-icon">
+          <i class="fa-solid fa-book-medical"></i>
+        </div>
+        <div class="button-text">
+          <h3>HISTORIAS</h3>
+          <p>CLÍNICAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'configuracion' id=user.id %}" class="dashboard-button"
-      data-tooltip="Modificar la información de tu perfil">
-      <div class="button-icon">
-        <i class="fa-solid fa-gear"></i>
-      </div>
-      <div class="button-text">
-        <h3>EDITAR</h3>
-        <p>PERFIL</p>
-      </div>
-    </a>
+      <a href="{% url 'configuracion' id=user.id %}" class="dashboard-button"
+        data-tooltip="Modificar la información de tu perfil">
+        <div class="button-icon">
+          <i class="fa-solid fa-gear"></i>
+        </div>
+        <div class="button-text">
+          <h3>EDITAR</h3>
+          <p>PERFIL</p>
+        </div>
+      </a>
 
-    {% if user.is_superuser %}
-    <!-- Botones solo para superusuarios -->
-    <a href="{% url 'crearfechas' %}" class="dashboard-button"
-      data-tooltip="Añadir nuevas fechas disponibles para citas">
-      <div class="button-icon">
-        <i class="fa-solid fa-calendar-days"></i>
-      </div>
-      <div class="button-text">
-        <h3>AGREGAR</h3>
-        <p>FECHAS</p>
-      </div>
-    </a>
+      {% if user.is_superuser %}
+      <!-- Botones solo para superusuarios -->
+      <a href="{% url 'crearfechas' %}" class="dashboard-button"
+        data-tooltip="Añadir nuevas fechas disponibles para citas">
+        <div class="button-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div class="button-text">
+          <h3>AGREGAR</h3>
+          <p>FECHAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'listfechas' %}" class="dashboard-button" data-tooltip="Ver y gestionar las fechas disponibles">
-      <div class="button-icon">
-        <i class="fa-solid fa-list"></i>
-      </div>
-      <div class="button-text">
-        <h3>LISTA</h3>
-        <p>FECHAS</p>
-      </div>
-    </a>
+      <a href="{% url 'listfechas' %}" class="dashboard-button" data-tooltip="Ver y gestionar las fechas disponibles">
+        <div class="button-icon">
+          <i class="fa-solid fa-list"></i>
+        </div>
+        <div class="button-text">
+          <h3>LISTA</h3>
+          <p>FECHAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'crearcuentas' %}" class="dashboard-button"
-      data-tooltip="Registrar un nuevo paciente en el sistema">
-      <div class="button-icon">
-        <i class="fa-solid fa-user-plus"></i>
-      </div>
-      <div class="button-text">
-        <h3>CREAR</h3>
-        <p>CUENTA</p>
-      </div>
-    </a>
+      <a href="{% url 'crearcuentas' %}" class="dashboard-button"
+        data-tooltip="Registrar un nuevo paciente en el sistema">
+        <div class="button-icon">
+          <i class="fa-solid fa-user-plus"></i>
+        </div>
+        <div class="button-text">
+          <h3>CREAR</h3>
+          <p>CUENTA</p>
+        </div>
+      </a>
 
-    <a href="{% url 'listcuentas' %}" class="dashboard-button"
-      data-tooltip="Ver y gestionar las cuentas de los pacientes">
-      <div class="button-icon">
-        <i class="fa-solid fa-users"></i>
-      </div>
-      <div class="button-text">
-        <h3>PACIENTES</h3>
-        <p>CUENTAS</p>
-      </div>
-    </a>
+      <a href="{% url 'listcuentas' %}" class="dashboard-button"
+        data-tooltip="Ver y gestionar las cuentas de los pacientes">
+        <div class="button-icon">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="button-text">
+          <h3>PACIENTES</h3>
+          <p>CUENTAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'crearhistorias' %}" class="dashboard-button"
-      data-tooltip="Crear una nueva historia clínica para un paciente">
-      <div class="button-icon">
-        <i class="fa-solid fa-file-medical"></i>
-      </div>
-      <div class="button-text">
-        <h3>CREAR</h3>
-        <p>HISTORIAS</p>
-      </div>
-    </a>
+      <a href="{% url 'crearhistorias' %}" class="dashboard-button"
+        data-tooltip="Crear una nueva historia clínica para un paciente">
+        <div class="button-icon">
+          <i class="fa-solid fa-file-medical"></i>
+        </div>
+        <div class="button-text">
+          <h3>CREAR</h3>
+          <p>HISTORIAS</p>
+        </div>
+      </a>
 
-    <a href="{% url 'listelementos' %}" class="dashboard-button"
-      data-tooltip="Gestionar el inventario del laboratorio dental">
-      <div class="button-icon">
-        <i class="fa-solid fa-boxes-stacked"></i>
-      </div>
-      <div class="button-text">
-        <h3>INVENTARIO</h3>
-        <p>GESTIÓN</p>
-      </div>
-    </a>
-    {% endif %}
+      <a href="{% url 'listelementos' %}" class="dashboard-button"
+        data-tooltip="Gestionar el inventario del laboratorio dental">
+        <div class="button-icon">
+          <i class="fa-solid fa-boxes-stacked"></i>
+        </div>
+        <div class="button-text">
+          <h3>INVENTARIO</h3>
+          <p>GESTIÓN</p>
+        </div>
+      </a>
+      {% endif %}
+    </div>
   </div>
-</div>
 
-<div class="dashboard-containerII">
-  <div class="add">
-    <div id="calendar" data-tooltip="Haz clic en un día para ver más detalles o agregar una nueva cita"></div>
-    <div class="citas">
-      <h3>Citas Agendadas</h3>
-      <ul>
-        {% for cita in citas %}
-        <li>
-          <strong>{{ cita.paciente.nombre }}</strong> - {{ cita.motivo }} ({{ cita.fecha_hora.fecha|date:"d/m/Y" }} -
-          {{ cita.fecha_hora.hora|date:"H:i" }})
-        </li>
-        {% endfor %}
-      </ul>
+  <div class="dashboard-containerII">
+    <div class="add">
+      <div id="calendar" data-tooltip="Haz clic en un día para ver más detalles o agregar una nueva cita"></div>
+      <div class="citas">
+        <h3>Citas Agendadas</h3>
+        <ul>
+          {% for cita in citas %}
+          <li>
+            <strong>{{ cita.paciente.nombre }}</strong> - {{ cita.motivo }} ({{ cita.fecha_hora.fecha|date:"d/m/Y" }} -
+            {{ cita.fecha_hora.hora|date:"H:i" }})
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -7478,11 +7478,12 @@ fieldset:disabled .btn {
 }
 
 .middContent {
-  height: 92.5vh;
+  height: 85vh;
   background-color: #e8e8e8;
   display: flex;
   justify-content: flex-start; 
   align-items: center; 
+  flex: 1;
 }
 
 @media (min-width: 576px) {
@@ -10968,11 +10969,6 @@ header.masthead .masthead-heading {
 @media (min-width: 992px) {
   .menu {
     height: 135px;
-  }
-
-  .middContent {
-    height: 86vh;
-    background-color: #e8e8e8;
   }
 
   .container-lg,

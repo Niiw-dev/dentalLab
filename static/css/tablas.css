@@ -120,9 +120,27 @@ i.a {
 }
 
 .card-body {
+  flex: 1;
   padding: 30px;
   border-color: #000000;
-  overflow-x: scroll;
+  overflow-x: auto;
+}
+
+.card-body::-webkit-scrollbar, .table-responsive::-webkit-scrollbar{
+  width: 11px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+}
+
+.card-body::-webkit-scrollbar-thumb, .table-responsive::-webkit-scrollbar-thumb {
+  background-color: #3b3b3b;
+  border-radius: 10px;
+  border: 3px solid #f0f0f0;
+}
+
+.card-body::-webkit-scrollbar-track, .table-responsive::-webkit-scrollbar-track {
+  background-color: #e0e0e0;
+  border-radius: 10px;
 }
 
 .card-title {
@@ -147,9 +165,7 @@ i.a {
   color: rgb(255, 255, 255);
   font-weight: 600;
   text-transform: uppercase;
-  padding: 15px;
   border: #000000;
-  vertical-align: middle;
 }
 
 .table tbody tr:nth-child(even) {
@@ -208,6 +224,8 @@ i.a {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   border: none;
   border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -241,16 +259,15 @@ i.a {
 
 .table-container {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 4px;
 }
 
 #elementosTable {
   border-collapse: separate;
   border-spacing: 0;
-  width: 100%;
+  width: 97%;
   border: 0.5px solid #d3d3d3;
-  border-radius: 14px;
-  overflow: hidden;
+  border-radius: 4px;
 }
 
 #elementosTable thead th {
@@ -275,6 +292,7 @@ i.a {
   padding: 15px;
   vertical-align: middle;
   border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 #elementosTable tbody tr:last-child td {
