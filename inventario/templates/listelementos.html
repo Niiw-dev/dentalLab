@@ -14,78 +14,88 @@ Insumos
 
 {% block content %}
 <div class="ContentTable">
-<div class="card">
+    <div class="card">
 
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
-            <div class="d-flex">
-                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al dashboard">
-                    <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
-                </a>
-                <a class="btn btn-success btn-custom" href="{% url 'crearelementos' %}" role="button" data-tooltip="Agregar un nuevo insumo">
-                    <i class="fas fa-plus text-white"></i> <span> Agregar Nuevo Elemento </span>
-                </a>
-            </div>
-            <div class="d-flex">
-                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_inventario' %}" role="button" data-tooltip="Descargar tabla en excel">
-                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
-                </a>
-                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_inventario' %}" role="button" data-tooltip="Descargar tabla en pdf">
-                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="card-body">
-        <div class="table-container">
-            <div id="filtroForm" class="mb-3">
-                <div class="row" style="width: 100%;">
-                    <div>
-                        <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Tipo de Documento</label>
-                        <select id="filtroEstados" class="form-select" data-tooltip="Filtrar por estado">
-                            <option value="">Todos los Estados</option>
-                            <option value="1">Disponible</option>
-                            <option value="2">Agotado</option>
-                        </select>
-                    </div>
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex">
+                    <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button"
+                        data-tooltip="Volver al dashboard">
+                        <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                    </a>
+                    <a class="btn btn-success btn-custom" href="{% url 'crearelementos' %}" role="button"
+                        data-tooltip="Agregar un nuevo insumo">
+                        <i class="fas fa-plus text-white"></i> <span> Agregar Nuevo Elemento </span>
+                    </a>
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_inventario' %}" role="button"
+                        data-tooltip="Descargar tabla en excel">
+                        <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                    </a>
+                    <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_inventario' %}" role="button"
+                        data-tooltip="Descargar tabla en pdf">
+                        <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                    </a>
                 </div>
             </div>
-            <div class="table-responsive">
-                <table id="elementosTable" class="table table-primary table-centered">
-                    <thead>
-                        <tr>
-                            <th id="headerProducto" data-sort="producto" scope="col" data-tooltip="Producto">Producto</th>
-                            <th id="headerCantidad" data-sort="cantidad" scope="col" data-tooltip="Cantidad disponible">Cantidad</th>
-                            <th id="headerEstado" data-sort="estado" scope="col" data-tooltip="Estado del producto">Estado</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for elemento in inventarios %}
-                        <tr {% if not cuenta.is_superuser %} style="display:none;" {% endif %}>
-                            <td data-sort="producto">{{ elemento.producto }}</td>
-                            <td data-sort="cantidad">{{ elemento.cantidad }}</td>
-                            <td data-sort="estado">{{ elemento.get_estado_display }}</td>
-                            <td>
-                                <a class="btn btn-info" href="{% url 'editarelementos' elemento.id %}" role="button" data-tooltip="Editar este insumo">
-                                    <i class="fas fa-pen sort-icon a"></i>
-                                </a>
-                                <button class="btn btn-danger" onclick="confirmarEliminacion('{{ elemento.id }}', '{{ elemento.producto }}')" data-tooltip="Eliminar este insumo">
-                                    <i class="fas fa-trash sort-icon a"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+        </div>
+
+        <div class="card-body">
+            <div class="table-container">
+                <div id="filtroForm" class="mb-3">
+                    <div class="row" style="width: 100%;">
+                        <div>
+                            <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Tipo de
+                                Documento</label>
+                            <select id="filtroEstados" class="form-select" data-tooltip="Filtrar por estado">
+                                <option value="">Todos los Estados</option>
+                                <option value="1">Disponible</option>
+                                <option value="2">Agotado</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table id="elementosTable" class="table table-primary table-centered">
+                        <thead>
+                            <tr>
+                                <th id="headerProducto" data-sort="producto" scope="col" data-tooltip="Producto">
+                                    Producto</th>
+                                <th id="headerCantidad" data-sort="cantidad" scope="col"
+                                    data-tooltip="Cantidad disponible">Cantidad</th>
+                                <th id="headerEstado" data-sort="estado" scope="col" data-tooltip="Estado del producto">
+                                    Estado</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for elemento in inventarios %}
+                            <tr {% if not cuenta.is_superuser %} style="display:none;" {% endif %}>
+                                <td data-sort="producto">{{ elemento.producto }}</td>
+                                <td data-sort="cantidad">{{ elemento.cantidad }}</td>
+                                <td data-sort="estado">{{ elemento.get_estado_display }}</td>
+                                <td>
+                                    <a class="btn btn-info" href="{% url 'editarelementos' elemento.id %}" role="button"
+                                        data-tooltip="Editar este insumo">
+                                        <i class="fas fa-pen sort-icon a"></i>
+                                    </a>
+                                    <button class="btn btn-danger"
+                                        onclick="confirmarEliminacion('{{ elemento.id }}', '{{ elemento.producto }}')"
+                                        data-tooltip="Eliminar este insumo">
+                                        <i class="fas fa-trash sort-icon a"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 
-<!-- Modal de confirmación -->
 <div id="confirmarModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
@@ -103,39 +113,37 @@ Insumos
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const table = document.getElementById('elementosTable');
         const tbody = table.querySelector('tbody');
         const rows = Array.from(tbody.querySelectorAll('tr'));
         const filtroEstados = document.getElementById('filtroEstados');
 
-        // Función para filtrar las filas
         function filtrarFilas() {
             const estadoSeleccionado = filtroEstados.value;
 
             rows.forEach(row => {
                 const estadoCell = row.querySelector('td[data-sort="estado"]');
-                const mostrarFila = estadoSeleccionado === '' || 
-                                    (estadoSeleccionado === '1' && estadoCell.textContent === 'Disponible') ||
-                                    (estadoSeleccionado === '2' && estadoCell.textContent === 'Agotado');
-                
+                const mostrarFila = estadoSeleccionado === '' ||
+                    (estadoSeleccionado === '1' && estadoCell.textContent === 'Disponible') ||
+                    (estadoSeleccionado === '2' && estadoCell.textContent === 'Agotado');
+
                 row.style.display = mostrarFila ? '' : 'none';
             });
         }
 
-        // Función para ordenar las filas
         function ordenarFilas(columna, orden) {
             const sortedRows = rows.sort((a, b) => {
                 const aValue = a.querySelector(`td[data-sort="${columna}"]`).textContent.trim();
                 const bValue = b.querySelector(`td[data-sort="${columna}"]`).textContent.trim();
-                
+
                 if (columna === 'cantidad') {
-                    return orden === 'asc' ? 
-                        parseInt(aValue) - parseInt(bValue) : 
+                    return orden === 'asc' ?
+                        parseInt(aValue) - parseInt(bValue) :
                         parseInt(bValue) - parseInt(aValue);
                 } else {
-                    return orden === 'asc' ? 
-                        aValue.localeCompare(bValue) : 
+                    return orden === 'asc' ?
+                        aValue.localeCompare(bValue) :
                         bValue.localeCompare(aValue);
                 }
             });
@@ -144,10 +152,8 @@ Insumos
             sortedRows.forEach(row => tbody.appendChild(row));
         }
 
-        // Escuchar cambios en el filtro de estados
         filtroEstados.addEventListener('change', filtrarFilas);
 
-        // Configurar la ordenación de columnas
         const headers = table.querySelectorAll('th[data-sort]');
         headers.forEach(header => {
             header.addEventListener('click', () => {
@@ -162,7 +168,6 @@ Insumos
             });
         });
 
-        // Aplicar filtro inicial
         filtrarFilas();
     });
 </script>

@@ -1,67 +1,70 @@
 {% load static %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        <div class="citaFormII">
-            <div class="form-group">
-                <label for="fecha" data-tooltip="Seleccione la fecha para la cita">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required data-tooltip="Elija una fecha disponible">
+<form method="POST">
+    {% csrf_token %}
+    <div class="citaFormII">
+        <div class="form-group">
+            <label for="fecha" data-tooltip="Seleccione la fecha para la cita">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required data-tooltip="Elija una fecha disponible">
+        </div>
+    </div>
+
+    <div class="citaFormII">
+        <div class="form-group">
+            <label for="hora" data-tooltip="Seleccione la hora para la cita">Hora:</label>
+            <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
             </div>
         </div>
+    </div>
 
-        <div class="citaFormII">
-            <div class="form-group">
-                <label for="hora" data-tooltip="Seleccione la hora para la cita">Hora:</label>
-                <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
-                </div>
-            </div>
+    <div class="citaFormII">
+        <div class="form-group">
+            <label for="motivo" data-tooltip="Seleccione el motivo de la cita">Motivo:</label>
+            <select name="motivo" id="motivo" required data-tooltip="Elija el motivo principal de su visita">
+                {% for value, display_name in form.fields.motivo.choices %}
+                <option value="{{ value }}">{{ display_name }}</option>
+                {% endfor %}
+            </select>
         </div>
 
-        <div class="citaFormII">
-            <div class="form-group">
-                <label for="motivo" data-tooltip="Seleccione el motivo de la cita">Motivo:</label>
-                <select name="motivo" id="motivo" required data-tooltip="Elija el motivo principal de su visita">
-                    {% for value, display_name in form.fields.motivo.choices %}
-                    <option value="{{ value }}">{{ display_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-
-            {% if is_superuser %}
-                <div class="form-group">
-                    <label for="paciente" data-tooltip="{% if is_editing %}Paciente actual{% else %}Seleccione el paciente para la cita{% endif %}">
-                        {% if is_editing %}
-                            Paciente:
-                        {% else %}
-                            Seleccionar Paciente:
-                        {% endif %}
-                    </label>
-                    {% if is_editing %}
-                        <span data-tooltip="Paciente asignado a esta cita">{{ cita.paciente.nombre }}</span>
-                        <input type="hidden" name="paciente" value="{{ cita.paciente.id }}">
-                    {% else %}
-                        <select name="paciente" id="paciente" required data-tooltip="Elija el paciente para esta cita">
-                            {% for value, display_nombre in form.fields.paciente.choices %}
-                                {% if value != is_superuser %}
-                                    <option value="{{ value }}">{{ display_nombre }}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                    {% endif %}
-                </div>
+        {% if is_superuser %}
+        <div class="form-group">
+            <label for="paciente"
+                data-tooltip="{% if is_editing %}Paciente actual{% else %}Seleccione el paciente para la cita{% endif %}">
+                {% if is_editing %}
+                Paciente:
+                {% else %}
+                Seleccionar Paciente:
+                {% endif %}
+            </label>
+            {% if is_editing %}
+            <span data-tooltip="Paciente asignado a esta cita">{{ cita.paciente.nombre }}</span>
+            <input type="hidden" name="paciente" value="{{ cita.paciente.id }}">
             {% else %}
-                <div class="form-group">
-                    <label for="paciente" data-tooltip="Paciente para esta cita">Paciente:</label>
-                    <span data-tooltip="Su nombre como paciente">{{ user.nombre }}</span>
-                    <input type="hidden" name="paciente" value="{{ user.id }}">
-                </div>
+            <select name="paciente" id="paciente" required data-tooltip="Elija el paciente para esta cita">
+                {% for value, display_nombre in form.fields.paciente.choices %}
+                {% if value != is_superuser %}
+                <option value="{{ value }}">{{ display_nombre }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
             {% endif %}
-
-            <div class="button-container">
-                <button type="submit" class="btn btn-warning" data-tooltip="Guardar los detalles de la cita">Guardar</button>
-                <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button" data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
-            </div>
         </div>
-    </form>
+        {% else %}
+        <div class="form-group">
+            <label for="paciente" data-tooltip="Paciente para esta cita">Paciente:</label>
+            <span data-tooltip="Su nombre como paciente">{{ user.nombre }}</span>
+            <input type="hidden" name="paciente" value="{{ user.id }}">
+        </div>
+        {% endif %}
+
+        <div class="button-container">
+            <button type="submit" class="btn btn-warning"
+                data-tooltip="Guardar los detalles de la cita">Guardar</button>
+            <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button"
+                data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
+        </div>
+    </div>
+</form>
 {% endblock %}

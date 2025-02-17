@@ -13,7 +13,8 @@
 <div class="middContent">
   <div class="dashboard-container">
     <div class="button-grid">
-      <a href="{% url 'crearcitas' %}" class="dashboard-button" data-tooltip="Programar una nueva cita para un paciente">
+      <a href="{% url 'crearcitas' %}" class="dashboard-button"
+        data-tooltip="Programar una nueva cita para un paciente">
         <div class="button-icon">
           <i class="fa-solid fa-clock"></i>
         </div>
@@ -23,7 +24,8 @@
         </div>
       </a>
 
-      <a href="{% url 'listcitas' %}" class="dashboard-button" data-tooltip="Ver, modificar o cancelar citas existentes">
+      <a href="{% url 'listcitas' %}" class="dashboard-button"
+        data-tooltip="Ver, modificar o cancelar citas existentes">
         <div class="button-icon">
           <i class="fa-solid fa-user-clock"></i>
         </div>
@@ -56,7 +58,6 @@
       </a>
 
       {% if user.is_superuser %}
-      <!-- Botones solo para superusuarios -->
       <a href="{% url 'crearfechas' %}" class="dashboard-button"
         data-tooltip="Añadir nuevas fechas disponibles para citas">
         <div class="button-icon">

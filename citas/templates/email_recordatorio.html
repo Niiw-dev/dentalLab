@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Recordatorio: Creación de Cita</title>
 </head>
+
 <body>
     <p>Hola {{ cita.paciente.get_full_name }},</p>
 
     <p>Te informamos que se ha creado una nueva cita para ti:</p>
-    
+
     <ul>
         <li>Fecha: {{ cita.fecha }}</li>
         <li>Hora: {{ cita.hora }}</li>
@@ -18,5 +20,5 @@
 
     <p>Saludos,<br>El equipo de citas</p>
 </body>
-</html>
 
+</html>

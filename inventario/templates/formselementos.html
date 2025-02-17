@@ -1,57 +1,46 @@
-    <!-- Include Parsley CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.css">
-    <!-- Include Parsley JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
-        <form enctype="multipart/form-data" method="POST" data-parsley-validate>
-            {% csrf_token %}
-            
-            {% for field in form %}
-            <div class="mb-3">
-                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                
-                {% if field.name == 'estado' %}
-                <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" required
-                        data-parsley-required-message="Este campo es obligatorio" data-tooltip="Seleccione el estado">
-                    {% for value, display_name in field.field.choices %}
-                    <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
-                    {% endfor %}
-                </select>
-                {% else %}
-                <input type="{{ field.field.widget.input_type|default:'text' }}"
-                       class="form-control"
-                       name="{{ field.name }}"
-                       id="{{ field.id_for_label }}"
-                       aria-describedby="helpId"
-                       placeholder="{{ field.label }}"
-                       value="{% if field.value %}{{ field.value }}{% endif %}"
-                       {% if field.field.required %}required{% endif %}
-                       data-parsley-required-message="Este campo es obligatorio"
-                       data-tooltip="Por favor, ingrese {{ field.label|lower }}"
-                       {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
-                       required>
-                {% endif %}
-                
-                <div class="col-12 help-text">{{ field.errors }}</div>
-            </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
+<form enctype="multipart/form-data" method="POST" data-parsley-validate>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+
+        {% if field.name == 'estado' %}
+        <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" required
+            data-parsley-required-message="Este campo es obligatorio" data-tooltip="Seleccione el estado">
+            {% for value, display_name in field.field.choices %}
+            <option value="{{ value }}" {% if value==field.value %}selected{% endif %}>{{ display_name }}</option>
             {% endfor %}
-            
-            <button type="submit" class="btn btn-success" data-tooltip="Guardar datos">Guardar</button>
-            <a class="btn btn-warning" href="{% url 'listelementos' %}"" data-tooltip="Volver a la lista de Insumos" role="button">Volver</a>
-        </form>
+        </select>
+        {% else %}
+        <input type="{{ field.field.widget.input_type|default:'text' }}" class="form-control" name="{{ field.name }}"
+            id="{{ field.id_for_label }}" aria-describedby="helpId" placeholder="{{ field.label }}"
+            value="{% if field.value %}{{ field.value }}{% endif %}" {% if field.field.required %}required{% endif %}
+            data-parsley-required-message="Este campo es obligatorio"
+            data-tooltip="Por favor, ingrese {{ field.label|lower }}" {% if field.field.widget.attrs %}{{
+            field.field.widget.attrs|safe }}{% endif %} required>
+        {% endif %}
 
-    <script>
-        // Parsley initialization
-        document.addEventListener('DOMContentLoaded', function() {
-            // Parsley.js will automatically validate the form on submission
-        });
+        <div class="col-12 help-text">{{ field.errors }}</div>
+    </div>
+    {% endfor %}
 
-        // Tooltip functionality
-        document.body.addEventListener('mouseover', function(e) {
-            const target = e.target.closest('[data-tooltip]');
-            if (target) {
-                const tooltipText = target.getAttribute('data-tooltip');
-                // Create tooltip logic here (similar to the previous implementation)
-                console.log(tooltipText); // Placeholder for tooltip display logic
-            }
-        });
-    </script>
+    <button type="submit" class="btn btn-success" data-tooltip="Guardar datos">Guardar</button>
+    <a class="btn btn-warning" href="{% url 'listelementos' %}"" data-tooltip=" Volver a la lista de Insumos"
+        role="button">Volver</a>
+</form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+    });
+
+    document.body.addEventListener('mouseover', function (e) {
+        const target = e.target.closest('[data-tooltip]');
+        if (target) {
+            const tooltipText = target.getAttribute('data-tooltip');
+            console.log(tooltipText);
+        }
+    });
+</script>

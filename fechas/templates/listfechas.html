@@ -10,6 +10,7 @@
         display: flex;
         justify-content: flex-end;
     }
+
     #fechaFiltro {
         width: 100%;
     }
@@ -22,67 +23,74 @@ Fechas Disponibles
 
 {% block content %}
 <div class="ContentTable">
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex">
-                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al dashboard">
-                    <i class="fas fa-arrow-left text-white"></i> <span>Volver</span>
-                </a>
-                <a class="btn btn-success btn-custom me-2" href="{% url 'crearfechas' %}" role="button" data-tooltip="Agregar una nueva fecha disponible">
-                    <i class="fas fa-plus text-white"></i> <span>Agregar Nueva Fecha</span>
-                </a>
-            </div>
-            <div class="d-flex">
-                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_fechas' %}" role="button" data-tooltip="Descargar tabla en excel">
-                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
-                </a>
-                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_fechas' %}" role="button" data-tooltip="Descargar tabla en pdf">
-                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="card-body">
-        <div class="table-container">
-            <form id="filtroForm" method="get" action="{% url 'listfechas' %}" class="mb-3">
-                <div class="row" style="width: 100%;">
-                    <div>
-                    <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Fecha</label>
-                    <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ request.GET.fecha }}" data-tooltip="Filtrar fechas" style="width: 100%;">
-                    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex">
+                    <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button"
+                        data-tooltip="Volver al dashboard">
+                        <i class="fas fa-arrow-left text-white"></i> <span>Volver</span>
+                    </a>
+                    <a class="btn btn-success btn-custom me-2" href="{% url 'crearfechas' %}" role="button"
+                        data-tooltip="Agregar una nueva fecha disponible">
+                        <i class="fas fa-plus text-white"></i> <span>Agregar Nueva Fecha</span>
+                    </a>
                 </div>
-            </form>
-            <div class="table-responsive">
-                <table id="elementosTable" class="table table-primary table-centered">
-                    <thead>
-                        <tr>
-                            <th id="headerFecha" data-sort="fecha" scope="col">Fecha</th>
-                            <th id="headerHora" data-sort="hora" scope="col">Hora</th>
-                            <th scope="col">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for disponibilidad in disponibilidades %}
-                        <tr>
-                            <td data-sort="fecha">{{ disponibilidad.fecha|date:"d/m/Y" }}</td>
-                            <td data-sort="hora">{{ disponibilidad.hora|time:"H:i" }}</td>
-                            <td>
-                                <button class="btn btn-danger" onclick="confirmarEliminacion('{{ disponibilidad.id }}', '{{ disponibilidad.fecha }} {{ disponibilidad.hora }}')" data-tooltip="Eliminar esta fecha">
-                                    <i class="fas fa-trash sort-icon a"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                <div class="d-flex">
+                    <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel_fechas' %}" role="button"
+                        data-tooltip="Descargar tabla en excel">
+                        <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                    </a>
+                    <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_fechas' %}" role="button"
+                        data-tooltip="Descargar tabla en pdf">
+                        <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-container">
+                <form id="filtroForm" method="get" action="{% url 'listfechas' %}" class="mb-3">
+                    <div class="row" style="width: 100%;">
+                        <div>
+                            <label for="fechaFiltro" class="form-label"
+                                data-tooltip="Filtrar citas por fecha">Fecha</label>
+                            <input type="date" id="fechaFiltro" name="fecha" class="form-control"
+                                value="{{ request.GET.fecha }}" data-tooltip="Filtrar fechas" style="width: 100%;">
+                        </div>
+                    </div>
+                </form>
+                <div class="table-responsive">
+                    <table id="elementosTable" class="table table-primary table-centered">
+                        <thead>
+                            <tr>
+                                <th id="headerFecha" data-sort="fecha" scope="col">Fecha</th>
+                                <th id="headerHora" data-sort="hora" scope="col">Hora</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for disponibilidad in disponibilidades %}
+                            <tr>
+                                <td data-sort="fecha">{{ disponibilidad.fecha|date:"d/m/Y" }}</td>
+                                <td data-sort="hora">{{ disponibilidad.hora|time:"H:i" }}</td>
+                                <td>
+                                    <button class="btn btn-danger"
+                                        onclick="confirmarEliminacion('{{ disponibilidad.id }}', '{{ disponibilidad.fecha }} {{ disponibilidad.hora }}')"
+                                        data-tooltip="Eliminar esta fecha">
+                                        <i class="fas fa-trash sort-icon a"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
-<!-- Modal de confirmación -->
 <div id="confirmarModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="cerrarModal()">&times;</span>
@@ -90,7 +98,8 @@ Fechas Disponibles
         <form id="formEliminar" method="POST" action="">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger" data-tooltip="Confirmar eliminación">Eliminar</button>
-            <button type="button" class="btn btn-secondary" onclick="cerrarModal()" data-tooltip="Cancelar eliminación">Cancelar</button>
+            <button type="button" class="btn btn-secondary" onclick="cerrarModal()"
+                data-tooltip="Cancelar eliminación">Cancelar</button>
         </form>
     </div>
 </div>
@@ -99,35 +108,29 @@ Fechas Disponibles
 {% block extra_js %}
 <script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
 <script>
-    // Mostrar el modal de confirmación
     function confirmarEliminacion(id, fechaHora) {
         const modal = document.getElementById('confirmarModal');
         modal.style.display = 'block';
 
-        // Mostrar la fecha y hora en el modal
         document.getElementById('elementoProducto').innerText = fechaHora;
 
-        // Cambiar la acción del formulario al enlace de eliminación
         const formEliminar = document.getElementById('formEliminar');
         formEliminar.action = "{% url 'eliminarfechas' 0 %}".replace('0', id);
     }
 
-    // Cerrar el modal
     function cerrarModal() {
         const modal = document.getElementById('confirmarModal');
         modal.style.display = 'none';
     }
 
-    // Cerrar el modal si se hace clic fuera del contenido
-    window.onclick = function(event) {
+    window.onclick = function (event) {
         const modal = document.getElementById('confirmarModal');
         if (event.target === modal) {
             modal.style.display = 'none';
         }
     }
 
-    // Filtrar automáticamente al cambiar la fecha
-    document.getElementById('fechaFiltro').addEventListener('change', function() {
+    document.getElementById('fechaFiltro').addEventListener('change', function () {
         document.getElementById('filtroForm').submit();
     });
 </script>

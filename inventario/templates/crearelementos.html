@@ -9,17 +9,17 @@
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/crear_elemento.css' %}?v2.0">
+<link rel="stylesheet" href="{% static 'css/crear_elemento.css' %}?v2.1">
 {% endblock %}
 
 {% block content %}
 <div class="historia">
     <div class="card">
-    <div class="card-body">
-        <h4 class="card-title" data-tooltip="Introduzca los detalles del nuevo insumo">Datos Producto</h4>
-        {% include 'formselementos.html' %}
-    </div>    
-</div>
+        <div class="card-body">
+            <h4 class="card-title" data-tooltip="Introduzca los detalles del nuevo insumo">Datos Producto</h4>
+            {% include 'formselementos.html' %}
+        </div>
+    </div>
 </div>
 {% endblock %}
 

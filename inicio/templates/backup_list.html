@@ -7,83 +7,85 @@
 {% block titulo %} Copias de Seguridad {% endblock %}
 
 {% block content %}
-<div class="card">
-    <div class="card-header">
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
-            <div class="d-flex">
-                <form action="{% url 'dashboard' %}" method="get">
-                    <button type="submit" class="btn btn-success btn-custom me-2" 
-                            aria-label="Regresar al tablero principal" 
-                            data-tooltip="Regresar al tablero principal">
-                        <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
-                    </button>
-                </form>
-                
-                <form method="post" action="{% url 'backup_create' %}" style="margin-bottom: 0;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-success btn-custom" data-tooltip="Crear un nuevo respaldo">
-                        <i class="fas fa-plus text-white"></i> <span> Crear Respaldo </span>
-                    </button>
-                </form>
-            </div>
-            <div class="d-flex">
-                <a class="btn btn-info btn-custom" href="{% url 'reporte_excel' %}" role="button"
-                    data-tooltip="Descargar listado en Excel">
-                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
-                </a>
-                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button"
-                    data-tooltip="Descargar listado en PDF">
-                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
-                </a>
+<div class="ContentTable">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex">
+                    <form action="{% url 'dashboard' %}" method="get">
+                        <button type="submit" class="btn btn-success btn-custom me-2"
+                            aria-label="Regresar al tablero principal" data-tooltip="Regresar al tablero principal">
+                            <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                        </button>
+                    </form>
+
+                    <form method="post" action="{% url 'backup_create' %}" style="margin-bottom: 0;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-custom" data-tooltip="Crear un nuevo respaldo">
+                            <i class="fas fa-plus text-white"></i> <span> Crear Respaldo </span>
+                        </button>
+                    </form>
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-info btn-custom" href="{% url 'reporte_excel' %}" role="button"
+                        data-tooltip="Descargar listado en Excel">
+                        <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                    </a>
+                    <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button"
+                        data-tooltip="Descargar listado en PDF">
+                        <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="card-body">
-        <div class="table-container">
-            <form id="filtroForm" method="get" action="{% url 'backup_list' %}">
-                <div class="row mb-3" style="width: 100%;">
-                    <div>
-                        <label for="fechaFiltro" class="form-label"
-                            data-tooltip="Filtrar respaldos por fecha">Fecha</label>
-                        <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ fecha_filtro }}"
-                            data-tooltip="Filtrar por fecha">
+        <div class="card-body">
+            <div class="table-container">
+                <form id="filtroForm" method="get" action="{% url 'backup_list' %}">
+                    <div class="row mb-3" style="width: 100%;">
+                        <div>
+                            <label for="fechaFiltro" class="form-label"
+                                data-tooltip="Filtrar respaldos por fecha">Fecha</label>
+                            <input type="date" id="fechaFiltro" name="fecha" class="form-control"
+                                value="{{ fecha_filtro }}" data-tooltip="Filtrar por fecha">
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
 
-            <table id="elementosTable" class="table table-primary table-centered">
-                <thead>
-                    <tr>
-                        <th>Archivo</th>
-                        <th>Fecha de Creación</th>
-                        <th>Tamaño</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for backup in backups %}
-                    <tr>    
-                        <td>{{ backup.filename }}</td>
-                        <td>{{ backup.created_at }}</td>
-                        <td>{{ backup.size }}</td>
-                        <td>
-                            <form action="{% url 'download_backup' backup.filename %}" method="get" class="btn" style="padding: 0rem;">
-                                <button type="submit" class="btn btn-warning btn-sm" data-backup="{{ backup.filename }}"
-                                aria-label="Descargar {{ backup.filename }}"
-                                data-tooltip="Descargar {{ backup.filename }}">Descargar</button>
-                            </form>
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#confirmRestoreModal" data-backup="{{ backup.filename }}"
-                                data-tooltip="Restaurar {{ backup.filename }}">Restaurar</button>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#confirmDeletionModal" data-backup="{{ backup.filename }}"
-                                data-tooltip="Eliminar {{ backup.filename }}">Eliminar</button>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                <table id="elementosTable" class="table table-primary table-centered">
+                    <thead>
+                        <tr>
+                            <th>Archivo</th>
+                            <th>Fecha de Creación</th>
+                            <th>Tamaño</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for backup in backups %}
+                        <tr>
+                            <td>{{ backup.filename }}</td>
+                            <td>{{ backup.created_at }}</td>
+                            <td>{{ backup.size }}</td>
+                            <td>
+                                <form action="{% url 'download_backup' backup.filename %}" method="get" class="btn"
+                                    style="padding: 0rem;">
+                                    <button type="submit" class="btn btn-warning btn-sm"
+                                        data-backup="{{ backup.filename }}" aria-label="Descargar {{ backup.filename }}"
+                                        data-tooltip="Descargar {{ backup.filename }}">Descargar</button>
+                                </form>
+                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#confirmRestoreModal" data-backup="{{ backup.filename }}"
+                                    data-tooltip="Restaurar {{ backup.filename }}">Restaurar</button>
+                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#confirmDeletionModal" data-backup="{{ backup.filename }}"
+                                    data-tooltip="Eliminar {{ backup.filename }}">Eliminar</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
@@ -97,10 +99,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ¿Estás seguro de que deseas eliminar este respaldo? 
+                ¿Estás seguro de que deseas eliminar este respaldo?
                 (<span id="deleteForm">
-                    <input type="text" name="filename" id="deleteFile" style="min-width: 250px; width: fit-content;" readonly>
-                </span>) 
+                    <input type="text" name="filename" id="deleteFile" style="min-width: 250px; width: fit-content;"
+                        readonly>
+                </span>)
                 Esta acción no se puede deshacer.
             </div>
             <div class="modal-footer">
@@ -123,15 +126,16 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ¿Estás seguro de que deseas restaurar la base de datos desde este archivo? 
+                ¿Estás seguro de que deseas restaurar la base de datos desde este archivo?
                 (<span id="restoreForm">
-                    <input type="text" name="backup_file" id="restoreFile" style="min-width: 250px; width: fit-content;" readonly>
-                </span>) 
+                    <input type="text" name="backup_file" id="restoreFile" style="min-width: 250px; width: fit-content;"
+                        readonly>
+                </span>)
                 Esta acción reemplazará la base de datos actual.
             </div>
-            
-            
-            
+
+
+
             <div class="modal-footer">
                 <form id="restoreForm" method="post" action="{% url 'restore_database' %}"
                     enctype="multipart/form-data">

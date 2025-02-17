@@ -5,14 +5,15 @@
 {% block title %}Historia Paciente | Laboratorio Dental{% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/ver_historias.css' %}?v1.6" />
+<link rel="stylesheet" href="{% static 'css/ver_historias.css' %}?v1.7" />
 <style>
   @media print {
+
     .no-print,
-    button{ /* Asegúrate de ajustar este selector según tu HTML */
-        display: none !important;
+    button {
+      display: none !important;
     }
-}
+  }
 </style>
 {% endblock %}
 
@@ -70,7 +71,8 @@ Detalles de Historia Clínica
           <label>Reacciones Alérgicas:</label><span>{{ historia.get_reacciones_alergicas_display }}</span>
         </div>
         <div class="grid-item" data-tooltip="Historial de trastornos de tensión arterial">
-          <label>Trastorno de la Tensión Arterial:</label><span>{{ historia.get_transtorno_tension_arterial_display }}</span>
+          <label>Trastorno de la Tensión Arterial:</label><span>{{ historia.get_transtorno_tension_arterial_display
+            }}</span>
         </div>
         <div class="grid-item" data-tooltip="Diagnóstico de diabetes">
           <label>Diabetes:</label><span>{{ historia.get_diabetes_display }}</span>
@@ -133,11 +135,11 @@ Detalles de Historia Clínica
     </div>
   </div>
   <div class="btn no-print">
-  <button class="btn btn-primary" onclick="window.history.back();"
-    data-tooltip="Regresar a la lista de historias clínicas">
-    Volver
-  </button>
-  
+    <button class="btn btn-primary" onclick="window.history.back();"
+      data-tooltip="Regresar a la lista de historias clínicas">
+      Volver
+    </button>
+
     <button class="btn btn-success" onclick="window.print();" data-tooltip="Imprimir la historia clínica">
       Imprimir
     </button>
@@ -151,12 +153,12 @@ Detalles de Historia Clínica
     var contenido = document.getElementById('contenido-imprimir').innerHTML;
     var ventanaImpresion = window.open('', '', 'width=800,height=600');
     ventanaImpresion.document.write('<html><head><title>Imprimir</title>');
-    ventanaImpresion.document.write('<link rel="stylesheet" href="{% static "css/ver_historias.css" %}?v1.4" />');
+    ventanaImpresion.document.write('<link rel="stylesheet" href="{% static "css/ver_historias.css" %}?v1.7" />');
     ventanaImpresion.document.write('</head><body>');
     ventanaImpresion.document.write(contenido);
     ventanaImpresion.document.write('</body></html>');
     ventanaImpresion.document.close();
     ventanaImpresion.print();
-}
+  }
 </script>
 {% endblock %}
