@@ -12,7 +12,8 @@ import pdb
 import os
 import subprocess
 import shutil
-import mysql.connector
+import pymysql
+pymysql.install_as_MySQLdb()
 from datetime import datetime
 from django.conf import settings
 from django.http import HttpResponse, Http404, JsonResponse
@@ -160,7 +161,7 @@ class BackupDatabaseView(View):
             db_password = db_settings['PASSWORD']
             db_host = db_settings['HOST']
             db_port = db_settings['PORT']
-            db_engine = db_settings['ENGINE']  
+            db_engine = db_settings['ENGINE']
 
             filename = request.POST.get('filename', f"backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}")
             backup_dir = os.path.join(settings.BASE_DIR, 'backups')
@@ -169,12 +170,12 @@ class BackupDatabaseView(View):
             os.makedirs(backup_dir, exist_ok=True)
 
             if 'mysql' in db_engine:
-                connection = mysql.connector.connect(
+                connection = pymysql.connect(
                     host=db_host,
                     user=db_user,
                     password=db_password,
                     database=db_name,
-                    port=int(db_port) 
+                    port=int(db_port)
                 )
                 cursor = connection.cursor()
 
@@ -270,7 +271,7 @@ class RestoreDatabaseView(View):
             db_engine = db_settings['ENGINE']
 
             if 'mysql' in db_engine:
-                connection = mysql.connector.connect(
+                connection = pymysql.connect(
                     host=db_settings['HOST'],
                     user=db_settings['USER'],
                     password=db_settings['PASSWORD'],
@@ -299,6 +300,7 @@ class RestoreDatabaseView(View):
             messages.error(request, f"Error al restaurar la base de datos: {str(e)}")
 
         return redirect('backup_list')
+
 
 @never_cache
 @login_required(login_url='acceso_denegado')

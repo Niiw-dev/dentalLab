@@ -7478,7 +7478,7 @@ fieldset:disabled .btn {
 }
 
 .middContent {
-  height: 85vh;
+  min-height: 85vh;
   background-color: #e8e8e8;
   display: flex;
   justify-content: flex-start; 

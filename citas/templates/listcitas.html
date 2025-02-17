@@ -2,119 +2,107 @@
 
 {% load static %}
 
-{# Bloque que define el título de la página. En este caso, el título será "Citas | Laboratorio Dental" #}
 {% block title %}Citas | Laboratorio Dental{% endblock %}
 
-{% block extra_css %}{% endblock %} {# Aquí puedes incluir hojas de estilo adicionales si es necesario #}
+{% block extra_css %}
+{% endblock %}
 
-{# Sección de título de la página, se incluye un tooltip explicativo sobre la lista de citas #}
 {% block titulo %}
 <span data-tooltip="Lista de todas las citas programadas">Citas Agendadas</span>
 {% endblock %}
 
 {% block content %}
-<div class="card">
-    <div class="card-header">
-        {# Contenedor para los botones de acciones principales, con un diseño flexible para alinearlos correctamente #}
-        <div class="d-flex justify-content-between align-items-center flex-wrap">
-            <div class="d-flex">
-                {# Botón para volver al dashboard, con un icono de flecha y un tooltip explicativo #}
-                <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Regresar al tablero principal">
-                    <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
-                </a>
-                {# Botón para crear una nueva cita, con un icono de "+" y un tooltip explicativo #}
-                <a class="btn btn-success btn-custom" href="{% url 'crearcitas' %}" role="button" data-tooltip="Crear una nueva cita">
-                    <i class="fas fa-plus text-white"></i> <span> Agendar Nueva Cita </span>
-                </a>
-            </div>
-            <div class="d-flex">
-                {# Botón para descargar la tabla en formato Excel #}
-                <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel' %}" role="button" data-tooltip="Descargar tabla en excel">
-                    <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
-                </a>
-                {# Botón para descargar la tabla en formato PDF #}
-                <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button" data-tooltip="Descargar tabla en pdf">
-                    <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
-                </a>
+<div class="ContentTable">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <div class="d-flex">
+                    <a class="btn btn-primary btn-custom me-2" href="{% url 'dashboard' %}" role="button" data-tooltip="Regresar al tablero principal">
+                        <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
+                    </a>
+                    <a class="btn btn-success btn-custom" href="{% url 'crearcitas' %}" role="button" data-tooltip="Crear una nueva cita">
+                        <i class="fas fa-plus text-white"></i> <span> Agendar Nueva Cita </span>
+                    </a>
+                </div>
+                <div class="d-flex">
+                    <a class="btn btn-info btn-custom me-2" href="{% url 'reporte_excel' %}" role="button" data-tooltip="Descargar tabla en excel">
+                        <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
+                    </a>
+                    <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button" data-tooltip="Descargar tabla en pdf">
+                        <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="card-body">
-        <div class="table-container">
-            {# Formulario para aplicar filtros a la tabla de citas #}
-            <form id="filtroForm" method="get" action="{% url 'listcitas' %}" class="mb-3">
-                <div class="row">
-                    {# Filtro por fecha #}
-                    <div class="col-md-4">
-                        <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Fecha</label>
-                        <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ request.GET.fecha }}" data-tooltip="Seleccione una fecha para filtrar" >
+        <div class="card-body">
+            <div class="table-container">
+                <form id="filtroForm" method="get" action="{% url 'listcitas' %}" class="mb-3">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Fecha</label>
+                            <input type="date" id="fechaFiltro" name="fecha" class="form-control" value="{{ request.GET.fecha }}" data-tooltip="Seleccione una fecha para filtrar" >
+                        </div>
+                        <div class="col-md-4">
+                            <label for="motivoFiltro" class="form-label" data-tooltip="Filtrar citas por motivo">Motivo</label>
+                            <select id="motivoFiltro" name="motivo" class="form-select" data-tooltip="Seleccione un motivo para filtrar">
+                                <option value="">Todos</option>
+                                {% for motivo in motivos %}
+                                <option value="{{ motivo }}" {% if request.GET.motivo == motivo %}selected{% endif %}>{{ motivo }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="estadoFiltro" class="form-label" data-tooltip="Filtrar citas por estado">Estado</label>
+                            <select id="estadoFiltro" name="estado" class="form-select" data-tooltip="Seleccione un estado para filtrar">
+                                <option value="">Todos</option>
+                                {% for estado in estados %}
+                                <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>{{ estado }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
-                    {# Filtro por motivo #}
-                    <div class="col-md-4">
-                        <label for="motivoFiltro" class="form-label" data-tooltip="Filtrar citas por motivo">Motivo</label>
-                        <select id="motivoFiltro" name="motivo" class="form-select" data-tooltip="Seleccione un motivo para filtrar">
-                            <option value="">Todos</option>
-                            {% for motivo in motivos %}
-                            <option value="{{ motivo }}" {% if request.GET.motivo == motivo %}selected{% endif %}>{{ motivo }}</option>
+                </form>
+                <div class="table-responsive">
+                    <table id="elementosTable" class="table table-primary table-centered">
+                        <thead>
+                            <tr>
+                                <th id="headerPaciente" data-sort="paciente" scope="col" data-tooltip="Ordenar por número de documento del paciente">Paciente</th>
+                                <th id="headerNombres" data-sort="nombres" scope="col" data-tooltip="Ordenar por nombre completo del paciente">Nombre Completo</th>
+                                <th id="headerFecha" data-sort="fecha_historia" scope="col" data-tooltip="Ordenar por fecha de la cita">Fecha</th>
+                                <th id="headerHora" data-sort="hora" scope="col" data-tooltip="Ordenar por hora de la cita">Hora</th>
+                                <th id="headerMotivo" data-sort="motivo" scope="col" data-tooltip="Ordenar por motivo de la cita">Motivo</th>
+                                <th id="headerEstado" data-sort="estado" scope="col" data-tooltip="Ordenar por estado de la cita">Estado</th>
+                                <th scope="col" data-tooltip="Acciones disponibles para cada cita">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cita in citas %}
+                            <tr>
+                                <td data-sort="paciente">{{ cita.paciente.documento }}</td>
+                                <td data-sort="nombres">{{ cita.paciente.nombre }}</td>
+                                <td data-sort="fecha_historia">{{ cita.fecha_hora.fecha }}</td>
+                                <td data-sort="hora">{{ cita.fecha_hora.hora|time:"H:i" }}</td>
+                                <td data-sort="motivo">{{ cita.get_motivo_display }}</td>
+                                <td data-sort="estado">{{ cita.get_estado_display }}</td>
+                                <td>
+                                    <a {% if cita.get_estado_display == 'Programada' %}href="{% url 'editarcitas' cita.id %}" class="btn btn-warning" data-tooltip="Editar detalles de la cita"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede editar una cita no programada"{% endif %}>
+                                        <i class="fas fa-pen sort-icon a"></i>
+                                    </a>
+                                    <button {% if cita.get_estado_display == 'Programada' %}class="btn btn-danger cancelar-cita-btn" data-tooltip="Cancelar esta cita"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede cancelar una cita no programada"{% endif %} data-cita-id="{{ cita.id }}">
+                                        <i class="fas fa-trash sort-icon a"></i>
+                                    </button>
+                                    {% if user.is_superuser %}
+                                    <button {% if cita.get_estado_display == 'Programada' %}class="btn btn-success confirmar-actualizacion-btn" data-tooltip="Marcar cita como completada"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede actualizar una cita no programada"{% endif %} data-cita-id="{{ cita.id }}">
+                                        <i class="fas fa-check sort-icon a"></i>
+                                    </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
                             {% endfor %}
-                        </select>
-                    </div>
-                    {# Filtro por estado #}
-                    <div class="col-md-4">
-                        <label for="estadoFiltro" class="form-label" data-tooltip="Filtrar citas por estado">Estado</label>
-                        <select id="estadoFiltro" name="estado" class="form-select" data-tooltip="Seleccione un estado para filtrar">
-                            <option value="">Todos</option>
-                            {% for estado in estados %}
-                            <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>{{ estado }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
-            </form>
-            {# Tabla que lista las citas según los filtros aplicados #}
-            <div class="table-responsive">
-                <table id="elementosTable" class="table table-primary table-centered">
-                    <thead>
-                        <tr>
-                            <th id="headerPaciente" data-sort="paciente" scope="col" data-tooltip="Ordenar por número de documento del paciente">Paciente</th>
-                            <th id="headerNombres" data-sort="nombres" scope="col" data-tooltip="Ordenar por nombre completo del paciente">Nombre Completo</th>
-                            <th id="headerFecha" data-sort="fecha_historia" scope="col" data-tooltip="Ordenar por fecha de la cita">Fecha</th>
-                            <th id="headerHora" data-sort="hora" scope="col" data-tooltip="Ordenar por hora de la cita">Hora</th>
-                            <th id="headerMotivo" data-sort="motivo" scope="col" data-tooltip="Ordenar por motivo de la cita">Motivo</th>
-                            <th id="headerEstado" data-sort="estado" scope="col" data-tooltip="Ordenar por estado de la cita">Estado</th>
-                            <th scope="col" data-tooltip="Acciones disponibles para cada cita">Acciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {# Recorre todas las citas y las muestra en filas, con las acciones permitidas según su estado #}
-                        {% for cita in citas %}
-                        <tr>
-                            <td data-sort="paciente">{{ cita.paciente.documento }}</td>
-                            <td data-sort="nombres">{{ cita.paciente.nombre }}</td>
-                            <td data-sort="fecha_historia">{{ cita.fecha_hora.fecha }}</td>
-                            <td data-sort="hora">{{ cita.fecha_hora.hora|time:"H:i" }}</td>
-                            <td data-sort="motivo">{{ cita.get_motivo_display }}</td>
-                            <td data-sort="estado">{{ cita.get_estado_display }}</td>
-                            <td>
-                                {# Si la cita está programada, se habilitan los botones de edición y cancelación #}
-                                <a {% if cita.get_estado_display == 'Programada' %}href="{% url 'editarcitas' cita.id %}" class="btn btn-warning" data-tooltip="Editar detalles de la cita"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede editar una cita no programada"{% endif %}>
-                                    <i class="fas fa-pen sort-icon a"></i>
-                                </a>
-                                <button {% if cita.get_estado_display == 'Programada' %}class="btn btn-danger cancelar-cita-btn" data-tooltip="Cancelar esta cita"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede cancelar una cita no programada"{% endif %} data-cita-id="{{ cita.id }}">
-                                    <i class="fas fa-trash sort-icon a"></i>
-                                </button>
-                                {# Opciones adicionales para superusuarios #}
-                                {% if user.is_superuser %}
-                                <button {% if cita.get_estado_display == 'Programada' %}class="btn btn-success confirmar-actualizacion-btn" data-tooltip="Marcar cita como completada"{% else %}class="btn btn-secondary disabled" data-tooltip="No se puede actualizar una cita no programada"{% endif %} data-cita-id="{{ cita.id }}">
-                                    <i class="fas fa-check sort-icon a"></i>
-                                </button>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
@@ -124,5 +112,4 @@
 {% block extra_js %}
 <script src="{% static 'js/citas.js' %}?v3.1"></script>
 <script src="{% static 'js/filtrar.js' %}?v3.3"></script>
-<script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
 {% endblock %}
