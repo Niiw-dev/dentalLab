@@ -27,6 +27,14 @@ body {
   text-align: center;
   flex: 1;
 }
+.historia {
+  width: 80%;
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
 .ContentTable {
   min-height: 85vh;
   flex: 1;

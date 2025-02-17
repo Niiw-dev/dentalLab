@@ -13,6 +13,7 @@ Insumos
 {% endblock %}
 
 {% block content %}
+<div class="ContentTable">
 <div class="card">
 
     <div class="card-header">
@@ -82,6 +83,7 @@ Insumos
         </div>
     </div>
 </div>
+</div>
 
 <!-- Modal de confirmación -->
 <div id="confirmarModal" class="modal">
@@ -100,8 +102,6 @@ Insumos
 <script src="{% static 'js/filtros.js' %}?v2.3"></script>
 
 {% block extra_js %}
-<script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const table = document.getElementById('elementosTable');

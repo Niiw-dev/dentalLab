@@ -22,131 +22,125 @@ Detalles de Historia Clínica
 {% endblock %}
 
 {% block content %}
-<div class="card">
-  <div class="card-body">
-    <div class="historia printable-content">
-      <div class="historia">
-        <div class="imprimir">
-          <div class="seccion">
-            <h4>Datos Básicos</h4>
-            <div class="grid-container">
-              <div class="grid-item" data-tooltip="Tipo de identificación del paciente">
-                <label>Tipo de Identificación:</label><span>{{ historia.user.get_tipo_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Número de identificación del paciente">
-                <label>Número de Identificación:</label><span>{{ historia.user.documento }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Nombre del usuario asociado a la historia">
-                <label>Nombre de Usuario:</label><span>{{ historia.user.nombre }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Correo electrónico del usuario">
-                <label>Correo:</label><span>{{ historia.user.correo }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Dirección de residencia del usuario">
-                <label>Dirección:</label><span>{{ historia.user.direccion }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Edad del paciente">
-                <label>Edad:</label><span>{{ historia.user.edad }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Ocupación del paciente">
-                <label>Ocupación:</label><span>{{ historia.user.ocupacion }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Número de celular del usuario">
-                <label>Celular:</label><span>{{ historia.user.celular }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Fecha de la historia clínica">
-                <label>Fecha de Historia:</label><span>{{ historia.fecha_historia|date:"d/m/Y" }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Nombre del acudiente, si aplica">
-                <label>Acudiente:</label><span>{{ historia.user.acudiente }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="seccion">
-            <h4>Anamnesis</h4>
-            <div class="grid-container">
-              <div class="grid-item" data-tooltip="Tratamiento con medicación actual">
-                <label>Tratamiento con Medicación:</label><span>{{ historia.get_tratamiento_medicacion_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Si hay reacciones alérgicas conocidas">
-                <label>Reacciones Alérgicas:</label><span>{{ historia.get_reacciones_alergicas_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Historial de trastornos de tensión arterial">
-                <label>Trastorno de la Tensión Arterial:</label><span>{{ historia.get_transtorno_tension_arterial_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Diagnóstico de diabetes">
-                <label>Diabetes:</label><span>{{ historia.get_diabetes_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Historial de trastornos emocionales">
-                <label>Trastornos Emocionales:</label><span>{{ historia.get_transtornos_emocionales_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Historial de enfermedad respiratoria">
-                <label>Enfermedad Respiratoria:</label><span>{{ historia.get_enfermedad_respiratoria_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Otros comentarios o condiciones">
-                <label>Otros:</label><span>{{ historia.otros }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="seccion">
-            <h4>Rehabilitación Oral</h4>
-            <div class="grid-container">
-              <div class="grid-item" data-tooltip="Descripción de la prótesis dental">
-                <label>Prótesis Dental:</label><span>{{ historia.protesis_dental }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Costo total del tratamiento">
-                <label>Total:</label><span>{{ historia.total }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre prótesis acrílicas">
-                <label>Acrílico:</label><span>{{ historia.acrilico }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre prótesis flexibles">
-                <label>Flexible:</label><span>{{ historia.flexible }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre prótesis parciales">
-                <label>Parcial:</label><span>{{ historia.parcial }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre retenedores">
-                <label>Retenedores:</label><span>{{ historia.retenedores }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre radiografía panorámica">
-                <label>Panorámica:</label><span>{{ historia.panoramica }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Detalles sobre radiografía periapical">
-                <label>Periapical:</label><span>{{ historia.periapical }}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="seccion">
-            <h4>Higiene Oral</h4>
-            <div class="grid-container">
-              <div class="grid-item" data-tooltip="Frecuencia de cepillado dental">
-                <label>Cepillado Dental:</label><span>{{ historia.get_cepillado_dental_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Uso de seda dental">
-                <label>Seda Dental:</label><span>{{ historia.get_seda_dental_display }}</span>
-              </div>
-              <div class="grid-item" data-tooltip="Uso de enjuague bucal">
-                <label>Enjuague Bucal:</label><span>{{ historia.get_enjuague_bucal_display }}</span>
-              </div>
-            </div>
-          </div>
+<div class="historia">
+  <div class="imprimir">
+    <div class="seccion">
+      <h4>Datos Básicos</h4>
+      <div class="grid-container">
+        <div class="grid-item" data-tooltip="Tipo de identificación del paciente">
+          <label>Tipo de Identificación:</label><span>{{ historia.user.get_tipo_display }}</span>
         </div>
-
-        <button class="btn btn-primary" onclick="window.history.back();"
-          data-tooltip="Regresar a la lista de historias clínicas">
-          Volver
-        </button>
-        <div class="btn no-print">
-          <button class="btn btn-success" onclick="window.print();" title="Imprimir la historia clínica">
-            Imprimir
-          </button>
+        <div class="grid-item" data-tooltip="Número de identificación del paciente">
+          <label>Número de Identificación:</label><span>{{ historia.user.documento }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Nombre del usuario asociado a la historia">
+          <label>Nombre de Usuario:</label><span>{{ historia.user.nombre }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Correo electrónico del usuario">
+          <label>Correo:</label><span>{{ historia.user.correo }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Dirección de residencia del usuario">
+          <label>Dirección:</label><span>{{ historia.user.direccion }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Edad del paciente">
+          <label>Edad:</label><span>{{ historia.user.edad }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Ocupación del paciente">
+          <label>Ocupación:</label><span>{{ historia.user.ocupacion }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Número de celular del usuario">
+          <label>Celular:</label><span>{{ historia.user.celular }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Fecha de la historia clínica">
+          <label>Fecha de Historia:</label><span>{{ historia.fecha_historia|date:"d/m/Y" }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Nombre del acudiente, si aplica">
+          <label>Acudiente:</label><span>{{ historia.user.acudiente }}</span>
         </div>
       </div>
     </div>
+
+    <div class="seccion">
+      <h4>Anamnesis</h4>
+      <div class="grid-container">
+        <div class="grid-item" data-tooltip="Tratamiento con medicación actual">
+          <label>Tratamiento con Medicación:</label><span>{{ historia.get_tratamiento_medicacion_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Si hay reacciones alérgicas conocidas">
+          <label>Reacciones Alérgicas:</label><span>{{ historia.get_reacciones_alergicas_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Historial de trastornos de tensión arterial">
+          <label>Trastorno de la Tensión Arterial:</label><span>{{ historia.get_transtorno_tension_arterial_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Diagnóstico de diabetes">
+          <label>Diabetes:</label><span>{{ historia.get_diabetes_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Historial de trastornos emocionales">
+          <label>Trastornos Emocionales:</label><span>{{ historia.get_transtornos_emocionales_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Historial de enfermedad respiratoria">
+          <label>Enfermedad Respiratoria:</label><span>{{ historia.get_enfermedad_respiratoria_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Otros comentarios o condiciones">
+          <label>Otros:</label><span>{{ historia.otros }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="seccion">
+      <h4>Rehabilitación Oral</h4>
+      <div class="grid-container">
+        <div class="grid-item" data-tooltip="Descripción de la prótesis dental">
+          <label>Prótesis Dental:</label><span>{{ historia.protesis_dental }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Costo total del tratamiento">
+          <label>Total:</label><span>{{ historia.total }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre prótesis acrílicas">
+          <label>Acrílico:</label><span>{{ historia.acrilico }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre prótesis flexibles">
+          <label>Flexible:</label><span>{{ historia.flexible }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre prótesis parciales">
+          <label>Parcial:</label><span>{{ historia.parcial }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre retenedores">
+          <label>Retenedores:</label><span>{{ historia.retenedores }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre radiografía panorámica">
+          <label>Panorámica:</label><span>{{ historia.panoramica }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Detalles sobre radiografía periapical">
+          <label>Periapical:</label><span>{{ historia.periapical }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="seccion">
+      <h4>Higiene Oral</h4>
+      <div class="grid-container">
+        <div class="grid-item" data-tooltip="Frecuencia de cepillado dental">
+          <label>Cepillado Dental:</label><span>{{ historia.get_cepillado_dental_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Uso de seda dental">
+          <label>Seda Dental:</label><span>{{ historia.get_seda_dental_display }}</span>
+        </div>
+        <div class="grid-item" data-tooltip="Uso de enjuague bucal">
+          <label>Enjuague Bucal:</label><span>{{ historia.get_enjuague_bucal_display }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn no-print">
+  <button class="btn btn-primary" onclick="window.history.back();"
+    data-tooltip="Regresar a la lista de historias clínicas">
+    Volver
+  </button>
+  
+    <button class="btn btn-success" onclick="window.print();" data-tooltip="Imprimir la historia clínica">
+      Imprimir
+    </button>
   </div>
 </div>
 {% endblock %}

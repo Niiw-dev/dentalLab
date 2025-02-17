@@ -13,16 +13,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="card">
+<div class="historia">
+    <div class="card">
     <div class="card-body">
         <h4 class="card-title" data-tooltip="Introduzca los detalles del nuevo insumo">Datos Producto</h4>
         {% include 'formselementos.html' %}
-    </div>
+    </div>    
+</div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'js/historias.js' %}?v1.3"></script>
-
 {% endblock %}
-<script src="{% static 'js/dark_mode.js' %}?v3.2"></script>

@@ -61,15 +61,19 @@ def terminos_y_condiciones(request):
 @never_cache
 @login_required(login_url='acceso_denegado')
 def configuracion(request, id):
+    img_path = 'img/user.png'
     perfil_usuario = UserProfile.objects.get(id=id)
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES, instance=perfil_usuario)
         if form.is_valid():
+            if 'imagen' in request.FILES:
+                user_imagen = request.FILES['imagen']
+                request.user.imagen = user_imagen
             form.save()
             return redirect('dashboard')
     else:
         form = UserForm(instance=perfil_usuario)
-    return render(request, 'configuracion.html', {'form': form})
+    return render(request, 'configuracion.html', {'form': form, 'img_path': img_path})
 
 @never_cache
 @login_required(login_url='acceso_denegado')

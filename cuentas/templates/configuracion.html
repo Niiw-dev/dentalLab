@@ -13,12 +13,25 @@ Editar Perfil
 {% endblock %}
 
 {% block content %}
-    <div class="card">
-            <h4 class="card-title" data-tooltip="Modifica tus datos personales">Configuración del Usuario</h4>
+<div class="card">
+        <h4 class="card-title" data-tooltip="Modifica tus datos personales">Configuración del Usuario</h4>
 
+        
+        <form enctype="multipart/form-data" method="POST" class="form">
+            {% csrf_token %}
             <div class="profile-picture-container">
-                <div class="profile-picture" id="profilePicture" style="background-image: url('{% if user.imagen %}{{ user.imagen.url }}{% else %}{% static 'img/user.png' %}{% endif %}');" data-tooltip="Foto de perfil"></div>
-            </div>        
+                <!-- Imagen de perfil clickeable -->
+                <div class="profile-picture" 
+                     id="profilePicture" 
+                     style="background-image: url('{% if user.imagen %}{{ user.imagen.url }}{% else %}{% static img_path %}{% endif %}');
+                            cursor: pointer;" 
+                     data-tooltip="Clic para cambiar foto" 
+                     onclick="document.getElementById('imageUpload').click();">
+                </div>
+                <!-- Input oculto para cambiar la imagen -->
+                <input type="file" id="imageUpload" name="imagen" accept="image/*" style="display: none;" onchange="updateImage(event)">
+            </div>
+                  
             <h2 class="name" data-tooltip="Nombre del usuario">{{ user.nombre }}</h2>
             <div class="line"></div>
             <p class="status {% if user.is_active %}active{% else %}inactive{% endif %}" data-tooltip="Estado actual de la cuenta">
@@ -29,55 +42,55 @@ Editar Perfil
                     Desactivado
                 {% endif %}
             </p>
-            <form enctype="multipart/form-data" method="POST" class="form">
-                {% csrf_token %}
-                
-                {% for field in form %}
-                <div class="mb-3">
-                    <label for="{{ field.id_for_label }}" class="form-label" data-tooltip="Campo: {% if field.name == 'nombre' %}Nombre Completo{% elif field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% else %}{{ field.label }}{% endif %}">
-                        {% if field.name == 'nombre' %}
-                            Nombre Completo
-                        {% elif field.name == 'direccion' %}
-                            Dirección
-                        {% elif field.name == 'ocupacion' %}
-                            Ocupación
-                        {% else %}
-                            {{ field.label }}
-                        {% endif %}
-                    </label>
-
-                    {% if field.name == 'tipo' %}
-                    <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" data-tooltip="Selecciona el tipo de usuario">
-                        <option value="" {% if not field.value %}selected{% endif %}>Selecciona una opción</option>
-                        {% for value, display_name in field.field.choices %}
-                        <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
-                        {% endfor %}
-                    </select>
-                    {% else %}
-                    <input type="{{ field.field.widget.input_type }}"
-                            class="form-control"
-                            name="{{ field.name }}"
-                            id="{{ field.id_for_label }}"
-                            aria-describedby="helpId"
-                            placeholder="{% if field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% elif field.name == 'protesis_dental' %}Prótesis dental{% elif field.name == 'acrilico' %}Acrílico{% elif field.name == 'panoramica' %}Panorámica{% elif field.name == 'tratamiento_medicacion' %}Tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}Reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}Transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}"
-                            value="{{ field.value | default_if_none:'' }}"
-                            {% if field.field.required %}required{% endif %}
-                            {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
-                            data-tooltip="Ingresa tu {% if field.name == 'direccion' %}dirección{% elif field.name == 'ocupacion' %}ocupación{% elif field.name == 'protesis_dental' %}prótesis dental{% elif field.name == 'acrilico' %}acrílico{% elif field.name == 'panoramica' %}panorámica{% elif field.name == 'tratamiento_medicacion' %}tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}">
-                    {% endif %}
-                </div>
-                <div class="col-12 help-text">{{ field.errors }}</div>
-                {% endfor %}
-                <button type="submit" class="btn btn-primary" data-tooltip="Guardar cambios">Guardar</button>
-                <a class="btn btn-primary" href="{% url 'cambiar_password' %}" role="button" data-tooltip="Ir a la página de cambio de contraseña">Cambiar Contraseña</a>
-                {% if user.is_active and not user.is_superuser %}
-                <button type="button" id="desactivarCuenta" data-user-id="{{ user.id }}" class="profile-btn profile-btn-danger" data-tooltip="Desactiva tu cuenta de usuario">Desactivar Cuenta</button>
-                {% endif %}
-                <a class="btn btn-warning" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al panel principal">Cancelar</a>
-            </form>
             
-        </div>
+            {% for field in form %}
+            {% if field.name != 'imagen' %}
+            <div class="mb-3">
+                <label for="{{ field.id_for_label }}" class="form-label" data-tooltip="Campo: {% if field.name == 'nombre' %}Nombre Completo{% elif field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% else %}{{ field.label }}{% endif %}">
+                    {% if field.name == 'nombre' %}
+                        Nombre Completo
+                    {% elif field.name == 'direccion' %}
+                        Dirección
+                    {% elif field.name == 'ocupacion' %}
+                        Ocupación
+                    {% else %}
+                        {{ field.label }}
+                    {% endif %}
+                </label>
+
+                {% if field.name == 'tipo' %}
+                <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" data-tooltip="Selecciona el tipo de usuario">
+                    <option value="" {% if not field.value %}selected{% endif %}>Selecciona una opción</option>
+                    {% for value, display_name in field.field.choices %}
+                    <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
+                    {% endfor %}
+                </select>
+                {% else %}
+                <input type="{{ field.field.widget.input_type }}"
+                        class="form-control"
+                        name="{{ field.name }}"
+                        id="{{ field.id_for_label }}"
+                        aria-describedby="helpId"
+                        placeholder="{% if field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% elif field.name == 'protesis_dental' %}Prótesis dental{% elif field.name == 'acrilico' %}Acrílico{% elif field.name == 'panoramica' %}Panorámica{% elif field.name == 'tratamiento_medicacion' %}Tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}Reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}Transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}"
+                        value="{{ field.value | default_if_none:'' }}"
+                        {% if field.field.required %}required{% endif %}
+                        {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
+                        data-tooltip="Ingresa tu {% if field.name == 'direccion' %}dirección{% elif field.name == 'ocupacion' %}ocupación{% elif field.name == 'protesis_dental' %}prótesis dental{% elif field.name == 'acrilico' %}acrílico{% elif field.name == 'panoramica' %}panorámica{% elif field.name == 'tratamiento_medicacion' %}tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}">
+                {% endif %}
+            </div>
+            {% endif %}
+            <div class="col-12 help-text">{{ field.errors }}</div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary" data-tooltip="Guardar cambios">Guardar</button>
+            <a class="btn btn-primary" href="{% url 'cambiar_password' %}" role="button" data-tooltip="Ir a la página de cambio de contraseña">Cambiar Contraseña</a>
+            {% if user.is_active and not user.is_superuser %}
+            <button type="button" id="desactivarCuenta" data-user-id="{{ user.id }}" class="profile-btn profile-btn-danger" data-tooltip="Desactiva tu cuenta de usuario">Desactivar Cuenta</button>
+            {% endif %}
+            <a class="btn btn-warning" href="{% url 'dashboard' %}" role="button" data-tooltip="Volver al panel principal">Cancelar</a>
+        </form>
+        
     </div>
+</div>
 <div id="confirmModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -89,7 +102,15 @@ Editar Perfil
 {% endblock %}
 
 {% block extra_js %}
+<script>
+    function updateImage(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            document.getElementById('profilePicture').style.backgroundImage = 'url(' + reader.result + ')';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 <script src="{% static 'js/desactivar_cuenta.js' %}?v1.2"></script> 
 <script src="{% static 'js/filtros.js' %}?v1.2"></script> 
-<script src="{% static 'js/dark_mode.js' %}?v3.2"></script>
 {% endblock %}
