@@ -1,0 +1,4 @@
+../config/credentials.json
+!.dockerignore
+!../manage.py
+!../requirements.txt
