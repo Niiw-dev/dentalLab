@@ -4,72 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="modificación con docker">
-      <change afterPath="$PROJECT_DIR$/static/js/changePassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/formHistorias.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/listElements.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/listFechas.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/updateImageConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/citas/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/citas/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/crearcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/crearcitas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/editarcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/editarcitas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/listcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/listcitas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/citas/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/citas/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/cambiar_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/cambiar_password.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/configuracion.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/configuracion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/editarcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/editarcuentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/docker/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/templates/formsfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/formsfechas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/templates/listfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/listfechas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/crearhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/crearhistorias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/verhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/verhistorias.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/templates/acceso_denegado.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/acceso_denegado.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/templates/loginregister.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/loginregister.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/templates/password_reset_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/password_reset_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/crearelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/crearelementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/editarelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/editarelementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/formselementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/formselementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/listelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/listelementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/about.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/about.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/calendario.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/calendarioDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/calendarioDashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/citas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/citas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/datatable.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/editar_fechas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/editar_fechas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/filtrar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtrar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/filtros.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtros.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/forms_historias.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/script_login.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script_login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/validacion_contrasena.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/validacion_contrasena.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dentalLabII/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dentalLabII/.idea/dentalLab.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dentalLabII/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dentalLabII/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../dentalLabII/.idea/modules.xml" beforeDir="false" />
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se cambia de ubicación el gitignore">
+      <change beforePath="$PROJECT_DIR$/docker/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +114,7 @@
       <workItem from="1739980416459" duration="1523000" />
       <workItem from="1739981958905" duration="17623000" />
       <workItem from="1740055526402" duration="685000" />
-      <workItem from="1740162040330" duration="5322000" />
+      <workItem from="1740162040330" duration="5627000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -188,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1740006253209</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="- Se modifican estructuras de html&#10;- Se arreglan versionado de js&#10;- Se crean js necesarios">
+      <option name="closed" value="true" />
+      <created>1740167579045</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740167579045</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Se cambia de ubicación el gitignore">
+      <option name="closed" value="true" />
+      <created>1740167671301</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740167671301</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +148,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="modificación con docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificación con docker" />
+    <MESSAGE value="- Se modifican estructuras de html&#10;- Se arreglan versionado de js&#10;- Se crean js necesarios" />
+    <MESSAGE value="Se cambia de ubicación el gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se cambia de ubicación el gitignore" />
   </component>
 </project>
