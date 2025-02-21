@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se cambia de ubicación el gitignore">
-      <change beforePath="$PROJECT_DIR$/docker/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,8 +64,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/docker" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/docker" />
       <recent name="$PROJECT_DIR$/docker/develop" />
     </key>
   </component>
@@ -114,7 +114,7 @@
       <workItem from="1739980416459" duration="1523000" />
       <workItem from="1739981958905" duration="17623000" />
       <workItem from="1740055526402" duration="685000" />
-      <workItem from="1740162040330" duration="5627000" />
+      <workItem from="1740162040330" duration="5743000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -140,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740167671301</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Se cambia de ubicación el gitignore">
+      <option name="closed" value="true" />
+      <created>1740167694765</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740167694765</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
