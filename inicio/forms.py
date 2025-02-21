@@ -19,15 +19,11 @@ class UserForm(forms.ModelForm):
         imagen = self.cleaned_data.get('imagen')
         if imagen:
             try:
-                # Abrir la imagen
                 img = Image.open(imagen)
-                # Verificar el formato
                 if img.format.lower() not in ['jpeg', 'jpg', 'png', 'gif']:
                     raise forms.ValidationError("El formato de imagen no es soportado. Use JPEG, PNG o GIF.")
-                # Verificar el tamaño (por ejemplo, menor a 5MB)
                 if imagen.size > 5 * 1024 * 1024:
                     raise forms.ValidationError("La imagen es demasiado grande. El tamaño máximo es 5MB.")
-                # Volver a colocar el puntero del archivo al inicio
                 imagen.seek(0)
                 return imagen
             except IOError:
@@ -63,8 +59,8 @@ class FechaForm(forms.ModelForm):
         fields = ['fecha', 'hora', 'hora_final']
 
 class CitaForm(forms.ModelForm):
-    fecha = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'required': 'required'}))  # Fecha obligatoria
-    hora = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time', 'required': 'required'}))  # Hora obligatoria
+    fecha = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'required': 'required'}))
+    hora = forms.TimeField(widget=forms.TimeInput(attrs={'type': 'time', 'required': 'required'}))
     motivo = forms.ChoiceField(choices=Cita.MOTIVO_CHOICES)
 
     class Meta:
@@ -106,10 +102,8 @@ class CitaForm(forms.ModelForm):
         fecha = self.cleaned_data['fecha']
         hora = self.cleaned_data['hora']
 
-        # Obtener o crear la instancia de Fecha
         fecha_hora, created = Fecha.objects.get_or_create(fecha=fecha, hora=hora)
 
-        # Asignar la instancia de Fecha a la cita
         cita.fecha_hora = fecha_hora
 
         if created:

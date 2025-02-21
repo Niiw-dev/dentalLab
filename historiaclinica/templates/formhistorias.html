@@ -63,8 +63,7 @@
             <div class="seccion">
                 <h4>Rehabilitación Oral</h4>
                 {% for campo in formularioII %}
-                {% if campo.name in 'protesis_dental,total,acrilico,flexible,parcial,retenedores,panoramica,periapical'
-                %}
+                {% if campo.name in 'protesis_dental,total,acrilico,flexible,parcial,retenedores,panoramica,periapical' %}
                 <div class="mb-3">
                     <label for="id_{{ campo.name }}" class="form-label"
                         data-tooltip="Ingrese detalles sobre {{ campo.label|lower }}">
@@ -93,9 +92,7 @@
             <div class="seccion">
                 <h4>Anamnesis</h4>
                 {% for campo in formularioII %}
-                {% if campo.name in
-                'tratamiento_medicacion,reacciones_alergicas,transtorno_tension_arterial,diabetes,transtornos_emocionales,enfermedad_respiratoria,otros'
-                %}
+                {% if campo.name in 'tratamiento_medicacion,reacciones_alergicas,transtorno_tension_arterial,diabetes,transtornos_emocionales,enfermedad_respiratoria,otros' %}
                 <div class="mb-3">
                     <label for="id_{{ campo.name }}" class="form-label"
                         data-tooltip="Seleccione o ingrese detalles sobre {{ campo.label|lower }}">
@@ -131,8 +128,7 @@
                 {% for campo in formularioII %}
                 {% if campo.name in 'cepillado_dental,seda_dental,enjuague_bucal' %}
                 <div class="mb-3">
-                    <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">{{ campo.label
-                        }}</label>
+                    <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">{{ campo.label }}</label>
                     <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required
                         data-tooltip="Seleccione SI o NO">
                         <option value="1">SI</option>
@@ -152,16 +148,4 @@
 
 </form>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var fechaHistoria = document.getElementById('id_fecha_historia');
-        if (!fechaHistoria.value) {
-            var today = new Date();
-            var dd = String(today.getDate()).padStart(2, '0');
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-            var yyyy = today.getFullYear();
-            today = yyyy + '-' + mm + '-' + dd;
-            fechaHistoria.value = today;
-        }
-    });
-</script>
+<script src="{% static 'js/formsHistorias.js' %}?v1.1"></script>

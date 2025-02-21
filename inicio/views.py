@@ -325,7 +325,6 @@ def download_backup(request, filename):
 class DeleteBackupView(View):
     def post(self, request, *args, **kwargs):
         try:
-            # Obtener el nombre del archivo a eliminar
             filename = request.POST.get('filename')
             if not filename:
                 messages.error(request, "No se proporcionó un archivo para eliminar.")
@@ -338,7 +337,6 @@ class DeleteBackupView(View):
                 messages.error(request, f"El archivo {filename} no existe.")
                 return redirect('backup_list')
 
-            # Eliminar el archivo de respaldo
             os.remove(backup_path)
             messages.success(request, f"El archivo de respaldo {filename} ha sido eliminado exitosamente.")
 

@@ -57,8 +57,8 @@
                                 data-tooltip="Seleccione un motivo para filtrar">
                                 <option value="">Todos</option>
                                 {% for motivo in motivos %}
-                                <option value="{{ motivo }}" {% if request.GET.motivo==motivo %}selected{% endif %}>{{
-                                    motivo }}</option>
+                                <option value="{{ motivo }}" {% if request.GET.motivo == motivo %}selected{% endif %}>
+                                    {{ motivo }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -69,8 +69,8 @@
                                 data-tooltip="Seleccione un estado para filtrar">
                                 <option value="">Todos</option>
                                 {% for estado in estados %}
-                                <option value="{{ estado }}" {% if request.GET.estado==estado %}selected{% endif %}>{{
-                                    estado }}</option>
+                                <option value="{{ estado }}" {% if request.GET.estado == estado %}selected{% endif %}>
+                                    {{ estado }}</option>
                                 {% endfor %}
                             </select>
                         </div>
@@ -105,27 +105,31 @@
                                 <td data-sort="motivo">{{ cita.get_motivo_display }}</td>
                                 <td data-sort="estado">{{ cita.get_estado_display }}</td>
                                 <td>
-                                    <a {% if cita.get_estado_display=='Programada'
-                                        %}href="{% url 'editarcitas' cita.id %}" class="btn btn-warning"
-                                        data-tooltip="Editar detalles de la cita" {% else
-                                        %}class="btn btn-secondary disabled"
-                                        data-tooltip="No se puede editar una cita no programada" {% endif %}>
+                                    <a {% if cita.get_estado_display == 'Programada' %}
+                                        href="{% url 'editarcitas' cita.id %}" class="btn btn-warning"
+                                        data-tooltip="Editar detalles de la cita"
+                                    {% else %}
+                                        class="btn btn-secondary disabled"
+                                        data-tooltip="No se puede editar una cita no programada"
+                                    {% endif %}>
                                         <i class="fas fa-pen sort-icon a"></i>
                                     </a>
-                                    <button {% if cita.get_estado_display=='Programada'
-                                        %}class="btn btn-danger cancelar-cita-btn" data-tooltip="Cancelar esta cita" {%
-                                        else %}class="btn btn-secondary disabled"
-                                        data-tooltip="No se puede cancelar una cita no programada" {% endif %}
-                                        data-cita-id="{{ cita.id }}">
+                                    <button {% if cita.get_estado_display == 'Programada' %}
+                                        class="btn btn-danger cancelar-cita-btn" data-tooltip="Cancelar esta cita"
+                                        {% else %}
+                                            class="btn btn-secondary disabled"
+                                            data-tooltip="No se puede cancelar una cita no programada"
+                                    {% endif %} data-cita-id="{{ cita.id }}">
                                         <i class="fas fa-trash sort-icon a"></i>
                                     </button>
                                     {% if user.is_superuser %}
-                                    <button {% if cita.get_estado_display=='Programada'
-                                        %}class="btn btn-success confirmar-actualizacion-btn"
-                                        data-tooltip="Marcar cita como completada" {% else
-                                        %}class="btn btn-secondary disabled"
-                                        data-tooltip="No se puede actualizar una cita no programada" {% endif %}
-                                        data-cita-id="{{ cita.id }}">
+                                    <button {% if cita.get_estado_display == 'Programada' %}
+                                        class="btn btn-success confirmar-actualizacion-btn"
+                                        data-tooltip="Marcar cita como completada"
+                                    {% else %}
+                                        class="btn btn-secondary disabled"
+                                        data-tooltip="No se puede actualizar una cita no programada"
+                                    {% endif %} data-cita-id="{{ cita.id }}">
                                         <i class="fas fa-check sort-icon a"></i>
                                     </button>
                                     {% endif %}
@@ -142,6 +146,6 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/citas.js' %}?v3.1"></script>
-<script src="{% static 'js/filtrar.js' %}?v3.3"></script>
+<script src="{% static 'js/citas.js' %}?v3.2"></script>
+<script src="{% static 'js/filtrar.js' %}?v3.4"></script>
 {% endblock %}

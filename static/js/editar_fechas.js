@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Existing code for deletion confirmation
     function confirmarEliminacion(id) {
         const actionUrl = `/eliminarfechas/${id}/`;
         document.getElementById('formEliminar').action = actionUrl;
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Function to set the minimum date to today
     function establecerFechaMinima() {
         const fechaInput = document.querySelector('input[name="fecha"]');
         if (fechaInput) {
@@ -40,19 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     establecerFechaMinima();
 
-    // Define allowed time intervals
     const morningStart = "07:00";
     const morningEnd = "12:00";
     const afternoonStart = "14:00";
     const afternoonEnd = "17:00";
 
-    // Function to check if a time is within allowed ranges
     function isTimeInAllowedRanges(time) {
         return (time >= morningStart && time <= morningEnd) || 
                (time >= afternoonStart && time <= afternoonEnd);
     }
 
-    // Validation on form submission
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function(e) {
@@ -75,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add event listeners to time inputs for real-time validation
     const timeInputs = document.querySelectorAll('input[type="time"]');
     timeInputs.forEach(input => {
         input.addEventListener('change', function() {

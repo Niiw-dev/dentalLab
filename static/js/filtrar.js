@@ -1,39 +1,34 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Referencia al formulario y los elementos de filtro
     const filtroForm = document.getElementById("filtroForm");
     const fechaFiltro = document.getElementById("fechaFiltro");
     const motivoFiltro = document.getElementById("motivoFiltro");
     const estadoFiltro = document.getElementById("estadoFiltro");
     const tablaCitas = document.getElementById("elementosTable").getElementsByTagName('tbody')[0];
 
-    // Escuchar cambios en los campos del formulario
     filtroForm.addEventListener("change", function () {
         aplicarFiltros();
     });
 
     function aplicarFiltros() {
-        // Obtener los valores seleccionados
         const fecha = fechaFiltro.value;
         const motivo = motivoFiltro.value;
         const estado = estadoFiltro.value;
 
-        // Crear la URL con los parámetros de búsqueda
         const params = new URLSearchParams({
             fecha: fecha,
             motivo: motivo,
             estado: estado
         });
 
-        // Hacer la petición fetch con los parámetros
         fetch(`?${params.toString()}`, {
             method: 'GET',
             headers: {
-                'X-Requested-With': 'XMLHttpRequest',  // Para indicar que es una solicitud AJAX
+                'X-Requested-With': 'XMLHttpRequest',
             }
         })
-        .then(response => response.json())  // Asumimos que la vista devuelve JSON
+        .then(response => response.json())
         .then(data => {
-            actualizarTabla(data.citas);  // Actualizar la tabla con los nuevos datos
+            actualizarTabla(data.citas);
         })
         .catch(error => {
             console.error("Error al filtrar las citas:", error);
@@ -41,10 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function actualizarTabla(citas) {
-        // Limpiar el contenido actual de la tabla
         tablaCitas.innerHTML = "";
 
-        // Recorrer las citas y agregar filas a la tabla
         citas.forEach(cita => {
             const row = document.createElement('tr');
 

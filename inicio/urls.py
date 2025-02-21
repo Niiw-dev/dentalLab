@@ -3,7 +3,6 @@ from . import views
 from django.contrib.auth.views import PasswordResetView
 from django.contrib.auth import views as auth_views
 from .views import BackupDatabaseView, RestoreDatabaseView, DeleteBackupView, backup_list, download_backup
-# views.py
 from django.contrib.auth.views import PasswordResetView
 from django.core.exceptions import ValidationError
 from django.contrib.auth import get_user_model
@@ -80,7 +79,6 @@ class CustomPasswordResetView(PasswordResetView):
             users = form.get_users(email)
 
             if len(users) > 1 and not documento:
-                # Multiple users found, but no document provided yet
                 form.add_error('documento', "Por favor, ingrese su número de documento para verificar su identidad.")
                 return self.form_invalid(form)
 

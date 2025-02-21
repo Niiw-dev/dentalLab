@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Event listener para botones de confirmar actualización
     const confirmButtons = document.querySelectorAll('.confirmar-actualizacion-btn');
     confirmButtons.forEach(button => {
         button.addEventListener('click', function(e) {
@@ -112,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const fechaInput = document.getElementById('fecha');
     const horaContainer = document.getElementById('hora');
 
-    // Inicializar Flatpickr para el input de fecha
     flatpickr(fechaInput, {
         dateFormat: "Y-m-d",
         minDate: "today",
@@ -134,14 +132,12 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/get-horas-disponibles/?fecha=${fechaSeleccionada}`)
             .then(response => response.json())
             .then(horas => {
-                horaContainer.innerHTML = '';  // Limpiar opciones actuales
+                horaContainer.innerHTML = '';
                 
-                // Ordenar las horas de más temprana a más tardía
                 horas.sort((a, b) => {
                     return new Date('1970/01/01 ' + a) - new Date('1970/01/01 ' + b);
                 });
     
-                // Crear el contenedor grid
                 let gridContainer = document.createElement('div');
                 gridContainer.classList.add('cita-hora-grid');
                 
@@ -150,25 +146,20 @@ document.addEventListener('DOMContentLoaded', function() {
                     button.type = 'button';
                     button.classList.add('cita-hora-boton');
                     
-                    // Formatear la hora a AM/PM
                     const date = new Date('1970-01-01T' + hora + ':00');
                     const options = { hour: 'numeric', minute: 'numeric', hour12: true };
                     const horaFormateada = date.toLocaleString('es-ES', options);
                     
-                    // Separar la hora y el AM/PM
                     const [time, ampm] = horaFormateada.split(' ');
-                    button.innerHTML = `${time} <span class="ampm">${ampm}</span>`; // Usar <span> para el AM/PM
+                    button.innerHTML = `${time} <span class="ampm">${ampm}</span>`;
                     button.dataset.hora = hora;
                     
                     button.addEventListener('click', function() {
-                        // Deseleccionar todos los botones
-                        document.querySelectorAll('.cita-hora-boton').forEach(btn => 
+                        document.querySelectorAll('.cita-hora-boton').forEach(btn =>
                             btn.classList.remove('cita-hora-boton-seleccionado'));
-                        // Seleccionar este botón
                         this.classList.add('cita-hora-boton-seleccionado');
-                        // Actualizar un campo oculto con la hora seleccionada
                         const horaSeleccionada = this.dataset.hora;
-                        document.querySelector('input[name="hora"]').value = horaSeleccionada; // Guardar la hora en el campo oculto
+                        document.querySelector('input[name="hora"]').value = horaSeleccionada;
                     });
                     
                     gridContainer.appendChild(button);
@@ -177,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 horaContainer.appendChild(gridContainer);
                 
-                // Agregar un campo oculto para almacenar la hora seleccionada
                 let hiddenInput = document.createElement('input');
                 hiddenInput.type = 'hidden';
                 hiddenInput.name = 'hora';
@@ -192,12 +182,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     
 
-    // Cargar las horas disponibles inicialmente si hay una fecha seleccionada al inicio
     const fechaInicial = fechaInput.value;
     if (fechaInicial) {
         cargarHorasDisponibles(fechaInicial);
     }
 
-    // Inicializar los event listeners de los botones
     agregarEventListenersBotones();
 });

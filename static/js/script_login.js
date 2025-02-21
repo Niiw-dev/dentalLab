@@ -1,4 +1,3 @@
-// login.js
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const main = document.getElementById('main');
@@ -14,7 +13,6 @@ function handleResize() {
     }
 }
 
-// Ejecutar al cargar y en cada resize
 window.addEventListener('resize', handleResize);
 handleResize();
 
@@ -22,7 +20,6 @@ signInButton.addEventListener('click', () => {
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
         container.classList.remove("right-panel-active");
-        // Scroll suave hacia el formulario de login
         container.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         container.classList.remove("right-panel-active");
@@ -33,7 +30,6 @@ signUpButton.addEventListener('click', () => {
     const isMobile = window.innerWidth <= 768;
     if (isMobile) {
         container.classList.add("right-panel-active");
-        // Scroll suave hacia el formulario de registro
         container.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
         container.classList.add("right-panel-active");

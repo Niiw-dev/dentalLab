@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 titleElement.textContent = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);
             }
 
-            var currentMonthStart = new Date(dateInfo.view.currentStart).toISOString().slice(0, 7); // 'YYYY-MM'
+            var currentMonthStart = new Date(dateInfo.view.currentStart).toISOString().slice(0, 7);
             var citasDelMes = citasData.filter(function (cita) {
                 return cita.start.slice(0, 7) === currentMonthStart;
             });

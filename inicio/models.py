@@ -27,7 +27,6 @@ class UserProfileManager(BaseUserManager):
             tipo=tipo,
         )
 
-         # Validación de contraseña
         try:
             validate_password(password, user)
         except ValidationError as e:
@@ -53,7 +52,7 @@ class UserProfileManager(BaseUserManager):
         return user
 
 def validate_document_length(value):
-    if value < 10**7 or value >= 10**10:  # Rango para 8-10 dígitos
+    if value < 10**7 or value >= 10**10:
         raise ValidationError("El número de documento debe tener entre 8 y 10 dígitos.")
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
@@ -71,13 +70,13 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     direccion = models.CharField(max_length=100, null=True, blank=True)
     correo = models.EmailField(max_length=100, null=True, blank=True)
     ocupacion = models.CharField(max_length=50, null=True, blank=True)
-    celular = models.CharField(max_length=15, null=True, blank=True)  # Changed to CharField
-    acudiente = models.CharField(max_length=50, null=True, blank=True)  # Changed default to blank=True
+    celular = models.CharField(max_length=15, null=True, blank=True)
+    acudiente = models.CharField(max_length=50, null=True, blank=True)
     edad = models.PositiveSmallIntegerField(null=True, blank=True)
     is_active = models.BooleanField(default=True, null=True, blank=True)
     is_admin = models.BooleanField(default=False, null=True, blank=True)
     is_superuser = models.BooleanField(default=False, null=True, blank=True)
-    is_staff = models.BooleanField(default=False)  # Añadido campo is_staff
+    is_staff = models.BooleanField(default=False)
 
 
     objects = UserProfileManager()
@@ -94,7 +93,6 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         self.save()
 
     def save(self, *args, **kwargs):
-        # Resto del código
         if self.pk is None:
             self.is_active = True 
         super().save(*args, **kwargs)
@@ -102,7 +100,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return str(self.documento)
 
-class Valoracion(models.Model):  # Changed to PascalCase
+class Valoracion(models.Model):
     OPCIONES_SI_NO_NO_SABE = (
         (1, 'Si'),
         (2, 'No'),
@@ -154,15 +152,12 @@ class Inventario(models.Model):
         (2, 'Agotado'),
     )
     producto = models.CharField(max_length=150, blank=True)
-    cantidad = models.FloatField(default=0, validators=[MinValueValidator(0)])  # Ensure cantidad is never None
+    cantidad = models.FloatField(default=0, validators=[MinValueValidator(0)])
     estado = models.PositiveSmallIntegerField(choices=ESTADO, default=1)
 
     def save(self, *args, **kwargs):
-        # If cantidad is None, set it to 0 before comparison
         if self.cantidad is None:
             self.cantidad = 0
-        
-        # Adjust estado based on cantidad
         
         if self.cantidad <= 0:
             self.estado = 2
@@ -187,7 +182,6 @@ class Fecha(models.Model):
         return f"{self.fecha} {self.hora}"
 
     def save(self, *args, **kwargs):
-        # Asignar fecha_hora como la combinación de fecha y hora
         self.fecha_hora = timezone.datetime.combine(self.fecha, self.hora)
         print(f"Guardando Fecha {self}. Disponible antes de guardar: {self.disponible}")
         super().save(*args, **kwargs)
@@ -213,7 +207,7 @@ class Cita(models.Model):
     motivo = models.CharField(max_length=20, choices=MOTIVO_CHOICES, default='protesis')
     estado = models.CharField(max_length=20, choices=ESTADO_CHOICES, default='Programada')
     asistio = models.BooleanField(default=False)
-    google_event_id = models.CharField(max_length=255, blank=True, null=True)  # Campo nuevo
+    google_event_id = models.CharField(max_length=255, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None

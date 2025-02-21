@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var ventanaInformativa = document.getElementById('ventanaInformativa');
 
     abrirVentana.addEventListener('click', function(e) {
-        e.preventDefault(); // Previene el comportamiento predeterminado del enlace
+        e.preventDefault();
         ventanaInformativa.style.display = 'block';
     });
 

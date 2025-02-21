@@ -24,10 +24,10 @@
                             Lo sentimos, no tienes permiso para acceder a esta página.
                         </div>
                         <div class="error-actions">
-                            <a {% if user.is_authenticated %}href="{% url 'dashboard' %}" {% else
-                                %}href="{% url 'inicio_index' %}" {% endif %} class="btn btn-primary btn-lg"
-                                data-tooltip="Regresa al dashboard o a la página de inicio de sesión">
-                                <i class="fas fa-home"></i> Volver al Inicio
+                            <a {% if user.is_authenticated %}href="{% url 'dashboard' %}" {% else %}
+                               href="{% url 'inicio_index' %}" {% endif %} class="btn btn-primary btn-lg"
+                               data-tooltip="Regresa al dashboard o a la página de inicio de sesión">
+                               <i class="fas fa-home"></i> Volver al Inicio
                             </a>
                             <a href="https://api.whatsapp.com/send?phone=573222829221"
                                 class="btn btn-outline-info btn-lg" data-tooltip="Contáctanos para obtener ayuda">

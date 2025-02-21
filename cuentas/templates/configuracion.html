@@ -61,15 +61,15 @@ Editar Perfil
                 data-tooltip="Selecciona el tipo de usuario">
                 <option value="" {% if not field.value %}selected{% endif %}>Selecciona una opción</option>
                 {% for value, display_name in field.field.choices %}
-                <option value="{{ value }}" {% if value==field.value %}selected{% endif %}>{{ display_name }}</option>
+                <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
                 {% endfor %}
             </select>
             {% else %}
             <input type="{{ field.field.widget.input_type }}" class="form-control" name="{{ field.name }}"
                 id="{{ field.id_for_label }}" aria-describedby="helpId"
                 placeholder="{% if field.name == 'direccion' %}Dirección{% elif field.name == 'ocupacion' %}Ocupación{% elif field.name == 'protesis_dental' %}Prótesis dental{% elif field.name == 'acrilico' %}Acrílico{% elif field.name == 'panoramica' %}Panorámica{% elif field.name == 'tratamiento_medicacion' %}Tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}Reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}Transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}"
-                value="{{ field.value | default_if_none:'' }}" {% if field.field.required %}required{% endif %} {% if
-                field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
+                value="{{ field.value | default_if_none:'' }}" {% if field.field.required %}required{% endif %}
+                {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
                 data-tooltip="Ingresa tu {% if field.name == 'direccion' %}dirección{% elif field.name == 'ocupacion' %}ocupación{% elif field.name == 'protesis_dental' %}prótesis dental{% elif field.name == 'acrilico' %}acrílico{% elif field.name == 'panoramica' %}panorámica{% elif field.name == 'tratamiento_medicacion' %}tratamiento o medicación{% elif field.name == 'reacciones_alergicas' %}reacciones alérgicas{% elif field.name == 'transtorno_tension_arterial' %}transtorno de tensión arterial{% else %}{{ field.label }}{% endif %}">
             {% endif %}
         </div>
@@ -102,15 +102,7 @@ Editar Perfil
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    function updateImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            document.getElementById('profilePicture').style.backgroundImage = 'url(' + reader.result + ')';
-        };
-        reader.readAsDataURL(event.target.files[0]);
-    }
-</script>
-<script src="{% static 'js/desactivar_cuenta.js' %}?v1.2"></script>
-<script src="{% static 'js/filtros.js' %}?v1.2"></script>
+<script src="{% static 'js/updateImageConfig.js' %}?v1.1"></script>
+<script src="{% static 'js/desactivar_cuenta.js' %}?v5.1"></script>
+<script src="{% static 'js/filtros.js' %}?v6.1"></script>
 {% endblock %}

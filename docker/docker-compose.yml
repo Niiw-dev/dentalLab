@@ -2,6 +2,8 @@ version: '3.11'
 
 services:
   web:
+    image: dental_lab
+    container_name: dental_lab
     build:
       context: ..
       dockerfile: docker/Dockerfile

@@ -51,19 +51,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let userIdToModify;
 
-    // Mostrar modal de desactivación
     function showDesactivarModal(userId) {
         userIdToModify = userId;
         confirmModal.style.display = 'block';
     }
 
-    // Mostrar modal de activación
     function showActivarModal(userId) {
         userIdToModify = userId;
         confirmModal2.style.display = 'block';
     }
 
-    // Mostrar el modal cuando se hace clic en los botones de desactivar
     desactivarButtons.forEach(button => {
         button.addEventListener('click', function () {
             const userId = this.getAttribute('data-user-id');
@@ -71,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Mostrar el modal cuando se hace clic en los botones de activar
     activarButtons.forEach(button => {
         button.addEventListener('click', function () {
             const userId = this.getAttribute('data-user-id');
@@ -79,7 +75,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Cerrar modal
     closeButtons.forEach(button => {
         button.addEventListener('click', function () {
             confirmModal.style.display = 'none';
@@ -87,29 +82,24 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Cancelar desactivación
     cancelDesactivarButton.addEventListener('click', function () {
         confirmModal.style.display = 'none';
     });
 
-    // Cancelar activación
     cancelActivarButton.addEventListener('click', function () {
         confirmModal2.style.display = 'none';
     });
 
-    // Confirmar desactivación
     confirmDesactivarButton.addEventListener('click', function () {
         desactivarCuenta(userIdToModify);
         confirmModal.style.display = 'none';
     });
 
-    // Confirmar activación
     confirmActivarButton.addEventListener('click', function () {
         activarCuenta(userIdToModify);
         confirmModal2.style.display = 'none';
     });
 
-    // Función para desactivar cuenta (AJAX sin alert)
     function desactivarCuenta(userId) {
         fetch(`/desactivar_cuenta/${userId}/`, {
             method: 'POST',
@@ -124,11 +114,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error:', error);  // No muestra alert, pero lo captura en la consola
+            console.error('Error:', error);
         });
     }
 
-    // Función para activar cuenta (AJAX sin alert)
     function activarCuenta(userId) {
         fetch(`/activar_cuenta/${userId}/`, {
             method: 'POST',
@@ -143,11 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         })
         .catch(error => {
-            console.error('Error:', error);  // No muestra alert, pero lo captura en la consola
+            console.error('Error:', error);
         });
     }
 
-    // Función para obtener el token CSRF
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {

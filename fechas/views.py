@@ -46,7 +46,6 @@ def crearfechas(request):
             hora = form.cleaned_data['hora']
             hora_final = form.cleaned_data['hora_final']
 
-            # Verificar si la fecha es el día actual
             if fecha == timezone.now().date():
                 messages.error(request, 'No se pueden crear fechas para el día actual.')
                 return render(request, 'crearfechas.html', {'form': form})
@@ -60,13 +59,10 @@ def crearfechas(request):
                         current_hour = current_time.time().hour
                         current_minute = current_time.time().minute
 
-                        # Verificar si el horario está dentro de los rangos permitidos
                         if (7 <= current_hour < 12) or (14 <= current_hour < 17) or (current_hour == 12 and current_minute == 0) or (current_hour == 17 and current_minute == 0):
-                            # Verificar si la combinación ya existe
                             if Fecha.objects.filter(fecha=current_time.date(), hora=current_time.time()).exists():
                                 raise IntegrityError("Ya existe una fecha y hora para esa disponibilidad.")
                             
-                            # Guardar la nueva fecha si no existe
                             fecha_hora = Fecha(
                                 fecha=current_time.date(),
                                 hora=current_time.time(),
@@ -92,13 +88,11 @@ def crearfechas(request):
 def listfechas(request):
     fecha_actual = timezone.now().date()
     
-    # Inicialmente obtenemos todas las disponibilidades futuras
     disponibilidades = Fecha.objects.filter(
         fecha__gte=fecha_actual,
         disponible=True
     ).order_by('fecha', 'hora')
 
-    # Filtro por fecha si se envía el parámetro desde el formulario
     fecha_filtro = request.GET.get('fecha')
     if fecha_filtro:
         disponibilidades = disponibilidades.filter(fecha=fecha_filtro)
@@ -162,23 +156,20 @@ def reporte_fechas_excel(request):
         hora = fecha.hora
 
         ws.append([
-            fecha_hora.strftime('%d-%m-%Y'),  # Date in DD-MM-YYYY format
-            hora.strftime('%H:%M'),  # Time in HH:MM format
+            fecha_hora.strftime('%d-%m-%Y'),
+            hora.strftime('%H:%M'),
         ])
 
-    # Set column widths
     ws.column_dimensions['A'].width = 20
-    ws.column_dimensions['B'].width = 48  # Adjusted width for column B
+    ws.column_dimensions['B'].width = 48
 
-    # Apply styles
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=2):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
             cell.border = border
-            # Apply date format for date columns
-            if cell.column_letter == 'A':  # Assuming 'A' is the date column
+            if cell.column_letter == 'A':
                 cell.number_format = 'DD-MM-YYYY'
-            elif cell.column_letter == 'B':  # Assuming 'B' is the time column
+            elif cell.column_letter == 'B':
                 cell.number_format = 'HH:MM'
     
     for cell in ws[3]:

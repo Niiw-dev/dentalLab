@@ -1,9 +1,7 @@
-# Importaciones estándar
 import os
 from datetime import datetime, timedelta
 from io import BytesIO
 
-# Importaciones de Django
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
@@ -18,19 +16,16 @@ from django.utils import timezone
 from django.views.decorators.cache import never_cache
 from django.views.decorators.http import require_GET, require_POST
 
-# Importaciones de Google API
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import Flow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-# Importaciones de la aplicación
 from inicio import views as traer
 from inicio.forms import CitaForm, UserForm
 from inicio.models import Cita, Fecha, UserProfile
 
-# Importaciones para trabajar con Excel y PDF
 import openpyxl
 from openpyxl.drawing.image import Image as OpenPyXLImage
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -44,14 +39,11 @@ from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
 from reportlab.platypus import Image as RLImage, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-
-# Ruta al archivo de credenciales de Google
 CLIENT_SECRETS_FILE = os.path.join(settings.BASE_DIR, 'config/credentials.json')
 
-# Alcances requeridos para acceder a Google Calendar
 SCOPES = [
-    'https://www.googleapis.com/auth/calendar',         # Permisos para realizar cambios en el calendario
-    'https://www.googleapis.com/auth/calendar.readonly'  # Permisos solo de lectura para el calendario
+    'https://www.googleapis.com/auth/calendar',
+    'https://www.googleapis.com/auth/calendar.readonly'
 ]
 
 def get_google_calendar_service(request):
@@ -65,21 +57,14 @@ def get_google_calendar_service(request):
         Un objeto de servicio de Google Calendar si las credenciales son válidas.
         Redirige a la vista de inicio de OAuth si las credenciales no son válidas o no están disponibles.
     """
-    # Verifica si las credenciales están disponibles en la sesión del usuario
     if 'credentials' not in request.session:
-        # Redirige a la vista que inicia el flujo de OAuth
         return redirect('initiate_oauth')
     
-    # Carga las credenciales desde la sesión del usuario
     credentials = Credentials(**request.session['credentials'])
     
-    # Verifica si las credenciales son válidas
     if not credentials.valid:
-        # Si las credenciales han expirado y hay un token de refresco disponible
         if credentials.expired and credentials.refresh_token:
-            # Refresca las credenciales
             credentials.refresh(Request())
-            # Actualiza las credenciales en la sesión del usuario
             request.session['credentials'] = {
                 'token': credentials.token,
                 'refresh_token': credentials.refresh_token,
@@ -89,32 +74,25 @@ def get_google_calendar_service(request):
                 'scopes': credentials.scopes
             }
         else:
-            # Redirige a la vista que inicia el flujo de OAuth si no se pueden refrescar las credenciales
             return redirect('initiate_oauth')
-    
-    # Devuelve el servicio de Google Calendar si las credenciales son válidas
+
     return build('calendar', 'v3', credentials=credentials)
 
 
 def initiate_oauth(request):
-    # Construye la URI de redirección para el flujo de OAuth
     redirect_uri = request.build_absolute_uri(reverse('oauth2callback'))
-    print(f"Redirect URI: {redirect_uri}") # Imprime la URI de redirección para depuración
-    # Crea un flujo de autorización utilizando el archivo de credenciales y los alcances definidos
+    print(f"Redirect URI: {redirect_uri}")
     flow = Flow.from_client_secrets_file(
         CLIENT_SECRETS_FILE,
         scopes=SCOPES,
         redirect_uri=redirect_uri
     )
-    # Genera la URL de autorización y el estado de la sesión
     authorization_url, state = flow.authorization_url(
-        access_type='offline', # Permite el acceso cuando el usuario no está activo
-        include_granted_scopes='true', # Incluye los alcances previamente concedidos
+        access_type='offline',
+        include_granted_scopes='true',
     )
-    # Almacena el estado en la sesión del usuario para validación posterior
     request.session['state'] = state
-    print(f"Authorization URL: {authorization_url}") # Imprime la URL de autorización para depuración
-    # Redirige al usuario a la URL de autorización de Google
+    print(f"Authorization URL: {authorization_url}")
     return redirect(authorization_url)
 
 
@@ -122,20 +100,15 @@ def oauth2callback(request):
     
     os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
     os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
-     # Permitir el uso de HTTP en lugar de HTTPS para el flujo de OAuth (solo para desarrollo)
-    
-    # Construye la URI de redirección para esta vista
+
     redirect_uri = request.build_absolute_uri(reverse('oauth2callback'))
-    print(f"Redirect URI in oauth2callback: {redirect_uri}") # Imprime la URI de redirección para depuración
-    print(f"Full request URL: {request.build_absolute_uri()}") # Imprime la URL completa de la solicitud para depuración
+    print(f"Redirect URI in oauth2callback: {redirect_uri}")
+    print(f"Full request URL: {request.build_absolute_uri()}")
     
-    # Obtiene el estado de la sesión del usuario
     state = request.session.get('state')
     if not state:
-        # Si no hay estado, redirige para iniciar el flujo de OAuth
         return redirect('initiate_oauth')
     
-     # Crea un flujo de autorización utilizando el archivo de credenciales y el estado
     flow = Flow.from_client_secrets_file(
         CLIENT_SECRETS_FILE,
         scopes=SCOPES,
@@ -144,11 +117,9 @@ def oauth2callback(request):
     )
     
     try:
-         # Intercambia el código de autorización por un token de acceso
         flow.fetch_token(authorization_response=request.build_absolute_uri())
         credentials = flow.credentials
         
-        # Almacena las credenciales en la sesión del usuario
         request.session['credentials'] = {
             'token': credentials.token,
             'refresh_token': credentials.refresh_token,
@@ -158,14 +129,12 @@ def oauth2callback(request):
             'scopes': credentials.scopes
         }
         
-        # Mensaje de éxito
         messages.success(request, 'Autenticación con Google Calendar completada exitosamente.')
         return redirect('listcitas')
     
     except Warning as w:
         print(f"Advertencia durante la autenticación: {str(w)}")
         messages.warning(request, f'Se produjo una advertencia durante la autenticación: {str(w)}')
-        # Puedes decidir continuar o manejar esto de otra manera
         return redirect('listcitas')
     
     except Exception as e:
@@ -183,12 +152,10 @@ def cancelar_cita(request, cita_id):
         resultado = cita.cancelar_cita()
         if resultado:
             print("entró")
-            # Eliminar el evento de Google Calendar
             service = get_google_calendar_service(request)
             if isinstance(service, HttpResponseRedirect):
-                return service  # Esto redirigirá al usuario a la página de autorización de Google
+                return service
 
-            # Buscar el evento por su descripción (asumiendo que guardamos el ID de la cita en la descripción)
             events_result = service.events().list(calendarId='primary', q=f'Cita ID: {cita_id}').execute()
             events = events_result.get('items', [])
 
@@ -197,7 +164,6 @@ def cancelar_cita(request, cita_id):
                 service.events().delete(calendarId='primary', eventId=event['id']).execute()
                 print(f"Evento de Google Calendar eliminado para la cita {cita_id}")
                 
-            # Enviar correo
             recipient_list = [cita.paciente.correo, "facturacionldsg@gmail.com"]
             send_mail(
                 'Cita Cancelada',
@@ -233,20 +199,16 @@ def crearcitas(request):
             
             paciente = formulario.cleaned_data['paciente'] if request.user.is_superuser else request.user
 
-            # Verificar si el paciente ya tiene una cita programada
             if Cita.objects.filter(paciente=paciente, estado='Programada').exists():
                 messages.error(request, f'El paciente {paciente.nombre} ya tiene una cita programada.')
                 return redirect('listcitas')
 
-            # Guardar la cita
             cita = formulario.save(commit=False)
             cita.paciente = paciente
             cita.estado = 'Programada'
 
-            # Obtener fecha y hora
-            print(f'Fecha: {fecha}, Hora: {hora}')  # Para verificar los valores
+            print(f'Fecha: {fecha}, Hora: {hora}')
 
-            # Verificar fechas existentes
             fechas_existentes = Fecha.objects.filter(fecha=fecha, hora=hora)
             print(f"Fechas existentes para {fecha} {hora}: {fechas_existentes.count()} encontradas.")
 
@@ -256,15 +218,12 @@ def crearcitas(request):
             elif fechas_existentes.exists():
                 cita.fecha_hora = fechas_existentes.first()
             else:
-                # Si no existe, crear una nueva entrada de Fecha
                 nueva_fecha = Fecha(fecha=fecha, hora=hora)
                 nueva_fecha.save()
                 cita.fecha_hora = nueva_fecha
 
-            # Guardar la cita
             cita.save()
 
-            # Enviar correo
             recipient_list = [cita.paciente.correo, "facturacionldsg@gmail.com"]
             send_mail(
                 'Recordatorio de Cita Programada',
@@ -274,10 +233,9 @@ def crearcitas(request):
                 fail_silently=False,
             )
 
-            # Crear evento en Google Calendar
             service = get_google_calendar_service(request)
             if isinstance(service, HttpResponseRedirect):
-                return service  # Redirigir si hay que autorizar
+                return service
 
             fecha_datetime = datetime.combine(fecha, hora)
 
@@ -358,12 +316,11 @@ def confirmar_actualizacion_cita(request, cita_id):
         print("entró")
         if resultado:
             print("entró")
-            # Eliminar el evento de Google Calendar
+
             service = get_google_calendar_service(request)
             if isinstance(service, HttpResponseRedirect):
-                return service  # Esto redirigirá al usuario a la página de autorización de Google
+                return service
 
-            # Buscar el evento por su descripción (asumiendo que guardamos el ID de la cita en la descripción)
             events_result = service.events().list(calendarId='primary', q=f'Cita ID: {cita_id}').execute()
             events = events_result.get('items', [])
 
@@ -414,7 +371,6 @@ def editarcitas(request, cita_id):
             nueva_fecha = form.cleaned_data['fecha']
             nueva_hora = form.cleaned_data['hora']
 
-            # Verificamos si la fecha o la hora están vacías
             if not nueva_fecha or not nueva_hora:
                 messages.error(request, 'Por favor, selecciona tanto la fecha como la hora para la cita.')
                 return render(request, 'editarcitas.html', {'form': form, 'cita': cita, 'is_superuser': request.user.is_superuser, 'is_editing': True})
@@ -422,15 +378,12 @@ def editarcitas(request, cita_id):
             nueva_cita = form.save(commit=False)
             nueva_fecha_hora, created = Fecha.objects.get_or_create(fecha=nueva_fecha, hora=nueva_hora)
 
-            # Si la fecha y hora cambiaron
             if nueva_fecha_hora != fecha_hora_original:
-                # Validar si la fecha original tiene otras citas
                 citas_en_fecha_original = Cita.objects.filter(
                     fecha_hora=fecha_hora_original, 
                     estado__in=['programada', 'asistida']
                 ).exclude(id=cita_id)
                 
-                # Si no hay citas en la fecha original, la marcamos como disponible
                 if not citas_en_fecha_original.exists():
                     fecha_hora_original.disponible = True
                     fecha_hora_original.save()
@@ -438,7 +391,6 @@ def editarcitas(request, cita_id):
                 nueva_fecha_hora.disponible = False
                 nueva_fecha_hora.save()
                 
-                # Enviar correo notificando la reprogramación
                 recipient_list = [cita.paciente.correo, "facturacionldsg@gmail.com"]
                 send_mail(
                     'Cita ReAgendada',
@@ -450,7 +402,6 @@ def editarcitas(request, cita_id):
 
                 nueva_cita.fecha_hora = nueva_fecha_hora
 
-                # Eliminar el evento viejo en Google Calendar
                 service = get_google_calendar_service(request)
                 if isinstance(service, HttpResponseRedirect):
                     return service
@@ -464,7 +415,6 @@ def editarcitas(request, cita_id):
 
             nueva_cita.save()
 
-            # Crear un nuevo evento en Google Calendar
             fecha_datetime = datetime.combine(nueva_fecha, nueva_hora)
             event = {
                 'summary': 'Cita Programada',
@@ -503,7 +453,6 @@ def editarcitas(request, cita_id):
 
             return redirect('listcitas')
         else:
-            # Mostrar errores de validación del formulario
             for field, errors in form.errors.items():
                 if field == '__all__':
                     for error in errors:
@@ -541,7 +490,6 @@ def citas_agendadas(request):
     else:
         citas = Cita.objects.filter(paciente=request.user)
 
-    # Actualizar el estado de las citas pasadas
     for cita in citas:
         fecha_hora_cita = datetime.combine(cita.fecha_hora.fecha, cita.fecha_hora.hora)
         fecha_hora_cita = timezone.make_aware(fecha_hora_cita)
@@ -549,7 +497,6 @@ def citas_agendadas(request):
             cita.estado = 'Inasistida'
             cita.save()
 
-    # Filtros
     fecha = request.GET.get('fecha')
     motivo = request.GET.get('motivo')
     estado = request.GET.get('estado')
@@ -561,9 +508,7 @@ def citas_agendadas(request):
     if estado:
         citas = citas.filter(estado=estado)
 
-    # Comprobar si es una petición AJAX
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-        # Construir lista de citas en formato JSON
         citas_data = [{
             'paciente': cita.paciente.documento,
             'nombres': cita.paciente.nombre,
@@ -578,7 +523,6 @@ def citas_agendadas(request):
 
         return JsonResponse({'citas': citas_data})
 
-    # Renderizado normal para usuarios no-AJAX
     return render(request, 'listcitas.html', {
         'citas': citas,
         'motivos': [motivo[0] for motivo in Cita.MOTIVO_CHOICES],
@@ -626,7 +570,6 @@ def reporte_citas_excel(request):
         motivo = cita.get_motivo_display()
         estado = cita.get_estado_display()
         
-        # Manejo de fecha y hora
         if cita.fecha_hora:
             fecha = cita.fecha_hora.fecha.strftime('%d-%m-%Y') if hasattr(cita.fecha_hora.fecha, 'strftime') else str(cita.fecha_hora.fecha)
             hora = cita.fecha_hora.hora.strftime('%H:%M') if hasattr(cita.fecha_hora.hora, 'strftime') else str(cita.fecha_hora.hora)
@@ -643,20 +586,17 @@ def reporte_citas_excel(request):
             estado
         ])
 
-    # Set column widths
     column_widths = [20, 30, 15, 10, 30, 15]
     for i, width in enumerate(column_widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
 
-    # Apply styles
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=6):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
             cell.border = border
-            # Apply date format for date columns
-            if cell.column_letter == 'C':  # Fecha column
+            if cell.column_letter == 'C':
                 cell.number_format = 'DD-MM-YYYY'
-            elif cell.column_letter == 'D':  # Hora column
+            elif cell.column_letter == 'D':
                 cell.number_format = 'HH:MM'
     
     for cell in ws[3]:
@@ -689,46 +629,37 @@ class NumberedCanvas(canvas.Canvas):
         canvas.Canvas.save(self)
 
     def draw_page_number(self, page_count):
-        # Dibuja el número de página
         self.setFont("Helvetica", 9)
         self.drawRightString(letter[0] - 30, 30, f"Página {self._pageNumber} de {page_count}")
         
-        # Dibuja la marca de agua
         self.saveState()
         img = ImageReader(self.logo_path)
-        img_width = 4 * inch  # Ajusta esto según sea necesario
-        img_height = img_width * img.getSize()[1] / img.getSize()[0]  # Mantiene la proporción
+        img_width = 4 * inch
+        img_height = img_width * img.getSize()[1] / img.getSize()[0]
         
-        # Calcula la posición para centrar la imagen
         x = (letter[0] - img_width) / 2
         y = (letter[1] - img_height) / 2
         
-        self.setFillColor(colors.Color(0, 0, 0, alpha=0.1))  # 10% de opacidad
+        self.setFillColor(colors.Color(0, 0, 0, alpha=0.1))
         self.drawImage(img, x, y, width=img_width, height=img_height, mask='auto')
         self.restoreState()
 
 
 def reporte_citas_pdf(request):
-    # Crear un buffer para el PDF
     buffer = BytesIO()
 
-    # Crear el documento PDF
     doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
 
-    # Contenedor para los elementos del PDF
     elements = []
 
-    # Estilos
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Center', alignment=1))
 
-    # Título
     elements.append(Paragraph("LABORATORIO DENTAL", styles['Title']))
     elements.append(Spacer(1, 12))
     elements.append(Paragraph("Citas Agendadas", styles['Heading2']))
     elements.append(Spacer(1, 12))
 
-    # Datos de la tabla
     data = [["Paciente", "Nombres", "Fecha", "Hora", "Motivo", "Estado"]]
 
     citas = Cita.objects.all()
@@ -747,10 +678,8 @@ def reporte_citas_pdf(request):
         
         data.append([paciente, nombre, fecha, hora, motivo, estado])
 
-    # Crear la tabla
     table = Table(data)
 
-    # Estilo de la tabla
     style = TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#cab97d")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
@@ -769,14 +698,10 @@ def reporte_citas_pdf(request):
     ])
     table.setStyle(style)
 
-    # Agregar la tabla al documento
     elements.append(table)
 
-    # Construir el PDF
     doc.build(elements, canvasmaker=NumberedCanvas)
 
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Reporte_citas.pdf"'

@@ -15,9 +15,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
   items.forEach(item => {
     item.addEventListener('mouseenter', () => {
-      // Eliminar la clase hover de todos los items
       items.forEach(i => i.classList.remove('hover'));
-      // Añadir la clase hover al item actual
       item.classList.add('hover');
     });
   });
@@ -31,12 +29,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     
     item.addEventListener('mouseenter', () => {
       clearTimeout(timer);
-      // Añadir la clase hover al item actual
       item.classList.add('hover');
     });
 
     item.addEventListener('mouseleave', () => {
-      // Configurar el temporizador para eliminar la clase hover después de 2 segundos
       timer = setTimeout(() => {
         item.classList.remove('hover');
       }, 800);

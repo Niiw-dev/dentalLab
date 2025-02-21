@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 MEDIA_URL = '/media/'
@@ -20,18 +19,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 os.path.join(BASE_DIR, 'config/credentials.json')
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-5(a+iyj5056s0rliz-8ttf_sh^u18t0b%gsx-ef^d)om9j#)qq'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0','localhost', '127.0.0.1', 'tu_dominio.com']
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -82,9 +74,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -92,8 +81,6 @@ DATABASES = {
     }
 }
 MYSQL_DUMP_PATH = os.getenv('MYSQL_DUMP_PATH', 'C:/Program Files/MySQL/MySQL Server 8.0/bin/mysqldump.exe')
-# Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -122,8 +109,6 @@ CACHES = {
 
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.0/topics/i18n/
 
 LANGUAGE_CODE = 'es'
 
@@ -135,29 +120,21 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'inicio.UserProfile'
 
-# Configuración de correo electrónico
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # Reemplaza con el servidor SMTP de tu proveedor
-EMAIL_PORT = 587  # Puerto SMTP, generalmente 587 para TLS
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'facturacionldsg@gmail.com'  # Reemplaza con tu dirección de correo
-EMAIL_HOST_PASSWORD = 'jdlj vvqw rwcp lots'  # Reemplaza con tu contraseña de correo
+EMAIL_HOST_USER = 'facturacionldsg@gmail.com'
+EMAIL_HOST_PASSWORD = 'jdlj vvqw rwcp lots'
 
-# Configuración para el restablecimiento de contraseña
-PASSWORD_RESET_TIMEOUT = 3600  # 1 hora en segundos
+PASSWORD_RESET_TIMEOUT = 3600

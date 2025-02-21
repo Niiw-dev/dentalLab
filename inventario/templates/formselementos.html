@@ -11,7 +11,7 @@
         <select class="form-select" name="{{ field.name }}" id="{{ field.id_for_label }}" required
             data-parsley-required-message="Este campo es obligatorio" data-tooltip="Seleccione el estado">
             {% for value, display_name in field.field.choices %}
-            <option value="{{ value }}" {% if value==field.value %}selected{% endif %}>{{ display_name }}</option>
+            <option value="{{ value }}" {% if value == field.value %}selected{% endif %}>{{ display_name }}</option>
             {% endfor %}
         </select>
         {% else %}
@@ -19,8 +19,7 @@
             id="{{ field.id_for_label }}" aria-describedby="helpId" placeholder="{{ field.label }}"
             value="{% if field.value %}{{ field.value }}{% endif %}" {% if field.field.required %}required{% endif %}
             data-parsley-required-message="Este campo es obligatorio"
-            data-tooltip="Por favor, ingrese {{ field.label|lower }}" {% if field.field.widget.attrs %}{{
-            field.field.widget.attrs|safe }}{% endif %} required>
+            data-tooltip="Por favor, ingrese {{ field.label|lower }}" {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %} required>
         {% endif %}
 
         <div class="col-12 help-text">{{ field.errors }}</div>
@@ -28,8 +27,7 @@
     {% endfor %}
 
     <button type="submit" class="btn btn-success" data-tooltip="Guardar datos">Guardar</button>
-    <a class="btn btn-warning" href="{% url 'listelementos' %}"" data-tooltip=" Volver a la lista de Insumos"
-        role="button">Volver</a>
+    <a class="btn btn-warning" href="{% url 'listelementos' %}" data-tooltip="Volver a la lista de Insumos" role="button">Volver</a>
 </form>
 
 <script>

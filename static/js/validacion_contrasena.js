@@ -44,7 +44,6 @@ $(document).ready(function () {
       this.submit();
     }
   });
-  // Función para alternar la visibilidad de la contraseña
   $('#togglePassword').on('click', function () {
     const passwordField = $('#new_password1');
     const passwordFieldType = passwordField.attr('type') === 'password' ? 'text' : 'password';
@@ -52,7 +51,6 @@ $(document).ready(function () {
     $(this).find('i').toggleClass('fa-eye fa-eye-slash');
   });
 
-  // Función para alternar la visibilidad de la confirmación de la contraseña
   $('#toggleConfirmPassword').on('click', function () {
     const passwordField = $('#new_password2');
     const passwordFieldType = passwordField.attr('type') === 'password' ? 'text' : 'password';
