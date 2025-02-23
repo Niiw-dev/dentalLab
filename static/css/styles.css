@@ -16,6 +16,64 @@ body {
   flex-direction: column;
   font-family: var(--primary-font);
 }
+.ContentCalendar {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  flex: 1;
+}
+#calendar{
+  padding: 20px;
+  border: 3px solid #f0f0f0;
+  border-radius: 5px;
+}
+
+.fc-scrollgrid {
+  --scrollbar-width: 11px;
+  --scrollbar-background-color: #f0f0f0;
+  --scrollbar-thumb-background-color: #3b3b3b;
+  --scrollbar-thumb-border: 3px solid #f0f0f0;
+  --scrollbar-track-background-color: #e0e0e0;
+  --scrollbar-radius: 10px;
+  overflow: auto !important;
+}
+
+.fc-scroller::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  background-color: var(--scrollbar-background-color);
+  border-radius: 5px;
+}
+
+.fc-scroller::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb-background-color);
+  border-radius: var(--scrollbar-radius);
+  border: var(--scrollbar-thumb-border);
+}
+
+.fc-scroller::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-track-background-color);
+  border-radius: var(--scrollbar-radius);
+}
+
+.fc-daygrid-day-number {
+  color: black;
+  text-decoration: none;
+}
+
+.fc-col-header-cell-cushion {
+  color: black;
+  text-decoration: none;
+}
+.fc-more-link {
+  font-weight: bold !important;
+  color: darkblue !important;
+}
+
 .ContentX {
   min-height: 85vh;
   display: flex;

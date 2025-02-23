@@ -6,6 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         locale: 'es',
         initialView: 'dayGridMonth',
+        height: '31rem',
+        dayMaxEventRows: true,
+        moreLinkText: "Ver más",
+        eventBackgroundColor: 'white',  
+        eventBorderColor: 'darkblue',   
+        textColor: 'black',             
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
@@ -31,24 +37,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: title,
                 start: cita.start,
                 end: cita.end,
-                backgroundColor: 'black',
+                backgroundColor: 'white',
                 borderColor: 'darkblue',
-                textColor: 'white',
-                extendedProps: {
-                    hora: `<strong>${title}<br>${startTime} - ${endTime}</strong>`
-                }
+                textColor: 'black',
             };
         }),
-        eventDidMount: function(info) {
-            info.el.innerHTML = info.event.extendedProps.hora;
+        eventContent: function(arg) {
+            var startTime = arg.event.start.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+
+            return {
+                html: `<div style="white-space: normal; overflow: visible; font-weight: bold; color: darkblue;">
+                          ${startTime} - ${arg.event.title}
+                       </div>`
+            };
         },
-        datesset: function(dateInfo) {
+        datesSet: function (dateInfo) {
+            var headerSections = calendarEl.querySelectorAll('.fc-scroller');
+            headerSections.forEach(function (section) {
+                section.style.setProperty('--scrollbar-width', '11px');
+                section.style.setProperty('--scrollbar-background-color', '#f0f0f0');
+                section.style.setProperty('--scrollbar-thumb-background-color', '#3b3b3b');
+                section.style.setProperty('--scrollbar-thumb-border', '3px solid #f0f0f0');
+                section.style.setProperty('--scrollbar-track-background-color', '#e0e0e0');
+                section.style.setProperty('--scrollbar-radius', '10px');
+                section.style.setProperty('overflow', 'auto');
+            });
+
+            var dayHeaders = calendarEl.querySelectorAll('.fc-col-header-cell.fc-day');
+            dayHeaders.forEach(function (dayHeader, index) {
+                const dayShortNames = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+                dayHeader.textContent = dayShortNames[index];
+            });
+
             var titleElement = calendarEl.querySelector('.fc-toolbar-title');    
             if (titleElement) {        
-                var currentMonth = new Date(dateInfo.view.currentStart).toLocaleString('es-ES', { month: 'long', year: 'numeric' });
-                titleElement.textContent = currentMonth.charAt(0).toUpperCase() + currentMonth.slice(1);    
+                var currentDate = new Date(dateInfo.view.currentStart);
+                
+                var month = currentDate.toLocaleString('es-ES', { month: 'long' });
+                var year = currentDate.getFullYear();
+                
+                titleElement.textContent = `${month.charAt(0).toUpperCase() + month.slice(1)} ${year}`;
             }
-        }
+        },
     });
 
     calendar.render();

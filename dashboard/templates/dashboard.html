@@ -134,8 +134,9 @@
         <ul>
           {% for cita in citas %}
           <li>
-            <strong>{{ cita.paciente.nombre }}</strong> - {{ cita.motivo }} ({{ cita.fecha_hora.fecha|date:"d/m/Y" }} -
-            {{ cita.fecha_hora.hora|date:"H:i" }})
+            Paciente: {{ cita.paciente.nombre }} <br> 
+            Cita: {{ cita.motivo }} <br> 
+            Fecha: ({{ cita.fecha_hora.fecha|date:"d/m/Y" }} - {{ cita.fecha_hora.hora|date:"H:i" }})
           </li>
           {% endfor %}
         </ul>
