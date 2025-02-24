@@ -12,3 +12,4 @@ services:
       - ../static:/app/staticfiles
     ports:
       - "8000:8000"
+      -
