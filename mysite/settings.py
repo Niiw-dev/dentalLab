@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'inicio',
     'inventario',
     'gmail_integration',
-    
+
 ]
 
 MIDDLEWARE = [

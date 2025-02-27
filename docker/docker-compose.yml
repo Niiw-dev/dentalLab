@@ -8,8 +8,7 @@ services:
       context: ..
       dockerfile: docker/Dockerfile
     volumes:
-      - ..:/app
-      - ../static:/app/staticfiles
+      - ..:/app/dental
+      - ../static:/app/dental/staticfiles
     ports:
       - "8000:8000"
-      -
