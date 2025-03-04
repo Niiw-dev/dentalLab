@@ -39,8 +39,6 @@ INSTALLED_APPS = [
     'historiaclinica',
     'inicio',
     'inventario',
-    'gmail_integration',
-
 ]
 
 MIDDLEWARE = [

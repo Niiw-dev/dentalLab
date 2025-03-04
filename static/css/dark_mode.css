@@ -49,14 +49,14 @@
   color: #ffffff;
 }
 
-.dark-mode .navbar {
-  background-color: #646464;
-  border-color: #414141;
-}
 
 .dark-mode .navbar ul li a {
   color: #ffffff;
 }
+
+.dark-mode #mainNav.navbar-shrink {
+    background-color: rgb(19, 19, 19);
+  }
 
 .dark-mode .navbar ul li a:hover {
   color: #9adfff;
@@ -123,13 +123,6 @@
 .dark-mode .portfolio-item img {
   filter: brightness(0.8) !important;
 }
-
-
-.dark-mode .img-fluid {
-  background-color: #414141;
-  color: #ffffff;
-}
-
 
 .dark-mode .text-muted {
   color: #ffffff;
@@ -237,6 +230,7 @@
   background-color: #121212;
   color: #e0e0e0;
 }
+
 
 .dark-mode .container2 {
   background: #1e1e1e;

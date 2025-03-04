@@ -16,7 +16,7 @@ body {
   flex-direction: column;
 }
 .ContentCalendar {
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +30,7 @@ body {
   padding: 20px;
   border: 3px solid #f0f0f0;
   border-radius: 5px;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -505,9 +505,4 @@ input {
 
 .dark-mode-toggle:hover {
   transform: scale(1.1);
-}
-
-.bootFooter {
-  width: 100%;
-  background-color: blue;
 }

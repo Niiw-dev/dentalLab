@@ -31,7 +31,6 @@ urlpatterns = [
     path('', include('historiaclinica.urls')),
     path('', include('inicio.urls')),
     path('', include('inventario.urls')),
-    path('gmail/', include('gmail_integration.urls')),
 
 ]
 
