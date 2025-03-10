@@ -6,11 +6,6 @@ body {
     font-family: var(--font-family);
 }
 
-.dark-mode {
-    background-color: #1a1a1a;
-    color: #f8f8f8;
-}
-
 .card {
     margin: 1rem auto;
     background: linear-gradient(145deg, #ffffff, #f0f0f0);
@@ -19,27 +14,8 @@ body {
     overflow: hidden;
 }
 
-.dark-mode .card {
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .card .card-body .table-container {
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .mb-3 {
-    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
 .card-body {
     padding: 2rem;
-}
-
-.dark-mode .card-title {
-    color: #ffffff;
 }
 
 .card-title {
@@ -68,19 +44,12 @@ body {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.dark-mode .profile-picture {
-    border: 4px solid #444;
-}
 
 .name {
     font-size: 1.25rem;
     color: #444;
     text-align: center;
     margin-bottom: 0.75rem;
-}
-
-.dark-mode .name {
-    color: #f8f8f8;
 }
 
 .line {
@@ -113,10 +82,6 @@ body {
     color: #555;
 }
 
-.dark-mode .form-label {
-    color: #ccc;
-}
-
 .form-control,
 .form-select {
     border-radius: 10px;
@@ -130,13 +95,6 @@ body {
 .form-select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-.dark-mode .form-control,
-.dark-mode .form-select {
-    background: #444;
-    border: 1px solid #666;
-    color: #fff;
 }
 
 .profile-btn {
@@ -216,12 +174,6 @@ body {
     font-family: var(--font-family);
 }
 
-.dark-mode .modal-content {
-    background-color: #333;
-    color: #fff;
-}
-
-
 .close {
     color: #aaa;
     float: right;
@@ -290,30 +242,6 @@ body {
     }
 }
 
-.dark-mode input[type="submit"],
-.dark-mode .btn-success,
-.dark-mode .btn-primary {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-}
-
-.dark-mode .btn-primary {
-    background-color: #2e2e2e !important;
-}
-
-.dark-mode .btn-primary:hover {
-    background-color: #272728 !important;
-}
-
-.dark-mode .btn-warning {
-    color: #e0e0e0 !important;
-    background-color: #2e2e2e !important;
-}
-
-.dark-mode .btn-warning:hover {
-    background-color: #272728 !important;
-}
-
 .profile-btn-success {
     background-color: #3a3a3a;
     color: #e0e0e0;
@@ -335,3 +263,4 @@ body {
     background-color: #3a3a3a !important;
     color: #e0e0e0 !important;
 }
+

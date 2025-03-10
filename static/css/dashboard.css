@@ -275,8 +275,8 @@
 
 /* Modo oscuro */
 body.dark-mode .dashboard-container {
-  background-color: #1e1e1e; /* Fondo oscuro claro */
-  color: #e0e0e0; /* Texto claro */
+  background-color: #1e1e1e;
+  color: #e0e0e0;
 }
 
 body.dark-mode .dashboard-containerII {

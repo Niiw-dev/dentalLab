@@ -111,37 +111,3 @@ h2 {
         padding-left: 15px;
     }
 }
-
-.dark-mode {
-    background-color: #1a1a1a;
-    color: #f8f8f8;
-}
-
-.dark-mode .card-body {
-    background-color: #2a2a2a;
-}
-
-.dark-mode .form-control,
-.dark-mode .form-select {
-    background: #333333;
-    color: #f8f8f8;
-}
-
-.dark-mode .form-control:focus,
-.dark-mode .form-select:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-}
-
-.dark-mode .form-label {
-    background: #333333;
-    color: #ffffff;
-}
-
-.dark-mode .help-text {
-    color: #dc2626;
-}
-
-.dark-mode h2 {
-    color: #007bff;
-}

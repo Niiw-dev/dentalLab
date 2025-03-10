@@ -4,24 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="mejora de docker">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifica algunos estilos delmodo oscuro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/templates/calendario.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/calendario.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/admin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/templates/gmail_inbox.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gmail_integration/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/templates/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/inicio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysite/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mysite/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/crear_citas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_citas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/crear_cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_cuentas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/crear_elemento.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_elemento.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/form_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/form_historias.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/gmail.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +138,9 @@
       <workItem from="1740675022081" duration="687000" />
       <workItem from="1740682256836" duration="565000" />
       <workItem from="1741006020933" duration="9753000" />
-      <workItem from="1741094597604" duration="9427000" />
+      <workItem from="1741094597604" duration="9580000" />
+      <workItem from="1741201278486" duration="2960000" />
+      <workItem from="1741614696412" duration="9940000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -204,7 +198,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740682814289</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Se modifica algunos estilos delmodo oscuro">
+      <option name="closed" value="true" />
+      <created>1741116021902</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1741116021902</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +232,7 @@
     <MESSAGE value="Se cambia de ubicación el gitignore" />
     <MESSAGE value="test" />
     <MESSAGE value="mejora de docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="mejora de docker" />
+    <MESSAGE value="Se modifica algunos estilos delmodo oscuro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se modifica algunos estilos delmodo oscuro" />
   </component>
 </project>
