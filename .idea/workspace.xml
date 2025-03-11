@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifica algunos estilos delmodo oscuro">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifica algunos estilos del modo oscuro">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_citas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_citas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_cuentas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_elemento.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_elemento.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/form_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/form_historias.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/gmail.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/citas/templates/formscitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/formscitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/tablas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablas.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +134,8 @@
       <workItem from="1741006020933" duration="9753000" />
       <workItem from="1741094597604" duration="9580000" />
       <workItem from="1741201278486" duration="2960000" />
-      <workItem from="1741614696412" duration="9940000" />
+      <workItem from="1741614696412" duration="10085000" />
+      <workItem from="1741697363314" duration="5203000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -206,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741116021902</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Se modifica algunos estilos del modo oscuro">
+      <option name="closed" value="true" />
+      <created>1741645919605</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1741645919605</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -233,6 +236,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="mejora de docker" />
     <MESSAGE value="Se modifica algunos estilos delmodo oscuro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifica algunos estilos delmodo oscuro" />
+    <MESSAGE value="Se modifica algunos estilos del modo oscuro" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se modifica algunos estilos del modo oscuro" />
   </component>
 </project>

@@ -3,22 +3,7 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="citaFormII">
-        <div class="form-group">
-            <label for="fecha" data-tooltip="Seleccione la fecha para la cita">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required data-tooltip="Elija una fecha disponible">
-        </div>
-    </div>
-
-    <div class="citaFormII">
-        <div class="form-group">
-            <label for="hora" data-tooltip="Seleccione la hora para la cita">Hora:</label>
-            <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
-            </div>
-        </div>
-    </div>
-
-    <div class="citaFormII">
+    <div class="citaFormHeader">
         <div class="form-group">
             <label for="motivo" data-tooltip="Seleccione el motivo de la cita">Motivo:</label>
             <select name="motivo" id="motivo" required data-tooltip="Elija el motivo principal de su visita">
@@ -64,6 +49,21 @@
                 data-tooltip="Guardar los detalles de la cita">Guardar</button>
             <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button"
                 data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
+        </div>
+    </div>
+
+    <div class="citaFormIILeft">
+        <div class="form-group">
+            <label for="fecha" data-tooltip="Seleccione la fecha para la cita">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required data-tooltip="Elija una fecha disponible">
+        </div>
+    </div>
+
+    <div class="citaFormIIRight">
+        <div class="form-group">
+            <label for="hora" data-tooltip="Seleccione la hora para la cita">Hora:</label>
+            <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
+            </div>
         </div>
     </div>
 </form>

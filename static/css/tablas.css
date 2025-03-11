@@ -75,7 +75,6 @@ i.a {
 }
 
 .card {
-  border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   overflow: hidden;
 }
@@ -227,7 +226,6 @@ i.a {
   display: flex;
   flex-direction: column;
   border: none;
-  border-radius: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -266,8 +264,6 @@ i.a {
   border-collapse: separate;
   border-spacing: 0;
   width: 97%;
-  border: 0.5px solid #d3d3d3;
-  border-radius: 4px;
 }
 
 #elementosTable thead th {
@@ -398,16 +394,15 @@ i.a {
 
 .dark-mode .table-container {
   color: #ffffff;
-  background-color: #272727;
+  background-color: #2a2a2a;
 }
 
 .dark-mode #filtroForm {
-  background-color: rgb(34, 34, 34);
+  background-color: #2a2a2a;
   color: #ffffff;
 }
 
 .dark-mode .form-label {
-  background-color: rgb(34, 34, 34);
   color: #ffffff;
 }
 
