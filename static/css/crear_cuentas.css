@@ -371,14 +371,6 @@ h4 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
-.dark-mode .card-title {
-    color: var(--primary-color);
-}
-
-.dark-mode .form-label {
-    color: var(--label-color);
-}
-
 .dark-mode .form-control,
 .dark-mode .form-select {
     border: none;

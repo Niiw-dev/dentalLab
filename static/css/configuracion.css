@@ -153,23 +153,6 @@ body {
     cursor: pointer;
 }
 
-.dark-mode {
-    background-color: #222222;
-    color: #ffffff;
-}
-
-.dark-mode .card {
-    background-color: #333333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-.dark-mode .card-title,
-.dark-mode .name,
-.dark-mode .form-label {
-    color: #ffffff;
-    background-color: transparent;
-}
-
 .dark-mode .line {
     background-color: #444444;
 }

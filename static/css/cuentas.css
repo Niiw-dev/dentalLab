@@ -65,10 +65,6 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.dark-mode .status {
-    color: #999;
-}
-
 .status.active {
     color: #28a745;
 }
@@ -263,4 +259,3 @@ body {
     background-color: #3a3a3a !important;
     color: #e0e0e0 !important;
 }
-
