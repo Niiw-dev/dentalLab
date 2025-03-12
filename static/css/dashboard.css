@@ -327,10 +327,6 @@ body.dark-mode .citas p {
   color: #d0d0d0; /* Texto suave para el mensaje de no citas */
 }
 
-body.dark-mode .citas ul {
-  background-color: #2b2b2b; /* Fondo más oscuro para la lista de citas */
-}
-
 body.dark-mode .button-grid {
   background-color: #1e1e1e; /* Fondo claro para la grilla de botones */
 }

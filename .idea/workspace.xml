@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifica algunos estilos del modo oscuro">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Modulo crear citas terminado">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/formscitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/formscitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/citas/templates/crearcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/crearcitas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_citas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_citas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,7 +136,7 @@
       <workItem from="1741201278486" duration="2960000" />
       <workItem from="1741614696412" duration="10085000" />
       <workItem from="1741697363314" duration="5828000" />
-      <workItem from="1741781878424" duration="14176000" />
+      <workItem from="1741781878424" duration="15089000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -219,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741734176677</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Modulo crear citas terminado">
+      <option name="closed" value="true" />
+      <created>1741806502231</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1741806502231</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +254,7 @@
     <MESSAGE value="mejora de docker" />
     <MESSAGE value="Se modifica algunos estilos delmodo oscuro" />
     <MESSAGE value="Se modifica algunos estilos del modo oscuro" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifica algunos estilos del modo oscuro" />
+    <MESSAGE value="Modulo crear citas terminado" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modulo crear citas terminado" />
   </component>
 </project>
