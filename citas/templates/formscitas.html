@@ -3,7 +3,7 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <div class="citaFormHeader">
+    <div class="citaFormIIHeader">
         <div class="form-group">
             <label for="motivo" data-tooltip="Seleccione el motivo de la cita">Motivo:</label>
             <select name="motivo" id="motivo" required data-tooltip="Elija el motivo principal de su visita">
@@ -43,13 +43,6 @@
             <input type="hidden" name="paciente" value="{{ user.id }}">
         </div>
         {% endif %}
-
-        <div class="button-container">
-            <button type="submit" class="btn btn-warning"
-                data-tooltip="Guardar los detalles de la cita">Guardar</button>
-            <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button"
-                data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
-        </div>
     </div>
 
     <div class="citaFormIILeft">
@@ -65,6 +58,13 @@
             <div id="hora" class="hora-grid" required data-tooltip="Elija un horario disponible">
             </div>
         </div>
+    </div>
+
+    <div class="button-container">
+        <a class="btn btn-danger" href="{% url 'listcitas' %}" role="button"
+            data-tooltip="Volver a la lista de citas sin guardar cambios">Volver</a>
+        <button type="submit" class="btn btn-warning"
+            data-tooltip="Guardar los detalles de la cita">Guardar</button>
     </div>
 </form>
 {% endblock %}
