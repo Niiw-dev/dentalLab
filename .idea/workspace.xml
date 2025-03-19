@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="arreglo en notas de dashboard">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se arreglan algunos dark-modes">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/configuracion.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/configuracion.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/crear_cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_cuentas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/ver_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ver_historias.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,8 +110,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-76f8388c3a79-JavaScript-PY-243.24978.54" />
-        <option value="bundled-python-sdk-91e3b7efe1d4-466328ff949b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.24978.54" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-PY-243.26053.29" />
+        <option value="bundled-python-sdk-b1dbf8ef85a6-4df51de95216-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.26053.29" />
       </set>
     </attachedChunks>
   </component>
@@ -140,7 +139,10 @@
       <workItem from="1741201278486" duration="2960000" />
       <workItem from="1741614696412" duration="10085000" />
       <workItem from="1741697363314" duration="5828000" />
-      <workItem from="1741781878424" duration="22341000" />
+      <workItem from="1741781878424" duration="22972000" />
+      <workItem from="1742050815202" duration="5686000" />
+      <workItem from="1742213827830" duration="899000" />
+      <workItem from="1742428054102" duration="577000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -238,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741807693080</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Se arreglan algunos dark-modes">
+      <option name="closed" value="true" />
+      <created>1741819820497</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1741819820497</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,6 +278,7 @@
     <MESSAGE value="Se modifica algunos estilos del modo oscuro" />
     <MESSAGE value="Modulo crear citas terminado" />
     <MESSAGE value="arreglo en notas de dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="arreglo en notas de dashboard" />
+    <MESSAGE value="Se arreglan algunos dark-modes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se arreglan algunos dark-modes" />
   </component>
 </project>

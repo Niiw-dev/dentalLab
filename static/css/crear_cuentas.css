@@ -2,14 +2,14 @@
 
 :root {
     --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --primary-color: #cab97d;
-    --secondary-color: #7e734e;
-    --background-color: rgba(0, 0, 0, 0.6);
-    --text-color: #f8f8f8;
-    --label-color: #ffffff;
-    --input-background: rgba(0, 0, 0, 0.4);
-    --input-border-color: #b3b3b3;
-    --input-focus-border-color: #cab97d;
+    #ffffff: #cab97d;
+    #b8860b: #7e734e;
+    #1e1e1e: rgba(0, 0, 0, 0.6);
+    #f0f0f0: #f8f8f8;
+    #ffffff: #ffffff;
+    #2d2d2d: rgba(0, 0, 0, 0.4);
+    #555555: #b3b3b3;
+    #ffffff: #cab97d;
 }
 
 .card-body {
@@ -59,19 +59,19 @@
     flex: 1 1 300px;
     max-width: 400px;
     padding: 20px;
-    background-color: var(--background-color);
-    border: 1px solid var(--input-border-color);
+    background-color: var(#1e1e1e);
+    border: 1px solid var(#555555);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--text-color);
+    color: var(#f0f0f0);
 }
 
 h4 {
-    color: var(--text-color);
+    color: var(#f0f0f0);
     font-size: 1.5em;
     text-transform: uppercase;
     margin-bottom: 20px;
@@ -90,7 +90,7 @@ h4 {
     font-size: 1.1em;
     font-weight: 700;
     margin-bottom: 5px;
-    color: var(--label-color);
+    color: var(#ffffff);
     text-align: center;
 }
 
@@ -100,18 +100,18 @@ h4 {
     max-width: 300px;
     padding: 10px;
     font-size: 1em;
-    border: 1px solid var(--input-border-color);
-    background: var(--input-background);
+    border: 1px solid var(#555555);
+    background: var(#2d2d2d);
     border-radius: 10px;
     outline: none;
     transition: background-color 0.3s, border-color 0.3s;
-    color: var(--text-color);
+    color: var(#f0f0f0);
     text-align: center;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: var(--input-focus-border-color);
+    border-color: var(#ffffff);
 }
 
 .button-container {
@@ -131,14 +131,14 @@ h4 {
 }
 
 .btn-warning {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
     color: #000;
 }
 
 .btn-danger {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
+    background-color: var(#b8860b);
+    border-color: var(#b8860b);
     color: #fff;
 }
 
@@ -165,10 +165,10 @@ h4 {
     width: 80px;
     height: 40px;
     padding: 0;
-    background-color: var(--input-background);
-    border: 2px solid var(--input-border-color);
+    background-color: var(#2d2d2d);
+    border: 2px solid var(#555555);
     border-radius: 5px;
-    color: var(--text-color);
+    color: var(#f0f0f0);
     font-size: 0.9em;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -180,15 +180,15 @@ h4 {
 
 .cita-hora-boton:hover,
 .cita-hora-boton:focus {
-    background-color: var(--primary-color);
-    border-color: var(--input-focus-border-color);
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
     color: #000;
     transform: scale(1.05);
 }
 
 .cita-hora-boton-seleccionado {
-    background-color: var(--primary-color);
-    border-color: var(--input-focus-border-color);
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
     color: #000;
     box-shadow: 0 0 10px rgba(202, 185, 125, 0.5);
 }
@@ -351,90 +351,4 @@ h4 {
     .form-select {
         font-size: 16px;
     }
-}
-
-
-.dark-mode {
-    --primary-color: #ffffff;
-    --secondary-color: #b8860b;
-    --background-color: rgba(30, 30, 30, 0.9);
-    --text-color: #f0f0f0;
-    --label-color: #ffffff;
-    --input-background: rgba(45, 45, 45, 0.8);
-    --input-border-color: #555555;
-    --input-focus-border-color: #ffffff;
-    --form-background: rgba(40, 40, 40, 0.9);
-}
-
-.dark-mode .form {
-    background: linear-gradient(to bottom right, rgba(40, 40, 40, 0.9), rgba(60, 60, 60, 0.9));
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-}
-
-.dark-mode .form-control,
-.dark-mode .form-select {
-    border: none;
-    border-bottom: 2px solid var(--primary-color);
-    background: var(--input-background);
-    color: var(--text-color);
-}
-
-.dark-mode .form-control::placeholder,
-.dark-mode .form-select::placeholder {
-    color: #a0a0a0;
-}
-
-.dark-mode .form-control:focus,
-.dark-mode .form-select:focus {
-    border-bottom: 2px solid var(--input-focus-border-color);
-    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
-    background: rgba(60, 60, 60, 0.8);
-}
-
-.dark-mode .btn-guardar,
-.dark-mode .btn-volver {
-    border: 2px solid var(--primary-color);
-}
-
-.dark-mode .btn-guardar {
-    background-color: var(--primary-color);
-    color: #000000;
-}
-
-.dark-mode .btn-volver {
-    background-color: var(--secondary-color);
-    color: #ffffff;
-}
-
-.dark-mode .btn-guardar:hover {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.dark-mode .btn-volver:hover {
-    background-color: #daa520;
-    color: #000000;
-}
-
-.dark-mode .form-group {
-    margin-bottom: 20px;
-}
-
-.dark-mode .cita-hora-grid {
-    background: var(--input-background);
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.dark-mode .cita-hora-boton {
-    background-color: var(--secondary-color);
-    border: 1px solid var(--primary-color);
-    color: var(--text-color);
-}
-
-.dark-mode .cita-hora-boton:hover,
-.dark-mode .cita-hora-boton:focus,
-.dark-mode .cita-hora-boton-seleccionado {
-    background-color: var(--primary-color);
-    color: #000000;
 }
