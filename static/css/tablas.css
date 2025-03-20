@@ -79,24 +79,13 @@ i.a {
   overflow: hidden;
 }
 
-.btn-success {
-  background-color: #008a07;
-  border: none;
-}
-
-.btn-success:hover {
-  background-color: #00cc0a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
-}
-
-.card-header .btn-success {
-  background-color: #cab97d;
-  border: none;
-  padding: 10px 20px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
+/*.card-header .btn-success {*/
+/*  background-color: #cab97d;*/
+/*  border: none;*/
+/*  padding: 10px 20px;*/
+/*  font-weight: bold;*/
+/*  transition: all 0.3s ease;*/
+/*}*/
 
 .btn-primary {
   background-color: #cab97d;
@@ -104,12 +93,6 @@ i.a {
   padding: 10px 20px;
   font-weight: bold;
   transition: all 0.3s ease;
-}
-
-.card-header .btn-success:hover {
-  background-color: #9e905c;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px #f0e9d2;
 }
 
 .btn-primary:hover {
@@ -207,12 +190,11 @@ i.a {
 }
 
 .btn-danger {
-  background-color: #333;
   border: none;
+  text-decoration: none;
 }
 
 .btn-danger:hover {
-  background-color: #691511;
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
 }

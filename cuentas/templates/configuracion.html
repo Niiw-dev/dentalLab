@@ -76,15 +76,17 @@ Editar Perfil
         {% endif %}
         <div class="col-12 help-text">{{ field.errors }}</div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary" data-tooltip="Guardar cambios">Guardar</button>
-        <a class="btn btn-primary" href="{% url 'cambiar_password' %}" role="button"
-            data-tooltip="Ir a la página de cambio de contraseña">Cambiar Contraseña</a>
-        {% if user.is_active and not user.is_superuser %}
-        <button type="button" id="desactivarCuenta" data-user-id="{{ user.id }}" class="profile-btn profile-btn-danger"
-            data-tooltip="Desactiva tu cuenta de usuario">Desactivar Cuenta</button>
-        {% endif %}
-        <a class="btn btn-warning" href="{% url 'dashboard' %}" role="button"
-            data-tooltip="Volver al panel principal">Cancelar</a>
+        <div class="buttonConfig">
+            <a class="btn btn-warning" href="{% url 'dashboard' %}" role="button"
+                data-tooltip="Volver al panel principal">Cancelar</a>
+            <a class="btn btn-primary" href="{% url 'cambiar_password' %}" role="button"
+                data-tooltip="Ir a la página de cambio de contraseña">Cambiar Contraseña</a>
+            {% if user.is_active and not user.is_superuser %}
+            <button type="button" id="desactivarCuenta" data-user-id="{{ user.id }}" class="profile-btn profile-btn-danger"
+                data-tooltip="Desactiva tu cuenta de usuario">Desactivar Cuenta</button>
+            {% endif %}
+            <button type="submit" class="btn btn-primary" data-tooltip="Guardar cambios">Guardar</button>
+        </div>
     </form>
 
 </div>

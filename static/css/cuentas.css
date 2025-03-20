@@ -1,31 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
 :root {
     --font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 body {
-    font-family: var(--font-family);
+    background: #e8e8e8;
+    font-family: var(--font-family), serif;
 }
 
 .card {
     margin: 1rem auto;
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    width: 85%;
+    min-width: 430px;
 }
 
 .card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
     padding: 2rem;
 }
 
 .card-title {
-    color: #333;
+    color: #000000;
     font-size: 1.75rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
+    padding: 10px 0;
+    grid-column: span 2;
 }
 
 .profile-picture-container {
@@ -43,7 +53,6 @@ body {
     border: 4px solid #fff;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
-
 
 .name {
     font-size: 1.25rem;
@@ -75,22 +84,29 @@ body {
 
 .form-label {
     font-weight: 600;
-    color: #555;
+    color: #000000;
 }
 
 .form-control,
 .form-select {
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    padding: 0.75rem;
-    transition: all 0.3s ease;
-    font-family: var(--font-family);
+    border: none;
+    border-bottom: 2px solid #2466bb;
+    padding: 10px;
+    background: transparent;
+    color: #000000;
+    transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 20px;
 }
 
 .form-control:focus,
 .form-select:focus {
-    border-color: #007bff;
+    border-bottom: 2px solid #007bff;
+    outline: none;
+    color: #000000;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    background: transparent;
 }
 
 .profile-btn {
@@ -100,7 +116,7 @@ body {
     transition: all 0.3s ease;
     margin-right: 0.5rem;
     margin-bottom: 0.5rem;
-    font-family: var(--font-family);
+    font-family: var(--font-family), serif;
 }
 
 .profile-btn-success {
@@ -112,6 +128,7 @@ body {
 .profile-btn-success:hover {
     background-color: #218838;
     border-color: #1e7e34;
+    color: #e0e0e0;
 }
 
 .profile-btn-save {
@@ -167,7 +184,7 @@ body {
     max-width: 500px;
     border-radius: 10px;
     text-align: center;
-    font-family: var(--font-family);
+    font-family: var(--font-family), serif;
 }
 
 .close {
@@ -208,6 +225,34 @@ body {
         margin-right: 0;
         margin-bottom: 0.75rem;
     }
+
+    form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .citaForm {
+        margin-bottom: 2rem;
+        width: 100%;
+    }
+
+    .cita-hora-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .form {
+        gap: 15px;
+    }
+
+    .btn-guardar,
+    .btn-volver {
+        font-size: 22px;
+    }
+
+    .form-control,
+    .form-select {
+        font-size: 18px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -231,22 +276,21 @@ body {
     .form-control,
     .form-select {
         padding: 0.5rem;
+        font-size: 16px;
     }
 
     .profile-btn {
         padding: 0.5rem 1rem;
     }
-}
 
-.profile-btn-success {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-    border: #545b62;
-}
+    .cita-hora-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 
-.profile-btn-success:hover {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
+    .btn-guardar,
+    .btn-volver {
+        font-size: 18px;
+    }
 }
 
 .profile-btn-primary {
@@ -258,4 +302,229 @@ body {
 .profile-btn-primary:hover {
     background-color: #3a3a3a !important;
     color: #e0e0e0 !important;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    width: 100%;
+    padding: 20px;
+    background: #f8f8f8;
+    border-radius: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+.dark-mode .form{
+    background: #1a1a1a;
+}
+
+.cintro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.citaForm {
+    flex: 1 1 300px;
+    max-width: 400px;
+    padding: 20px;
+    background-color: var(#1e1e1e);
+    border: 1px solid var(#555555);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(#f0f0f0);
+}
+
+h4 {
+    color: var(#f0f0f0);
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(#ffffff);
+    text-align: center;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid var(#555555);
+    background: var(#2d2d2d);
+    border-radius: 10px;
+    outline: none;
+    transition: background-color 0.3s, border-color 0.3s;
+    color: var(#f0f0f0);
+    text-align: center;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(#ffffff);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.bbtn {
+    padding: 10px 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-warning {
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
+    color: #000;
+}
+
+.btn-danger {
+    text-decoration: none;
+    background-color: var(#b8860b);
+    border-color: var(#b8860b);
+    color: #fff;
+}
+
+.cita-hora-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.cita-hora-boton {
+    width: 80px;
+    height: 40px;
+    padding: 0;
+    background-color: var(#2d2d2d);
+    border: 2px solid var(#555555);
+    border-radius: 5px;
+    color: var(#f0f0f0);
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cita-hora-boton:hover,
+.cita-hora-boton:focus {
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
+    color: #000;
+    transform: scale(1.05);
+}
+
+.cita-hora-boton-seleccionado {
+    background-color: var(#ffffff);
+    border-color: var(#ffffff);
+    color: #000;
+    box-shadow: 0 0 10px rgba(202, 185, 125, 0.5);
+}
+
+.ampm {
+    font-size: 0.9em;
+    margin-left: 3px;
+}
+
+.profile-btn-guardar {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+    border: #545b62 !important;
+}
+
+.profile-btn-guardar:hover {
+    background-color: #3a3a3a !important;
+    color: #e0e0e0 !important;
+}
+
+.form-control::placeholder,
+.form-select::placeholder {
+    color: #000000;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+}
+
+.btn-guardar,
+.btn-volver {
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    transition: background-color 0.3s, transform 0.3s, border 0.3s;
+    border: 2px dotted transparent;
+    border-radius: 12px;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    padding: 10px 20px;
+}
+
+.btn-guardar {
+    background-color: #438bdd;
+}
+
+.btn-volver {
+    background-color: #424141;
+}
+
+.btn-guardar:hover {
+    background-color: #5ba8f2;
+    border-color: #438bdd;
+    color: #fff;
+}
+
+.btn-volver:hover {
+    background-color: #6c6c6c;
+    border-color: #424141;
+    color: #fff;
+}
+
+@media (max-width: 1024px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 30px;
+    }
 }

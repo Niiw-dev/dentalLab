@@ -106,14 +106,9 @@
             </li>
 
             <li class="nav-item">
-              <form method="post" action="{% url 'signout' %}" id="logout-form" style="display: inline">
-                {% csrf_token %}
-                <a class="nav-link" href="#"
-                  onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                  data-tooltip="Cerrar sesión">
-                  Salir
-                </a>
-              </form>
+              <a class="nav-link" href="#" onclick="logout()" data-tooltip="Cerrar sesión">
+                Salir
+              </a>
             </li>
           </ul>
         </div>
@@ -225,6 +220,30 @@
   <script src="{% static 'js/sienna.js' %}?v1.4"></script>
   <script src="{% static 'js/custom.js' %}?v1.5"></script>
   <script src="{% static 'js/tooltips.js' %}?v1.7"></script>
+
+    <script>
+      function logout() {
+        fetch("{% url 'signout' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+          },
+          body: JSON.stringify({})
+        })
+        .then(response => {
+          if (response.ok) {
+
+            window.location.href = '/';
+          } else {
+            console.error('Error al cerrar sesión');
+          }
+        })
+        .catch(error => {
+          console.error('Error al enviar la solicitud de cierre de sesión:', error);
+        });
+      }
+    </script>
 
   {% block extra_js %}{% endblock %}
 </body>

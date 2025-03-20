@@ -78,7 +78,6 @@ select {
 }
 
 input[type="submit"],
-.btn-success,
 .btn-primary {
     background-color: var(--Green);
     color: white;
@@ -97,7 +96,6 @@ input[type="submit"],
 }
 
 input[type="submit"]:hover,
-.btn-success:hover,
 .btn-primary:hover {
     cursor: pointer;
 }
@@ -128,11 +126,6 @@ input[type="submit"]:hover,
     box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
 }
 
-.btn-success:hover {
-    background-color: #bb9708;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgb(255, 255, 255);
-}
 
 select.form-control {
     appearance: none;
@@ -165,7 +158,6 @@ select.form-control {
     }
 
     input[type="submit"],
-    .btn-success,
     .btn-primary {
         width: 100%;
         margin-right: 0;

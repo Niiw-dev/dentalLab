@@ -15,6 +15,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+.buttonConfig{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .ContentCalendar {
   min-height: 80vh;
   display: flex;
@@ -417,4 +422,72 @@ input {
 
 .breadcrumbs a:hover {
   color: #dcdcdc;
+}
+
+.btn-success {
+  background-color: #23a568;
+  border-color: #ddd;
+  color: #ffffff;
+}
+
+.btn-success:hover {
+  border-color: #ddd;
+  background-color: rgba(29, 158, 97, 0.8);
+  transform: translateY(-2px);
+  /*box-shadow: 0 4px 10px rgba(86, 255, 48, 0.3);*/
+}
+
+.btn-successII {
+  background-color: #CAB97D;
+  border-color: #ddd;
+  color: #ffffff;
+}
+
+.btn-successII:hover {
+  color: #ffffff;
+  border-color: #ddd;
+  background-color: rgba(202, 185, 125, 0.8);
+  transform: translateY(-2px);
+  /*box-shadow: 0 4px 10px rgba(86, 255, 48, 0.3);*/
+}
+
+.btn-default {
+    background-color: #f4f4f4;
+    color: #444;
+    font-weight: 600;
+    border-color: #ddd;
+}
+
+.btn-default:hover {
+    background-color: #b1b1b1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(177, 177, 177, 0.8);
+}
+
+.btn-info {
+    color: #444;
+    font-weight: 600;
+    border-color: #ddd;
+  background-color: #0dcaf0;
+}
+
+.btn-info:hover {
+  border-color: #ddd;
+  background-color: rgba(13, 202, 240, 0.8);
+  transform: translateY(-2px);
+  /*box-shadow: 0 4px 10px #0dd8ff;*/
+}
+
+.btn-danger {
+    color: #ffffff;
+    font-weight: 600;
+    border-color: #ddd;
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  border-color: #ddd;
+  background-color: rgba(220, 53, 69, 0.8);
+  transform: translateY(-2px);
+  /*box-shadow: 0 4px 10px #0dd8ff;*/
 }

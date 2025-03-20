@@ -17,11 +17,6 @@
   color: #ffffff;
 }
 
-.dark-mode .btn:hover {
-  background-color: #555555;
-  color: #ffffff;
-}
-
 .dark-mode h1,
 .dark-mode h2,
 .dark-mode h3,
@@ -54,7 +49,7 @@
 }
 
 .dark-mode #mainNav.navbar-shrink {
-    background-color: rgb(19, 19, 19);
+    background-color: #121212;
   }
 
 .dark-mode .navbar ul li a:hover {
@@ -70,13 +65,13 @@
 }
 
 .dark-mode .card {
-  background-color: #646464;
-  border-color: #414141;
+  background-color: #2a2a2a;
   color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode .ContentX {
-  background-color: #2a2a2a;
+  background-color: #1e1e1e;
   color: #ffffff;
 }
 
@@ -137,7 +132,14 @@
   color: #ffffff;
 }
 
+.dark-mode .flatpickr-input[readonly] {
+  cursor: pointer;
+  background: #1b1b1b;
+  color: white;
+}
+
 .dark-mode .row {
+  background-color: transparent;
   color: #ffffff;
 }
 
@@ -158,10 +160,9 @@
 }
 
 .dark-mode .btn-primary {
-  background-color: #3b3b3b;
+  background-color: #3a3a3a;
   color: white;
 }
-
 
 .dark-mode .close-modal i {
   color: #e0e0e0;
@@ -230,12 +231,6 @@
   line-height: 1;
 }
 
-.dark-mode {
-  background-color: #121212;
-  color: #e0e0e0;
-}
-
-
 .dark-mode .container2 {
   background: #1e1e1e;
   border: 1px solid #444;
@@ -243,7 +238,7 @@
 
 .dark-mode .citaForm{
   background-color: #1e1e1e;
-  padding: 40px;
+  padding: 20px 40px;
   border-radius: 10px;
 }
 
@@ -335,7 +330,7 @@
 }
 
 .dark-mode .dashboard-containerII {
-  background-color: #1e1e1e;
+  background-color: #2a2a2a;
   color: #e0e0e0;
 }
 
@@ -350,13 +345,13 @@
 }
 
 .dark-mode #calendar {
-  background-color: #2b2b2b;
+  background-color: #2a2a2a;
   color: #e0e0e0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .citas {
-  background-color: #1e1e1e;
+  background-color: #2a2a2a;
   border: 2px solid #a8a8a8;
 }
 
@@ -392,25 +387,10 @@
   color: #e0e0e0;
 }
 
-.dark-mode .add {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
-
-.dark-mode .middContent {
-  background-color: #1e1e1e;
-  color: #e0e0e0;
-}
-
 .dark-mode #calendar {
   background-color: #2b2b2b;
   color: #e0e0e0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.dark-mode .citas {
-  background-color: #1e1e1e;
-  border: 2px solid #a8a8a8;
 }
 
 .dark-mode .citas h3 {
@@ -440,13 +420,13 @@
 }
 
 .dark-mode .dashboard-button {
-  background-color: #666666;
+  background-color: #2a2a2a;
   color: #e0e0e0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .dark-mode .button-grid::-webkit-scrollbar {
-  background-color: #1e1e1e;
+  background-color: #2a2a2a;
 }
 
 .dark-mode .button-grid::-webkit-scrollbar-thumb {
@@ -454,7 +434,7 @@
 }
 
 .dark-mode .button-grid::-webkit-scrollbar-track {
-  background-color: #3a3a3a;
+  background-color: #1e1e1e;
 }
 
 .dark-mode .button-icon {
@@ -499,17 +479,6 @@
   color: #c0c0c0;
 }
 
-.dark-mode input[type="submit"],
-.dark-mode .btn-success{
-    background-color: #3a3a3a;
-    color: #e0e0e0;
-}
-
-.dark-mode button:hover {
-    background-color: var(--dark-background-color) !important;
-    color: #fff !important;
-}
-
 .dark-mode .grid-container {
     background-color: var(--dark-grid-background-color);
 }
@@ -523,18 +492,8 @@
     color: #fff !important;
 }
 
-.dark-mode .btn-success:hover {
-    background-color: var(--dark-background-color) !important;
-    color: #fff !important;
-}
-
 .dark-mode .status {
     color: #999;
-}
-
-.dark-mode .card {
-    background-color: #333333;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .dark-mode .card-title,
@@ -546,7 +505,7 @@
 
 .dark-mode .form-control,
 .dark-mode .form-select {
-    background-color: #222222;
+    background-color: #1b1b1b;
     color: #ffffff;
     border-color: #444444;
 }
@@ -601,7 +560,7 @@
 }
 
 .dark-mode .table thead th {
-  background-color: #383838;
+  background-color: #2a2a2a;
   color: #ffffff;
 }
 
@@ -616,7 +575,7 @@
 }
 
 .dark-mode .btn-warning {
-  background-color: #201f1f;
+  background-color: #3a3a3a;
   color: #ffff;
 }
 
@@ -626,7 +585,7 @@
 
 .dark-mode .card-header,
 .dark-mode .card-body {
-  background-color: #2a2a2a;
+  background-color: #1e1e1e;
 }
 
 .dark-mode .flatpickr-calendar animate {
@@ -645,6 +604,7 @@
 .dark-mode .table-container {
   color: #ffffff;
   background-color: #2a2a2a;
+  border-radius: 10px;
 }
 
 .dark-mode #filtroForm {
@@ -658,23 +618,57 @@
 }
 
 .dark-mode .nav .button {
-  background-color: rgb(34, 34, 34);
+  background-color: #2a2a2a;
   color: #ffffff;
 }
 
+.dark-mode input[type="submit"],
+.dark-mode .btn-success{
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
 .dark-mode .btn-info {
-  background-color: rgb(36, 36, 36);
+  background-color: #3a3a3a;
   color: #ffffff;
   border: none;
 }
 
+.dark-mode .btn-info:hover {
+  border-color: #ddd;
+  background-color: rgba(58, 58, 58, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px #0dd8ff;
+}
+
 .dark-mode .btn-danger {
-  background-color: rgb(18, 18, 18);
-  color: #ffffff;
+    background-color: #3a3a3a;
+    color: #ffffff;
+    font-weight: 600;
+    border-color: #ddd;
+}
+
+.dark-mode .btn-danger:hover {
+  background-color: rgba(58, 58, 58, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(220, 53, 69, 0.7);
+}
+
+.dark-mode .btn-default {
+    background-color: #3a3a3a;
+    color: #ffffff;
+    font-weight: 600;
+    border-color: #ddd;
+}
+
+.dark-mode .btn-default:hover {
+  background-color: rgba(58, 58, 58, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
 .dark-mode .footer {
-  background-color: rgb(18, 18, 18);
+  background-color: #121212;
   color: #ffffff;
 }
 
@@ -729,10 +723,6 @@
     color: #000000;
 }
 
-.dark-mode .form-group {
-    margin-bottom: 20px;
-}
-
 .dark-mode .cita-hora-grid {
     background: var(#2d2d2d);
     padding: 10px;
@@ -740,9 +730,9 @@
 }
 
 .dark-mode .cita-hora-boton {
-    background-color: var(#b8860b);
-    border: 1px solid var(#ffffff);
-    color: var(#f0f0f0);
+    background-color: #4a4a4a;
+    border: 1px solid #ffffff;
+    color: #f0f0f0;
 }
 
 .dark-mode .cita-hora-boton:hover,
@@ -750,4 +740,78 @@
 .dark-mode .cita-hora-boton-seleccionado {
     background-color: var(#ffffff);
     color: #000000;
+}
+
+.dark-mode .citaFormIIHeader {
+  background-color: #2a2a2a;
+}
+.dark-mode .citaFormIILeft {
+  background-color: #2a2a2a;
+}
+.dark-mode .citaFormIIRight {
+  background-color: #2a2a2a;
+}
+
+.dark-mode .form-group label{
+  color: #ffffff;
+}
+
+.dark-mode .form-group select {
+  background-color: #1b1b1b;
+  color: #ffffff;
+}
+
+.dark-mode .flatpickr-calendar.inline {
+    background: #4a4a4a;
+}
+
+.dark-mode .flatpickr-current-month .flatpickr-monthDropdown-months{
+  background: transparent;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dark-mode .flatpickr-current-month input.cur-year{
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dark-mode .flatpickr-day.flatpickr-disabled, .flatpickr-day.flatpickr-disabled:hover {
+  cursor: not-allowed;
+  color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .flatpickr-day{
+  color: #ffffff;
+}
+
+.dark-mode span.flatpickr-weekday{
+  font-weight: 600;
+  color: white;
+}
+
+.dark-mode input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.dark-mode input[type="time"]::-moz-placeholder {
+    color: #fff;
+}
+
+.dark-mode input[type="time"] {
+    color: #fff;
+    background-color: #1b1b1b;
+}
+
+.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}
+
+.dark-mode input[type="date"]::-moz-placeholder {
+    color: #fff;
+}
+
+.dark-mode input[type="date"] {
+    color: #fff;
+    background-color: #1b1b1b;
 }
