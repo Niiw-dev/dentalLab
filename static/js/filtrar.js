@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${cita.motivo}</td>
                 <td>${cita.estado}</td>
                 <td class="no-print">
-                    <a href="${cita.estado === 'Programada' ? `/editarcitas/${cita.id}/` : '#'}" class="${cita.estado === 'Programada' ? 'btn btn-warning' : 'btn btn-secondary disabled'}" data-tooltip="Editar detalles de la cita">
+                    <a href="${cita.estado === 'Programada' ? `/editarcitas/${cita.id}/` : '#'}" class="${cita.estado === 'Programada' ? 'btn btn-info' : 'btn btn-secondary disabled'}" data-tooltip="Editar detalles de la cita">
                         <i class="fas fa-pen sort-icon a"></i>
                     </a>
 

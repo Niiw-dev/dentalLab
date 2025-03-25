@@ -106,7 +106,7 @@
                                 <td data-sort="estado">{{ cita.get_estado_display }}</td>
                                 <td>
                                     <a {% if cita.get_estado_display == 'Programada' %}
-                                        href="{% url 'editarcitas' cita.id %}" class="btn btn-warning"
+                                        href="{% url 'editarcitas' cita.id %}" class="btn btn-info"
                                         data-tooltip="Editar detalles de la cita"
                                     {% else %}
                                         class="btn btn-secondary disabled"

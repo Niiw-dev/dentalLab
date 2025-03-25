@@ -5,27 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se arreglan algunos dark-modes">
-      <change afterPath="$PROJECT_DIR$/static/css/crearFechas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/formscitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/formscitas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/citas/templates/listcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/listcitas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/configuracion.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/configuracion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/crearcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/crearcuentas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/editarcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/editarcuentas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/templates/crearfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/crearfechas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/templates/formsfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/formsfechas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inicio/templates/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/inicio.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/configuracion.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/configuracion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_citas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_citas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_cuentas.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/form_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/form_historias.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/ver_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/ver_historias.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/filtrar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtrar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,25 +56,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/developer12/Documentos/dentalLab/static/css",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/developer12/Documentos/dentalLab/static/css&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static/css" />
@@ -160,7 +147,10 @@
       <workItem from="1742050815202" duration="5686000" />
       <workItem from="1742213827830" duration="899000" />
       <workItem from="1742428054102" duration="744000" />
-      <workItem from="1742472685822" duration="27153000" />
+      <workItem from="1742472685822" duration="27795000" />
+      <workItem from="1742906108349" duration="1370000" />
+      <workItem from="1742944660114" duration="1028000" />
+      <workItem from="1742945839355" duration="1010000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -274,7 +264,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742428789840</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Se arreglan algunos dark-modes">
+      <option name="closed" value="true" />
+      <created>1742512654123</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1742512654123</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
