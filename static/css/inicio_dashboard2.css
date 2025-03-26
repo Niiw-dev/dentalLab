@@ -1137,11 +1137,11 @@ progress {
 }
 
 .form-control:focus {
+  border-color: #b1b1b1;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(177, 177, 177, 0.25);
   color: #212529;
   background-color: #fff;
-  border-color: #c8b87d;
-  outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
 }
 
 .form-control::-webkit-date-and-time-value {
@@ -1307,9 +1307,9 @@ textarea.form-control-lg {
 }
 
 .form-select:focus {
-  border-color: #c8b87d;
+  border-color: #b1b1b1;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(255, 200, 0, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(177, 177, 177, 0.25);
 }
 
 .form-select[multiple],
@@ -4458,11 +4458,14 @@ fieldset:disabled .btn {
 }
 
 .modal-content {
+  height: fit-content;
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 70%;
   color: var(--bs-modal-color);
+  padding: 20px;
+  margin: 20px;
   pointer-events: auto;
   background-color: var(--bs-modal-bg);
   background-clip: padding-box;
@@ -7832,6 +7835,7 @@ fieldset:disabled .btn {
   }
 
   .modal {
+    justify-content: center;
     --bs-modal-margin: 1.75rem;
     --bs-modal-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   }

@@ -172,9 +172,7 @@
   filter: brightness(0.8);
 }
 
-.dark-mode .span {
-  background-color: #646464;
-  border-color: #414141;
+.dark-mode span {
   color: #ffffff;
 }
 
@@ -714,11 +712,20 @@
     color: #a0a0a0;
 }
 
+.dark-mode .ContentTable{
+  background-color: #1e1e1e;
+}
+
+.dark-mode .form  {
+  background-color: #2a2a2a;
+}
+
 .dark-mode .form-control:focus,
 .dark-mode .form-select:focus {
-    border-bottom: 2px solid var(#ffffff);
-    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
-    background: rgba(60, 60, 60, 0.8);
+  color: #ffffff;
+  border-bottom: 2px solid var(#ffffff);
+  box-shadow: 0 4px 8px rgba(202, 185, 125, 0.8);
+  background: rgba(60, 60, 60, 0.8);
 }
 
 .dark-mode .btn-guardar,

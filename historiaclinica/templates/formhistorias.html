@@ -61,6 +61,25 @@
                 {% endfor %}
             </div>
             <div class="seccion">
+                <h4>Higiene Oral</h4>
+                {% for campo in formularioII %}
+                {% if campo.name in 'cepillado_dental,seda_dental,enjuague_bucal' %}
+                <div class="mb-3">
+                    <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">{{ campo.label }}</label>
+                    <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required
+                        data-tooltip="Seleccione SI o NO">
+                        <option value="1">SI</option>
+                        <option value="2">NO</option>
+                    </select>
+                    <div id="{{ campo.name }}Error" class="help-text"></div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="form-column">
+            <div class="seccion">
                 <h4>Rehabilitación Oral</h4>
                 {% for campo in formularioII %}
                 {% if campo.name in 'protesis_dental,total,acrilico,flexible,parcial,retenedores,panoramica,periapical' %}
@@ -86,9 +105,6 @@
                 {% endif %}
                 {% endfor %}
             </div>
-        </div>
-
-        <div class="form-column">
             <div class="seccion">
                 <h4>Anamnesis</h4>
                 {% for campo in formularioII %}
@@ -123,27 +139,11 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            <div class="seccion">
-                <h4>Higiene Oral</h4>
-                {% for campo in formularioII %}
-                {% if campo.name in 'cepillado_dental,seda_dental,enjuague_bucal' %}
-                <div class="mb-3">
-                    <label for="id_{{ campo.name }}" class="form-label" data-tooltip="{{ campo.label }}">{{ campo.label }}</label>
-                    <select class="form-control" name="{{ campo.name }}" id="id_{{ campo.name }}" required
-                        data-tooltip="Seleccione SI o NO">
-                        <option value="1">SI</option>
-                        <option value="2">NO</option>
-                    </select>
-                    <div id="{{ campo.name }}Error" class="help-text"></div>
-                </div>
-                {% endif %}
-                {% endfor %}
-            </div>
         </div>
     </div>
 
+    <a class="btn btn-default" href="{% url 'listhistorias' %}" role="button"
+       data-tooltip="Volver a la lista de historias clínicas">Volver</a>
     <button id="button" type="submit" class="btn btn-success" data-tooltip="Guardar la información">Guardar</button>
-    <a class="btn btn-primary" href="{% url 'listhistorias' %}" role="button"
-        data-tooltip="Volver a la lista de historias clínicas">Volver</a>
 
 </form>

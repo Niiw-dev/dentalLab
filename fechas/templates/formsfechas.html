@@ -5,17 +5,17 @@
     <div class="form-group">
         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
         {% if field.name == 'fecha' or field.name == 'fecha_final' %}
-            <input type="date" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}"
+            <input class="form-control" type="date" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}"
                 value="{% if field.value %}{{ field.value|date:'Y-m-d' }}{% endif %}" {% if field.field.required %}required{% endif %}
                 {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
                 data-tooltip="Selecciona una fecha">
         {% elif field.name == 'hora' or field.name == 'hora_final' %}
-            <input type="time" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}"
+            <input class="form-control" type="time" name="{{ field.name }}" id="{{ field.id_for_label }}" placeholder="{{ field.label }}"
                 value="{% if field.value %}{{ field.value|time:'H:i' }}{% endif %}" {% if field.field.required %}required{% endif %}
                 {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %}
                 data-tooltip="Ingresa una hora en formato 24 horas">
         {% else %}
-            <input type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}"
+            <input class="form-control" type="{{ field.field.widget.input_type }}" name="{{ field.name }}" id="{{ field.id_for_label }}"
                 placeholder="{{ field.label }}" value="{% if field.value %}{{ field.value }}{% endif %}" {% if field.field.required %}required{% endif %}
                 {% if field.field.widget.attrs %}{{ field.field.widget.attrs|safe }}{% endif %} data-tooltip="Ingresa {{ field.label }}">
         {% endif %}
@@ -23,7 +23,7 @@
     </div>
     {% endfor %}
     <div class="button-container">
-        <a href="{% url 'listfechas' %}" class="bbtn btn-danger" data-tooltip="Volver a la lista de fechas">Volver</a>
-        <button type="submit" class="bbtn btn-warning" data-tooltip="Guardar los cambios">Guardar</button>
+        <a href="{% url 'listfechas' %}" class="btn btn-default" data-tooltip="Volver a la lista de fechas">Volver</a>
+        <button type="submit" class="btn btn-success" data-tooltip="Guardar los cambios">Guardar</button>
     </div>
 </form>

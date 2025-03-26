@@ -4,15 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se arreglan algunos dark-modes">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="List Citas Completo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citas/templates/listcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/listcitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuentas/templates/configuracion.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/configuracion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/templates/formsfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/formsfechas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/templates/listfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/listfechas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio/templates/backup_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/backup_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventario/templates/listelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/listelementos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/configuracion.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/configuracion.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/crearFechas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crearFechas.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/form_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/form_historias.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/filtrar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtrar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/citas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/citas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/desactivar_cuenta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/filtros.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtros.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +164,10 @@
       <workItem from="1742472685822" duration="27795000" />
       <workItem from="1742906108349" duration="1370000" />
       <workItem from="1742944660114" duration="1028000" />
-      <workItem from="1742945839355" duration="1010000" />
+      <workItem from="1742945839355" duration="1241000" />
+      <workItem from="1742991643589" duration="12261000" />
+      <workItem from="1743017782526" duration="8704000" />
+      <workItem from="1743030620896" duration="2874000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -272,7 +289,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742512654123</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="List Citas Completo">
+      <option name="closed" value="true" />
+      <created>1742947060557</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1742947060557</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +328,7 @@
     <MESSAGE value="Modulo crear citas terminado" />
     <MESSAGE value="arreglo en notas de dashboard" />
     <MESSAGE value="Se arreglan algunos dark-modes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se arreglan algunos dark-modes" />
+    <MESSAGE value="List Citas Completo" />
+    <option name="LAST_COMMIT_MESSAGE" value="List Citas Completo" />
   </component>
 </project>

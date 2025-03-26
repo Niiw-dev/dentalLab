@@ -72,25 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    const cancelButtons = document.querySelectorAll('.cancelar-cita-btn');
-    cancelButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const citaId = this.dataset.citaId;
-            cancelarCita(citaId);
-        });
-    });
-
-    const confirmButtons = document.querySelectorAll('.confirmar-actualizacion-btn');
-    confirmButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const citaId = this.dataset.citaId;
-            confirmarActualizacion(citaId);
-        });
-    });
-    
-
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {

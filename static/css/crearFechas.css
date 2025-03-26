@@ -3,7 +3,6 @@
 :root {
     --primary-color: #cab97d;
     --secondary-color: #7e734e;
-    --text-color: #f8f8f8;
     --input-background: rgba(0, 0, 0, 0.4);
     --input-border-color: #b3b3b3;
     --input-focus-border-color: #cab97d;
@@ -15,7 +14,6 @@
 }
 
 form {
-    background-color: #f8f8f8;
     row-gap: 1.1rem;
     display: flex;
     flex-direction: column;
@@ -31,11 +29,12 @@ form {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     border-radius: 15px;
     backdrop-filter: blur(8px);
-    color: var(--text-color);
+    color: #000;
+    background-color: #f8f8f8;
 }
 
 .dark-mode form{
-    background-color: #1a1a1a;
+    background-color: #2a2a2a;
 }
 
 .button-container {
@@ -68,43 +67,4 @@ h4 {
     margin-bottom: 5px;
     color: var(--label-color);
     text-align: center;
-}
-
-.form-group input,
-.form-group select {
-    width: 100%;
-    max-width: 95%;
-    padding: 10px;
-    font-size: 1em;
-    border: 1px solid var(--input-border-color);
-    border-radius: 10px;
-    outline: none;
-    transition: background-color 0.3s, border-color 0.3s;
-    text-align: center;
-}
-
-.form-group input:focus,
-.form-group select:focus {
-    border-color: var(--input-focus-border-color);
-}
-
-.bbtn {
-    padding: 10px 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.btn-warning {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    color: #fff;
-}
-
-.btn-danger {
-    background-color: var(--secondary-color);
-    border-color: var(--secondary-color);
-    color: #fff;
-    text-decoration: none;
 }
