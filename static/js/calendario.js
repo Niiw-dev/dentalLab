@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         moreLinkText: "Ver más",
         eventBackgroundColor: 'white',  
         eventBorderColor: 'darkblue',   
-        textColor: 'black',             
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',

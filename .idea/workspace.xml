@@ -4,11 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones de las pestañas visibles en el dashboard">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se arregla crearInsumos">
+      <change afterPath="$PROJECT_DIR$/static/js/crearCitas.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/crearelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/crearelementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventario/templates/formselementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/formselementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crear_elemento.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crear_elemento.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/citas/templates/crearcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/crearcitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/citas/templates/editarcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/editarcitas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/templates/calendario.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/templates/calendario.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio/templates/inicio.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/inicio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/calendario.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/calendario.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/citas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/citas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/dashboard.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/datatable.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/datatable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/filtros.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtros.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/listFechas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/listFechas.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +160,7 @@
       <workItem from="1742991643589" duration="12261000" />
       <workItem from="1743017782526" duration="8704000" />
       <workItem from="1743030620896" duration="2949000" />
-      <workItem from="1743077854443" duration="11968000" />
+      <workItem from="1743077854443" duration="15203000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -296,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743089679694</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Se arregla crearInsumos">
+      <option name="closed" value="true" />
+      <created>1743090826800</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1743090826800</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -330,6 +348,7 @@
     <MESSAGE value="List Citas Completo" />
     <MESSAGE value="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones" />
     <MESSAGE value="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones de las pestañas visibles en el dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones de las pestañas visibles en el dashboard" />
+    <MESSAGE value="Se arregla crearInsumos" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se arregla crearInsumos" />
   </component>
 </project>

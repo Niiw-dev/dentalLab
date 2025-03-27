@@ -3,7 +3,6 @@ function confirmarEliminacion(id, fechaHora) {
     modal.style.display = 'flex';
 
     document.getElementById('elementoProducto').innerText = fechaHora;
-    console.log(fechaHora)
     const formEliminar = document.getElementById('formEliminar');
     formEliminar.action = `/eliminarfechas/${id}/`;
 }

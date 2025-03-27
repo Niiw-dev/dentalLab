@@ -314,15 +314,6 @@ input {
   padding: 0.5rem 1rem;
 }
 
-.navbar-list {
-  padding-top: 0px;
-  display: flex;
-  position: relative;
-  padding-right: 0.6rem;
-  overflow: hidden;
-  width: 0;
-}
-
 .profile-dropdown {
   position: relative;
   width: fit-content;
@@ -381,10 +372,6 @@ input {
   color: #ffffff;
 }
 
-.navbar-list.active {
-  width: fit-content;
-  max-height: 45px;
-}
 
 .profile-dropdown-list-item {
   width: fit-content;
