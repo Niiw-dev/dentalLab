@@ -4413,8 +4413,9 @@ fieldset:disabled .btn {
 }
 
 .modal-dialog {
+  max-width: 40% ;
+  min-width: 500px;
   position: relative;
-  width: auto;
   margin: var(--bs-modal-margin);
   pointer-events: none;
 }
@@ -4462,7 +4463,6 @@ fieldset:disabled .btn {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 70%;
   color: var(--bs-modal-color);
   padding: 20px;
   margin: 20px;
@@ -4527,7 +4527,7 @@ fieldset:disabled .btn {
   flex-shrink: 0;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: calc(var(--bs-modal-padding) - var(--bs-modal-footer-gap) * 0.5);
   background-color: var(--bs-modal-footer-bg);
   border-top: var(--bs-modal-footer-border-width) solid var(--bs-modal-footer-border-color);
@@ -7841,7 +7841,8 @@ fieldset:disabled .btn {
   }
 
   .modal-dialog {
-    max-width: var(--bs-modal-width);
+    max-width: 40% ;
+    min-width: 500px;
     margin-right: auto;
     margin-left: auto;
   }

@@ -1,11 +1,11 @@
 function confirmarEliminacion(id, fechaHora) {
     const modal = document.getElementById('confirmarModal');
-    modal.style.display = 'block';
+    modal.style.display = 'flex';
 
     document.getElementById('elementoProducto').innerText = fechaHora;
-
+    console.log(fechaHora)
     const formEliminar = document.getElementById('formEliminar');
-    formEliminar.action = "{% url 'eliminarfechas' 0 %}".replace('0', id);
+    formEliminar.action = `/eliminarfechas/${id}/`;
 }
 
 function cerrarModal() {

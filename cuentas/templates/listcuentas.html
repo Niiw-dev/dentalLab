@@ -147,23 +147,43 @@ Pacientes Registrados
     </div>
 </div>
 
-<div id="confirmModal" class="modal">
-    <div class="modal-content">
-        <p>¿Estás seguro de que quieres desactivar tu cuenta?</p>
-        <button id="confirmDesactivar" class="btn btn-custom btn-danger"
-            data-tooltip="Confirmar desactivación">Desactivar</button>
-        <button id="cancelDesactivar" class="btn btn-custom btn-default"
-            data-tooltip="Cancelar desactivación">Cancelar</button>
+<div class="modal" id="confirmModal" tabindex="-1" aria-labelledby="confirmDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeletionModalLabel">Confirmar Eliminación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres desactivar esta cuenta?
+            </div>
+            <div class="modal-footer">
+                <button id="cancelDesactivar" class="btn btn-custom btn-default"
+                    data-tooltip="Cancelar desactivación">Cancelar</button>
+                <button id="confirmDesactivar" class="btn btn-custom btn-danger"
+                    data-tooltip="Confirmar desactivación">Desactivar</button>
+            </div>
+        </div>
     </div>
 </div>
 
-<div id="confirmModal2" class="modal">
-    <div class="modal-content">
-        <p>¿Estás seguro de que quieres activar tu cuenta?</p>
-        <button id="confirmActivar" class="btn btn-custom btn-success"
-            data-tooltip="Confirmar activación">Activar</button>
-        <button id="cancelActivar" class="btn btn-custom btn-default"
-            data-tooltip="Cancelar activación">Cancelar</button>
+<div class="modal" id="confirmModal2" tabindex="-1" aria-labelledby="confirmDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeletionModalLabel">Confirmar Activación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres activar esta cuenta?
+            </div>
+            <div class="modal-footer">
+                <button id="cancelActivar" class="btn btn-custom btn-default"
+                    data-tooltip="Cancelar activación">Cancelar</button>
+                <button id="confirmActivar" class="btn btn-custom btn-success"
+                    data-tooltip="Confirmar activación">Activar</button>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

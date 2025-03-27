@@ -91,15 +91,26 @@ Fechas Disponibles
     </div>
 </div>
 
-<div id="confirmarModal" class="modal">
-    <div class="modal-content">
-        <p>¿Estás seguro de que deseas eliminar la fecha <strong id="elementoProducto"></strong>?</p>
-        <form id="formEliminar" method="POST" action="">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger" data-tooltip="Confirmar eliminación">Eliminar</button>
-            <button type="button" class="btn btn-secondary" onclick="cerrarModal()"
-                data-tooltip="Cancelar eliminación">Cancelar</button>
-        </form>
+<div class="modal" id="confirmarModal" tabindex="-1" aria-labelledby="confirmDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeletionModalLabel">Confirmar Eliminación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar la fecha <strong id="elementoProducto"></strong>?
+                Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <form id="formEliminar" method="POST" action="">
+                    {% csrf_token %}
+                    <button type="button" class="btn btn-default" onclick="cerrarModal()"
+                            data-tooltip="Cancelar eliminación">Cancelar</button>
+                    <button type="submit" class="btn btn-danger" data-tooltip="Confirmar eliminación">Eliminar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

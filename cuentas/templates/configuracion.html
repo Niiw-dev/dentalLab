@@ -90,14 +90,25 @@ Editar Perfil
     </form>
 
 </div>
-</div>
-<div id="confirmModal" class="modal">
-    <div class="modal-content">
-        <p>¿Estás seguro de que quieres desactivar tu cuenta?</p>
-        <button id="confirmDesactivar" class="btn btn-custom btn-danger"
-            data-tooltip="Confirmar desactivación">Desactivar</button>
-        <button id="cancelDesactivar" class="btn btn-custom btn-secondary"
-            data-tooltip="Cancelar desactivación">Cancelar</button>
+
+<div class="modal" id="confirmModal" tabindex="-1" aria-labelledby="confirmDeletionModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeletionModalLabel">Confirmar Eliminación</h5>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que quieres desactivar tu cuenta?
+                Esta acción no se puede deshacer.
+            </div>
+            <div class="modal-footer">
+                <button id="confirmDesactivar" class="btn btn-custom btn-danger"
+                    data-tooltip="Confirmar desactivación">Desactivar</button>
+                <button id="cancelDesactivar" class="btn btn-custom btn-default"
+                    data-tooltip="Cancelar desactivación">Cancelar</button>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}

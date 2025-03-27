@@ -4,29 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="List Citas Completo">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/citas/templates/listcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/listcitas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cuentas/templates/configuracion.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/configuracion.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/formscuentas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fechas/templates/formsfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/formsfechas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fechas/templates/listfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/listfechas.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/formhistorias.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inicio/templates/backup_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/backup_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inicio/templates/loginregister.html" beforeDir="false" afterPath="$PROJECT_DIR$/inicio/templates/loginregister.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventario/templates/listelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/listelementos.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/configuracion.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/configuracion.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/crearFechas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/crearFechas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cuentas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cuentas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/dark_mode.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/dark_mode.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/form_historias.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/form_historias.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/inicio_dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/inicio_dashboard.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/inicio_dashboard2.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/tablas.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/tablas.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/citas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/citas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/desactivar_cuenta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/filtros.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtros.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/listFechas.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/listFechas.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,7 +161,8 @@
       <workItem from="1742945839355" duration="1241000" />
       <workItem from="1742991643589" duration="12261000" />
       <workItem from="1743017782526" duration="8704000" />
-      <workItem from="1743030620896" duration="2874000" />
+      <workItem from="1743030620896" duration="2949000" />
+      <workItem from="1743077854443" duration="10813000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -297,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1742947060557</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones">
+      <option name="closed" value="true" />
+      <created>1743033554686</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1743033554686</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,6 +332,7 @@
     <MESSAGE value="arreglo en notas de dashboard" />
     <MESSAGE value="Se arreglan algunos dark-modes" />
     <MESSAGE value="List Citas Completo" />
-    <option name="LAST_COMMIT_MESSAGE" value="List Citas Completo" />
+    <MESSAGE value="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones" />
+    <option name="LAST_COMMIT_MESSAGE" value="Se modifican los diseños y algunas funciones generales relacionadas con los modales y los botones de las acciones" />
   </component>
 </project>

@@ -194,6 +194,7 @@ i.a {
 }
 
 .table-container {
+  min-width: 550px;
   background-color: white;
   border-radius: 4px;
 }

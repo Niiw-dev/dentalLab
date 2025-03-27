@@ -526,3 +526,9 @@ input {
     color: #fff;
     background-color: #1b1b1b;
 }
+
+@media (max-width: 730px) {
+  .btn span{
+    display: none;
+  }
+}

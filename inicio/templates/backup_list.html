@@ -13,7 +13,7 @@
             <div class="d-flex justify-content-between align-items-center flex-wrap">
                 <div class="d-flex">
                     <form action="{% url 'dashboard' %}" method="get">
-                        <button type="submit" class="btn btn-success btn-custom me-2"
+                        <button type="submit" class="btn btn-default btn-custom me-2"
                             aria-label="Regresar al tablero principal" data-tooltip="Regresar al tablero principal">
                             <i class="fas fa-arrow-left text-white"></i> <span> Volver </span>
                         </button>
@@ -21,18 +21,18 @@
 
                     <form method="post" action="{% url 'backup_create' %}" style="margin-bottom: 0;">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-success btn-custom" data-tooltip="Crear un nuevo respaldo">
+                        <button type="submit" class="btn btn-successII btn-custom" data-tooltip="Crear un nuevo respaldo">
                             <i class="fas fa-plus text-white"></i> <span> Crear Respaldo </span>
                         </button>
                     </form>
                 </div>
                 <div class="d-flex">
-                    <a class="btn btn-info btn-custom" href="{% url 'reporte_excel' %}" role="button"
-                        data-tooltip="Descargar listado en Excel">
+                    <a class="btn btn-success btn-custom me-2" href="{% url 'reporte_excel' %}" role="button"
+                        data-tooltip="Descargar tabla en excel">
                         <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
                     </a>
                     <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf' %}" role="button"
-                        data-tooltip="Descargar listado en PDF">
+                        data-tooltip="Descargar tabla en pdf">
                         <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
                     </a>
                 </div>
@@ -70,16 +70,19 @@
                             <td>
                                 <form action="{% url 'download_backup' backup.filename %}" method="get" class="btn"
                                     style="padding: 0rem;">
-                                    <button type="submit" class="btn btn-warning btn-sm"
+                                    <button type="submit" class="btn btn-successII"
                                         data-backup="{{ backup.filename }}" aria-label="Descargar {{ backup.filename }}"
-                                        data-tooltip="Descargar {{ backup.filename }}">Descargar</button>
+                                        data-tooltip="Descargar {{ backup.filename }}">
+                                        <i class="fas fa-download text-white"></i> <span> Descargar </span></button>
                                 </form>
-                                <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
                                     data-bs-target="#confirmRestoreModal" data-backup="{{ backup.filename }}"
-                                    data-tooltip="Restaurar {{ backup.filename }}">Restaurar</button>
-                                <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                                    data-tooltip="Restaurar {{ backup.filename }}">
+                                    <i class="fas fa-retweet text-white"></i> <span> Restaurar </span></button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                                     data-bs-target="#confirmDeletionModal" data-backup="{{ backup.filename }}"
-                                    data-tooltip="Eliminar {{ backup.filename }}">Eliminar</button>
+                                    data-tooltip="Eliminar {{ backup.filename }}">
+                                    <i class="fas fa-trash text-white"></i> <span> Eliminar </span></button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -109,7 +112,7 @@
                 <form id="deleteForm" method="post" action="{% url 'delete_backup' %}">
                     {% csrf_token %}
                     <input type="hidden" name="filename" id="deleteFile">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-danger">Eliminar</button>
                 </form>
             </div>
@@ -139,8 +142,8 @@
                     enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="hidden" name="backup_file" id="restoreFile">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-warning">Restaurar</button>
+                    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-success">Restaurar</button>
                 </form>
             </div>
         </div>

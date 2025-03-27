@@ -1,4 +1,6 @@
 import os
+import sys
+
 import openpyxl
 from io import BytesIO
 
@@ -108,6 +110,9 @@ def listfechas(request):
 @login_required(login_url='acceso_denegado')
 @user_passes_test(traer.es_superusuario, login_url='acceso_denegado')
 def eliminarfechas(request, id):
+    # print(f"request: {request}")
+    # print(f"id: {id}")
+    # sys.exit()
     fechaseliminar = get_object_or_404(Fecha, id=id)
     
     if request.method == 'POST':

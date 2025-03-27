@@ -120,7 +120,7 @@
                                             class="btn btn-secondary disabled"
                                             data-tooltip="No se puede cancelar una cita no programada"
                                     {% endif %} data-cita-id="{{ cita.id }}">
-                                        <i class="fas fa-trash sort-icon a"></i>
+                                        <i class="fas fa-ban sort-icon a"></i>
                                     </button>
                                     {% if user.is_superuser %}
                                     <button {% if cita.get_estado_display == 'Programada' %}
