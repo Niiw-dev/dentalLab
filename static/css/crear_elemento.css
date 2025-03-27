@@ -2,7 +2,7 @@
 
 body {
     font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    background-color: #f0f2f5;
+    background-color: #e8e8e8;
     color: #333;
     line-height: 1.6;
 }
@@ -10,104 +10,31 @@ body {
 .card-body {
     width: 90%;
     margin: 2rem auto;
-    background-color: #ffffff;
+    background-color: #f8f8f8;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 2rem;
 }
 
-.form-control,
-.form-select {
-    width: 100%;
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-    border: 1px solid #d1d5db;
-    border-radius: 6px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
+.card {
+    display: flex;
+    background: transparent;
+    flex-direction: column;
+    border: none;
+    box-shadow: none;
+    transition: none;
 }
 
-.form-control:focus,
-.form-select:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-    outline: none;
+.card:hover{
+    box-shadow: none;
 }
 
-.form-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 600;
-    color: #4b5563;
+.dark-mode .card-body {
+    background-color: #2a2a2a;
 }
 
-.help-text {
-    color: #dc2626;
-    font-size: 0.875rem;
-    margin-top: 0.25rem;
+.dark-mode .card {
+    background: transparent;
+    box-shadow: none;
 }
 
-@media (max-width: 1024px) {
-    .card-body {
-        width: 95%;
-    }
-}
-
-@media (max-width: 768px) {
-    .card-body {
-        margin: 1rem auto;
-        padding: 1.5rem;
-        width: 100%;
-    }
-
-    .form-control,
-    .form-select {
-        font-size: 16px;
-    }
-}
-
-.mb-3 {
-    transition: all 0.3s ease;
-}
-
-.mb-3:hover {
-    transform: translateY(-2px);
-}
-
-.form-select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%234b5563' viewBox='0 0 16 16'%3E%3Cpath d='M8 12L2 6h12z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.75rem center;
-    background-size: 12px;
-}
-
-.form-control:hover,
-.form-select:hover {
-    border-color: #9ca3af;
-}
-
-h2 {
-    color: #007bff;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-@media (min-width: 768px) {
-    .form-row {
-        display: flex;
-        margin-right: -15px;
-        margin-left: -15px;
-    }
-
-    .form-group {
-        flex: 0 0 50%;
-        max-width: 50%;
-        padding-right: 15px;
-        padding-left: 15px;
-    }
-}
