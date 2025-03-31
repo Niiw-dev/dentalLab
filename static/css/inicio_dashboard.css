@@ -13439,3 +13439,7 @@ h4 {
   background-color: transparent;
   color: #ffffff;
 }
+
+.dark-mode-toggle {
+  z-index: 9999 ;
+}

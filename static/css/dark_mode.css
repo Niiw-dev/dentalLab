@@ -191,38 +191,6 @@
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/protesis.1.jpg');
 }
 
-.dark-mode-toggle {
-  position: fixed;
-  bottom: 80px;
-  right: 19px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: #2a2a2a;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  padding: 0;
-  margin: 0;
-  font-size: 24px;
-}
-
-.dark-mode-toggle i {
-  font-size: 24px;
-  width: 24px;
-  height: 24px;
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  line-height: 1;
-}
-
 .dark-mode .container2 {
   background: #1e1e1e;
   border: 1px solid #444;
@@ -302,7 +270,7 @@
   padding: 0;
   margin: 0;
   font-size: 24px;
-  z-index: 1000;
+  z-index: 9999;
 }
 
 .dark-mode-toggle i {
