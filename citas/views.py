@@ -534,52 +534,77 @@ def citas_agendadas(request):
 
 
 def reporte_citas_excel(request):
+    # Obtener los filtros aplicados
+    fecha_filtro = request.GET.get('fecha')
+    motivo_filtro = request.GET.get('motivo')
+    estado_filtro = request.GET.get('estado')
+
+    # Crear el archivo Excel
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Citas Agendadas"
 
+    # Agregar logo
     logo_path = finders.find('img/logo.png')
-
     img = Image(logo_path)
     img.height = 21
     img.width = 39
     ws.add_image(img, 'A1')
 
+    # Agregar título
     ws.merge_cells('B1:F1')
     ws['B1'] = "LABORATORIO DENTAL"
     ws['B1'].font = Font(size=24, bold=True)
     ws['B1'].alignment = Alignment(horizontal='center', vertical='center')
 
+    # Agregar subtítulo
     ws.merge_cells('A2:F2')
     ws['A2'] = "Citas Agendadas"
     ws['A2'].font = Font(size=18)
     ws['A2'].alignment = Alignment(horizontal='center', vertical='center')
 
+    # Encabezado de las columnas
     headers = ["Paciente", "Nombres", "Fecha", "Hora", "Motivo", "Estado"]
     ws.append(headers)
-    
+
     header_fill = PatternFill(start_color="cab97d", end_color="cab97d", fill_type="solid")
     for cell in ws[3]:
         cell.fill = header_fill
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    # Definir el borde de las celdas
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
+                    bottom=Side(style='thin'))
 
+    # Filtros en la consulta
     citas = Cita.objects.all()
+
+    if fecha_filtro:
+        citas = citas.filter(fecha_hora__fecha=fecha_filtro)
+
+    if motivo_filtro:
+        citas = citas.filter(motivo=motivo_filtro)
+
+    if estado_filtro:
+        citas = citas.filter(estado=estado_filtro)
+
+    # Llenar los datos de las citas
     for cita in citas:
         paciente = str(cita.paciente)
         nombre = str(cita.paciente.nombre)
         motivo = cita.get_motivo_display()
         estado = cita.get_estado_display()
-        
+
         if cita.fecha_hora:
-            fecha = cita.fecha_hora.fecha.strftime('%d-%m-%Y') if hasattr(cita.fecha_hora.fecha, 'strftime') else str(cita.fecha_hora.fecha)
-            hora = cita.fecha_hora.hora.strftime('%H:%M') if hasattr(cita.fecha_hora.hora, 'strftime') else str(cita.fecha_hora.hora)
+            fecha = cita.fecha_hora.fecha.strftime('%d-%m-%Y') if hasattr(cita.fecha_hora.fecha, 'strftime') else str(
+                cita.fecha_hora.fecha)
+            hora = cita.fecha_hora.hora.strftime('%H:%M') if hasattr(cita.fecha_hora.hora, 'strftime') else str(
+                cita.fecha_hora.hora)
         else:
             fecha = 'N/A'
             hora = 'N/A'
-        
+
         ws.append([
             paciente,
             nombre,
@@ -589,10 +614,12 @@ def reporte_citas_excel(request):
             estado
         ])
 
+    # Ajustar el ancho de las columnas
     column_widths = [20, 30, 15, 10, 30, 15]
     for i, width in enumerate(column_widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
 
+    # Aplicar formato a las celdas
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=6):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
@@ -601,16 +628,16 @@ def reporte_citas_excel(request):
                 cell.number_format = 'DD-MM-YYYY'
             elif cell.column_letter == 'D':
                 cell.number_format = 'HH:MM'
-    
+
     for cell in ws[3]:
         cell.border = border
 
+    # Preparar la respuesta para la descarga del archivo Excel
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Reporte_citas.xlsx"'
-    
+
     wb.save(response)
     return response
-
 
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
