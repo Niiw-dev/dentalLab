@@ -33,7 +33,7 @@ h4 {
     font-size: 30px;
     color: #0c0c0b;
     margin-bottom: 10px;
-    border-bottom: 4px solid var(--primary-color);
+    border-bottom: 4px solid #CAB97D;
     padding-bottom: 5px;
     font-weight: bold;
 }
@@ -61,12 +61,8 @@ h4 {
 
 .grid-item label {
     font-weight: bold;
-    color: var(--primary-color);
+    color: #bcab71;
     margin-bottom: 5px;
-}
-
-.grid-item span {
-    color: #333;
 }
 
 .btn-container {
@@ -96,6 +92,10 @@ h4 {
     background-color: var(--highlight-color);
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(255, 59, 48, 0.3);
+}
+
+.no-print {
+    display: block;
 }
 
 @media print {

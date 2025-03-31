@@ -61,7 +61,7 @@
 }
 
 .dark-mode .page-section {
-  background-color: #414141;
+  background-color: #1e1e1e;
 }
 
 .dark-mode .card {
@@ -86,12 +86,6 @@
   color: #ffffff;
 }
 
-.dark-mode .container1 {
-  background-color: #0000;
-  border-color: #0000;
-  color: #ffffff;
-}
-
 .dark-mode .section-heading text-uppercase {
   background-color: #0000;
   border-color: #0000;
@@ -99,13 +93,13 @@
 }
 
 .dark-mode #portfolio {
-  background-color: #414141;
+  background-color: #1e1e1e;
   border-color: #414141;
   color: #ffffff;
 }
 
 .dark-mode .container1 {
-  background-color: #414141;
+  background-color: #1e1e1e;
   color: #ffffff;
 }
 
@@ -155,7 +149,7 @@
 }
 
 .dark-mode .modal-content {
-    background-color: #333333;
+    background-color: #2a2a2a;
     color: #ffffff;
 }
 
@@ -177,7 +171,7 @@
 }
 
 .dark-mode .fa-circle {
-  color: #333 !important;
+  color: #2a2a2a !important;
 }
 
 .dark-mode .fa-inverse {
@@ -204,7 +198,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: #2a2a2a;
   color: white;
   display: flex;
   justify-content: center;
@@ -241,7 +235,7 @@
 }
 
 .dark-mode .input {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
@@ -262,27 +256,27 @@
 }
 
 .dark-mode .overlay {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
 .dark-mode .overlay-right {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
 .dark-mode .overlay-left {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
 .dark-mode .container2.right-panel-active .sign-int {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
 .dark-mode .container2.right-panel-active .overlay-container {
-  background: #333;
+  background: #2a2a2a;
   color: #fff;
 }
 
@@ -297,7 +291,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background-color: #333;
+  background-color: #2a2a2a;
   color: white;
   display: flex;
   justify-content: center;
@@ -481,10 +475,6 @@
     background-color: var(--dark-grid-background-color);
 }
 
-.dark-mode .grid-item label {
-    color: var(--dark-primary-color);
-}
-
 .dark-mode #btn {
     background-color: var(--dark-background-color) !important;
     color: #fff !important;
@@ -542,7 +532,7 @@
 
 .dark-mode .table {
     color: #ffffff;
-    background-color: #333333;
+    background-color: #2a2a2a;
 }
 
 .dark-mode .table th {
@@ -635,8 +625,9 @@
 }
 
 .dark-mode .btn-successII{
-    background-color: #3a3a3a;
-    color: #e0e0e0;
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-color: #ddd;
 }
 
 .dark-mode .btn-successII:hover {
@@ -698,6 +689,11 @@
   color: #ffffff;
 }
 
+.dark-mode .colageno {
+  background-color: transparent;
+  color: #ffffff;
+}
+
 .dark-mode .text-lg-start {
   background-color: rgb(18, 18, 18);
   color: #ffffff;
@@ -718,6 +714,10 @@
 
 .dark-mode .form  {
   background-color: #2a2a2a;
+}
+
+.dark-mode .Login {
+  background-color: #1e1e1e;
 }
 
 .dark-mode .form-control:focus,

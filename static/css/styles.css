@@ -101,11 +101,12 @@ body {
 
 .historia {
   width: 80%;
+  min-width: 500px;
   min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 .ContentTable {
   background-color: #e8e8e8;

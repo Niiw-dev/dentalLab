@@ -3,6 +3,8 @@
 <html lang="es">
 
 <head>
+  <meta name="csrf-token" content="{% csrf_token %}">
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
@@ -67,7 +69,7 @@
 
             {% if user.is_superuser %}
             <li class="nav-item d-lg-none">
-              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
+              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas Disponibles</a>
             </li>
             <li class="nav-item d-lg-none">
               <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
@@ -78,11 +80,6 @@
             <li class="nav-item d-lg-none">
               <a class="nav-link" href="{% url 'listelementos' %}"
                 data-tooltip="Gestionar inventario de insumos">Insumos</a>
-            </li>
-
-            <li class="nav-item d-lg-none">
-              <a class="nav-link" href="{% url 'backup_list' %}"
-                data-tooltip="Gestionar copias de seguridad">Restauración</a>
             </li>
             {% endif %}
 
@@ -127,7 +124,7 @@
           {% if user.is_superuser %}
           <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0 d-flex justify-content-center">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas</a>
+              <a class="nav-link" href="{% url 'listfechas' %}" data-tooltip="Gestionar fechas disponibles">Fechas Disponibles</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'listcuentas' %}" data-tooltip="Ver lista de pacientes">Pacientes</a>
@@ -138,10 +135,6 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'listelementos' %}"
                 data-tooltip="Gestionar inventario de insumos">Insumos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'backup_list' %}"
-                data-tooltip="Gestionar copias de seguridad">Restauración</a>
             </li>
           </ul>
           {% endif %}
@@ -222,17 +215,17 @@
 
     <script>
       function logout() {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('value');
         fetch("{% url 'signout' %}", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value
+            "X-CSRFToken": csrfToken
           },
           body: JSON.stringify({})
         })
         .then(response => {
           if (response.ok) {
-
             window.location.href = '/';
           } else {
             console.error('Error al cerrar sesión');

@@ -9,8 +9,7 @@
 <style>
   @media print {
 
-    .no-print,
-    button {
+    .no-print,button,.asw-menu-btn,.dark-mode-toggle,footer {
       display: none !important;
     }
   }
@@ -133,31 +132,13 @@ Detalles de Historia Clínica
       </div>
     </div>
   </div>
-  <div class="btn no-print">
-    <button class="btn btn-primary" onclick="window.history.back();"
+  <div class="no-print">
+    <button class="btn btn-default" onclick="window.history.back();"
       data-tooltip="Regresar a la lista de historias clínicas">
       Volver
     </button>
 
-    <button class="btn btn-success" onclick="window.print();" data-tooltip="Imprimir la historia clínica">
-      Imprimir
-    </button>
+    <button class="btn btn-successII" onclick="window.print();"> Imprimir </button>
   </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-  function imprimirContenido() {
-    var contenido = document.getElementById('contenido-imprimir').innerHTML;
-    var ventanaImpresion = window.open('', '', 'width=800,height=600');
-    ventanaImpresion.document.write('<html><head><title>Imprimir</title>');
-    ventanaImpresion.document.write('<link rel="stylesheet" href="{% static "css/ver_historias.css" %}?v1.7" />');
-    ventanaImpresion.document.write('</head><body>');
-    ventanaImpresion.document.write(contenido);
-    ventanaImpresion.document.write('</body></html>');
-    ventanaImpresion.document.close();
-    ventanaImpresion.print();
-  }
-</script>
 {% endblock %}

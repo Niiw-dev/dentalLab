@@ -136,3 +136,19 @@ EMAIL_HOST_USER = 'facturacionldsg@gmail.com'
 EMAIL_HOST_PASSWORD = 'jdlj vvqw rwcp lots'
 
 PASSWORD_RESET_TIMEOUT = 3600
+
+import os
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+}

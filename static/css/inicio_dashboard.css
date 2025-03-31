@@ -4488,7 +4488,10 @@ fieldset:disabled .btn {
 }
 
 .modal.show .modal-dialog {
+  display: flex;
   transform: none;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal.modal-static .modal-dialog {
@@ -9784,8 +9787,9 @@ header.masthead .masthead-heading {
 }
 
 .portfolio-modal .modal-content {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  width: fit-content;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   text-align: center;
 }
 
@@ -13429,4 +13433,9 @@ h4 {
   height: 200px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.dark-mode .col-lg-8{
+  background-color: transparent;
+  color: #ffffff;
 }

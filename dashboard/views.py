@@ -18,24 +18,18 @@ logger = logging.getLogger(__name__)
 def signout(request):
     if request.method == 'POST':
         if request.user.is_authenticated:
-            # Obtener el ID de sesión antes de cerrar la sesión
             session_key = request.session.session_key
             user_id = request.user.id
 
-            # Cerrar la sesión del usuario
             logout(request)
 
-            # Limpiar el caché específico del usuario
             cache.delete(f"user_{user_id}_*")
 
-            # Limpiar cualquier caché asociado con la sesión
             if session_key:
                 cache.delete(f"session_{session_key}_*")
 
-        # Redirigir a la página de inicio o login
         return redirect(reverse('loginregister'))
     
-    # Si no es una solicitud POST, redirigir a la página de inicio
     return redirect(reverse('inicio'))
 
 @never_cache
