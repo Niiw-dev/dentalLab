@@ -10,8 +10,6 @@
 
   <title>{% block title %}{% endblock %}</title>
 
-  <link rel="icon" type="image/x-icon" href="{% static 'img/logo.png' %}" />
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700" type="text/css" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" type="text/css" />
 
@@ -30,6 +28,8 @@
   <link rel="stylesheet" href="{% static 'css/custom.css' %}?v1.9">
   <link rel="stylesheet" href="{% static 'css/dark_mode.css' %}?v2.4">
   <link rel="stylesheet" href="{% static 'css/htmlInicio.css' %}?v1.2">
+
+  <link rel="icon" href="{% static 'img/logo.ico' %}" />
 
   {% block extra_css %} {% endblock %}
 </head>

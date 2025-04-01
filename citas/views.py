@@ -1,6 +1,8 @@
+import json
 import os
 from datetime import datetime, timedelta
 from io import BytesIO
+import logging
 
 from django.conf import settings
 from django.contrib import messages
@@ -534,36 +536,44 @@ def citas_agendadas(request):
 
 
 def reporte_citas_excel(request):
-    # Obtener los filtros aplicados
-    fecha_filtro = request.GET.get('fecha')
-    motivo_filtro = request.GET.get('motivo')
-    estado_filtro = request.GET.get('estado')
+    data = json.loads(request.body)
 
-    # Crear el archivo Excel
+    fecha_filtro = data.get('fecha', None)
+    motivo_filtro = data.get('motivo', None)
+    estado_filtro = data.get('estado', None)
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"Fecha filtro: {fecha_filtro}")
+    logger.debug(f"Motivo filtro: {motivo_filtro}")
+    logger.debug(f"Estado filtro: {estado_filtro}")
+
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Citas Agendadas"
 
-    # Agregar logo
     logo_path = finders.find('img/logo.png')
     img = Image(logo_path)
     img.height = 21
     img.width = 39
     ws.add_image(img, 'A1')
 
-    # Agregar título
     ws.merge_cells('B1:F1')
     ws['B1'] = "LABORATORIO DENTAL"
     ws['B1'].font = Font(size=24, bold=True)
     ws['B1'].alignment = Alignment(horizontal='center', vertical='center')
 
-    # Agregar subtítulo
     ws.merge_cells('A2:F2')
     ws['A2'] = "Citas Agendadas"
     ws['A2'].font = Font(size=18)
     ws['A2'].alignment = Alignment(horizontal='center', vertical='center')
 
-    # Encabezado de las columnas
     headers = ["Paciente", "Nombres", "Fecha", "Hora", "Motivo", "Estado"]
     ws.append(headers)
 
@@ -573,11 +583,9 @@ def reporte_citas_excel(request):
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    # Definir el borde de las celdas
     border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
                     bottom=Side(style='thin'))
 
-    # Filtros en la consulta
     citas = Cita.objects.all()
 
     if fecha_filtro:
@@ -589,7 +597,6 @@ def reporte_citas_excel(request):
     if estado_filtro:
         citas = citas.filter(estado=estado_filtro)
 
-    # Llenar los datos de las citas
     for cita in citas:
         paciente = str(cita.paciente)
         nombre = str(cita.paciente.nombre)
@@ -614,12 +621,10 @@ def reporte_citas_excel(request):
             estado
         ])
 
-    # Ajustar el ancho de las columnas
     column_widths = [20, 30, 15, 10, 30, 15]
     for i, width in enumerate(column_widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
 
-    # Aplicar formato a las celdas
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=6):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
@@ -632,12 +637,12 @@ def reporte_citas_excel(request):
     for cell in ws[3]:
         cell.border = border
 
-    # Preparar la respuesta para la descarga del archivo Excel
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Reporte_citas.xlsx"'
 
     wb.save(response)
     return response
+
 
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
