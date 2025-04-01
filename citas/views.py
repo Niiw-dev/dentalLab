@@ -681,40 +681,76 @@ class NumberedCanvas(canvas.Canvas):
 
 
 def reporte_citas_pdf(request):
-    buffer = BytesIO()
+    data = json.loads(request.body)
 
+    fecha_filtro = data.get('fecha', None)
+    motivo_filtro = data.get('motivo', None)
+    estado_filtro = data.get('estado', None)
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"Fecha filtro: {fecha_filtro}")
+    logger.debug(f"Motivo filtro: {motivo_filtro}")
+    logger.debug(f"Estado filtro: {estado_filtro}")
+
+    # Crear buffer para el PDF
+    buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
 
     elements = []
 
+    # Definir estilos
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Center', alignment=1))
 
+    # Títulos
     elements.append(Paragraph("LABORATORIO DENTAL", styles['Title']))
     elements.append(Spacer(1, 12))
     elements.append(Paragraph("Citas Agendadas", styles['Heading2']))
     elements.append(Spacer(1, 12))
 
+    # Crear la tabla de datos
     data = [["Paciente", "Nombres", "Fecha", "Hora", "Motivo", "Estado"]]
 
+    # Filtrar las citas según los parámetros
     citas = Cita.objects.all()
+
+    if fecha_filtro:
+        citas = citas.filter(fecha_hora__fecha=fecha_filtro)
+    if motivo_filtro:
+        citas = citas.filter(motivo=motivo_filtro)
+    if estado_filtro:
+        citas = citas.filter(estado=estado_filtro)
+
+    # Agregar las citas a la tabla
     for cita in citas:
         paciente = str(cita.paciente)
         nombre = str(cita.paciente.nombre)
         motivo = cita.get_motivo_display()
         estado = cita.get_estado_display()
-        
+
         if cita.fecha_hora:
-            fecha = cita.fecha_hora.fecha.strftime('%d-%m-%Y') if hasattr(cita.fecha_hora.fecha, 'strftime') else str(cita.fecha_hora.fecha)
-            hora = cita.fecha_hora.hora.strftime('%H:%M') if hasattr(cita.fecha_hora.hora, 'strftime') else str(cita.fecha_hora.hora)
+            fecha = cita.fecha_hora.fecha.strftime('%d-%m-%Y') if hasattr(cita.fecha_hora.fecha, 'strftime') else str(
+                cita.fecha_hora.fecha)
+            hora = cita.fecha_hora.hora.strftime('%H:%M') if hasattr(cita.fecha_hora.hora, 'strftime') else str(
+                cita.fecha_hora.hora)
         else:
             fecha = 'N/A'
             hora = 'N/A'
-        
+
+        # Agregar cada cita a los datos
         data.append([paciente, nombre, fecha, hora, motivo, estado])
 
+    # Crear la tabla en PDF
     table = Table(data)
 
+    # Estilo para la tabla
     style = TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#cab97d")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
@@ -735,11 +771,13 @@ def reporte_citas_pdf(request):
 
     elements.append(table)
 
-    doc.build(elements, canvasmaker=NumberedCanvas)
+    # Generar el documento PDF
+    doc.build(elements)
 
+    # Preparar la respuesta para la descarga del archivo PDF
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Reporte_citas.pdf"'
-    
+
     return response
 
