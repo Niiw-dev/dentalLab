@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const estadoFiltro = document.getElementById("estadoFiltro");
 
     document.getElementById('download-excel-btn').addEventListener('click', function (event) {
-        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+        event.preventDefault();
 
         const data = {
             fecha: fechaFiltro.value,
@@ -164,31 +164,27 @@ document.addEventListener("DOMContentLoaded", function () {
             estado: estadoFiltro.value
         };
 
-        // Realizar la solicitud POST con fetch
         fetch('/reporte-excel/', {
-            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
-                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
             },
-            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+            body: JSON.stringify(data)
         })
             .then(response => {
-                // Verifica si la respuesta es exitosa
                 if (!response.ok) {
                     throw new Error('Hubo un problema al generar el archivo Excel');
                 }
-                return response.blob();  // Devuelve el archivo como un Blob
+                return response.blob();
             })
             .then(blob => {
-                // Crea un enlace temporal para la descarga
                 const downloadLink = document.createElement('a');
                 const url = window.URL.createObjectURL(blob);
                 downloadLink.href = url;
-                downloadLink.download = 'Reporte_citas.xlsx';  // Nombre por defecto para la descarga
-                downloadLink.click();  // Inicia la descarga
+                downloadLink.download = 'Reporte_citas.xlsx';
+                downloadLink.click();
 
-                // Limpia el objeto URL creado
                 window.URL.revokeObjectURL(url);
             })
             .catch(error => {
@@ -197,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById('download-pdf-btn').addEventListener('click', function (event) {
-        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+        event.preventDefault();
 
         const data = {
             fecha: fechaFiltro.value,
@@ -205,31 +201,27 @@ document.addEventListener("DOMContentLoaded", function () {
             estado: estadoFiltro.value
         };
         console.log(data)
-        // Realizar la solicitud POST con fetch
         fetch('/reporte-pdf/', {
-            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            method: 'POST',
             headers: {
-                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
-                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
             },
-            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+            body: JSON.stringify(data)
         })
             .then(response => {
-                // Verifica si la respuesta es exitosa
                 if (!response.ok) {
                     throw new Error('Hubo un problema al generar el archivo Excel');
                 }
-                return response.blob();  // Devuelve el archivo como un Blob
+                return response.blob();
             })
             .then(blob => {
-                // Crea un enlace temporal para la descarga
                 const downloadLink = document.createElement('a');
                 const url = window.URL.createObjectURL(blob);
                 downloadLink.href = url;
-                downloadLink.download = 'Reporte_citas.pdf';  // Nombre por defecto para la descarga
-                downloadLink.click();  // Inicia la descarga
+                downloadLink.download = 'Reporte_citas.pdf';
+                downloadLink.click();
 
-                // Limpia el objeto URL creado
                 window.URL.revokeObjectURL(url);
             })
             .catch(error => {
