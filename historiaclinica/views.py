@@ -1,3 +1,6 @@
+import json
+import logging
+
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
@@ -27,8 +30,6 @@ from openpyxl.utils import get_column_letter
 from inicio.forms import ValoracionForm, UserForm
 from inicio.models import UserProfile, Valoracion
 import inicio.views as traer
-
-import logging
 
 logger = logging.getLogger(__name__)
 
@@ -126,19 +127,36 @@ def crearhistorias(request):
     }
     return render(request, 'crearhistorias.html', context)
 
-from openpyxl import Workbook
 
 def reporte_historia_excel(request):
-    wb = Workbook()
+    # Obtener los filtros desde el cuerpo de la solicitud
+    data = json.loads(request.body)
+    filtroFecha = data.get('filtroFecha', None)
+
+    # Configuración de logging para depuración
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"fecha filtro: {request.body}")
+
+    # Crear un libro de trabajo de Excel
+    wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Historias Clínicas"
 
+    # Insertar el logo
     logo_path = finders.find('img/logo.png')
     img = Image(logo_path)
     img.height = 55
     img.width = 75
     ws.add_image(img, 'A1')
 
+    # Títulos de la hoja
     ws.merge_cells('B1:D1')
     ws['B1'] = "LABORATORIO DENTAL"
     ws['B1'].font = Font(size=24, bold=True)
@@ -149,20 +167,30 @@ def reporte_historia_excel(request):
     ws['A2'].font = Font(size=18)
     ws['A2'].alignment = Alignment(horizontal='center', vertical='center')
 
-    headers = ["Paciente", "Documento", "Fecha Historia", "Tratamiento Medicación", "Reacciones Alérgicas", 
-               "Trastorno Tensión Arterial", "Diabetes", "Trastornos Emocionales"]
+    # Encabezados de la tabla
+    headers = [
+        "Paciente", "Documento", "Fecha Historia", "Tratamiento Medicación",
+        "Reacciones Alérgicas", "Trastorno Tensión Arterial", "Diabetes", "Trastornos Emocionales"
+    ]
     ws.append(headers)
 
-    # Cambiamos el color de fondo del encabezado a #cab97d
+    # Cambiar color de fondo del encabezado a #cab97d y estilo de texto
     header_fill = PatternFill(start_color="cab97d", end_color="cab97d", fill_type="solid")
     for cell in ws[3]:
         cell.fill = header_fill
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    # Establecer el borde de las celdas
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
+                    bottom=Side(style='thin'))
 
+    # Filtrar las historias clínicas según los filtros
     historias = Valoracion.objects.select_related('user').all()
+    if filtroFecha:
+        historias = historias.filter(fecha_historia=filtroFecha)
+
+    # Rellenar las filas con los datos de las historias clínicas
     for historia in historias:
         ws.append([
             historia.user.nombre,
@@ -175,18 +203,22 @@ def reporte_historia_excel(request):
             dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.transtornos_emocionales, 'N/A'),
         ])
 
-    column_widths = [20, 15, 20, 25, 25, 25, 15, 25]
+    # Definir el ancho de las columnas
+    column_widths = [25, 20, 20, 35, 35, 35, 20, 30]
     for i, width in enumerate(column_widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
 
+    # Aplicar formato de alineación y bordes a las celdas
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=len(headers)):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
             cell.border = border
 
+    # Configurar la respuesta HTTP para descarga del archivo Excel
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Historias_Clinicas.xlsx"'
-    
+
+    # Guardar el archivo en la respuesta
     wb.save(response)
     return response
 
@@ -227,38 +259,61 @@ class NumberedCanvas(canvas.Canvas):
         self.drawImage(img, x, y, width=img_width, height=img_height, mask='auto')
         self.restoreState()
 
+
 def reporte_historia_pdf(request):
     buffer = BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=landscape(letter), rightMargin=36, leftMargin=36, topMargin=36, bottomMargin=18)
+    doc = SimpleDocTemplate(buffer, pagesize=landscape(letter), rightMargin=36, leftMargin=36, topMargin=36,
+                            bottomMargin=18)
     elements = []
 
+    # Configuración de estilos
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Center', alignment=1))
 
+    # Obtener los filtros desde la solicitud (si es que los hay)
+    data = json.loads(request.body)
+    filtroFecha = data.get('filtroFecha', None)  # Filtro por fecha
+
+    # Configuración de logging para depuración
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"Filtro fecha: {filtroFecha}")
+
+    # Títulos de la página
     elements.append(Paragraph("LABORATORIO DENTAL", styles['Title']))
     elements.append(Spacer(1, 12))
     elements.append(Paragraph("Historias Clínicas", styles['Heading2']))
     elements.append(Spacer(1, 12))
 
-    # Definir estilos para el encabezado y el contenido de la tabla
+    # Estilo para el encabezado de la tabla
     estilo_encabezado = ParagraphStyle(
         'EstiloEncabezado',
         parent=styles['Normal'],
-        fontSize=8,
+        fontSize=10,
         alignment=1,
         spaceAfter=0,
-        leading=10,
+        leading=12,
+        fontName="Helvetica-Bold"
     )
+
+    # Estilo para el contenido de la tabla
     estilo_contenido = ParagraphStyle(
         'EstiloContenido',
         parent=styles['Normal'],
-        fontSize=8,
+        fontSize=9,
         alignment=1,
         spaceAfter=0,
         leading=10,
+        fontName="Helvetica"
     )
 
-    # Crear Paragraphs para el encabezado
+    # Encabezados de la tabla
     encabezados = [
         Paragraph("Paciente", estilo_encabezado),
         Paragraph("Documento", estilo_encabezado),
@@ -272,44 +327,59 @@ def reporte_historia_pdf(request):
 
     data = [encabezados]
 
-    historias = Valoracion.objects.select_related('user').all()
+    # Filtrar historias clínicas según los filtros
+    historias = Valoracion.objects.select_related('user')
+
+    # Filtrar por fecha, si se aplica
+    if filtroFecha:
+        historias = historias.filter(fecha_historia=filtroFecha)
+
+    # Recuperar los datos filtrados
     for historia in historias:
         fila = [
             Paragraph(historia.user.nombre, estilo_contenido),
             Paragraph(str(historia.documento), estilo_contenido),
-            Paragraph(historia.fecha_historia.strftime('%d-%m-%Y') if historia.fecha_historia else 'N/A', estilo_contenido),
-            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.tratamiento_medicacion, 'N/A'), estilo_contenido),
-            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.reacciones_alergicas, 'N/A'), estilo_contenido),
-            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.transtorno_tension_arterial, 'N/A'), estilo_contenido),
+            Paragraph(historia.fecha_historia.strftime('%d-%m-%Y') if historia.fecha_historia else 'N/A',
+                      estilo_contenido),
+            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.tratamiento_medicacion, 'N/A'),
+                      estilo_contenido),
+            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.reacciones_alergicas, 'N/A'),
+                      estilo_contenido),
+            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.transtorno_tension_arterial, 'N/A'),
+                      estilo_contenido),
             Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.diabetes, 'N/A'), estilo_contenido),
-            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.transtornos_emocionales, 'N/A'), estilo_contenido),
+            Paragraph(dict(Valoracion.OPCIONES_SI_NO_NO_SABE).get(historia.transtornos_emocionales, 'N/A'),
+                      estilo_contenido),
         ]
         data.append(fila)
 
+    # Configuración de la tabla
     table = Table(data, colWidths=[110, 70, 80, 90, 90, 95, 70, 95])
+
     style = TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#cab97d")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, 0), 8),
+        ('FONTSIZE', (0, 0), (-1, 0), 10),
         ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 1), (-1, -1), 8),
+        ('FONTSIZE', (0, 1), (-1, -1), 9),
         ('TOPPADDING', (0, 0), (-1, -1), 6),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 6),
         ('GRID', (0, 0), (-1, -1), 1, colors.black),
     ])
+
     table.setStyle(style)
 
     elements.append(table)
 
-    doc.build(elements, canvasmaker=NumberedCanvas)
+    doc.build(elements)
 
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Historias_Clinicas.pdf"'
-    
+
     return response
 
 

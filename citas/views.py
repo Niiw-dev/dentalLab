@@ -542,17 +542,17 @@ def reporte_citas_excel(request):
     motivo_filtro = data.get('motivo', None)
     estado_filtro = data.get('estado', None)
 
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-
-    logger.debug(f"Fecha filtro: {fecha_filtro}")
-    logger.debug(f"Motivo filtro: {motivo_filtro}")
-    logger.debug(f"Estado filtro: {estado_filtro}")
+    # logger = logging.getLogger(__name__)
+    # logger.setLevel(logging.DEBUG)
+    # ch = logging.StreamHandler()
+    # ch.setLevel(logging.DEBUG)
+    # formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    # ch.setFormatter(formatter)
+    # logger.addHandler(ch)
+    #
+    # logger.debug(f"Fecha filtro: {fecha_filtro}")
+    # logger.debug(f"Motivo filtro: {motivo_filtro}")
+    # logger.debug(f"Estado filtro: {estado_filtro}")
 
     wb = openpyxl.Workbook()
     ws = wb.active
@@ -686,18 +686,6 @@ def reporte_citas_pdf(request):
     fecha_filtro = data.get('fecha', None)
     motivo_filtro = data.get('motivo', None)
     estado_filtro = data.get('estado', None)
-
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.DEBUG)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
-
-    logger.debug(f"Fecha filtro: {fecha_filtro}")
-    logger.debug(f"Motivo filtro: {motivo_filtro}")
-    logger.debug(f"Estado filtro: {estado_filtro}")
 
     # Crear buffer para el PDF
     buffer = BytesIO()

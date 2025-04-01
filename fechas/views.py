@@ -1,3 +1,5 @@
+import json
+import logging
 import os
 import sys
 
@@ -19,7 +21,7 @@ from django.views.decorators.cache import never_cache
 from google.auth.transport.requests import Request
 
 from inicio.forms import FechaForm, UserForm
-from inicio.models import Fecha, UserProfile
+from inicio.models import Fecha, UserProfile, Valoracion
 
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -123,6 +125,10 @@ def eliminarfechas(request, id):
 
 
 def reporte_fechas_excel(request):
+    # Obtener los filtros desde el cuerpo de la solicitud
+    data = json.loads(request.body)
+    filtroFecha = data.get('filtroFecha', None)
+
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Fechas Agendadas"
@@ -146,16 +152,22 @@ def reporte_fechas_excel(request):
 
     headers = ["Fecha", "Hora"]
     ws.append(headers)
-    
+
     header_fill = PatternFill(start_color="cab97d", end_color="cab97d", fill_type="solid")
     for cell in ws[3]:
         cell.fill = header_fill
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
+                    bottom=Side(style='thin'))
 
+    # Filtrar las fechas agendadas según el filtro de fecha, si existe
     fechas = Fecha.objects.all()
+    if filtroFecha:
+        fechas = fechas.filter(fecha=filtroFecha)
+
+    # Rellenar las filas con las fechas y horas filtradas
     for fecha in fechas:
         fecha_hora = fecha.fecha
         hora = fecha.hora
@@ -168,6 +180,7 @@ def reporte_fechas_excel(request):
     ws.column_dimensions['A'].width = 20
     ws.column_dimensions['B'].width = 48
 
+    # Aplicar formato de alineación y bordes a las celdas
     for row in ws.iter_rows(min_row=3, max_row=ws.max_row, min_col=1, max_col=2):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
@@ -176,13 +189,16 @@ def reporte_fechas_excel(request):
                 cell.number_format = 'DD-MM-YYYY'
             elif cell.column_letter == 'B':
                 cell.number_format = 'HH:MM'
-    
+
+    # Bordes a las celdas del encabezado
     for cell in ws[3]:
         cell.border = border
 
+    # Configurar la respuesta HTTP para descarga del archivo Excel
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Reporte_fechas.xlsx"'
-    
+
+    # Guardar el archivo en la respuesta
     wb.save(response)
     return response
 
@@ -223,28 +239,43 @@ class NumberedCanvas(canvas.Canvas):
 
 
 def reporte_fechas_pdf(request):
+    # Obtener los filtros desde el cuerpo de la solicitud
+    data = json.loads(request.body)
+    filtroFecha = data.get('filtroFecha', None)
+
+    # Crear un buffer en memoria para el archivo PDF
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
     elements = []
 
+    # Estilos para el PDF
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Center', alignment=1))
 
+    # Encabezado
     elements.append(Paragraph("LABORATORIO DENTAL", styles['Title']))
     elements.append(Spacer(1, 12))
     elements.append(Paragraph("Fechas Agendadas", styles['Heading2']))
     elements.append(Spacer(1, 12))
 
+    # Tabla con los encabezados
     data = [["Fecha", "Hora"]]
 
+    # Filtrar las fechas agendadas según el filtro de fecha
     fechas = Fecha.objects.all()
+    if filtroFecha:
+        fechas = fechas.filter(fecha=filtroFecha)
+
+    # Agregar las filas de datos
     for fecha in fechas:
         fecha_hora = fecha.fecha.strftime('%d-%m-%Y') if hasattr(fecha.fecha, 'strftime') else str(fecha.fecha)
         hora = fecha.hora.strftime('%H:%M') if hasattr(fecha.hora, 'strftime') else str(fecha.hora)
         data.append([fecha_hora, hora])
 
+    # Crear la tabla con los datos
     table = Table(data)
 
+    # Estilos de la tabla
     style = TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#cab97d")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
@@ -263,13 +294,16 @@ def reporte_fechas_pdf(request):
     ])
     table.setStyle(style)
 
+    # Agregar la tabla al documento
     elements.append(table)
 
-    doc.build(elements, canvasmaker=NumberedCanvas)
+    # Generar el PDF
+    doc.build(elements)
 
+    # Devolver el PDF como respuesta HTTP
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Reporte_fechas.pdf"'
-    
+
     return response
 

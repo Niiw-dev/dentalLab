@@ -4,11 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Descargar excel de citas con filtros aplicados Listo">
+    <list default="true" id="0751f1de-3f51-4106-baf3-a9b02d84b291" name="Changes" comment="Descargar pdf de citas con filtros aplicados Listo">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/citas/templates/listcitas.html" beforeDir="false" afterPath="$PROJECT_DIR$/citas/templates/listcitas.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/citas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/citas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/templates/listcuentas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cuentas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/cuentas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/templates/listfechas.html" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/templates/listfechas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fechas/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/fechas/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/templates/listhistorias.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historiaclinica/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/historiaclinica/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventario/templates/listelementos.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/templates/listelementos.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventario/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventario/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/filtrar.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtrar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/filtros.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/filtros.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +166,7 @@
       <workItem from="1743185908845" duration="8985000" />
       <workItem from="1743197504025" duration="1931000" />
       <workItem from="1743425701919" duration="21245000" />
-      <workItem from="1743511861702" duration="11486000" />
+      <workItem from="1743511861702" duration="29330000" />
     </task>
     <task id="LOCAL-00001" summary="modificación con docker">
       <option name="closed" value="true" />
@@ -357,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743523084558</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Descargar pdf de citas con filtros aplicados Listo">
+      <option name="closed" value="true" />
+      <created>1743523988764</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1743523988764</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,6 +416,7 @@
     <MESSAGE value="se arregla z-index de dark-mode-toggle" />
     <MESSAGE value="intento de cambio de descargar excel de citas" />
     <MESSAGE value="Descargar excel de citas con filtros aplicados Listo" />
-    <option name="LAST_COMMIT_MESSAGE" value="Descargar excel de citas con filtros aplicados Listo" />
+    <MESSAGE value="Descargar pdf de citas con filtros aplicados Listo" />
+    <option name="LAST_COMMIT_MESSAGE" value="Descargar pdf de citas con filtros aplicados Listo" />
   </component>
 </project>

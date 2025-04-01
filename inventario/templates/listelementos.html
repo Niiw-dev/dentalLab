@@ -30,11 +30,11 @@ Insumos
                 </div>
                 <div class="d-flex">
                     <a class="btn btn-success btn-custom me-2" href="{% url 'reporte_excel_inventario' %}" role="button"
-                        data-tooltip="Descargar tabla en excel">
+                        data-tooltip="Descargar tabla en excel" id="download-excel-btn">
                         <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
                     </a>
                     <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_inventario' %}" role="button"
-                        data-tooltip="Descargar tabla en pdf">
+                        data-tooltip="Descargar tabla en pdf" id="download-pdf-btn">
                         <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
                     </a>
                 </div>
@@ -46,8 +46,7 @@ Insumos
                 <div id="filtroForm" class="mb-3">
                     <div class="row" style="width: 100%;">
                         <div>
-                            <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Tipo de
-                                Documento</label>
+                            <label for="fechaFiltro" class="form-label" data-tooltip="Filtrar citas por fecha">Estado</label>
                             <select id="filtroEstados" class="form-select" data-tooltip="Filtrar por estado">
                                 <option value="">Todos los Estados</option>
                                 <option value="1">Disponible</option>
@@ -121,4 +120,99 @@ Insumos
 {% block extra_js %}
 <script src="{% static 'js/filtros.js' %}?v6.1"></script>
 <script src="{% static 'js/listElements.js' %}?v1.1"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const fechaFiltro = document.getElementById("fechaFiltro");
+    document.getElementById('download-excel-btn').addEventListener('click', function (event) {
+        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+        const data = {
+            filtroEstados: filtroEstados.value
+        };
+        // Realizar la solicitud POST con fetch
+        fetch('/reporte-excel-inventario/', {
+            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            headers: {
+                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
+                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+            },
+            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+        })
+            .then(response => {
+                // Verifica si la respuesta es exitosa
+                if (!response.ok) {
+                    throw new Error('Hubo un problema al generar el archivo Excel');
+                }
+                return response.blob();  // Devuelve el archivo como un Blob
+            })
+            .then(blob => {
+                // Crea un enlace temporal para la descarga
+                const downloadLink = document.createElement('a');
+                const url = window.URL.createObjectURL(blob);
+                downloadLink.href = url;
+                downloadLink.download = 'Reporte_Insumos.xlsx';  // Nombre por defecto para la descarga
+                downloadLink.click();  // Inicia la descarga
+
+                // Limpia el objeto URL creado
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error al descargar el archivo:', error);
+            });
+    });
+
+    document.getElementById('download-pdf-btn').addEventListener('click', function (event) {
+        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+
+        const data = {
+            filtroEstados: filtroEstados.value
+        };
+        // Realizar la solicitud POST con fetch
+        fetch('/reporte-pdf-inventario/', {
+            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            headers: {
+                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
+                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+            },
+            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+        })
+            .then(response => {
+                // Verifica si la respuesta es exitosa
+                if (!response.ok) {
+                    throw new Error('Hubo un problema al generar el archivo Excel');
+                }
+                return response.blob();  // Devuelve el archivo como un Blob
+            })
+            .then(blob => {
+                // Crea un enlace temporal para la descarga
+                const downloadLink = document.createElement('a');
+                const url = window.URL.createObjectURL(blob);
+                downloadLink.href = url;
+                downloadLink.download = 'Reporte_Insumos.pdf';  // Nombre por defecto para la descarga
+                downloadLink.click();  // Inicia la descarga
+
+                // Limpia el objeto URL creado
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error al descargar el archivo:', error);
+            });
+    });
+
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+});
+</script>
 {% endblock %}

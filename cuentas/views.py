@@ -1,3 +1,6 @@
+import json
+import logging
+
 import openpyxl
 from openpyxl.drawing.image import Image
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
@@ -156,6 +159,21 @@ def activar_cuenta(request, id):
 
 
 def reporte_pacientes_excel(request):
+    data = json.loads(request.body)
+    estado_filtro = data.get('estado', None)
+    tipo_documento_filtro = data.get('tipoDoc', None)
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"Estado filtro: {estado_filtro}")
+    logger.debug(f"Documento filtro: {tipo_documento_filtro}")
+
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Pacientes"
@@ -178,16 +196,24 @@ def reporte_pacientes_excel(request):
 
     headers = ["Tipo", "Documento", "Nombre", "Correo", "Dirección", "Celular", "Ocupación", "Edad"]
     ws.append(headers)
-    
+
     header_fill = PatternFill(start_color="cab97d", end_color="cab97d", fill_type="solid")
     for cell in ws[3]:
         cell.fill = header_fill
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
+                    bottom=Side(style='thin'))
 
     pacientes = UserProfile.objects.all()
+
+    if estado_filtro:
+        pacientes = pacientes.filter(is_active=(0 if estado_filtro == 'inactivo' else 1))
+
+    if tipo_documento_filtro:
+        pacientes = pacientes.filter(tipo=tipo_documento_filtro)
+
     for paciente in pacientes:
         tipo = dict(paciente.TIPO_CHOICES).get(paciente.tipo, "N/A")
         documento = paciente.documento
@@ -217,10 +243,10 @@ def reporte_pacientes_excel(request):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
             cell.border = border
-    
+
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Reporte_pacientes.xlsx"'
-    
+
     wb.save(response)
     return response
 
@@ -261,6 +287,21 @@ class NumberedCanvas(canvas.Canvas):
 
 
 def reporte_pacientes_pdf(request):
+    data = json.loads(request.body)
+    estado_filtro = data.get('estado', None)
+    tipo_documento_filtro = data.get('tipoDoc', None)
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+
+    logger.debug(f"Estado filtro: {estado_filtro}")
+    logger.debug(f"Documento filtro: {tipo_documento_filtro}")
+
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
     elements = []
@@ -276,6 +317,13 @@ def reporte_pacientes_pdf(request):
     data = [["Tipo", "Documento", "Nombre", "Correo", "Dirección", "Celular", "Ocupación", "Edad"]]
 
     pacientes = UserProfile.objects.all()
+
+    if estado_filtro:
+        pacientes = pacientes.filter(is_active=0 if estado_filtro == 'inactivo' else 1)
+
+    if tipo_documento_filtro:
+        pacientes = pacientes.filter(tipo=tipo_documento_filtro)
+
     for paciente in pacientes:
         tipo = dict(paciente.TIPO_CHOICES).get(paciente.tipo, "N/A")
         data.append([
@@ -295,13 +343,13 @@ def reporte_pacientes_pdf(request):
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, 0), 12),
+        ('FONTSIZE', (0, 0), (-1, 0), 10),
         ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
         ('BACKGROUND', (0, 1), (-1, -1), colors.white),
         ('TEXTCOLOR', (0, 1), (-1, -1), colors.black),
         ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
         ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
-        ('FONTSIZE', (0, 1), (-1, -1), 10),
+        ('FONTSIZE', (0, 1), (-1, -1), 8),
         ('TOPPADDING', (0, 1), (-1, -1), 6),
         ('BOTTOMPADDING', (0, 1), (-1, -1), 6),
         ('GRID', (0, 0), (-1, -1), 1, colors.black)
@@ -315,6 +363,6 @@ def reporte_pacientes_pdf(request):
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Reporte_pacientes.pdf"'
-    
+
     return response
 

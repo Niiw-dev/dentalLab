@@ -38,11 +38,11 @@ Fechas Disponibles
                 </div>
                 <div class="d-flex">
                     <a class="btn btn-success btn-custom me-2" href="{% url 'reporte_excel_fechas' %}" role="button"
-                        data-tooltip="Descargar tabla en excel">
+                        data-tooltip="Descargar tabla en excel" id="download-excel-btn">
                         <i class="fas fa-file-excel text-white"></i> <span>Descargar Excel</span>
                     </a>
                     <a class="btn btn-danger btn-custom" href="{% url 'reporte_pdf_fechas' %}" role="button"
-                        data-tooltip="Descargar tabla en pdf">
+                        data-tooltip="Descargar tabla en pdf" id="download-pdf-btn">
                         <i class="fas fa-file-pdf text-white"></i> <span>Descargar PDF</span>
                     </a>
                 </div>
@@ -116,5 +116,100 @@ Fechas Disponibles
 {% endblock %}
 
 {% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const fechaFiltro = document.getElementById("fechaFiltro");
+    document.getElementById('download-excel-btn').addEventListener('click', function (event) {
+        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+        const data = {
+            filtroFecha: fechaFiltro.value
+        };
+        // Realizar la solicitud POST con fetch
+        fetch('/reporte-excel-fechas/', {
+            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            headers: {
+                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
+                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+            },
+            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+        })
+            .then(response => {
+                // Verifica si la respuesta es exitosa
+                if (!response.ok) {
+                    throw new Error('Hubo un problema al generar el archivo Excel');
+                }
+                return response.blob();  // Devuelve el archivo como un Blob
+            })
+            .then(blob => {
+                // Crea un enlace temporal para la descarga
+                const downloadLink = document.createElement('a');
+                const url = window.URL.createObjectURL(blob);
+                downloadLink.href = url;
+                downloadLink.download = 'Reporte_fechas.xlsx';  // Nombre por defecto para la descarga
+                downloadLink.click();  // Inicia la descarga
+
+                // Limpia el objeto URL creado
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error al descargar el archivo:', error);
+            });
+    });
+
+    document.getElementById('download-pdf-btn').addEventListener('click', function (event) {
+        event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
+
+        const data = {
+            filtroFecha: fechaFiltro.value
+        };
+        // Realizar la solicitud POST con fetch
+        fetch('/reporte-pdf-fechas/', {
+            method: 'POST',  // Usamos POST para enviar los datos en el cuerpo
+            headers: {
+                'Content-Type': 'application/json',  // Aseguramos que estamos enviando JSON
+                'X-CSRFToken': getCookie('csrftoken')  // Incluimos el token CSRF para seguridad (si estás usando Django)
+            },
+            body: JSON.stringify(data)  // Convertimos el objeto de datos a formato JSON
+        })
+            .then(response => {
+                // Verifica si la respuesta es exitosa
+                if (!response.ok) {
+                    throw new Error('Hubo un problema al generar el archivo Excel');
+                }
+                return response.blob();  // Devuelve el archivo como un Blob
+            })
+            .then(blob => {
+                // Crea un enlace temporal para la descarga
+                const downloadLink = document.createElement('a');
+                const url = window.URL.createObjectURL(blob);
+                downloadLink.href = url;
+                downloadLink.download = 'Reporte_fechas.pdf';  // Nombre por defecto para la descarga
+                downloadLink.click();  // Inicia la descarga
+
+                // Limpia el objeto URL creado
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => {
+                console.error('Error al descargar el archivo:', error);
+            });
+    });
+
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+});
+</script>
 <script src="{% static 'js/listFechas.js' %}?v1.1"></script>
 {% endblock %}

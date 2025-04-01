@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.cache import never_cache
@@ -33,6 +35,16 @@ from reportlab.lib.units import inch
 from reportlab.lib.colors import Color
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.pdfgen import canvas
+
+from io import BytesIO
+from reportlab.lib import colors
+from reportlab.lib.pagesizes import letter
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import inch
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.lib.utils import ImageReader
+from django.http import HttpResponse
+from django.contrib.staticfiles import finders
 
 @never_cache
 @login_required(login_url='acceso_denegado')
@@ -98,18 +110,25 @@ def editarelementos(request, id):
         form = InventarioForm(instance=form_edelem)
     return render(request, 'editarelementos.html', {'form': form})
 
+
 def reporte_inventario_excel(request):
+    # Obtener los filtros desde el cuerpo de la solicitud
+    data = json.loads(request.body)
+    filtroEstado = data.get('filtroEstados', None)  # Suponemos que 'filtroEstado' es uno de los filtros posibles
+
+    # Crear un libro de trabajo de Excel
     wb = openpyxl.Workbook()
     ws = wb.active
     ws.title = "Inventario"
 
+    # Insertar el logo
     logo_path = finders.find('img/logo.png')
-    img = Image(logo_path)
     img = Image(logo_path)
     img.height = 38  # Ajusta el tamaño según se requiera
     img.width = 78
     ws.add_image(img, 'A1')
 
+    # Títulos de la hoja
     ws.merge_cells('B1:C1')
     ws['B1'] = "LABORATORIO DENTAL"
     ws['B1'].font = Font(size=24, bold=True)
@@ -120,36 +139,43 @@ def reporte_inventario_excel(request):
     ws['A2'].font = Font(size=18)
     ws['A2'].alignment = Alignment(horizontal='center', vertical='center')
 
+    # Encabezados de la tabla
     headers = ["Producto", "Cantidad", "Estado"]
     ws.append(headers)
-    
+
     header_fill = PatternFill(start_color="cab97d", end_color="cab97d", fill_type="solid")
     for cell in ws[3]:
         cell.fill = header_fill
         cell.font = Font(color="000000", bold=True)
         cell.alignment = Alignment(horizontal='center', vertical='center')
 
-    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'), bottom=Side(style='thin'))
+    # Estilo de bordes
+    border = Border(left=Side(style='thin'), right=Side(style='thin'), top=Side(style='thin'),
+                    bottom=Side(style='thin'))
 
+    # Filtrar el inventario según el filtro de estado
     inventarios = Inventario.objects.all()
+    if filtroEstado:
+        inventarios = inventarios.filter(estado=filtroEstado)  # Filtrando por estado del inventario
+
+    # Rellenar las filas con los datos del inventario
     for inventario in inventarios:
         producto = inventario.producto or "N/A"
         cantidad = inventario.cantidad
         estado = dict(Inventario.ESTADO).get(inventario.estado, "N/A")
-        
+
         ws.append([
             producto,
             cantidad,
             estado
         ])
-        ws.column_dimensions['B'].width = 60
-        ws.column_dimensions['C'].width = 35
-    # Set column widths
+
+    # Ajuste del ancho de las columnas
     column_widths = [25, 20, 40]  # Ajusta el ancho de las columnas
     for i, width in enumerate(column_widths, start=1):
         ws.column_dimensions[get_column_letter(i)].width = width
 
-    # Apply styles
+    # Aplicar formato de alineación y bordes a las celdas
     for row in ws.iter_rows(min_row=4, max_row=ws.max_row, min_col=1, max_col=3):
         for cell in row:
             cell.alignment = Alignment(horizontal='center', vertical='center')
@@ -158,21 +184,13 @@ def reporte_inventario_excel(request):
     for cell in ws[3]:
         cell.border = border
 
+    # Configurar la respuesta HTTP para descarga del archivo Excel
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     response['Content-Disposition'] = 'attachment; filename="Reporte_inventario.xlsx"'
-    
+
     wb.save(response)
     return response
 
-from io import BytesIO
-from reportlab.lib import colors
-from reportlab.lib.pagesizes import letter
-from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
-from reportlab.lib.units import inch
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
-from reportlab.lib.utils import ImageReader
-from django.http import HttpResponse
-from django.contrib.staticfiles import finders
 
 class NumberedCanvas(canvas.Canvas):
     def __init__(self, *args, **kwargs):
@@ -209,11 +227,18 @@ class NumberedCanvas(canvas.Canvas):
         self.drawImage(img, x, y, width=img_width, height=img_height, mask='auto')
         self.restoreState()
 
+
 def reporte_inventario_pdf(request):
+    # Obtener los filtros desde el cuerpo de la solicitud
+    data = json.loads(request.body)
+    filtroEstado = data.get('filtroEstados', None)  # Filtro por estado
+
+    # Crear el buffer y documento PDF
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
     elements = []
 
+    # Estilos de texto
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='Center', alignment=1))
 
@@ -222,17 +247,26 @@ def reporte_inventario_pdf(request):
     elements.append(Paragraph("Inventario", styles['Heading2']))
     elements.append(Spacer(1, 12))
 
+    # Cabecera de la tabla
     data = [["Producto", "Cantidad", "Estado"]]
 
+    # Filtrar inventarios según el estado
     inventarios = Inventario.objects.all()
+    if filtroEstado:
+        inventarios = inventarios.filter(estado=filtroEstado)  # Filtrando por estado
+
+    # Rellenar la tabla con los inventarios filtrados
     for inventario in inventarios:
         producto = inventario.producto or "N/A"
         cantidad = str(inventario.cantidad)
         estado = dict(Inventario.ESTADO).get(inventario.estado, "N/A")
-        
+
         data.append([producto, cantidad, estado])
 
+    # Crear la tabla con los datos
     table = Table(data, colWidths=[250, 100, 150])
+
+    # Estilo de la tabla
     style = TableStyle([
         ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#cab97d")),
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.black),
@@ -249,15 +283,19 @@ def reporte_inventario_pdf(request):
         ('BOTTOMPADDING', (0, 1), (-1, -1), 6),
         ('GRID', (0, 0), (-1, -1), 1, colors.black)
     ])
+
     table.setStyle(style)
 
+    # Agregar la tabla a los elementos del PDF
     elements.append(table)
 
-    doc.build(elements, canvasmaker=NumberedCanvas)
+    # Generar el PDF
+    doc.build(elements)
 
+    # Retornar el archivo PDF como respuesta
     buffer.seek(0)
     response = HttpResponse(buffer, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="Reporte_inventario.pdf"'
-    
+
     return response
 
